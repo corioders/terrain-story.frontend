@@ -1,6 +1,6 @@
 #!/bin/bash
 
-PROTECTED_BRANCHES="^(___TEMPLATE_BRANCHES___)"
+PROTECTED_BRANCHES="^(master|main|develop|deploy)"
 
 BRANCH=$(git rev-parse --abbrev-ref HEAD)
 
