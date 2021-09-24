@@ -1,15 +1,17 @@
 <template>
 	<div id="app">
+		<p>game name</p>
 		<Flex>
 			<navigation />
 			<img alt="Vue logo" class="logo" src="@/assets/vueLogo.svg" />
 			<router-view />
 			<h3>{{ getAuthor }}</h3>
+			<button @click="onClick">AAAA</button>
 		</Flex>
 	</div>
 </template>
 
-<script>
+<script lang="ts">
 	import { defineComponent } from 'vue';
 
 	import { useMainStore } from '@/store/main';
@@ -27,7 +29,11 @@
 		setup() {
 			const { getAuthor } = useMainStore(null);
 
-			return { getAuthor };
+			const onClick = (): void => {
+				console.log('aaa');
+			};
+
+			return { getAuthor, onClick };
 		},
 	});
 </script>

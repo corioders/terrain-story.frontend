@@ -1,4 +1,5 @@
 const path = require('path');
+const fs = require('fs');
 
 const config = require('./config.js');
 
@@ -31,6 +32,11 @@ const paths = {
 	htmlWebpackPluginTemplate: path.resolve(config.ROOT_PATH, 'src/public/index.html'),
 };
 
+const entries = {};
+const appsPath = path.resolve(paths.src, 'app');
+const apps = fs.readdirSync(appsPath);
+for (const app of apps) entries[app] = path.resolve(appsPath, app, 'index.ts');
+
 const options = {};
 options.babel = {
 	configFile: paths.babelConfig,
@@ -61,12 +67,10 @@ for (const key in aliases) aliases[key] = path.resolve(config.ROOT_PATH, aliases
 
 const webpack = {
 	context: config.ROOT_PATH,
-	entry: {
-		app: path.resolve(paths.src, 'index.ts'),
-	},
-  // stats: {
-  //   logging: "error"
-  // },
+	entry: entries,
+	// stats: {
+	//   logging: "error"
+	// },
 
 	target: target,
 	output: {
@@ -175,7 +179,7 @@ const webpack = {
 
 		new ESLintPlugin({
 			extensions: ['js', 'ts', 'vue'],
-      lintDirtyModulesOnly:true
+			lintDirtyModulesOnly: true,
 		}),
 
 		new BrowserSyncPlugin(
@@ -190,7 +194,6 @@ const webpack = {
 			},
 			{ reload: false },
 		),
-
 
 		{
 			PLUGIN_NAME: 'logging',

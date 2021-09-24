@@ -8,6 +8,31 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const JsMinimizerPlugin = require('terser-webpack-plugin');
 
+const htmlWebpackPluginConfig = {
+	favicon: common.paths.htmlWebpackPluginFavicon,
+	template: common.paths.htmlWebpackPluginTemplate,
+	minify: {
+		collapseWhitespace: true,
+		removeComments: true,
+		removeRedundantAttributes: true,
+		removeScriptTypeAttributes: true,
+		removeStyleLinkTypeAttributes: true,
+		useShortDoctype: true,
+	},
+};
+
+const htmlWebpackPlugins = [];
+for (const chunkName in common.webpack.entry) {
+	htmlWebpackPlugins.push(
+		new HtmlWebpackPlugin({
+			chunks: [`${chunkName}`],
+			filename: `${chunkName}/index.html`,
+
+			...htmlWebpackPluginConfig,
+		}),
+	);
+}
+
 module.exports = {
 	mode: 'production',
 	// use of es5 is needed as the webpack runtime is not transpiled by babel
@@ -22,21 +47,7 @@ module.exports = {
 
 	module: { rules: common.webpack.module.rules },
 
-	plugins: [
-		...common.webpack.plugins,
-		new HtmlWebpackPlugin({
-			favicon: common.paths.htmlWebpackPluginFavicon,
-			template: common.paths.htmlWebpackPluginTemplate,
-			minify: {
-				collapseWhitespace: true,
-				removeComments: true,
-				removeRedundantAttributes: true,
-				removeScriptTypeAttributes: true,
-				removeStyleLinkTypeAttributes: true,
-				useShortDoctype: true,
-			},
-		}),
-	],
+	plugins: [...common.webpack.plugins, ...htmlWebpackPlugins],
 
 	optimization: {
 		usedExports: true,

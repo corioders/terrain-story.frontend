@@ -5,6 +5,23 @@ const common = require('./webpack.common.js');
 
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
+const htmlWebpackPluginConfig = {
+	favicon: common.paths.htmlWebpackPluginFavicon,
+	template: common.paths.htmlWebpackPluginTemplate,
+};
+
+const htmlWebpackPlugins = [];
+for (const chunkName in common.webpack.entry) {
+	htmlWebpackPlugins.push(
+		new HtmlWebpackPlugin({
+			chunks: [`${chunkName}`],
+			filename: `${chunkName}/index.html`,
+
+			...htmlWebpackPluginConfig,
+		}),
+	);
+}
+
 module.exports = {
 	mode: 'development',
 	target: common.webpack.target,
@@ -18,13 +35,7 @@ module.exports = {
 
 	module: { rules: common.webpack.module.rules },
 
-	plugins: [
-		...common.webpack.plugins,
-		new HtmlWebpackPlugin({
-			favicon: common.paths.htmlWebpackPluginFavicon,
-			template: common.paths.htmlWebpackPluginTemplate,
-		}),
-	],
+	plugins: [...common.webpack.plugins, ...htmlWebpackPlugins],
 
 	optimization: {
 		runtimeChunk: 'single',

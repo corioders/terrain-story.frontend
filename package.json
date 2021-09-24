@@ -8,7 +8,7 @@
 		"not dead"
 	],
 	"scripts": {
-		"start": "yarn run serve:dev:fast",
+		"watch": "yarn run serve:dev:fast",
 		"debug": "yarn run debug:dev",
 		"produce": "yarn run build:prod",
 		"serve:dev": "cross-env NODE_ENV=development webpack serve --no-stats --config ./config/webpack.dev.js",
