@@ -22,8 +22,11 @@
 		  "@/*": [
 		    "./src/*"
 		  ],
-		  "@about/*": [
-		    "src/routes/about/*"
+			"@index/*": [
+		    "src/app/index/*"
+		  ],
+		  "@rock/*": [
+		    "src/app/rock/*"
 		  ]
 		},
 

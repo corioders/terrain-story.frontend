@@ -2,6 +2,7 @@
 	<div id="app">
 		<Flex>
 			<router-view />
+			<RockSkipNav />
 		</Flex>
 	</div>
 </template>
@@ -11,9 +12,12 @@
 
 	import Flex from '@/layouts/Flex.vue';
 
+	import RockSkipNav from '@rock/components/RockSkipNav.vue';
+
 	export default defineComponent({
 		components: {
 			Flex,
+			RockSkipNav,
 		},
 	});
 </script>

@@ -1,11 +1,13 @@
 <template>
-	<div>home</div>
+	<button>Dalej</button>
 </template>
 
 <script lang="ts">
 	import { defineComponent } from 'vue';
 
 	export default defineComponent({
-		name: 'Home',
+		name: 'SkipNav',
 	});
 </script>
+<style lang="scss" scoped>
+</style>

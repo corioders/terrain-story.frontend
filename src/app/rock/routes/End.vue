@@ -1,11 +1,11 @@
 <template>
-	<div>home</div>
+	<p>Koniec-Kosmita</p>
 </template>
 
 <script lang="ts">
 	import { defineComponent } from 'vue';
 
 	export default defineComponent({
-		name: 'Home',
+		name: 'End',
 	});
 </script>
