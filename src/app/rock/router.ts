@@ -47,6 +47,7 @@ const routes: RouteRecordRaw[] = [
 		path: '/',
 		name: 'Home',
 		component: Home,
+		meta: { to: 'Start' },
 	},
 	{
 		path: '/inspector',

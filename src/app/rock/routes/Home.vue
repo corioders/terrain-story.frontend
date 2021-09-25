@@ -1,16 +1,12 @@
 <template>
-	<div>Home</div>
+	<h1>Poszukiwacze camienia</h1>
+	<p>strona główna (po wejściu na strone nie przez kod qr)</p>
 </template>
 
 <script lang="ts">
 	import { defineComponent } from 'vue';
-	import { useRouter } from 'vue-router';
 
 	export default defineComponent({
 		name: 'Home',
-		setup() {
-			const router = useRouter();
-			router.replace('/start');
-		},
 	});
 </script>
