@@ -12,7 +12,7 @@
 
 	import Flex from '@/layouts/Flex.vue';
 
-	import RockSkipNav from '@rock/components/RockSkipNav.vue';
+	import RockSkipNav from '@/app/rock/components/devHelpers/RockSkipNav.vue';
 
 	export default defineComponent({
 		components: {

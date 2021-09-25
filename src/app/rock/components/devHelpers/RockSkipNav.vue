@@ -6,7 +6,7 @@
 	import { defineComponent } from 'vue';
 	import { useRouter } from 'vue-router';
 
-	import SkipNav from '@/components/SkipNav.vue';
+	import SkipNav from '@/components/devHelpers/SkipNav.vue';
 
 	import { useRockSkipNavStore } from '@rock/store/RockSkipNav';
 
