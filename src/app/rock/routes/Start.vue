@@ -1,6 +1,6 @@
 <template>
 	<p>Start-Kosmita</p>
-	<Video />
+	<Video src="https://archive.org/download/BigBuckBunny_124/Content/big_buck_bunny_720p_surround.mp4" />
 </template>
 
 <script lang="ts">

@@ -1,5 +1,5 @@
 <template>
-	<video src="https://archive.org/download/BigBuckBunny_124/Content/big_buck_bunny_720p_surround.mp4" controls preload="auto" playsinline></video>
+	<video :src="src" controls preload="auto" playsinline></video>
 </template>
 
 <script lang="ts">
@@ -7,6 +7,12 @@
 
 	export default defineComponent({
 		name: 'Video',
+		props: {
+			src: {
+				type: String,
+				required: true,
+			},
+		},
 	});
 </script>
 <style lang="scss" scoped>
