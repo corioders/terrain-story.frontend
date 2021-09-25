@@ -23,21 +23,25 @@ const routes: RouteRecordRaw[] = [
 		path: `/start`,
 		name: 'Start',
 		component: Start,
+		meta: { to: 'Hacker' },
 	},
 	{
 		path: `/archaeologist`,
 		name: 'Archaeologist',
 		component: Archaeologist,
+		meta: { to: 'Tourist' },
 	},
 	{
 		path: `/dancer`,
 		name: 'Dancer',
 		component: Dancer,
+		meta: { to: 'Princess' },
 	},
 	{
 		path: '/hacker',
 		name: 'Hacker',
 		component: Hacker,
+		meta: { to: 'Mage' },
 	},
 	{
 		path: '/',
@@ -48,26 +52,31 @@ const routes: RouteRecordRaw[] = [
 		path: '/inspector',
 		name: 'Inspector',
 		component: Inspector,
+		meta: { to: 'Treasurer' },
 	},
 	{
 		path: '/mage',
 		name: 'Mage',
 		component: Mage,
+		meta: { to: 'Inspector' },
 	},
 	{
 		path: '/princess',
 		name: 'Princess',
 		component: Princess,
+		meta: { to: 'Archaeologist' },
 	},
 	{
 		path: '/tourist',
 		name: 'Tourist',
 		component: Tourist,
+		meta: { to: 'End' },
 	},
 	{
 		path: '/treasurer',
 		name: 'Treasurer',
 		component: Treasurer,
+		meta: { to: 'Dancer' },
 	},
 ];
 
@@ -77,3 +86,11 @@ const router = createRouter({
 });
 
 export default router;
+
+export function nextRoute(): void {
+	const meta = router.currentRoute.value.meta;
+	if (meta.to && typeof meta.to == 'string') {
+		router.replace({ name: meta.to, params: { artificial: 1 }, force: true });
+	}
+	console.log('aaa');
+}

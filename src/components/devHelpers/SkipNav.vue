@@ -1,5 +1,5 @@
 <template>
-	<button>Dalej</button>
+	<button @click="nextRoute()">Dalej</button>
 </template>
 
 <script lang="ts">
@@ -7,6 +7,12 @@
 
 	export default defineComponent({
 		name: 'SkipNav',
+		props: {
+			nextRoute: {
+				type: Function,
+				required: true,
+			},
+		},
 	});
 </script>
 <style lang="scss" scoped>
