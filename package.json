@@ -1,14 +1,15 @@
 {
-	"name": "rock-game",
+	"name": "qr-games",
 	"version": "0.0.1",
 	"author": "corioders",
-	"repository": "https://github.com/corioders/rock-game",
+	"repository": "https://github.com/corioders/qr-games",
 	"browserslist": [
 		" > 0.001%",
 		"not dead"
 	],
 	"scripts": {
 		"watch": "yarn run serve:dev:fast",
+		"start": "yarn watch",
 		"debug": "yarn run debug:dev",
 		"produce": "yarn run build:prod",
 		"serve:dev": "cross-env NODE_ENV=development webpack serve --no-stats --config ./config/webpack.dev.js",
