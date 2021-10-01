@@ -6,7 +6,12 @@
 <script lang="ts">
 	import { defineComponent } from 'vue';
 
+	import Video from '@/components/Video.vue';
+
 	export default defineComponent({
 		name: 'Treasurer',
+		components: {
+			Video,
+		},
 	});
 </script>
