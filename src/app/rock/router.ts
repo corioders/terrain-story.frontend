@@ -93,5 +93,4 @@ export function nextRoute(): void {
 	if (meta.to && typeof meta.to == 'string') {
 		router.replace({ name: meta.to, params: { artificial: 1 }, force: true });
 	}
-	console.log('aaa');
 }
