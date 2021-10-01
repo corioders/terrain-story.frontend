@@ -1,5 +1,6 @@
 <template>
 	<p>Skarbek</p>
+	<Video url="https://www.youtube.com/embed/4-fOGS_QcZk" />
 </template>
 
 <script lang="ts">
