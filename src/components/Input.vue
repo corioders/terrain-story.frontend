@@ -1,13 +1,20 @@
 <template>
-	<label :for="name">{{ label }}</label>
-	<input :id="name" v-model="input" type="text" autocomplete="off" @keydown.enter="$emit('submitInput', input)" />
+	<FlexRow>
+		<label :for="name">{{ label }}</label>
+		<input :id="name" v-model="input" type="text" autocomplete="off" @keydown.enter="$emit('submitInput', input)" />
+	</FlexRow>
 </template>
 
 <script lang="ts">
 	import { defineComponent } from 'vue';
 
+	import FlexRow from '@/layouts/FlexRow.vue';
+
 	export default defineComponent({
 		name: 'Input',
+		components: {
+			FlexRow,
+		},
 		props: {
 			name: {
 				type: String,
