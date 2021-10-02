@@ -1,6 +1,6 @@
 <template>
 	<label :for="name">{{ label }}</label>
-	<input v-model="input" :name="name" type="text" autocomplete="off" @keydown.enter="$emit('submitInput', input)" />
+	<input :id="name" v-model="input" type="text" autocomplete="off" @keydown.enter="$emit('submitInput', input)" />
 </template>
 
 <script lang="ts">
@@ -14,10 +14,6 @@
 				required: true,
 			},
 			label: {
-				type: String,
-				required: true,
-			},
-			event: {
 				type: String,
 				required: true,
 			},
