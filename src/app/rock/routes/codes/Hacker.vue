@@ -2,7 +2,7 @@
 	<p>Haker</p>
 	<Video url="https://www.youtube.com/embed/4-fOGS_QcZk" />
 	<Input label="Przesunięcie" name="displacement" @submitInput="submitDisplacement($event)" />
-	<CipherHelper v-if="submittedDisplacement == 13" :displacement="submittedDisplacement" />
+	<CipherHelper v-if="displacement == 13" :displacement="submittedDisplacement" />
 	<Input label="hasło" name="hackerPasswordInput" @submitInput="submitPass($event)" />
 </template>
 
