@@ -1,0 +1,77 @@
+steps:
+  # Load cache.
+  - name: 'gcr.io/cloud-builders/gsutil'
+    entrypoint: 'bash'
+    args:
+      - '-c'
+      - |-
+        gsutil -q stat gs://terrain-story-build-frontend/cache${_MODE}.tar.gz
+        if [[ $? == 0 ]]; then
+          gsutil cp gs://terrain-story-build-frontend/cache${_MODE}.tar.gz cache.tar.gz
+          tar -x --warning=no-timestamp -f cache.tar.gz .
+        fi
+
+  # Install dependencies.
+  - name: 'node'
+    env:
+      - |-
+        SKIP_POSTINSTALL=1
+    entrypoint: 'yarn'
+    args: ['install']
+
+  # Build.
+  - name: 'node'
+    entrypoint: 'yarn'
+    args: ['produce']
+
+  # Save build output.
+  - name: 'gcr.io/cloud-builders/gsutil'
+    entrypoint: 'bash'
+    args:
+      - '-c'
+      - |-
+        # Tar out, use some flags to make this output idempotent.
+        tar -c --sort=name --owner=root:0 --group=root:0 --mtime='UTC 1969-07-24 20:17' ./out | gzip -n > out.tar.gz
+
+        remote_hash=$(gsutil -q hash -m gs://terrain-story-build-frontend/out${_MODE}.tar.gz | awk '/Hash \(md5\)/{print $3}')
+        local_hash=$(gsutil -q hash -m ./out.tar.gz | awk '/Hash \(md5\)/{print $3}')
+
+        # Send data only when it has changed.
+        if [[ "${remote_hash}" != "${local_hash}" ]]; then
+          gsutil cp ./out.tar.gz gs://terrain-story-build-frontend/out${_MODE}.tar.gz
+
+          # Save tag that was used for building.
+          gsutil cp <(echo ${TAG_NAME}) gs://terrain-story-build-frontend/tag${_MODE}
+        fi
+
+  # Save cache.
+  - name: 'gcr.io/cloud-builders/gsutil'
+    entrypoint: 'bash'
+    args:
+      - '-c'
+      - |-
+        # Tar node_modules, use some flags to make this output idempotent.
+        tar -c --sort=name --owner=root:0 --group=root:0 --mtime='UTC 1969-07-24 20:17' ./node_modules | gzip -n > cache.tar.gz
+
+        remote_hash=$(gsutil -q hash -m gs://terrain-story-build-frontend/cache${_MODE}.tar.gz | awk '/Hash \(md5\)/{print $3}')
+        local_hash=$(gsutil -q hash -m ./cache.tar.gz | awk '/Hash \(md5\)/{print $3}')
+
+        # Send data only when it has changed.
+        if [[ "${remote_hash}" != "${local_hash}" ]]; then
+          gsutil cp ./cache.tar.gz gs://terrain-story-build-frontend/cache${_MODE}.tar.gz
+        fi
+
+  # Invoke server build.
+  - name: 'gcr.io/cloud-builders/gcloud'
+    entrypoint: 'bash'
+    args:
+      - '-c'
+      - |-
+        # Get tag that build-server was last invoked on.
+        last_server_tag=$(gcloud builds list --filter="substitutions.TRIGGER_NAME=build-server${_MODE}" --format="get(substitutions.TAG_NAME)" | sed -n 1p)
+        if [[ ${last_server_tag} == "" ]]; then
+          # Try getting tag without mode.
+          last_server_tag=$(gcloud builds list --filter="substitutions.TRIGGER_NAME=build-server" --format="get(substitutions.TAG_NAME)" | sed -n 1p)
+        fi
+
+        gcloud alpha builds triggers run build-server${_MODE} --tag=${last_server_tag}
