@@ -1,8 +1,8 @@
 {
-	"name": "rock-game",
+	"name": "qr-games",
 	"version": "0.0.1",
 	"author": "corioders",
-	"repository": "https://github.com/corioders/rock-game",
+	"repository": "https://github.com/corioders/terrain-story.frontend",
 	"browserslist": [
 		" > 0.001%",
 		"not dead"
@@ -56,7 +56,6 @@
 		"html-webpack-plugin": "5.3.2",
 		"husky": "^7.0.2",
 		"ip": "1.1.5",
-		"md5": "2.3.0",
 		"mini-css-extract-plugin": "2.3.0",
 		"mock-require": "3.0.3",
 		"node-sass-glob-importer": "5.3.2",

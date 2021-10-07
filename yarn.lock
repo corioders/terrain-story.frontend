@@ -2277,11 +2277,14 @@ change-case@^3.0.1:
     upper-case "^1.1.1"
     upper-case-first "^1.1.0"
 
+<<<<<<< HEAD
 charenc@0.0.2:
   version "0.0.2"
   resolved "https://registry.yarnpkg.com/charenc/-/charenc-0.0.2.tgz#c0a1d2f3a7092e03774bfa83f14c0fc5790a8667"
   integrity sha1-wKHS86cJLgN3S/qD8UwPxXkKhmc=
 
+=======
+>>>>>>> 9fcb22094e6aab4ef8ae707e8720555e773754a6
 "chokidar@>=3.0.0 <4.0.0", chokidar@^3.5.1:
   version "3.5.2"
   resolved "https://registry.yarnpkg.com/chokidar/-/chokidar-3.5.2.tgz#dba3976fcadb016f66fd365021d91600d01c1e75"
@@ -2642,11 +2645,14 @@ cross-spawn@^7.0.1, cross-spawn@^7.0.2, cross-spawn@^7.0.3:
     shebang-command "^2.0.0"
     which "^2.0.1"
 
+<<<<<<< HEAD
 crypt@0.0.2:
   version "0.0.2"
   resolved "https://registry.yarnpkg.com/crypt/-/crypt-0.0.2.tgz#88d7ff7ec0dfb86f713dc87bbb42d044d3e6c41b"
   integrity sha1-iNf/fsDfuG9xPch7u0LQRNPmxBs=
 
+=======
+>>>>>>> 9fcb22094e6aab4ef8ae707e8720555e773754a6
 css-blank-pseudo@^0.1.4:
   version "0.1.4"
   resolved "https://registry.yarnpkg.com/css-blank-pseudo/-/css-blank-pseudo-0.1.4.tgz#dfdefd3254bf8a82027993674ccf35483bfcb3c5"
@@ -4309,7 +4315,11 @@ is-binary-path@~2.1.0:
   dependencies:
     binary-extensions "^2.0.0"
 
+<<<<<<< HEAD
 is-buffer@^1.1.5, is-buffer@~1.1.6:
+=======
+is-buffer@^1.1.5:
+>>>>>>> 9fcb22094e6aab4ef8ae707e8720555e773754a6
   version "1.1.6"
   resolved "https://registry.yarnpkg.com/is-buffer/-/is-buffer-1.1.6.tgz#efaa2ea9daa0d7ab2ea13a97b2b8ad51fefbe8be"
   integrity sha512-NcdALwpXkTm5Zvvbk7owOUSvVvBKDgKP5/ewfXEznmQFfs4ZRmanOeKBTjRVjka3QFoN6XJ+9F3USqfHqTaU5w==
@@ -4864,6 +4874,7 @@ map-visit@^1.0.0:
   dependencies:
     object-visit "^1.0.0"
 
+<<<<<<< HEAD
 md5@2.3.0:
   version "2.3.0"
   resolved "https://registry.yarnpkg.com/md5/-/md5-2.3.0.tgz#c3da9a6aae3a30b46b7b0c349b87b110dc3bda4f"
@@ -4873,6 +4884,8 @@ md5@2.3.0:
     crypt "0.0.2"
     is-buffer "~1.1.6"
 
+=======
+>>>>>>> 9fcb22094e6aab4ef8ae707e8720555e773754a6
 mdn-data@2.0.14:
   version "2.0.14"
   resolved "https://registry.yarnpkg.com/mdn-data/-/mdn-data-2.0.14.tgz#7113fc4281917d63ce29b43446f701e68c25ba50"
@@ -6851,11 +6864,14 @@ sirv@^1.0.7:
     mime "^2.3.1"
     totalist "^1.0.0"
 
+<<<<<<< HEAD
 skip-postinstall@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/skip-postinstall/-/skip-postinstall-1.0.0.tgz#939d49b09ddae9816f089c0b892a8e4bb7bc7747"
   integrity sha512-IUVEmm4v7Ubzrp9JDG15oTzMB+abJdHcduXMRzBlHnHRrmpQ/QoPtYCRaorP+abAULTGEh87gPPyyMK5H1X1Dg==
 
+=======
+>>>>>>> 9fcb22094e6aab4ef8ae707e8720555e773754a6
 slash@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/slash/-/slash-3.0.0.tgz#6539be870c165adbd5240220dbe361f1bc4d4634"

@@ -4,6 +4,9 @@
   },
   "path-intellisense.mappings": {
     "@": "${workspaceRoot}/src",
+    "@index": "${workspaceRoot}/src/app/index",
+    "@rock": "${workspaceRoot}/src/app/rock",
+
   },
   "eslint.workingDirectories": [
     {
