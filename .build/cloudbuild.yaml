@@ -1,0 +1,120 @@
+steps:
+  # Get last build commit hash.
+  - name: 'gcr.io/cloud-builders/gsutil'
+    entrypoint: 'bash'
+    args:
+      - '-c'
+      - |-
+        gsutil -q stat gs://terrain-story-build-frontend/sha${_MODE}
+        if [[ $? != 0 ]]; then
+          exit 0
+        fi
+
+        mkdir /workspace/.cloudbuild
+        gsutil cp gs://terrain-story-build-frontend/sha${_MODE} /workspace/.cloudbuild/frontend_sha
+
+  # Cancel if we had already build this commit.
+  - name: 'gcr.io/cloud-builders/gcloud'
+    entrypoint: 'bash'
+    args:
+      - '-c'
+      - |-
+        if [[ ! -f /workspace/.cloudbuild/frontend_sha ]]; then
+          exit 0
+        fi
+
+        last_hash=$(cat /workspace/.cloudbuild/frontend_sha)
+        current_hash=${SHORT_SHA}
+        echo ${last_hash}
+        echo ${current_hash}
+        if [[ ${last_hash} != ${current_hash} ]]; then
+          exit 0
+        fi
+
+        gcloud builds cancel $BUILD_ID
+
+  # Load cache.
+  - name: 'gcr.io/cloud-builders/gsutil'
+    entrypoint: 'bash'
+    args:
+      - '-c'
+      - |-
+        gsutil -q stat gs://terrain-story-build-frontend/cache${_MODE}.tar.gz
+        if [[ $? != 0 ]]; then
+          exit 0
+        fi
+
+        gsutil cp gs://terrain-story-build-frontend/cache${_MODE}.tar.gz cache.tar.gz
+        tar -x --warning=no-timestamp -f cache.tar.gz .
+
+  # Install dependencies.
+  - name: 'node'
+    env:
+      - |-
+        SKIP_POSTINSTALL=1
+    entrypoint: 'yarn'
+    args: ['install']
+
+  # Build.
+  - name: 'node'
+    entrypoint: 'yarn'
+    args: ['produce']
+
+  # Save build output.
+  - name: 'gcr.io/cloud-builders/gsutil'
+    entrypoint: 'bash'
+    args:
+      - '-c'
+      - |-
+        # Save commit sha was builded.
+        gsutil cp <(echo ${SHORT_SHA}) gs://terrain-story-build-frontend/sha${_MODE}
+
+        # Tar out, use some flags to make this output idempotent.
+        tar -c --sort=name --owner=root:0 --group=root:0 --mtime='UTC 1969-07-24 20:17' ./out | gzip -n > out.tar.gz
+
+        remote_hash=$(gsutil -q hash -m gs://terrain-story-build-frontend/out${_MODE}.tar.gz | awk '/Hash \(md5\)/{print $3}')
+        local_hash=$(gsutil -q hash -m ./out.tar.gz | awk '/Hash \(md5\)/{print $3}')
+
+        # Send data only when it has changed.
+        if [[ "${remote_hash}" == "${local_hash}" ]]; then
+          exit 0
+        fi
+
+        gsutil cp ./out.tar.gz gs://terrain-story-build-frontend/out${_MODE}.tar.gz
+
+  # Save cache.
+  - name: 'gcr.io/cloud-builders/gsutil'
+    entrypoint: 'bash'
+    args:
+      - '-c'
+      - |-
+        # Tar node_modules, use some flags to make this output idempotent.
+        tar -c --sort=name --owner=root:0 --group=root:0 --mtime='UTC 1969-07-24 20:17' ./node_modules | gzip -n > cache.tar.gz
+
+        remote_hash=$(gsutil -q hash -m gs://terrain-story-build-frontend/cache${_MODE}.tar.gz | awk '/Hash \(md5\)/{print $3}')
+        local_hash=$(gsutil -q hash -m ./cache.tar.gz | awk '/Hash \(md5\)/{print $3}')
+
+        # Send data only when it has changed.
+        if [[ "${remote_hash}" == "${local_hash}" ]]; then
+          exit 0
+        fi
+
+        gsutil cp ./cache.tar.gz gs://terrain-story-build-frontend/cache${_MODE}.tar.gz
+
+  # Invoke server build.
+  - name: 'gcr.io/cloud-builders/gcloud'
+    entrypoint: 'bash'
+    args:
+      - '-c'
+      - |-
+        # When _MODE is empty then we are performing a standard build, but when
+        # _MODE isn't then something else is going on - probably a dev build but we don't know 
+        # and we just pass ${_TRIGGER_ARGS}.
+        if [[ ${_MODE} == "" ]]; then
+          # Get tag that build-server was last invoked on.
+          last_server_tag=$(gcloud builds list --filter="substitutions.TRIGGER_NAME=build-server" --format="get(substitutions.TAG_NAME)" | sed -n 1p)
+          gcloud alpha builds triggers run build-server --tag=${last_server_tag}
+          exit 0
+        fi
+
+        gcloud alpha builds triggers run build-server${_MODE} ${_TRIGGER_ARGS}

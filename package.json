@@ -1,8 +1,8 @@
 {
-	"name": "rock-game",
+	"name": "qr-games",
 	"version": "0.0.1",
 	"author": "corioders",
-	"repository": "https://github.com/corioders/rock-game",
+	"repository": "https://github.com/corioders/terrain-story.frontend",
 	"browserslist": [
 		" > 0.001%",
 		"not dead"
@@ -21,7 +21,7 @@
 		"analyze:prod": "cross-env ANALYZE=true yarn run build:prod",
 		"build:dev": "cross-env NODE_ENV=development webpack --config ./config/webpack.dev.js",
 		"build:prod": "cross-env NODE_ENV=production webpack --config ./config/webpack.prod.js",
-		"postinstall": "husky install"
+		"postinstall": "skip-postinstall || husky install"
 	},
 	"devDependencies": {
 		"@babel/core": "7.15.5",
@@ -56,7 +56,6 @@
 		"html-webpack-plugin": "5.3.2",
 		"husky": "^7.0.2",
 		"ip": "1.1.5",
-		"md5": "2.3.0",
 		"mini-css-extract-plugin": "2.3.0",
 		"mock-require": "3.0.3",
 		"node-sass-glob-importer": "5.3.2",
@@ -65,6 +64,7 @@
 		"prettier": "^2.4.1",
 		"sass": "1.41.1",
 		"sass-loader": "12.1.0",
+		"skip-postinstall": "^1.0.0",
 		"style-loader": "3.2.1",
 		"terser-webpack-plugin": "5.2.4",
 		"ts-loader": "9.2.5",

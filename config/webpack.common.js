@@ -76,7 +76,7 @@ const webpack = {
 	output: {
 		path: paths.out,
 		filename: `${fileName}.js`,
-		publicPath: '',
+		publicPath: '/',
 		module: false,
 		chunkLoadingGlobal: config.IS_PRODUCTION ? 'a' : undefined,
 	},
