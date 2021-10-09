@@ -1,20 +1,20 @@
 <template>
 	<div v-for="(question, i) in questions" :key="`${name}Question${i}`">
 		<p>{{ question.question }}</p>
-		<SingleQuestion :options="question.options" :name="name + i" @answer="$emit('answer', i + $event)" />
+		<SingleChoiceQuestion :options="question.options" :name="name + i" @answer="$emit('answer', i + $event)" />
 	</div>
 </template>
 
 <script lang="ts">
 	import { defineComponent, PropType } from 'vue';
 
-	import SingleQuestion from './SingleQuestion.vue';
+	import SingleChoiceQuestion from './SingleChoiceQuestion.vue';
 	import Question from './question';
 
 	export default defineComponent({
-		name: 'SingleQuestions',
+		name: 'SingleChoiceQuestions',
 		components: {
-			SingleQuestion,
+			SingleChoiceQuestion,
 		},
 		props: {
 			name: {

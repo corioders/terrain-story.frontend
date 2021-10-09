@@ -1,14 +1,14 @@
 <template>
 	<p>Skarbek</p>
 	<Video url="https://www.youtube.com/embed/4-fOGS_QcZk" />
-	<SingleQuestions :questions="questions" name="mystery" @answer="log($event)" />
+	<SingleChoiceQuestions :questions="questions" name="mystery" @answer="log($event)" />
 </template>
 
 <script lang="ts">
 	import { defineComponent } from 'vue';
 
 	import Video from '@/components/Video.vue';
-	import SingleQuestions from '@/components/closedQuestion/SingleQuestions.vue';
+	import SingleChoiceQuestions from '@/components/closedQuestion/SingleChoiceQuestions.vue';
 
 	import { treasurer as questions } from '@rock/static/questions';
 
@@ -16,7 +16,7 @@
 		name: 'Treasurer',
 		components: {
 			Video,
-			SingleQuestions,
+			SingleChoiceQuestions,
 		},
 		setup() {
 			function log(e: string): void {

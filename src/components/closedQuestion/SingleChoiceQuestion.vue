@@ -18,14 +18,14 @@
 	import Question from './question';
 
 	export default defineComponent({
-		name: 'SingleQuestion',
+		name: 'SingleChoiceQuestion',
 		props: {
 			name: {
 				type: String,
 				required: true,
 			},
 			options: {
-				type: Array as PropType<Question["options"]>,
+				type: Array as PropType<Question['options']>,
 				required: true,
 			},
 		},
