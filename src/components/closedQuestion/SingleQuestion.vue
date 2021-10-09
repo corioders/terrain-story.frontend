@@ -15,6 +15,7 @@
 
 	import { arePhotos } from './arePhotos';
 	import { hideInput } from './hideInput';
+	import Question from './question';
 
 	export default defineComponent({
 		name: 'SingleQuestion',
@@ -24,7 +25,7 @@
 				required: true,
 			},
 			options: {
-				type: Array as PropType<string[]>,
+				type: Array as PropType<Question["options"]>,
 				required: true,
 			},
 		},

@@ -8,8 +8,8 @@
 <script lang="ts">
 	import { defineComponent, PropType } from 'vue';
 
-	import { Question } from './Question';
 	import SingleQuestion from './SingleQuestion.vue';
+	import Question from './question';
 
 	export default defineComponent({
 		name: 'SingleQuestions',

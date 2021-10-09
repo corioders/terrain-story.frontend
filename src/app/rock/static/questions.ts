@@ -1,4 +1,4 @@
-import { Question } from '@/components/closedQuestion/Question';
+import Question from '@/components/closedQuestion/question';
 
 export const dancer: Question[] = [
 	{
