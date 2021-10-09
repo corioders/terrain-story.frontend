@@ -3,6 +3,21 @@ export interface Question {
 	options: string[];
 }
 
+export const dancer: Question[] = [
+	{
+		question: 'Rozpoznaj pierwszy taniec',
+		options: ['belgijka', 'polonez', 'jive', 'macarena'],
+	},
+	{
+		question: 'Rozpoznaj drugi taniec',
+		options: ['macarena', 'quickstep', 'tango', 'fokstrot'],
+	},
+	{
+		question: 'Rozpoznaj trzeci taniec',
+		options: ['tango', 'macarena', 'belgijka', 'quickstep'],
+	},
+];
+
 export const inspector: Question = {
 	options: [
 		'https://images.pexels.com/photos/3823495/pexels-photo-3823495.jpeg',
