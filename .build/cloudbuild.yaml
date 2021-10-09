@@ -110,7 +110,7 @@ steps:
         # When _MODE is empty then we are performing a standard build, but when
         # _MODE isn't then something else is going on - probably a dev build but we don't know 
         # and we just pass ${_TRIGGER_ARGS}.
-        if [[ ${_MODE} == "" ]]; then
+        if [[ "${_MODE}" == "" ]]; then
           # Get tag that build-server was last invoked on.
           last_server_tag=$(gcloud builds list --filter="substitutions.TRIGGER_NAME=build-server" --format="get(substitutions.TAG_NAME)" | sed -n 1p)
           gcloud alpha builds triggers run build-server --tag=${last_server_tag}
