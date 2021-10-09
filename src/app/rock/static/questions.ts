@@ -1,7 +1,4 @@
-export interface Question {
-	question?: string;
-	options: string[];
-}
+import { Question } from '@/components/closedQuestion/Question';
 
 export const dancer: Question[] = [
 	{
