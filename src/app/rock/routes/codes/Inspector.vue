@@ -1,17 +1,7 @@
 <template>
 	<p>Inspektor</p>
 	<Video url="https://www.youtube.com/embed/4-fOGS_QcZk" />
-	<SingleQuestion
-		:options="[
-			'https://images.pexels.com/photos/3823495/pexels-photo-3823495.jpeg',
-			'https://images.pexels.com/photos/2269872/pexels-photo-2269872.jpeg',
-			'https://images.pexels.com/photos/2389349/pexels-photo-2389349.jpeg',
-			'https://images.pexels.com/photos/4655426/pexels-photo-4655426.jpeg',
-			'https://images.pexels.com/photos/2380794/pexels-photo-2380794.jpeg',
-		]"
-		name="causer"
-		@answer="log($event)"
-	/>
+	<SingleQuestion :options="question.options" name="causer" @answer="log($event)" />
 </template>
 
 <script lang="ts">
@@ -19,6 +9,8 @@
 
 	import Video from '@/components/Video.vue';
 	import SingleQuestion from '@/components/closedQuestion/SingleQuestion.vue';
+
+	import { inspector as question } from '@rock/static/questions';
 
 	export default defineComponent({
 		name: 'Inspector',
@@ -30,7 +22,7 @@
 			function log(e: string): void {
 				console.log(e);
 			}
-			return { log };
+			return { question, log };
 		},
 	});
 </script>

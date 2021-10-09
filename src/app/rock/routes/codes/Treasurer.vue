@@ -13,6 +13,8 @@
 	import Video from '@/components/Video.vue';
 	import SingleQuestion from '@/components/closedQuestion/SingleQuestion.vue';
 
+	import { treasurer as questions } from '@rock/static/questions';
+
 	export default defineComponent({
 		name: 'Treasurer',
 		components: {
@@ -20,20 +22,6 @@
 			SingleQuestion,
 		},
 		setup() {
-			const questions = [
-				{
-					question: 'Gdzie czwartek jest przed środą?',
-					options: ['w słowniku', 'w życiu', 'w tygodniu', 'w kalendarzu'],
-				},
-				{
-					question: 'Parys rozdzielił po trzy jabłka dla każdej z Bogiń a mimo to jedno jabłko zostało w koszyku. Jak to możliwe?',
-					options: ['jednej dał jabłko z koszykiem', 'jedno jabłko było zepsute i zostało w koszyku', 'jedna z bogiń nie przyjęła podarunku', 'koszyk zawierał 10 jabłek'],
-				},
-				{
-					question: 'Kości tego świata sięgają objęć nieba, skąpane w bieli niczym Panna Młoda witająca swojego wybrańca',
-					options: ['góry', 'wieże', 'wieżowce', 'drapacze chmur'],
-				},
-			];
 			function log(e: string, question: string): void {
 				console.log(`${question} - ${e}`);
 			}
