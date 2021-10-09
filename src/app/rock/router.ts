@@ -13,7 +13,7 @@ import Princess from '@rock/routes/codes/Princess.vue';
 import Tourist from '@rock/routes/codes/Tourist.vue';
 import Treasurer from '@rock/routes/codes/Treasurer.vue';
 
-const routes: RouteRecordRaw[] = [
+export const routes: RouteRecordRaw[] = [
 	{
 		path: `/end`,
 		name: 'End',
