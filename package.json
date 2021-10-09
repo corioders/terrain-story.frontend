@@ -2,14 +2,13 @@
 	"name": "qr-games",
 	"version": "0.0.1",
 	"author": "corioders",
-	"repository": "https://github.com/corioders/qr-games",
+	"repository": "https://github.com/corioders/terrain-story.frontend",
 	"browserslist": [
 		" > 0.001%",
 		"not dead"
 	],
 	"scripts": {
 		"watch": "yarn run serve:dev:fast",
-		"start": "yarn watch",
 		"debug": "yarn run debug:dev",
 		"produce": "yarn run build:prod",
 		"serve:dev": "cross-env NODE_ENV=development webpack serve --no-stats --config ./config/webpack.dev.js",
@@ -22,7 +21,7 @@
 		"analyze:prod": "cross-env ANALYZE=true yarn run build:prod",
 		"build:dev": "cross-env NODE_ENV=development webpack --config ./config/webpack.dev.js",
 		"build:prod": "cross-env NODE_ENV=production webpack --config ./config/webpack.prod.js",
-		"postinstall": "husky install"
+		"postinstall": "skip-postinstall || husky install"
 	},
 	"devDependencies": {
 		"@babel/core": "7.15.5",
@@ -65,6 +64,7 @@
 		"prettier": "^2.4.1",
 		"sass": "1.41.1",
 		"sass-loader": "12.1.0",
+		"skip-postinstall": "^1.0.0",
 		"style-loader": "3.2.1",
 		"terser-webpack-plugin": "5.2.4",
 		"ts-loader": "9.2.5",
