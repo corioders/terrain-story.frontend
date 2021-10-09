@@ -28,6 +28,25 @@ export const inspector: Question = {
 	],
 };
 
+export const tourist: Question[] = [
+	{
+		question: 'Rozpoznaj pierwsze miejsce',
+		options: ['plac Sejmu Śląskiego', 'Stary Dworzec', 'Synagoga Żydowska'],
+	},
+	{
+		question: 'Rozpoznaj drugie miejsce',
+		options: ['Teatr Śląski', 'Kościół Mariacki', 'Kino Rialto'],
+	},
+	{
+		question: 'Rozpoznaj trzecie miejsce',
+		options: ['Plac Wolności', 'Park Kościuszki', 'Rynek'],
+	},
+	{
+		question: 'Rozpoznaj czwarte miejsce',
+		options: ['Pomnik Żołnierza Polskiego', 'Pałac Młodzieży', 'Spodek'],
+	},
+];
+
 export const treasurer: Question[] = [
 	{
 		question: 'Gdzie czwartek jest przed środą?',
