@@ -4,8 +4,10 @@
 	"author": "corioders",
 	"repository": "https://github.com/corioders/terrain-story.frontend",
 	"browserslist": [
-		" > 0.001%",
-		"not dead"
+		"last 2 versions",
+		">1%",
+		"not dead",
+		"not IE 11"
 	],
 	"scripts": {
 		"watch": "yarn run serve:dev:fast",
