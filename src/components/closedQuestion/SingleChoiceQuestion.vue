@@ -17,6 +17,7 @@
 	import { arePhotos } from './arePhotos';
 	import { hideInput } from './hideInput';
 	import Question from './question';
+	import { shuffleOptions } from './shuffleOptions';
 
 	export default defineComponent({
 		name: 'SingleChoiceQuestion',
@@ -36,7 +37,7 @@
 		},
 		emits: ['answer'],
 		setup(props) {
-			return { arePhotos: arePhotos(props.options), hideInput };
+			return { arePhotos: arePhotos(props.options), shuffledOptions: shuffleOptions(props.options), hideInput };
 		},
 	});
 </script>
