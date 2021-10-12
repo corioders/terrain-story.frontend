@@ -1,7 +1,7 @@
 <template>
 	<Flex flexDirection="row">
 		<label :for="name">{{ label }}</label>
-		<input :id="name" v-model="input" type="text" autocomplete="off" @keydown.enter="$emit('submitInput', input)" />
+		<input :id="name" v-model="input" type="text" autocomplete="off" @keydown.enter="$emit('answer', input)" />
 	</Flex>
 </template>
 
@@ -25,7 +25,7 @@
 				required: true,
 			},
 		},
-		emits: ['submitInput'],
+		emits: ['answer'],
 		setup() {
 			let input = '';
 			return { input };
