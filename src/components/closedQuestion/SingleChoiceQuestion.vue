@@ -1,5 +1,6 @@
 <template>
 	<div class="container">
+		<p v-if="question !== ''">{{ question }}</p>
 		<div v-for="(option, i) in options" :key="`option${i}`">
 			<input :id="`${name}Option${i}`" :name="name" :value="i" type="radio" @click="$emit('answer', $event.target.value)" />
 			<label :for="`${name}Option${i}`">
@@ -23,6 +24,10 @@
 			name: {
 				type: String,
 				required: true,
+			},
+			question: {
+				type: String,
+				default: '',
 			},
 			options: {
 				type: Array as PropType<Question['options']>,

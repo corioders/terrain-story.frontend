@@ -1,7 +1,6 @@
 <template>
 	<div v-for="(question, i) in questions" :key="`${name}Question${i}`">
-		<p>{{ question.question }}</p>
-		<SingleChoiceQuestion :options="question.options" :name="name + i" @answer="$emit('answer', i + $event)" />
+		<SingleChoiceQuestion :question="question.question" :options="question.options" :name="name + i" @answer="$emit('answer', i + $event)" />
 	</div>
 </template>
 
