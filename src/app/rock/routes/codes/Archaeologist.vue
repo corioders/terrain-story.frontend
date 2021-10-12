@@ -1,6 +1,8 @@
 <template>
 	<p>Archeolog</p>
 	<Video url="https://www.youtube.com/embed/4-fOGS_QcZk" />
+
+	<img src="@rock/assets/trapezoid.jpg" />
 </template>
 
 <script lang="ts">
