@@ -1,12 +1,23 @@
 <template>
 	<h1>Poszukiwacze camienia</h1>
 	<p>strona główna (po wejściu na strone nie przez kod qr)</p>
+	<DevNav :routes="routes" />
 </template>
 
 <script lang="ts">
 	import { defineComponent } from 'vue';
 
+	import DevNav from '@/components/devHelpers/DevNav.vue';
+
+	import { routes } from '@rock/router';
+
 	export default defineComponent({
 		name: 'Home',
+		components: {
+			DevNav,
+		},
+		setup() {
+			return { routes };
+		},
 	});
 </script>

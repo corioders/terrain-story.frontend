@@ -1,6 +1,8 @@
 <template>
 	<p>Księżniczka</p>
 	<Video url="https://www.youtube.com/embed/4-fOGS_QcZk" />
+
+	<img src="@rock/assets/labyrinth.jpg" />
 </template>
 
 <script lang="ts">

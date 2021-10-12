@@ -1,19 +1,19 @@
 <template>
-	<FlexRow>
+	<Flex flexDirection="row">
 		<label :for="name">{{ label }}</label>
-		<input :id="name" v-model="input" type="text" autocomplete="off" @keydown.enter="$emit('submitInput', input)" />
-	</FlexRow>
+		<input :id="name" v-model="input" type="text" autocomplete="off" @keydown.enter="$emit('answer', input)" />
+	</Flex>
 </template>
 
 <script lang="ts">
 	import { defineComponent } from 'vue';
 
-	import FlexRow from '@/layouts/FlexRow.vue';
+	import Flex from '@/layouts/Flex.vue';
 
 	export default defineComponent({
 		name: 'Input',
 		components: {
-			FlexRow,
+			Flex,
 		},
 		props: {
 			name: {
@@ -25,7 +25,7 @@
 				required: true,
 			},
 		},
-		emits: ['submitInput'],
+		emits: ['answer'],
 		setup() {
 			let input = '';
 			return { input };
