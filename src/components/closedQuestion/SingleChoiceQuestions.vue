@@ -1,6 +1,6 @@
 <template>
 	<div v-for="(question, i) in questions" :key="`${name}Question${i}`">
-		<SingleChoiceQuestion :question="question.question" :options="question.options" :name="name + i" @answer="$emit('answer', i + $event)" />
+		<SingleChoiceQuestion :question="question.question" :options="question.options" :answer="question.answer" :name="name + i" />
 	</div>
 </template>
 
@@ -25,7 +25,6 @@
 				required: true,
 			},
 		},
-		emits: ['answer'],
 	});
 </script>
 <style lang="scss" scoped>

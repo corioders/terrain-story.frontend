@@ -2,19 +2,21 @@
 	<div class="container">
 		<p v-if="question !== ''">{{ question }}</p>
 		<div v-for="(option, i) in options" :key="`option${i}`">
-			<input :id="`${name}Option${i}`" :name="name" :value="i" type="radio" @click="$emit('answer', $event.target.value)" />
+			<input :id="`${name}Option${i}`" :name="name" :value="option" type="radio" @click="handleClick($event.target.value)" />
 			<label :for="`${name}Option${i}`">
 				<img v-if="arePhotos" :src="option" />
 				<span v-else>{{ option }}</span>
 			</label>
 		</div>
+		{{ ans }}
 	</div>
 </template>
 
 <script lang="ts">
-	import { defineComponent, PropType } from 'vue';
+	import { defineComponent, ref, PropType } from 'vue';
 
 	import { arePhotos } from './arePhotos';
+	import { checkAnswer } from './checkAnswer';
 	import { hideInput } from './hideInput';
 	import Question from './question';
 	import { shuffleOptions } from './shuffleOptions';
@@ -27,17 +29,24 @@
 				required: true,
 			},
 			question: {
-				type: String,
+				type: String as PropType<Question['question']>,
 				default: '',
 			},
 			options: {
 				type: Array as PropType<Question['options']>,
 				required: true,
 			},
+			answer: {
+				type: String as PropType<Question['answer']>,
+				required: true,
+			},
 		},
-		emits: ['answer'],
 		setup(props) {
-			return { arePhotos: arePhotos(props.options), shuffledOptions: shuffleOptions(props.options), hideInput };
+			let ans = ref(false);
+			function handleClick(e: string): void {
+				ans.value = checkAnswer(e, props.answer);
+			}
+			return { arePhotos: arePhotos(props.options), shuffledOptions: shuffleOptions(props.options), ans, hideInput, handleClick };
 		},
 	});
 </script>

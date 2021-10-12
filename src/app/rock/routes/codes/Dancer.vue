@@ -1,7 +1,7 @@
 <template>
 	<p>Tancerz</p>
 	<Video url="https://www.youtube.com/embed/4-fOGS_QcZk" />
-	<SingleChoiceQuestions :questions="questions" name="dance" @answer="log($event)" />
+	<SingleChoiceQuestions :questions="questions" name="dance" />
 </template>
 
 <script lang="ts">
@@ -19,10 +19,7 @@
 			SingleChoiceQuestions,
 		},
 		setup() {
-			function log(e: string): void {
-				console.log(e);
-			}
-			return { questions, log };
+			return { questions };
 		},
 	});
 </script>

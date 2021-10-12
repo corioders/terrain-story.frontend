@@ -1,7 +1,7 @@
 <template>
 	<p>Inspektor</p>
 	<Video url="https://www.youtube.com/embed/4-fOGS_QcZk" />
-	<SingleChoiceQuestion :options="question.options" name="causer" @answer="log($event)" />
+	<SingleChoiceQuestion :options="question.options" :answer="question.answer" name="causer" />
 </template>
 
 <script lang="ts">
@@ -19,10 +19,7 @@
 			SingleChoiceQuestion,
 		},
 		setup() {
-			function log(e: string): void {
-				console.log(e);
-			}
-			return { question, log };
+			return { question };
 		},
 	});
 </script>
