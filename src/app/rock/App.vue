@@ -1,13 +1,16 @@
 <template>
-	<div id="app">
-		<Flex>
-			<router-view />
-			<SkipNav :nextRoute="nextRoute" />
-		</Flex>
-	</div>
+	<n-config-provider :theme-overrides="{ common: { fontWeightStrong: '600' } }">
+		<div id="app">
+			<Flex>
+				<router-view />
+				<SkipNav :nextRoute="nextRoute" />
+			</Flex>
+		</div>
+	</n-config-provider>
 </template>
 
 <script lang="ts">
+	import { NConfigProvider } from 'naive-ui';
 	import { defineComponent } from 'vue';
 
 	import Flex from '@/layouts/Flex.vue';
@@ -20,21 +23,15 @@
 		components: {
 			Flex,
 			SkipNav,
+			NConfigProvider,
 		},
 		setup() {
 			return { nextRoute };
 		},
 	});
 </script>
-
-
 <style lang="scss">
-	@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap');
-
 	#app {
-		font-family: 'Open Sans', sans-serif;
-		font-weight: 400;
-		text-align: center;
-		color: $dark;
+		font-family: v-sans;
 	}
 </style>
