@@ -128,7 +128,7 @@ const webpack = {
 				],
 			},
 			{
-				test: /\.scss$/,
+				test: /\.s?css$/,
 				use: [
 					MiniCssExtractPlugin.loader,
 					'css-loader',
