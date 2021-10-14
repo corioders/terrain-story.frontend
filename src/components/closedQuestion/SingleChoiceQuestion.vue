@@ -1,18 +1,22 @@
 <template>
 	<div class="container">
-		<p v-if="question !== ''">{{ question }}</p>
-		<div v-for="(option, i) in options" :key="`option${i}`">
-			<input :id="`${name}Option${i}`" :name="name" :value="option" type="radio" @click="handleClick($event.target.value)" />
-			<label :for="`${name}Option${i}`">
-				<img v-if="arePhotos" :src="option" />
-				<span v-else>{{ option }}</span>
-			</label>
-		</div>
-		{{ ans }}
+		<n-space vertical>
+			<p v-if="question !== ''">{{ question }}</p>
+			<n-radio-group name="radiogroup">
+				<n-space vertical>
+					<n-radio v-for="(option, i) in options" :key="`option${i}-${option}`" :value="option" @input="handleClick($event.target.value)">
+						<img v-if="arePhotos" :src="option" />
+						<span v-else>{{ option }}</span>
+					</n-radio>
+				</n-space>
+			</n-radio-group>
+			{{ ans }}
+		</n-space>
 	</div>
 </template>
 
 <script lang="ts">
+	import { NRadioGroup, NRadio, NSpace } from 'naive-ui';
 	import { defineComponent, ref, PropType } from 'vue';
 
 	import { arePhotos } from './arePhotos';
@@ -23,6 +27,11 @@
 
 	export default defineComponent({
 		name: 'SingleChoiceQuestion',
+		components: {
+			NSpace,
+			NRadioGroup,
+			NRadio,
+		},
 		props: {
 			name: {
 				type: String,
@@ -44,6 +53,7 @@
 		setup(props) {
 			let ans = ref(false);
 			function handleClick(e: string): void {
+				console.log(e);
 				ans.value = checkAnswer(e, props.answer);
 			}
 			return { arePhotos: arePhotos(props.options), shuffledOptions: shuffleOptions(props.options), ans, hideInput, handleClick };
@@ -52,9 +62,6 @@
 </script>
 <style lang="scss" scoped >
 	.container {
-		display: flex;
-		flex-direction: column;
-		align-items: flex-start;
 		input {
 			visibility: v-bind('hideInput(arePhotos)');
 		}
