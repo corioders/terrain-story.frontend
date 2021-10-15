@@ -2,8 +2,8 @@
 	<p>Mag</p>
 	<Video url="https://www.youtube.com/embed/4-fOGS_QcZk" />
 	<Flex>
-		<Flex v-for="(photoRow, i) in photos" :key="`princessPhotoRow${i}`" flexDirection="row">
-			<img v-for="(photo, j) in photoRow" :key="`princessPhoto${i}${j}`" :src="photo" />
+		<Flex v-for="(descriptor, i) in descriptors" :key="`differenceMage${i}`" flexDirection="row">
+			<Difference :differenceDescriptor="descriptor" />
 		</Flex>
 	</Flex>
 </template>
@@ -15,19 +15,21 @@
 
 	import Video from '@/components/Video.vue';
 
+	import alienDescriptor from '@rock/assets/photoDifferences/alien';
+	import safariDescriptor from '@rock/assets/photoDifferences/safari';
+	import someoneDescriptor from '@rock/assets/photoDifferences/someone';
+	import Difference from '@rock/components/photoDifference/Difference.vue';
+
 	export default defineComponent({
 		name: 'Mage',
 		components: {
 			Video,
 			Flex,
+			Difference,
 		},
 		setup() {
-			const photos = [
-				['https://images.pexels.com/photos/572897/pexels-photo-572897.jpeg', 'https://images.pexels.com/photos/3293148/pexels-photo-3293148.jpeg'],
-				['https://images.pexels.com/photos/33041/antelope-canyon-lower-canyon-arizona.jpg', 'https://images.pexels.com/photos/4534200/pexels-photo-4534200.jpeg'],
-				['https://images.pexels.com/photos/2113566/pexels-photo-2113566.jpeg', 'https://images.pexels.com/photos/1509582/pexels-photo-1509582.jpeg'],
-			];
-			return { photos };
+			const descriptors = [alienDescriptor, safariDescriptor, someoneDescriptor];
+			return { descriptors };
 		},
 	});
 </script>
