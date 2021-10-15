@@ -1,10 +1,18 @@
 <template>
-	<div v-for="(question, i) in questions" :key="`${name}Question${i}`">
-		<SingleChoiceQuestion :question="question.question" :options="question.options" :answer="question.answer" :name="name + i" />
-	</div>
+	<n-space vertical>
+		<SingleChoiceQuestion
+			v-for="(question, i) in questions"
+			:key="`${name}Question${i}`"
+			:question="question.question"
+			:options="question.options"
+			:answer="question.answer"
+			:name="name + i"
+		/>
+	</n-space>
 </template>
 
 <script lang="ts">
+	import { NSpace } from 'naive-ui';
 	import { defineComponent, PropType } from 'vue';
 
 	import SingleChoiceQuestion from './SingleChoiceQuestion.vue';
@@ -14,6 +22,7 @@
 		name: 'SingleChoiceQuestions',
 		components: {
 			SingleChoiceQuestion,
+			NSpace,
 		},
 		props: {
 			name: {

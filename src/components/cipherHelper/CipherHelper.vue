@@ -10,7 +10,7 @@
 </template>
 
 <script lang="ts">
-	import { defineComponent, ref, toRefs, watch } from 'vue';
+	import { defineComponent, toRefs, watch } from 'vue';
 
 	import { displaceAlphabet } from './displaceAlphabet';
 
@@ -42,5 +42,9 @@
 		width: 100%;
 		white-space: nowrap;
 		overflow-y: auto;
+		text-align: center;
+		p {
+			margin-left: 12px;
+		}
 	}
 </style>
