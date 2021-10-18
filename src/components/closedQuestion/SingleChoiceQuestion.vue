@@ -2,7 +2,7 @@
 	<div class="container">
 		<n-space vertical>
 			<p v-if="question !== ''">{{ question }}</p>
-			<n-radio-group name="radiogroup">
+			<n-radio-group name="radiogroup" style="max-width: 100%">
 				<n-space vertical>
 					<n-radio v-for="(option, i) in options" :key="`option${i}-${option}`" :value="option" @input="handleClick($event.target.value)">
 						<img v-if="arePhotos" :src="option" />
@@ -62,11 +62,15 @@
 </script>
 <style lang="scss" scoped >
 	.container {
+		padding: 12px;
 		input {
 			visibility: v-bind('hideInput(arePhotos)');
 		}
 		img {
 			width: 150px;
+		}
+		p {
+			max-width: 100%;
 		}
 	}
 </style>
