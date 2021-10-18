@@ -1,20 +1,18 @@
 <template>
 	<div id="app">
-		<Flex>
-			<p>index</p>
+		<n-space vertical>
 			<router-view />
-		</Flex>
+		</n-space>
 	</div>
 </template>
 
 <script lang="ts">
+	import { NSpace } from 'naive-ui';
 	import { defineComponent } from 'vue';
-
-	import Flex from '@/layouts/Flex.vue';
 
 	export default defineComponent({
 		components: {
-			Flex,
+			NSpace,
 		},
 	});
 </script>
