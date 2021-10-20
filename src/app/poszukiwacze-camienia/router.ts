@@ -68,6 +68,11 @@ export const routes: RouteRecordRaw[] = [
 		component: (): Promise<Component> => import('@rock/routes/codes/Treasurer.vue'),
 		meta: { to: 'Dancer' },
 	},
+	{
+		path: '/terms-of-use',
+		name: 'TermsOfUse',
+		component: (): Promise<Component> => import('@rock/routes/TermsOfUse.vue'),
+	},
 ];
 
 const router = createRouter({
