@@ -26,7 +26,7 @@
 		    "src/app/index/*"
 		  ],
 		  "@rock/*": [
-		    "src/app/rock/*"
+		    "src/app/poszukiwacze-camienia/*"
 		  ]
 		},
 
