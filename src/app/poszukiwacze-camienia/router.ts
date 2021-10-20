@@ -4,7 +4,7 @@ import { RouteRecordRaw } from 'vue-router';
 
 export const routes: RouteRecordRaw[] = [
 	{
-		path: `/end`,
+		path: `/koniec`,
 		name: 'End',
 		component: (): Promise<Component> => import('@rock/routes/End.vue'),
 	},
@@ -15,19 +15,19 @@ export const routes: RouteRecordRaw[] = [
 		meta: { to: 'Hacker' },
 	},
 	{
-		path: `/archaeologist`,
+		path: `/archeolog`,
 		name: 'Archaeologist',
 		component: (): Promise<Component> => import('@rock/routes/codes/Archaeologist.vue'),
 		meta: { to: 'Tourist' },
 	},
 	{
-		path: `/dancer`,
+		path: `/tancerz`,
 		name: 'Dancer',
 		component: (): Promise<Component> => import('@rock/routes/codes/Dancer.vue'),
 		meta: { to: 'Princess' },
 	},
 	{
-		path: '/hacker',
+		path: '/haker',
 		name: 'Hacker',
 		component: (): Promise<Component> => import('@rock/routes/codes/Hacker.vue'),
 		meta: { to: 'Mage' },
@@ -39,37 +39,37 @@ export const routes: RouteRecordRaw[] = [
 		meta: { to: 'Start' },
 	},
 	{
-		path: '/inspector',
+		path: '/inspektor',
 		name: 'Inspector',
 		component: (): Promise<Component> => import('@rock/routes/codes/Inspector.vue'),
 		meta: { to: 'Treasurer' },
 	},
 	{
-		path: '/mage',
+		path: '/mag',
 		name: 'Mage',
 		component: (): Promise<Component> => import('@rock/routes/codes/Mage.vue'),
 		meta: { to: 'Inspector' },
 	},
 	{
-		path: '/princess',
+		path: '/ksiezniczka',
 		name: 'Princess',
 		component: (): Promise<Component> => import('@rock/routes/codes/Princess.vue'),
 		meta: { to: 'Archaeologist' },
 	},
 	{
-		path: '/tourist',
+		path: '/turysta',
 		name: 'Tourist',
 		component: (): Promise<Component> => import('@rock/routes/codes/Tourist.vue'),
 		meta: { to: 'End' },
 	},
 	{
-		path: '/treasurer',
+		path: '/skarbek',
 		name: 'Treasurer',
 		component: (): Promise<Component> => import('@rock/routes/codes/Treasurer.vue'),
 		meta: { to: 'Dancer' },
 	},
 	{
-		path: '/terms-of-use',
+		path: '/regulamin',
 		name: 'TermsOfUse',
 		component: (): Promise<Component> => import('@rock/routes/TermsOfUse.vue'),
 	},
