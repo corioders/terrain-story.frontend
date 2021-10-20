@@ -1,82 +1,71 @@
+import { Component } from 'vue';
 import { createRouter, createWebHashHistory } from 'vue-router';
 import { RouteRecordRaw } from 'vue-router';
-
-import End from '@rock/routes/End.vue';
-import Home from '@rock/routes/Home.vue';
-import Start from '@rock/routes/Start.vue';
-import Archaeologist from '@rock/routes/codes/Archaeologist.vue';
-import Dancer from '@rock/routes/codes/Dancer.vue';
-import Hacker from '@rock/routes/codes/Hacker.vue';
-import Inspector from '@rock/routes/codes/Inspector.vue';
-import Mage from '@rock/routes/codes/Mage.vue';
-import Princess from '@rock/routes/codes/Princess.vue';
-import Tourist from '@rock/routes/codes/Tourist.vue';
-import Treasurer from '@rock/routes/codes/Treasurer.vue';
 
 export const routes: RouteRecordRaw[] = [
 	{
 		path: `/end`,
 		name: 'End',
-		component: End,
+		component: (): Promise<Component> => import('@rock/routes/End.vue'),
 	},
 	{
 		path: `/start`,
 		name: 'Start',
-		component: Start,
+		component: (): Promise<Component> => import('@rock/routes/Start.vue'),
 		meta: { to: 'Hacker' },
 	},
 	{
 		path: `/archaeologist`,
 		name: 'Archaeologist',
-		component: Archaeologist,
+		component: (): Promise<Component> => import('@rock/routes/codes/Archaeologist.vue'),
 		meta: { to: 'Tourist' },
 	},
 	{
 		path: `/dancer`,
 		name: 'Dancer',
-		component: Dancer,
+		component: (): Promise<Component> => import('@rock/routes/codes/Dancer.vue'),
 		meta: { to: 'Princess' },
 	},
 	{
 		path: '/hacker',
 		name: 'Hacker',
-		component: Hacker,
+		component: (): Promise<Component> => import('@rock/routes/codes/Hacker.vue'),
 		meta: { to: 'Mage' },
 	},
 	{
 		path: '/',
 		name: 'Home',
-		component: Home,
+		component: (): Promise<Component> => import('@rock/routes/Home.vue'),
 		meta: { to: 'Start' },
 	},
 	{
 		path: '/inspector',
 		name: 'Inspector',
-		component: Inspector,
+		component: (): Promise<Component> => import('@rock/routes/codes/Inspector.vue'),
 		meta: { to: 'Treasurer' },
 	},
 	{
 		path: '/mage',
 		name: 'Mage',
-		component: Mage,
+		component: (): Promise<Component> => import('@rock/routes/codes/Mage.vue'),
 		meta: { to: 'Inspector' },
 	},
 	{
 		path: '/princess',
 		name: 'Princess',
-		component: Princess,
+		component: (): Promise<Component> => import('@rock/routes/codes/Princess.vue'),
 		meta: { to: 'Archaeologist' },
 	},
 	{
 		path: '/tourist',
 		name: 'Tourist',
-		component: Tourist,
+		component: (): Promise<Component> => import('@rock/routes/codes/Tourist.vue'),
 		meta: { to: 'End' },
 	},
 	{
 		path: '/treasurer',
 		name: 'Treasurer',
-		component: Treasurer,
+		component: (): Promise<Component> => import('@rock/routes/codes/Treasurer.vue'),
 		meta: { to: 'Dancer' },
 	},
 ];
