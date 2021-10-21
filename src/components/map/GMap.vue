@@ -16,8 +16,5 @@
 
 	export default defineComponent({
 		name: 'GMap',
-		setup() {
-			return {};
-		},
 	});
 </script>
