@@ -69,6 +69,11 @@ export const routes: RouteRecordRaw[] = [
 		meta: { to: 'Dancer' },
 	},
 	{
+		path: '/mapa',
+		name: 'Map',
+		component: (): Promise<Component> => import('@rock/routes/Map.vue'),
+	},
+	{
 		path: '/regulamin',
 		name: 'TermsOfUse',
 		component: (): Promise<Component> => import('@rock/routes/TermsOfUse.vue'),
