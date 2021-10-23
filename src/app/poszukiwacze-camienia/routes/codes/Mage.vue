@@ -2,9 +2,7 @@
 	<p>Mag</p>
 	<Video url="https://www.youtube.com/embed/4-fOGS_QcZk" />
 	<Flex>
-		<Flex v-for="(descriptor, i) in descriptors" :key="`differenceMage${i}`" flexDirection="row">
-			<Difference :differenceDescriptor="descriptor" />
-		</Flex>
+		<Difference v-for="(descriptor, i) in descriptors" :key="`differenceMage${i}`" :differenceDescriptor="descriptor" />
 	</Flex>
 </template>
 

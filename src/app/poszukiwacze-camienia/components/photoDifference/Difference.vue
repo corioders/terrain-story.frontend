@@ -1,7 +1,7 @@
 <template>
 	<Flex flexDirection="row">
 		<canvas ref="canvasRef" class="image"></canvas>
-		<img :src="$props.differenceDescriptor.originalPhotoSrc" class="image" />
+		<img :src="differenceDescriptor.originalPhotoSrc" class="image" />
 	</Flex>
 </template>
 
