@@ -5,6 +5,7 @@
 				<router-view />
 				<SkipNav :nextRoute="nextRoute" />
 			</Flex>
+			<MapLink mapUrl="/mapa" />
 		</div>
 	</n-config-provider>
 </template>
@@ -16,14 +17,16 @@
 	import Flex from '@/layouts/Flex.vue';
 
 	import SkipNav from '@/components/devHelpers/SkipNav.vue';
+	import MapLink from '@/components/map/MapLink.vue';
 
 	import { nextRoute } from '@rock/router';
 
 	export default defineComponent({
 		components: {
 			Flex,
-			SkipNav,
 			NConfigProvider,
+			MapLink,
+			SkipNav,
 		},
 		setup() {
 			return { nextRoute };

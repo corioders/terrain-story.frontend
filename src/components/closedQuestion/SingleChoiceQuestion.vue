@@ -2,11 +2,16 @@
 	<div class="container">
 		<n-space vertical>
 			<p v-if="question !== ''">{{ question }}</p>
-			<n-radio-group name="radiogroup">
+			<n-radio-group name="radiogroup" style="max-width: 100%">
 				<n-space vertical>
-					<n-radio v-for="(option, i) in options" :key="`option${i}-${option}`" :value="option" @input="handleClick($event.target.value)">
-						<img v-if="arePhotos" :src="option" />
-						<span v-else>{{ option }}</span>
+					<n-radio v-for="(option, i) in options" :key="`option${i}-${option.text}`" :value="option.text" @input="handleClick($event.target.value)">
+						<span v-if="option.photo === undefined">{{ option.text }}</span>
+						<n-space v-else vertical>
+							<n-card :title="`Podejrzany ${i}`">
+								<p>{{ option.text }}</p>
+							</n-card>
+							<img :src="option.photo" />
+						</n-space>
 					</n-radio>
 				</n-space>
 			</n-radio-group>
@@ -16,10 +21,9 @@
 </template>
 
 <script lang="ts">
-	import { NRadioGroup, NRadio, NSpace } from 'naive-ui';
+	import { NCard, NRadioGroup, NRadio, NSpace } from 'naive-ui';
 	import { defineComponent, ref, PropType } from 'vue';
 
-	import { arePhotos } from './arePhotos';
 	import { checkAnswer } from './checkAnswer';
 	import { hideInput } from './hideInput';
 	import Question from './question';
@@ -28,6 +32,7 @@
 	export default defineComponent({
 		name: 'SingleChoiceQuestion',
 		components: {
+			NCard,
 			NSpace,
 			NRadioGroup,
 			NRadio,
@@ -56,17 +61,26 @@
 				console.log(e);
 				ans.value = checkAnswer(e, props.answer);
 			}
-			return { arePhotos: arePhotos(props.options), shuffledOptions: shuffleOptions(props.options), ans, hideInput, handleClick };
+			return { shuffledOptions: shuffleOptions(props.options), ans, hideInput, handleClick };
 		},
 	});
 </script>
 <style lang="scss" scoped >
 	.container {
+		padding: 12px;
 		input {
 			visibility: v-bind('hideInput(arePhotos)');
 		}
 		img {
 			width: 150px;
+		}
+		p {
+			max-width: 100%;
+			white-space: normal;
+		}
+		.n-card {
+			max-width: 600px;
+			width: 95%;
 		}
 	}
 </style>
