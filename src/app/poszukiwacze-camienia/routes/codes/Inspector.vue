@@ -1,7 +1,7 @@
 <template>
 	<p>Inspektor</p>
 	<Video url="https://www.youtube.com/embed/4-fOGS_QcZk" />
-	<SingleChoiceQuestion :options="question.options" :answer="question.answer" name="causer" />
+	<SingleChoiceQuestion :options="question.options" :answer="question.answer" disableMixing name="causer" />
 </template>
 
 <script lang="ts">

@@ -54,6 +54,10 @@
 				type: String as PropType<Question['answer']>,
 				required: true,
 			},
+			disableMixing: {
+				type: Boolean,
+				default: false,
+			},
 		},
 		setup(props) {
 			let ans = ref(false);
@@ -61,7 +65,7 @@
 				console.log(e);
 				ans.value = checkAnswer(e, props.answer);
 			}
-			return { shuffledOptions: shuffleOptions(props.options), ans, hideInput, handleClick };
+			return { shuffledOptions: props.disableMixing ? props.options : shuffleOptions(props.options), ans, hideInput, handleClick };
 		},
 	});
 </script>
