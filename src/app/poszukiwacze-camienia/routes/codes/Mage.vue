@@ -1,15 +1,14 @@
 <template>
 	<p>Mag</p>
 	<Video url="https://www.youtube.com/embed/4-fOGS_QcZk" />
-	<Flex>
+	<n-space vertical>
 		<Difference v-for="(descriptor, i) in descriptors" :key="`differenceMage${i}`" :differenceDescriptor="descriptor" />
-	</Flex>
+	</n-space>
 </template>
 
 <script lang="ts">
+	import { NSpace } from 'naive-ui';
 	import { defineComponent } from 'vue';
-
-	import Flex from '@/layouts/Flex.vue';
 
 	import Video from '@/components/Video.vue';
 
@@ -21,9 +20,9 @@
 	export default defineComponent({
 		name: 'Mage',
 		components: {
-			Video,
-			Flex,
 			Difference,
+			NSpace,
+			Video,
 		},
 		setup() {
 			const descriptors = [alienDescriptor, safariDescriptor, someoneDescriptor];
@@ -31,9 +30,3 @@
 		},
 	});
 </script>
-
-<style lang="scss" scoped>
-	img {
-		width: 200px;
-	}
-</style>
