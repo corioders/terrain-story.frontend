@@ -3,7 +3,7 @@
 	<Video url="https://www.youtube.com/embed/4-fOGS_QcZk" />
 	<Input label="Przesunięcie" name="displacement" @answer="submitDisplacement($event)" />
 	<CipherHelper v-if="displacement == 13" :displacement="displacement" />
-	<Input label="hasło" name="hackerPasswordInput" @answer="submitPass($event)" />
+	<Input label="Hasło" name="hackerPasswordInput" @answer="submitPass($event)" />
 </template>
 
 <script lang="ts">

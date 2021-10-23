@@ -1,11 +1,12 @@
 <template>
-	<Flex flexDirection="row">
+	<Flex alignItems="flex-start">
 		<label :for="name">{{ label }}</label>
-		<input :id="name" v-model="input" type="text" autocomplete="off" @keydown.enter="$emit('answer', input)" />
+		<n-input :id="name" type="text" :placeholder="label" @change="$emit('answer', $event)" />
 	</Flex>
 </template>
 
 <script lang="ts">
+	import { NInput } from 'naive-ui';
 	import { defineComponent } from 'vue';
 
 	import Flex from '@/layouts/Flex.vue';
@@ -14,6 +15,7 @@
 		name: 'Input',
 		components: {
 			Flex,
+			NInput,
 		},
 		props: {
 			name: {
@@ -26,10 +28,6 @@
 			},
 		},
 		emits: ['answer'],
-		setup() {
-			let input = '';
-			return { input };
-		},
 	});
 </script>
 <style lang="scss" scoped>

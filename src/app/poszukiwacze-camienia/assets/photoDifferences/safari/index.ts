@@ -1,4 +1,4 @@
-import { DifferenceDescriptor } from '@/app/rock/components/photoDifference/difference';
+import { DifferenceDescriptor } from '@/app/poszukiwacze-camienia/components/photoDifference/difference';
 
 import img1 from './1.jpg';
 import img2 from './2.jpg';
@@ -8,9 +8,9 @@ const differenceDescriptor: DifferenceDescriptor = {
 	differentPhotoSrc: img2 as string,
 	strokeStyle: 'green',
 	differences: [
-		{ x: 415, y: 555, radius: 35 },
-		{ x: 595, y: 103, radius: 35 },
-		{ x: 308, y: 785, radius: 35 },
+		{ x: 75, y: 202, radius: 35 },
+		{ x: 202, y: 517, radius: 35 },
+		{ x: 746, y: 447, radius: 20 },
 	],
 };
 
