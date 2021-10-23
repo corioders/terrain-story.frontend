@@ -7,7 +7,9 @@
 					<n-radio v-for="(option, i) in options" :key="`option${i}-${option.text}`" :value="option.text" @input="handleClick($event.target.value)">
 						<span v-if="option.photo === undefined">{{ option.text }}</span>
 						<n-space v-else vertical>
-							<n-card>{{ option.text }}</n-card>
+							<n-card :title="`Podejrzany ${i}`">
+								<p>{{ option.text }}</p>
+							</n-card>
 							<img :src="option.photo" />
 						</n-space>
 					</n-radio>
@@ -74,6 +76,11 @@
 		}
 		p {
 			max-width: 100%;
+			white-space: normal;
+		}
+		.n-card {
+			max-width: 600px;
+			width: 95%;
 		}
 	}
 </style>
