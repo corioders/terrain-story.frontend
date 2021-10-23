@@ -155,7 +155,8 @@ const webpack = {
 			// =========================================================================
 			// webpack 5 asset-modules
 			{
-				test: /\/assets\//,
+        // Exclude .js .ts .vue files.
+				test: /\/assets\/.*\.(?!js|ts|vue)/,
 				type: 'asset',
 			},
 		],
