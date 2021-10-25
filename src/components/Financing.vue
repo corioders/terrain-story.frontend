@@ -20,7 +20,7 @@ Projekt dofinansowany ze środków Unii Europejskiej w ramach Regionalnego Progr
 	img,
 	div {
 		width: 95vw;
-		height: 95vh;
+		max-height: 95vh;
 		object-fit: contain;
 	}
 </style>
