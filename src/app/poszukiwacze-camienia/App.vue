@@ -6,6 +6,7 @@
 				<SkipNav :nextRoute="nextRoute" />
 			</Flex>
 			<MapLink mapUrl="/mapa" />
+			<CFooter />
 		</div>
 		<n-global-style />
 	</n-config-provider>
@@ -21,10 +22,12 @@
 	import MapLink from '@/components/map/MapLink.vue';
 
 	import { themeOverrides } from '@/theme/lightThemeOverrides';
+	import CFooter from '@rock/components/Footer.vue';
 	import { nextRoute } from '@rock/router';
 
 	export default defineComponent({
 		components: {
+			CFooter,
 			Flex,
 			NConfigProvider,
 			NGlobalStyle,
