@@ -25,6 +25,5 @@
 		font-family: 'Open Sans', sans-serif;
 		font-weight: 400;
 		text-align: center;
-		color: $dark;
 	}
 </style>

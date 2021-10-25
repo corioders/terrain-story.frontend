@@ -42,5 +42,10 @@
 <style lang="scss">
 	#app {
 		font-family: v-sans;
+		*,
+		*::before,
+		*::after {
+			box-sizing: border-box;
+		}
 	}
 </style>

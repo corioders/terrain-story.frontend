@@ -1,16 +1,15 @@
 <template>
-	<div class="container">
+	<div ref="container" class="container">
 		<n-space vertical>
 			<p v-if="question !== ''">{{ question }}</p>
 			<n-radio-group name="radiogroup" style="max-width: 100%">
 				<n-space vertical>
-					<n-radio v-for="(option, i) in options" :key="`option${i}-${option}`" :value="option" @input="handleClick($event.target.value)">
+					<n-radio v-for="(option, i) in options" :key="`option${i}-${option}`" :value="option" @input="handleClick($event.target.parentElement, $event.target.value)">
 						<span v-if="!arePhotos">{{ option }}</span>
 						<img v-else :src="option" />
 					</n-radio>
 				</n-space>
 			</n-radio-group>
-			{{ ans }}
 		</n-space>
 	</div>
 </template>
@@ -56,11 +55,29 @@
 		},
 		setup(props) {
 			let ans = ref(false);
-			function handleClick(e: string): void {
-				console.log(e);
-				ans.value = checkAnswer(e, props.answer);
+			const container = ref<HTMLDivElement | null>(null);
+			function handleClick(parent: Element, val: string): void {
+				ans.value = checkAnswer(val, props.answer);
+				if (ans.value) {
+					const el = parent.querySelector('div.n-radio__label');
+					if (el != null) {
+						const classList = el.classList;
+						classList.add('correct');
+					}
+				} else {
+					container.value?.querySelectorAll('.correct').forEach((element) => {
+						element.classList.remove('correct');
+					});
+				}
 			}
-			return { arePhotos: arePhotos(props.options), shuffledOptions: props.disableMixing ? props.options : shuffleOptions(props.options), ans, hideInput, handleClick };
+			return {
+				arePhotos: arePhotos(props.options),
+				shuffledOptions: props.disableMixing ? props.options : shuffleOptions(props.options),
+				ans,
+				hideInput,
+				handleClick,
+				container,
+			};
 		},
 	});
 </script>
@@ -80,6 +97,14 @@
 		.n-card {
 			max-width: 600px;
 			width: 95%;
+		}
+	}
+	.correct {
+		span {
+			color: $primary;
+		}
+		img {
+			border: 5px $primary solid;
 		}
 	}
 </style>
