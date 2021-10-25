@@ -78,6 +78,11 @@ export const routes: RouteRecordRaw[] = [
 		name: 'TermsOfUse',
 		component: (): Promise<Component> => import('@rock/routes/TermsOfUse.vue'),
 	},
+	{
+		path: '/finansowanie',
+		name: 'Financing',
+		component: (): Promise<Component> => import('@/components/Financing.vue'),
+	},
 ];
 
 const router = createRouter({
