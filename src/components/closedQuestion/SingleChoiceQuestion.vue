@@ -4,14 +4,9 @@
 			<p v-if="question !== ''">{{ question }}</p>
 			<n-radio-group name="radiogroup" style="max-width: 100%">
 				<n-space vertical>
-					<n-radio v-for="(option, i) in options" :key="`option${i}-${option.text}`" :value="option.text" @input="handleClick($event.target.value)">
-						<span v-if="option.photo === undefined">{{ option.text }}</span>
-						<n-space v-else vertical>
-							<n-card>
-								<p>{{ option.text }}</p>
-							</n-card>
-							<img :src="option.photo" />
-						</n-space>
+					<n-radio v-for="(option, i) in options" :key="`option${i}-${option}`" :value="option" @input="handleClick($event.target.value)">
+						<span v-if="!arePhotos">{{ option }}</span>
+						<img v-else :src="option" />
 					</n-radio>
 				</n-space>
 			</n-radio-group>
@@ -21,18 +16,18 @@
 </template>
 
 <script lang="ts">
-	import { NCard, NRadioGroup, NRadio, NSpace } from 'naive-ui';
+	import { NRadioGroup, NRadio, NSpace } from 'naive-ui';
 	import { defineComponent, ref, PropType } from 'vue';
 
-	import { checkAnswer } from './checkAnswer';
-	import { hideInput } from './hideInput';
+	import arePhotos from './arePhotos';
+	import checkAnswer from './checkAnswer';
+	import hideInput from './hideInput';
 	import Question from './question';
-	import { shuffleOptions } from './shuffleOptions';
+	import shuffleOptions from './shuffleOptions';
 
 	export default defineComponent({
 		name: 'SingleChoiceQuestion',
 		components: {
-			NCard,
 			NSpace,
 			NRadioGroup,
 			NRadio,
@@ -65,7 +60,7 @@
 				console.log(e);
 				ans.value = checkAnswer(e, props.answer);
 			}
-			return { shuffledOptions: props.disableMixing ? props.options : shuffleOptions(props.options), ans, hideInput, handleClick };
+			return { arePhotos: arePhotos(props.options), shuffledOptions: props.disableMixing ? props.options : shuffleOptions(props.options), ans, hideInput, handleClick };
 		},
 	});
 </script>
