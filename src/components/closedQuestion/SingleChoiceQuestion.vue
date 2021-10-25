@@ -1,38 +1,32 @@
 <template>
-	<div class="container">
+	<div ref="container" class="container">
 		<n-space vertical>
 			<p v-if="question !== ''">{{ question }}</p>
 			<n-radio-group name="radiogroup" style="max-width: 100%">
 				<n-space vertical>
-					<n-radio v-for="(option, i) in options" :key="`option${i}-${option.text}`" :value="option.text" @input="handleClick($event.target.value)">
-						<span v-if="option.photo === undefined">{{ option.text }}</span>
-						<n-space v-else vertical>
-							<n-card :title="`Podejrzany ${i}`">
-								<p>{{ option.text }}</p>
-							</n-card>
-							<img :src="option.photo" />
-						</n-space>
+					<n-radio v-for="(option, i) in options" :key="`option${i}-${option}`" :value="option" @input="handleClick($event.target.parentElement, $event.target.value)">
+						<span v-if="!arePhotos">{{ option }}</span>
+						<img v-else :src="option" />
 					</n-radio>
 				</n-space>
 			</n-radio-group>
-			{{ ans }}
 		</n-space>
 	</div>
 </template>
 
 <script lang="ts">
-	import { NCard, NRadioGroup, NRadio, NSpace } from 'naive-ui';
+	import { NRadioGroup, NRadio, NSpace } from 'naive-ui';
 	import { defineComponent, ref, PropType } from 'vue';
 
-	import { checkAnswer } from './checkAnswer';
-	import { hideInput } from './hideInput';
+	import arePhotos from './arePhotos';
+	import checkAnswer from './checkAnswer';
+	import hideInput from './hideInput';
 	import Question from './question';
-	import { shuffleOptions } from './shuffleOptions';
+	import shuffleOptions from './shuffleOptions';
 
 	export default defineComponent({
 		name: 'SingleChoiceQuestion',
 		components: {
-			NCard,
 			NSpace,
 			NRadioGroup,
 			NRadio,
@@ -54,14 +48,36 @@
 				type: String as PropType<Question['answer']>,
 				required: true,
 			},
+			disableMixing: {
+				type: Boolean,
+				default: false,
+			},
 		},
 		setup(props) {
 			let ans = ref(false);
-			function handleClick(e: string): void {
-				console.log(e);
-				ans.value = checkAnswer(e, props.answer);
+			const container = ref<HTMLDivElement | null>(null);
+			function handleClick(parent: Element, val: string): void {
+				ans.value = checkAnswer(val, props.answer);
+				if (ans.value) {
+					const el = parent.querySelector('div.n-radio__label');
+					if (el != null) {
+						const classList = el.classList;
+						classList.add('correct');
+					}
+				} else {
+					container.value?.querySelectorAll('.correct').forEach((element) => {
+						element.classList.remove('correct');
+					});
+				}
 			}
-			return { shuffledOptions: shuffleOptions(props.options), ans, hideInput, handleClick };
+			return {
+				arePhotos: arePhotos(props.options),
+				shuffledOptions: props.disableMixing ? props.options : shuffleOptions(props.options),
+				ans,
+				hideInput,
+				handleClick,
+				container,
+			};
 		},
 	});
 </script>
@@ -81,6 +97,14 @@
 		.n-card {
 			max-width: 600px;
 			width: 95%;
+		}
+	}
+	.correct {
+		span {
+			color: $primary;
+		}
+		img {
+			border: 5px $primary solid;
 		}
 	}
 </style>

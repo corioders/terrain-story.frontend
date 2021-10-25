@@ -1,14 +1,13 @@
 <template>
-	<Flex flexDirection="row">
+	<n-space :wrap="false">
 		<canvas ref="canvasRef" class="image"></canvas>
 		<img :src="differenceDescriptor.originalPhotoSrc" class="image" />
-	</Flex>
+	</n-space>
 </template>
 
 <script lang="ts">
+	import { NSpace } from 'naive-ui';
 	import { defineComponent, onMounted, PropType, ref } from 'vue';
-
-	import Flex from '@/layouts/Flex.vue';
 
 	import { DifferenceDescriptor, PhotoDifference } from './difference';
 
@@ -33,7 +32,7 @@
 
 	export default defineComponent({
 		components: {
-			Flex,
+			NSpace,
 		},
 
 		props: {
@@ -90,4 +89,11 @@
 </script>
 
 <style lang="scss" scoped>
+	.n-space {
+		canvas,
+		img {
+			width: 46vw;
+			max-width: 469px;
+		}
+	}
 </style>
