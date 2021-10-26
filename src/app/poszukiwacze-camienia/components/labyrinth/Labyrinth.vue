@@ -43,7 +43,8 @@
 				required: true,
 			},
 		},
-		setup(props) {
+		emits: ['correct'],
+		setup(props, { emit }) {
 			const canvasRef = ref<HTMLCanvasElement | null>(null);
 			const moveRef = ref<(direction: Directions) => void>(() => {});
 
@@ -126,6 +127,7 @@
 						player.clear();
 						// Set to noop.
 						move = (): void => {};
+						emit('correct');
 					}
 				};
 				moveRef.value = move;
