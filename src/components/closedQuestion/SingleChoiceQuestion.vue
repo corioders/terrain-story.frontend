@@ -53,23 +53,28 @@
 				default: false,
 			},
 		},
-		setup(props) {
+		emits: ['correct', 'incorrect'],
+		setup(props, { emit }) {
 			let ans = ref(false);
+
 			const container = ref<HTMLDivElement | null>(null);
 			function handleClick(parent: Element, val: string): void {
 				ans.value = checkAnswer(val, props.answer);
 				if (ans.value) {
+					emit('correct');
 					const el = parent.querySelector('div.n-radio__label');
 					if (el != null) {
 						const classList = el.classList;
 						classList.add('correct');
 					}
 				} else {
+					emit('incorrect');
 					container.value?.querySelectorAll('.correct').forEach((element) => {
 						element.classList.remove('correct');
 					});
 				}
 			}
+
 			return {
 				arePhotos: arePhotos(props.options),
 				shuffledOptions: props.disableMixing ? props.options : shuffleOptions(props.options),
