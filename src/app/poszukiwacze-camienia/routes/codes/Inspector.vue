@@ -23,7 +23,7 @@
 	import { inspector as question } from '@rock/static/questions';
 	import witnesses from '@rock/static/witnesses';
 
-	import { useProgressStore } from '../../store/progress';
+	import { useProgressStore } from '@rock/store/progress';
 
 	export default defineComponent({
 		name: 'Inspector',
