@@ -1,7 +1,7 @@
 <template>
 	<n-config-provider :theme-overrides="themeOverrides">
 		<div id="app">
-			<Flex>
+			<Flex gap="12px">
 				<router-view />
 				<SkipNav :nextRoute="nextRoute" />
 			</Flex>
