@@ -1,6 +1,6 @@
 <template>
 	<p>Koniec-Kosmita</p>
-	<Video url="https://www.youtube.com/embed/4-fOGS_QcZk" />
+	<Video url="https://www.youtube.com/embed/PIJysna39aM" />
 </template>
 
 <script lang="ts">
