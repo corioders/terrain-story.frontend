@@ -1,6 +1,6 @@
 <template>
 	<p>Mag</p>
-	<Video url="https://www.youtube.com/embed/rh04Fv24fjo" />
+	<Video url="https://www.youtube.com/embed/4-fOGS_QcZk" />
 	<n-space vertical>
 		<Difference v-for="(descriptor, i) in descriptors" :key="`differenceMage${i}`" :differenceDescriptor="descriptor" />
 	</n-space>
