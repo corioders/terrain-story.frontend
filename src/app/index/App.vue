@@ -14,10 +14,6 @@
 		components: {
 			NSpace,
 		},
-		setup() {
-			if (window.location.href.includes('localhost') || window.location.href.includes('dev')) return;
-			window.location.href = '/poszukiwacze-camienia';
-		},
 	});
 </script>
 

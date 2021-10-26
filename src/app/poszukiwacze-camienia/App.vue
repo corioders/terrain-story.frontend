@@ -1,7 +1,7 @@
 <template>
 	<n-config-provider :theme-overrides="themeOverrides">
 		<div id="app">
-			<Flex gap="12px">
+			<Flex>
 				<router-view />
 				<MapLink mapUrl="/mapa" />
 				<SkipNav :nextRoute="nextRoute" />
@@ -35,7 +35,6 @@
 			SkipNav,
 		},
 		setup() {
-			document.title = 'Poszukiwacze Camienia';
 			return { nextRoute, themeOverrides };
 		},
 	});
