@@ -2,43 +2,31 @@
 	<p>Mag</p>
 	<Video url="https://www.youtube.com/embed/rh04Fv24fjo" />
 	<n-space vertical>
-		<Differences name="mage" :descriptors="descriptors" @correct="isCorrect = true" />
+		<Difference v-for="(descriptor, i) in descriptors" :key="`differenceMage${i}`" :differenceDescriptor="descriptor" />
 	</n-space>
-	<CheckButton @click="handleCheck()" />
 </template>
 
 <script lang="ts">
 	import { NSpace } from 'naive-ui';
-	import { defineComponent, ref } from 'vue';
+	import { defineComponent } from 'vue';
 
-	import CheckButton from '@/components/CheckButton.vue';
 	import Video from '@/components/Video.vue';
 
 	import alienDescriptor from '@rock/assets/photoDifferences/alien';
 	import safariDescriptor from '@rock/assets/photoDifferences/safari';
 	import someoneDescriptor from '@rock/assets/photoDifferences/someone';
-	import Differences from '@rock/components/photoDifferences/Differences.vue';
-	import { useProgressStore } from '@rock/store/progress';
+	import Difference from '@rock/components/photoDifference/Difference.vue';
 
 	export default defineComponent({
 		name: 'Mage',
 		components: {
-			Differences,
+			Difference,
 			NSpace,
 			Video,
-			CheckButton,
 		},
-		emits: ['correct'],
 		setup() {
-			const store = useProgressStore();
-			const isCorrect = ref<boolean>(false);
 			const descriptors = [alienDescriptor, safariDescriptor, someoneDescriptor];
-
-			const handleCheck = (): void => {
-				if (isCorrect.value === true) store.finishPuzzle('Mage');
-			};
-
-			return { descriptors, isCorrect, handleCheck };
+			return { descriptors };
 		},
 	});
 </script>

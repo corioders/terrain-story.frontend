@@ -34,14 +34,15 @@
 		components: {
 			NSpace,
 		},
+
 		props: {
 			differenceDescriptor: {
 				type: Object as PropType<DifferenceDescriptor>,
 				required: true,
 			},
 		},
-		emits: ['correct'],
-		setup(props, { emit }) {
+
+		setup(props) {
 			const canvasRef = ref<HTMLCanvasElement | null>(null);
 
 			onMounted(async () => {
@@ -50,9 +51,7 @@
 				let ctx = canvas.getContext('2d') as CanvasRenderingContext2D;
 				if (ctx === null) return;
 
-				const descriptor = props.differenceDescriptor;
-
-				const image = await loadImage(descriptor.differentPhotoSrc);
+				const image = await loadImage(props.differenceDescriptor.differentPhotoSrc);
 				canvas.width = image.width;
 				canvas.height = image.height;
 
@@ -64,24 +63,20 @@
 					ctx.arc(difference.x, difference.y, difference.radius, 0, Math.PI * 2, true);
 
 					ctx.lineWidth = 10;
-					ctx.strokeStyle = descriptor.strokeStyle;
+					ctx.strokeStyle = props.differenceDescriptor.strokeStyle;
 					ctx.stroke();
 				}
 
-				let doneDifferences = 0;
 				canvas.addEventListener('click', (ev) => {
 					const boundingRect = canvas.getBoundingClientRect();
 
 					const x = map(ev.offsetX, 0, boundingRect.width, 0, canvas.width);
 					const y = map(ev.offsetY, 0, boundingRect.height, 0, canvas.height);
 
-					for (const difference of descriptor.differences) {
+					for (const difference of props.differenceDescriptor.differences) {
 						if (!isWithinCircle(x, y, difference.x, difference.y, difference.radius)) {
 							continue;
 						}
-
-						doneDifferences++;
-						if (doneDifferences === descriptor.differences.length) emit('correct');
 
 						showDifference(difference);
 					}

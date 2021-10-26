@@ -1,4 +1,4 @@
-import { DifferenceDescriptor } from '@rock/components/photoDifferences/difference';
+import { DifferenceDescriptor } from '@/app/poszukiwacze-camienia/components/photoDifference/difference';
 
 import img1 from './1.jpg';
 import img2 from './2.jpg';
