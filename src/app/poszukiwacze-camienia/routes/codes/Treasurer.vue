@@ -1,6 +1,6 @@
 <template>
 	<p>Skarbek</p>
-	<Video url="https://www.youtube.com/embed/4-fOGS_QcZk" />
+	<Video url="https://www.youtube.com/embed/P2dcu-dIhhU" />
 	<SingleChoiceQuestions :questions="questions" name="mystery" />
 </template>
 
@@ -10,7 +10,7 @@
 	import Video from '@/components/Video.vue';
 	import SingleChoiceQuestions from '@/components/closedQuestion/SingleChoiceQuestions.vue';
 
-	import { treasurer as questions } from '@rock/static/questions';
+	import { treasurer as questions } from '@/app/poszukiwacze-camienia/assets/questions';
 
 	export default defineComponent({
 		name: 'Treasurer',

@@ -5,8 +5,7 @@
   "path-intellisense.mappings": {
     "@": "${workspaceRoot}/src",
     "@index": "${workspaceRoot}/src/app/index",
-    "@rock": "${workspaceRoot}/src/app/rock",
-
+    "@rock": "${workspaceRoot}/src/app/poszukiwacze-camienia",
   },
   "eslint.workingDirectories": [
     {
