@@ -1,6 +1,6 @@
 <template>
 	<p>Turysta</p>
-	<Video url="https://www.youtube.com/embed/4-fOGS_QcZk" />
+	<Video url="https://www.youtube.com/embed/HcVCHKHy-Xw" />
 	<SingleChoiceQuestions :questions="questions" name="place" />
 </template>
 

@@ -1,6 +1,6 @@
 <template>
 	<p>Tancerz</p>
-	<Video url="https://www.youtube.com/embed/4-fOGS_QcZk" />
+	<Video url="https://www.youtube.com/embed/8O_EcEENaaw" />
 	<SingleChoiceQuestions :questions="questions" name="dance" />
 </template>
 
