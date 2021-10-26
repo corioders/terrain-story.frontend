@@ -1,19 +1,42 @@
 <template>
 	<canvas ref="canvasRef"></canvas>
-	<div>
-		<button @click="moveRef('top')">TOP</button>
-		<button @click="moveRef('bottom')">BOTTOM</button>
-		<button @click="moveRef('left')">LEFT</button>
-		<button @click="moveRef('right')">RIGHT</button>
-	</div>
+	<n-space>
+		<n-button text size="large" @click="moveRef('top')">
+			<n-icon size="36">
+				<img src="@rock/assets/arrows/top.svg" alt="strzałka w górę" />
+			</n-icon>
+		</n-button>
+		<n-button text size="large" @click="moveRef('bottom')">
+			<n-icon size="36">
+				<img src="@rock/assets/arrows/bottom.svg" alt="strzałka w dół" />
+			</n-icon>
+		</n-button>
+		<n-button text size="large" @click="moveRef('left')">
+			<n-icon size="36">
+				<img src="@rock/assets/arrows/left.svg" alt="strzałka w lewo" />
+			</n-icon>
+		</n-button>
+		<n-button text size="large" @click="moveRef('right')">
+			<n-icon size="36">
+				<img src="@rock/assets/arrows/right.svg" alt="strzałka w prawo" />
+			</n-icon>
+		</n-button>
+	</n-space>
 </template>
 
+
 <script lang="ts">
+	import { NButton, NIcon, NSpace } from 'naive-ui';
 	import { defineComponent, onMounted, PropType, ref } from 'vue';
 
 	import { LabyrinthDescriptor, Player, Directions, expandEmpty } from './labyrinth';
 
 	export default defineComponent({
+		components: {
+			NButton,
+			NIcon,
+			NSpace,
+		},
 		props: {
 			labyrinthDescriptor: {
 				type: Object as PropType<LabyrinthDescriptor>,
@@ -142,5 +165,7 @@
 <style lang="scss" scoped>
 	canvas {
 		margin-top: 10px;
+		width: 95%;
+		max-width: 950px;
 	}
 </style>
