@@ -1,6 +1,6 @@
 <template>
 	<p>Turysta</p>
-	<Video url="https://www.youtube.com/embed/4-fOGS_QcZk" />
+	<Video url="https://www.youtube.com/embed/HcVCHKHy-Xw" />
 	<SingleChoiceQuestions :questions="questions" name="place" />
 </template>
 
@@ -10,7 +10,7 @@
 	import Video from '@/components/Video.vue';
 	import SingleChoiceQuestions from '@/components/closedQuestion/SingleChoiceQuestions.vue';
 
-	import { tourist as questions } from '@rock/static/questions';
+	import { tourist as questions } from '@/app/poszukiwacze-camienia/assets/questions';
 
 	export default defineComponent({
 		name: 'Tourist',
