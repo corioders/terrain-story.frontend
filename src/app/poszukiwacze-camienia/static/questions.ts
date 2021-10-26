@@ -20,13 +20,13 @@ export const dancer: Question[] = [
 
 export const inspector: Question = {
 	options: [
-		'https://images.pexels.com/photos/3823495/pexels-photo-3823495.jpeg',
-		'https://images.pexels.com/photos/2269872/pexels-photo-2269872.jpeg',
-		'https://images.pexels.com/photos/2389349/pexels-photo-2389349.jpeg',
-		'https://images.pexels.com/photos/4655426/pexels-photo-4655426.jpeg',
-		'https://images.pexels.com/photos/2380794/pexels-photo-2380794.jpeg',
+		require<string>('@rock/assets/suspects/1.png'),
+		require<string>('@rock/assets/suspects/2.png'),
+		require<string>('@rock/assets/suspects/3.png'),
+		require<string>('@rock/assets/suspects/4.png'),
+		require<string>('@rock/assets/suspects/5.png'),
 	],
-	answer: 'https://images.pexels.com/photos/3823495/pexels-photo-3823495.jpeg',
+	answer: require<string>('@rock/assets/suspects/5.png'),
 };
 
 export const tourist: Question[] = [
