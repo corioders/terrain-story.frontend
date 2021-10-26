@@ -9,7 +9,7 @@
 		</n-space>
 	</n-card>
 	<SingleChoiceQuestion :options="question.options" :answer="question.answer" disableMixing name="causer" @correct="isCorrect = true" @incorrect="isCorrect = false" />
-	<CheckButton @click="handleCheck">SPRAWDŹ</CheckButton>
+	<CheckButton @click="handleCheck" />
 </template>
 
 <script lang="ts">
@@ -22,7 +22,6 @@
 
 	import { inspector as question } from '@/app/poszukiwacze-camienia/assets/questions';
 	import witnesses from '@/app/poszukiwacze-camienia/assets/witnesses';
-
 	import { useProgressStore } from '@rock/store/progress';
 
 	export default defineComponent({
