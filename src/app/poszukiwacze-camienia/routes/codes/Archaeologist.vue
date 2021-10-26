@@ -13,8 +13,7 @@
 			Wasz Scott
 		</h4>
 	</n-card>
-
-	<!-- <img src="@rock/assets/trapezoid.jpg" /> -->
+	<TrapezoidColoring />
 </template>
 
 <script lang="ts">
@@ -23,11 +22,14 @@
 
 	import Video from '@/components/Video.vue';
 
+	import TrapezoidColoring from '@rock/components/TrapezoidColoring.vue';
+
 	export default defineComponent({
 		name: 'Archaeologist',
 		components: {
 			NCard,
 			Video,
+			TrapezoidColoring,
 		},
 	});
 </script>
