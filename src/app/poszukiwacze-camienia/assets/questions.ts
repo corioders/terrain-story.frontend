@@ -32,8 +32,8 @@ export const inspector: Question = {
 export const tourist: Question[] = [
 	{
 		question: 'Rozpoznaj pierwsze miejsce',
-		options: ['plac Sejmu Śląskiego', 'Stary Dworzec', 'Synagoga Żydowska'],
-		answer: 'plac Sejmu Śląskiego',
+		options: ['Pomnik Józefa Piłsudskiego', 'Stary Dworzec', 'Pomnik Żołnierza Polskiego'],
+		answer: 'Pomnik Józefa Piłsudskiego',
 	},
 	{
 		question: 'Rozpoznaj drugie miejsce',
@@ -42,13 +42,13 @@ export const tourist: Question[] = [
 	},
 	{
 		question: 'Rozpoznaj trzecie miejsce',
-		options: ['Plac Wolności', 'Park Kościuszki', 'Rynek'],
-		answer: 'Plac Wolności',
+		options: ['Plac Wolności', 'Plac Andrzeja', 'Rynek'],
+		answer: 'Plac Andrzeja',
 	},
 	{
 		question: 'Rozpoznaj czwarte miejsce',
-		options: ['Pomnik Żołnierza Polskiego', 'Pałac Młodzieży', 'Spodek'],
-		answer: 'Pomnik Żołnierza Polskiego',
+		options: ['Pomnik Beboków', 'Pomnik Żołnierza Polskiego', 'Spodek'],
+		answer: 'Pomnik Beboków',
 	},
 ];
 
