@@ -9,7 +9,9 @@
 			:name="name + i"
 			@correct="isCorrect[i] = true"
 			@incorrect="isCorrect[i] = false"
-		/>
+		>
+			<slot :name="i"></slot>
+		</SingleChoiceQuestion>
 	</n-space>
 </template>
 

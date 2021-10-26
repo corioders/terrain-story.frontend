@@ -1,6 +1,6 @@
 <template>
 	<p>Start-Kosmita</p>
-	<Video url="https://www.youtube.com/embed/4-fOGS_QcZk" />
+	<Video url="https://www.youtube.com/embed/q_O3LVHoFAw" />
 	<button @click="handleStart()">OK</button>
 </template>
 

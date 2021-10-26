@@ -1,6 +1,6 @@
 <template>
 	<p>Inspektor</p>
-	<Video url="https://www.youtube.com/embed/4-fOGS_QcZk" />
+	<Video url="https://www.youtube.com/embed/6sP82sl1tZY" />
 	<n-card title="Zeznania świadków" class="witnesses">
 		<n-space vertical>
 			<n-card v-for="(witness, i) in witnesses" :key="`Witness${i + 1}`" :title="`Zeznanie ${i + 1} świadka`">
@@ -20,8 +20,8 @@
 	import Video from '@/components/Video.vue';
 	import SingleChoiceQuestion from '@/components/closedQuestion/SingleChoiceQuestion.vue';
 
-	import { inspector as question } from '@rock/static/questions';
-	import witnesses from '@rock/static/witnesses';
+	import { inspector as question } from '@/app/poszukiwacze-camienia/assets/questions';
+	import witnesses from '@/app/poszukiwacze-camienia/assets/witnesses';
 
 	import { useProgressStore } from '../../store/progress';
 
