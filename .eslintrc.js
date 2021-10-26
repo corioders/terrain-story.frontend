@@ -115,7 +115,6 @@ module.exports = {
 		{
 			globals: {
 				module: true,
-        __IS_PRODUCTION__: true,
 			},
 			files: ['*.vue'],
 			parser: 'vue-eslint-parser',

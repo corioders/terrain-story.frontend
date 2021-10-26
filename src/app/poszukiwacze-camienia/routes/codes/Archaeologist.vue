@@ -1,6 +1,6 @@
 <template>
 	<p>Archeolog</p>
-	<Video url="https://www.youtube.com/embed/ftyeIztSF1g" />
+	<Video url="https://www.youtube.com/embed/4-fOGS_QcZk" />
 	<n-card title="Szanowni Poszukiwacze Camienia,">
 		<p>
 			winszuje inicjatywy. Cieszę się, że razem będziemy mogli ruszyć na poszukiwania tego niezwykłego artefaktu. Prawdę powiedziawszy sam, poczyniłem już pierwsze kroki.
