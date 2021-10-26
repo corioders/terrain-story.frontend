@@ -21,4 +21,11 @@
 		},
 	});
 </script>
-
+<style lang="scss" scoped>
+	.mapLink {
+		position: fixed;
+		right: 5vw;
+		bottom: 5vh;
+		z-index: 999;
+	}
+</style>
