@@ -2,6 +2,9 @@
 	<div ref="container" class="container">
 		<n-space vertical>
 			<p v-if="question !== ''">{{ question }}</p>
+			<div class="slot">
+				<slot></slot>
+			</div>
 			<n-radio-group name="radiogroup" style="max-width: 100%">
 				<n-space vertical>
 					<n-radio v-for="(option, i) in options" :key="`option${i}-${option}`" :value="option" @input="handleClick($event.target.parentElement, $event.target.value)">
@@ -102,6 +105,16 @@
 		}
 		img {
 			border: 5px $primary solid;
+		}
+	}
+	.slot {
+		width: 100%;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		:deep(img) {
+			width: 95%;
+			max-width: 950px;
 		}
 	}
 </style>
