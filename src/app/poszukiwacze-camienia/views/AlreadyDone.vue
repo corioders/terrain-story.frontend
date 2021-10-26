@@ -2,25 +2,21 @@
 	<n-space vertical align="center" justify="center">
 		<n-result status="info" title="Już rozwiązałeś tę zagadkę">
 			<template #footer>
-				<n-button size="large" type="info" @click="handleClick">Usuń mój postęp</n-button>
+				<ResetProgressButton />
 			</template>
 		</n-result>
 	</n-space>
 </template>
 
 <script lang="ts">
-	import { NButton, NResult, NSpace } from 'naive-ui';
+	import { NResult, NSpace } from 'naive-ui';
 	import { defineComponent } from 'vue';
+
+	import ResetProgressButton from '@/components/ResetProgressButton.vue';
 
 	export default defineComponent({
 		name: 'AlreadyDone',
-		components: { NButton, NResult, NSpace },
-		setup() {
-			function handleClick(): void {
-				console.log('Reset progress');
-			}
-			return { handleClick };
-		},
+		components: { NResult, NSpace, ResetProgressButton },
 	});
 </script>
 <style lang="scss" scoped>
