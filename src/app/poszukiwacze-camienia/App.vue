@@ -3,9 +3,9 @@
 		<div id="app">
 			<Flex>
 				<router-view />
+				<MapLink mapUrl="/mapa" />
 				<SkipNav :nextRoute="nextRoute" />
 			</Flex>
-			<MapLink mapUrl="/mapa" />
 			<CFooter />
 		</div>
 		<n-global-style />

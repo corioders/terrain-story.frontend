@@ -1,8 +1,8 @@
 <template>
 	<p>Skarbek</p>
-	<Video url="https://www.youtube.com/embed/4-fOGS_QcZk" />
+	<Video url="https://www.youtube.com/embed/P2dcu-dIhhU" />
 	<SingleChoiceQuestions :questions="questions" name="mystery" @correct="isCorrect = true" @incorrect="isCorrect = false" />
-	<CheckButton @click="handleCheck">SPRAWDŹ</CheckButton>
+  <CheckButton @click="handleCheck">SPRAWDŹ</CheckButton>
 </template>
 
 <script lang="ts">
@@ -12,8 +12,8 @@
 	import Video from '@/components/Video.vue';
 	import SingleChoiceQuestions from '@/components/closedQuestion/SingleChoiceQuestions.vue';
 
-	import { treasurer as questions } from '@rock/static/questions';
-	import { useProgressStore } from '@rock/store/progress';
+	import { treasurer as questions } from '@/app/poszukiwacze-camienia/assets/questions';
+  import { useProgressStore } from '@rock/store/progress';
 
 	export default defineComponent({
 		name: 'Tourist',

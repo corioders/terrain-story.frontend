@@ -115,12 +115,13 @@ module.exports = {
 		{
 			globals: {
 				module: true,
+        __IS_PRODUCTION__: true,
 			},
 			files: ['*.vue'],
 			parser: 'vue-eslint-parser',
 			parserOptions: {
 				parser: '@typescript-eslint/parser',
-				project: './tsconfig.vue.json',
+				project: './tsconfig.json',
 				tsconfigRootDir: config.ROOT_PATH,
 				extraFileExtensions: ['.vue'],
 			},
