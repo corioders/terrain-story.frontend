@@ -14,6 +14,9 @@
 		components: {
 			NSpace,
 		},
+		setup() {
+			window.location.href = '/poszukiwacze-camienia';
+		},
 	});
 </script>
 
