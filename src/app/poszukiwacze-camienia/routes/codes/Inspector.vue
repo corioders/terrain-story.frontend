@@ -8,18 +8,22 @@
 			</n-card>
 		</n-space>
 	</n-card>
-	<SingleChoiceQuestion :options="question.options" :answer="question.answer" disableMixing name="causer" />
+	<SingleChoiceQuestion :options="question.options" :answer="question.answer" disableMixing name="causer" @correct="isCorrect = true" @incorrect="isCorrect = false" />
+	<CheckButton @click="handleCheck">SPRAWDŹ</CheckButton>
 </template>
 
 <script lang="ts">
 	import { NCard, NSpace } from 'naive-ui';
-	import { defineComponent } from 'vue';
+	import { defineComponent, ref } from 'vue';
 
+	import CheckButton from '@/components/CheckButton.vue';
 	import Video from '@/components/Video.vue';
 	import SingleChoiceQuestion from '@/components/closedQuestion/SingleChoiceQuestion.vue';
 
 	import { inspector as question } from '@rock/static/questions';
 	import witnesses from '@rock/static/witnesses';
+
+	import { useProgressStore } from '../../store/progress';
 
 	export default defineComponent({
 		name: 'Inspector',
@@ -28,9 +32,19 @@
 			NSpace,
 			Video,
 			SingleChoiceQuestion,
+			CheckButton,
 		},
 		setup() {
-			return { question, witnesses };
+			const store = useProgressStore();
+			const isCorrect = ref<boolean>(false);
+
+			const handleCheck = (): void => {
+				if (isCorrect.value === true) {
+					store.finishPuzzle('Inspector');
+				}
+			};
+
+			return { question, witnesses, isCorrect, handleCheck };
 		},
 	});
 </script>
