@@ -54,11 +54,9 @@
 			},
 		},
 		setup(props) {
-			let ans = ref(false);
 			const container = ref<HTMLDivElement | null>(null);
 			function handleClick(parent: Element, val: string): void {
-				ans.value = checkAnswer(val, props.answer);
-				if (ans.value) {
+				if (checkAnswer(val, props.answer)) {
 					const el = parent.querySelector('div.n-radio__label');
 					if (el != null) {
 						const classList = el.classList;
@@ -73,7 +71,6 @@
 			return {
 				arePhotos: arePhotos(props.options),
 				shuffledOptions: props.disableMixing ? props.options : shuffleOptions(props.options),
-				ans,
 				hideInput,
 				handleClick,
 				container,
