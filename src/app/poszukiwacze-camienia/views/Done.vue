@@ -1,3 +1,32 @@
 <template>
-	<p>Brawo udało Ci się rozwiązać tą zagatkę</p>
+	<n-space vertical align="center" justify="center" class="done">
+		<n-result status="success" title="Brawo udało Ci się rozwiązać tę zagadkę">
+			<template #footer>
+				<n-space vertical align="center">
+					<p>Przenoszenie do mapy</p>
+					<n-spin size="large" />
+				</n-space>
+			</template>
+		</n-result>
+	</n-space>
 </template>
+
+<script lang="ts">
+	import { NResult, NSpace, NSpin } from 'naive-ui';
+	import { defineComponent } from 'vue';
+
+	export default defineComponent({
+		name: 'AlreadyDone',
+		components: { NResult, NSpace, NSpin },
+		mounted() {
+			setTimeout(() => {
+				this.$router.replace('/mapa');
+			}, 6000);
+		},
+	});
+</script>
+<style lang="scss" scoped>
+	.done {
+		height: 60vh;
+	}
+</style>
