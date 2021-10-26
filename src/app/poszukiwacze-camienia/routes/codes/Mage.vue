@@ -4,7 +4,7 @@
 	<n-space vertical>
 		<Differences name="mage" :descriptors="descriptors" @correct="isCorrect = true" />
 	</n-space>
-	<CheckButton @click="handleCheck()">SPRAWDŹ</CheckButton>
+	<CheckButton @click="handleCheck()" />
 </template>
 
 <script lang="ts">
@@ -18,7 +18,6 @@
 	import safariDescriptor from '@rock/assets/photoDifferences/safari';
 	import someoneDescriptor from '@rock/assets/photoDifferences/someone';
 	import Differences from '@rock/components/photoDifferences/Differences.vue';
-
 	import { useProgressStore } from '@rock/store/progress';
 
 	export default defineComponent({

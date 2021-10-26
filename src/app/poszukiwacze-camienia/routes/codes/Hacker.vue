@@ -4,7 +4,7 @@
 	<Input label="Przesunięcie" name="displacement" @answer="submitDisplacement($event)" />
 	<CipherHelper v-if="displacement == 13" :displacement="displacement" />
 	<Input label="Hasło" name="hackerPasswordInput" @answer="submitPass($event)" />
-	<CheckButton @click="handleCheck()">SPRAWDŹ</CheckButton>
+	<CheckButton @click="handleCheck()" />
 </template>
 
 <script lang="ts">
