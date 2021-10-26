@@ -18,8 +18,8 @@
 	import Video from '@/components/Video.vue';
 	import SingleChoiceQuestion from '@/components/closedQuestion/SingleChoiceQuestion.vue';
 
-	import { inspector as question } from '@rock/static/questions';
-	import witnesses from '@rock/static/witnesses';
+	import { inspector as question } from '@/app/poszukiwacze-camienia/assets/questions';
+	import witnesses from '@/app/poszukiwacze-camienia/assets/witnesses';
 
 	export default defineComponent({
 		name: 'Inspector',
