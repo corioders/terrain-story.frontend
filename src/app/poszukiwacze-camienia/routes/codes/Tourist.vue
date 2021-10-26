@@ -1,25 +1,36 @@
 <template>
 	<p>Turysta</p>
 	<Video url="https://www.youtube.com/embed/4-fOGS_QcZk" />
-	<SingleChoiceQuestions :questions="questions" name="place" />
+	<SingleChoiceQuestions :questions="questions" name="place" @correct="isCorrect = true" @incorrect="isCorrect = false" />
+	<CheckButton @click="handleCheck">SPRAWDŹ</CheckButton>
 </template>
 
 <script lang="ts">
-	import { defineComponent } from 'vue';
+	import { defineComponent, ref } from 'vue';
 
+	import CheckButton from '@/components/CheckButton.vue';
 	import Video from '@/components/Video.vue';
 	import SingleChoiceQuestions from '@/components/closedQuestion/SingleChoiceQuestions.vue';
 
 	import { tourist as questions } from '@rock/static/questions';
+	import { useProgressStore } from '@rock/store/progress';
 
 	export default defineComponent({
 		name: 'Tourist',
 		components: {
 			Video,
 			SingleChoiceQuestions,
+			CheckButton,
 		},
 		setup() {
-			return { questions };
+			const store = useProgressStore();
+			const isCorrect = ref<boolean>(false);
+
+			const handleCheck = (): void => {
+				if (isCorrect.value === true) store.finishPuzzle('Tourist');
+			};
+
+			return { questions, isCorrect, handleCheck };
 		},
 	});
 </script>
