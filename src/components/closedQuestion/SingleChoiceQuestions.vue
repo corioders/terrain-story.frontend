@@ -7,7 +7,9 @@
 			:options="question.options"
 			:answer="question.answer"
 			:name="name + i"
-		/>
+		>
+			<slot :name="i"></slot>
+		</SingleChoiceQuestion>
 	</n-space>
 </template>
 
