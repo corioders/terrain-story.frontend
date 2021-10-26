@@ -2,6 +2,9 @@
 	<div ref="container" class="container">
 		<n-space vertical>
 			<p v-if="question !== ''">{{ question }}</p>
+			<div class="slot">
+				<slot></slot>
+			</div>
 			<n-radio-group name="radiogroup" style="max-width: 100%">
 				<n-space vertical>
 					<n-radio v-for="(option, i) in options" :key="`option${i}-${option}`" :value="option" @input="handleClick($event.target.parentElement, $event.target.value)">
@@ -53,27 +56,28 @@
 				default: false,
 			},
 		},
-		setup(props) {
-			let ans = ref(false);
+		emits: ['correct', 'incorrect'],
+		setup(props, { emit }) {
 			const container = ref<HTMLDivElement | null>(null);
 			function handleClick(parent: Element, val: string): void {
-				ans.value = checkAnswer(val, props.answer);
-				if (ans.value) {
+				if (checkAnswer(val, props.answer)) {
+					emit('correct');
 					const el = parent.querySelector('div.n-radio__label');
 					if (el != null) {
 						const classList = el.classList;
 						classList.add('correct');
 					}
 				} else {
+					emit('incorrect');
 					container.value?.querySelectorAll('.correct').forEach((element) => {
 						element.classList.remove('correct');
 					});
 				}
 			}
+
 			return {
 				arePhotos: arePhotos(props.options),
 				shuffledOptions: props.disableMixing ? props.options : shuffleOptions(props.options),
-				ans,
 				hideInput,
 				handleClick,
 				container,
@@ -105,6 +109,16 @@
 		}
 		img {
 			border: 5px $primary solid;
+		}
+	}
+	.slot {
+		width: 100%;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		:deep(img) {
+			width: 95%;
+			max-width: 950px;
 		}
 	}
 </style>

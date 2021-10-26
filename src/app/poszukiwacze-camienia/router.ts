@@ -2,17 +2,30 @@ import { Component } from 'vue';
 import { createRouter, createWebHashHistory } from 'vue-router';
 import { RouteRecordRaw } from 'vue-router';
 
+import { isPuzzleID } from './routes/codes/puzzle';
+import { useProgressStore } from './store/progress';
+
 export const routes: RouteRecordRaw[] = [
 	{
 		path: `/koniec`,
 		name: 'End',
-		component: (): Promise<Component> => import('@/app/poszukiwacze-camienia/views/End.vue'),
+		component: (): Promise<Component> => import('@rock/views/End.vue'),
 	},
 	{
 		path: `/start`,
 		name: 'Start',
-		component: (): Promise<Component> => import('@/app/poszukiwacze-camienia/views/Start.vue'),
+		component: (): Promise<Component> => import('@rock/views/Start.vue'),
 		meta: { to: 'Hacker' },
+	},
+	{
+		path: `/zrobione`,
+		name: 'Done',
+		component: (): Promise<Component> => import('@rock/views/Done.vue'),
+	},
+	{
+		path: `/juz-zrobione`,
+		name: 'AlreadyDone',
+		component: (): Promise<Component> => import('@rock/views/AlreadyDone.vue'),
 	},
 	{
 		path: `/archeolog`,
@@ -88,6 +101,17 @@ export const routes: RouteRecordRaw[] = [
 const router = createRouter({
 	routes,
 	history: createWebHashHistory(),
+});
+
+router.beforeEach((to) => {
+	const store = useProgressStore();
+	if (to.name !== 'Start' && !store.started) return { name: 'Start', params: { toName: String(to.name) } };
+	if (to.name === 'End' && !store.ended) return false;
+  
+	const nameString = String(to.name);
+	if (isPuzzleID(nameString) && store.puzzles[nameString] === true) return { name: 'AlreadyDone' };
+
+	return;
 });
 
 export default router;

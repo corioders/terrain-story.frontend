@@ -2,11 +2,16 @@ import { createPinia } from 'pinia';
 import 'vfonts/OpenSans.css';
 import { createApp } from 'vue';
 
+import { createLocalStoragePlugin } from '@/store/plugin/localStorage';
+
 import App from './App.vue';
 import router from './router';
 
 const app = createApp(App);
-app.use(createPinia()).use(router);
+const pinia = createPinia();
+pinia.use(createLocalStoragePlugin());
+
+app.use(pinia).use(router);
 app.mount('#root');
 
 if (module.hot) {

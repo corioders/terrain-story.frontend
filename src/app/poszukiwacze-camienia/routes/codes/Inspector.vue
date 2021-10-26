@@ -1,6 +1,6 @@
 <template>
 	<p>Inspektor</p>
-	<Video url="https://www.youtube.com/embed/4-fOGS_QcZk" />
+	<Video url="https://www.youtube.com/embed/6sP82sl1tZY" />
 	<n-card title="Zeznania świadków" class="witnesses">
 		<n-space vertical>
 			<n-card v-for="(witness, i) in witnesses" :key="`Witness${i + 1}`" :title="`Zeznanie ${i + 1} świadka`">
@@ -8,18 +8,21 @@
 			</n-card>
 		</n-space>
 	</n-card>
-	<SingleChoiceQuestion :options="question.options" :answer="question.answer" disableMixing name="causer" />
+	<SingleChoiceQuestion :options="question.options" :answer="question.answer" disableMixing name="causer" @correct="isCorrect = true" @incorrect="isCorrect = false" />
+	<CheckButton @click="handleCheck" />
 </template>
 
 <script lang="ts">
 	import { NCard, NSpace } from 'naive-ui';
-	import { defineComponent } from 'vue';
+	import { defineComponent, ref } from 'vue';
 
+	import CheckButton from '@/components/CheckButton.vue';
 	import Video from '@/components/Video.vue';
 	import SingleChoiceQuestion from '@/components/closedQuestion/SingleChoiceQuestion.vue';
 
-	import { inspector as question } from '@rock/static/questions';
-	import witnesses from '@rock/static/witnesses';
+	import { inspector as question } from '@/app/poszukiwacze-camienia/assets/questions';
+	import witnesses from '@/app/poszukiwacze-camienia/assets/witnesses';
+	import { useProgressStore } from '@rock/store/progress';
 
 	export default defineComponent({
 		name: 'Inspector',
@@ -28,9 +31,19 @@
 			NSpace,
 			Video,
 			SingleChoiceQuestion,
+			CheckButton,
 		},
 		setup() {
-			return { question, witnesses };
+			const store = useProgressStore();
+			const isCorrect = ref<boolean>(false);
+
+			const handleCheck = (): void => {
+				if (isCorrect.value === true) {
+					store.finishPuzzle('Inspector');
+				}
+			};
+
+			return { question, witnesses, isCorrect, handleCheck };
 		},
 	});
 </script>
