@@ -1,5 +1,5 @@
 <template>
-	<div ref="container" class="container">
+	<div class="container">
 		<n-space vertical>
 			<p v-if="question !== ''">{{ question }}</p>
 			<div class="slot">
@@ -7,7 +7,7 @@
 			</div>
 			<n-radio-group name="radiogroup" style="max-width: 100%">
 				<n-space vertical>
-					<n-radio v-for="(option, i) in options" :key="`option${i}-${option}`" :value="option" @input="handleClick($event.target.parentElement, $event.target.value)">
+					<n-radio v-for="(option, i) in options" :key="`option${i}-${option}`" :value="option" @input="handleClick($event.target.value)">
 						<span v-if="!arePhotos">{{ option }}</span>
 						<img v-else :src="option" />
 					</n-radio>
@@ -19,7 +19,7 @@
 
 <script lang="ts">
 	import { NRadioGroup, NRadio, NSpace } from 'naive-ui';
-	import { defineComponent, ref, PropType } from 'vue';
+	import { defineComponent, PropType } from 'vue';
 
 	import arePhotos from './arePhotos';
 	import checkAnswer from './checkAnswer';
@@ -58,21 +58,8 @@
 		},
 		emits: ['correct', 'incorrect'],
 		setup(props, { emit }) {
-			const container = ref<HTMLDivElement | null>(null);
-			function handleClick(parent: Element, val: string): void {
-				if (checkAnswer(val, props.answer)) {
-					emit('correct');
-					const el = parent.querySelector('div.n-radio__label');
-					if (el != null) {
-						const classList = el.classList;
-						classList.add('correct');
-					}
-				} else {
-					emit('incorrect');
-					container.value?.querySelectorAll('.correct').forEach((element) => {
-						element.classList.remove('correct');
-					});
-				}
+			function handleClick(val: string): void {
+				checkAnswer(val, props.answer) ? emit('correct') : emit('incorrect');
 			}
 
 			return {
@@ -80,7 +67,6 @@
 				shuffledOptions: props.disableMixing ? props.options : shuffleOptions(props.options),
 				hideInput,
 				handleClick,
-				container,
 			};
 		},
 	});
@@ -101,14 +87,6 @@
 		.n-card {
 			max-width: 600px;
 			width: 95%;
-		}
-	}
-	.correct {
-		span {
-			color: $primary;
-		}
-		img {
-			border: 5px $primary solid;
 		}
 	}
 	.slot {

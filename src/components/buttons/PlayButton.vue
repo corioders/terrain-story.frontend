@@ -1,7 +1,5 @@
 <template>
-	<div class="mapLink">
-		<n-button size="large" @click="$router.push(mapUrl)">Mapa</n-button>
-	</div>
+	<n-button size="large" type="primary" @click="$emit('click')">Zagraj</n-button>
 </template>
 
 <script lang="ts">
@@ -9,16 +7,10 @@
 	import { defineComponent } from 'vue';
 
 	export default defineComponent({
-		name: 'MapLink',
+		name: 'PlayButton',
 		components: {
 			NButton,
 		},
-		props: {
-			mapUrl: {
-				type: String,
-				required: true,
-			},
-		},
+		emits: ['click'],
 	});
 </script>
-
