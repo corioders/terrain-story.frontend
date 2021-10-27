@@ -4,7 +4,7 @@
 			<Flex gap="12px">
 				<router-view />
 				<MapLink mapUrl="/mapa" />
-				<SkipNav :nextRoute="nextRoute" />
+				<SkipNav v-if="!__IS_PRODUCTION__" :nextRoute="nextRoute" />
 			</Flex>
 			<CFooter />
 		</div>
