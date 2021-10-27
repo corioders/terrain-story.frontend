@@ -1,6 +1,6 @@
 <template>
 	<div class="mapLink">
-		<n-button size="large" type="primary" @click="$router.push(mapUrl)">Mapa</n-button>
+		<n-button size="large" @click="$router.push(mapUrl)">Mapa</n-button>
 	</div>
 </template>
 
