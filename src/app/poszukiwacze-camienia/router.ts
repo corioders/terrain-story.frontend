@@ -92,6 +92,11 @@ export const routes: RouteRecordRaw[] = [
 		component: (): Promise<Component> => import('@rock/routes/TermsOfUse.vue'),
 	},
 	{
+		path: '/polityka-prywatnosci',
+		name: 'PrivacyPolicy',
+		component: (): Promise<Component> => import('@rock/routes/PrivacyPolicy.vue'),
+	},
+	{
 		path: '/finansowanie',
 		name: 'Financing',
 		component: (): Promise<Component> => import('@/components/Financing.vue'),
@@ -107,7 +112,7 @@ router.beforeEach((to) => {
 	const store = useProgressStore();
 	if (to.name !== 'Start' && !store.started) return { name: 'Start', params: { toName: String(to.name) } };
 	if (to.name === 'End' && !store.ended) return false;
-  
+
 	const nameString = String(to.name);
 	if (isPuzzleID(nameString) && store.puzzles[nameString] === true) return { name: 'AlreadyDone' };
 
