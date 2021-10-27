@@ -2,14 +2,18 @@
 	<p>Haker</p>
 	<Video url="https://www.youtube.com/embed/0Gzgvkis0RY" />
 	<Input label="Przesunięcie" name="displacement" @answer="submitDisplacement($event)" />
-	<p v-if="displacement == 13">MKWOUZĆ</p>
-	<CipherHelper v-if="displacement == 13" :displacement="displacement" />
-	<Input label="Hasło" name="hackerPasswordInput" @answer="submitPass($event)" />
-	<CheckButton @click="handleCheck()" />
+	<Flex v-if="displacement == 13" gap="12px">
+		<p>MKWOUZĆ</p>
+		<CipherHelper :displacement="displacement" />
+		<Input label="Hasło" name="hackerPasswordInput" @answer="submitPass($event)" />
+		<CheckButton @click="handleCheck()" />
+	</Flex>
 </template>
 
 <script lang="ts">
 	import { defineComponent, ref } from 'vue';
+
+	import Flex from '@/layouts/Flex.vue';
 
 	import Input from '@/components/Input.vue';
 	import Video from '@/components/Video.vue';
@@ -22,6 +26,7 @@
 		name: 'Hacker',
 		components: {
 			CipherHelper,
+			Flex,
 			Input,
 			Video,
 			CheckButton,
