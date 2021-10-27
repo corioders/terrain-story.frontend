@@ -11,8 +11,8 @@
 	import { NSpace } from 'naive-ui';
 	import { defineComponent, ref } from 'vue';
 
-	import CheckButton from '@/components/CheckButton.vue';
 	import Video from '@/components/Video.vue';
+	import CheckButton from '@/components/buttons/CheckButton.vue';
 
 	import alienDescriptor from '@rock/assets/photoDifferences/alien';
 	import safariDescriptor from '@rock/assets/photoDifferences/safari';

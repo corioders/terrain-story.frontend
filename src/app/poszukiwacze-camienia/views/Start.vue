@@ -7,8 +7,8 @@
 <script lang="ts">
 	import { defineComponent } from 'vue';
 
-	import PlayButton from '@/components/PlayButton.vue';
 	import Video from '@/components/Video.vue';
+	import PlayButton from '@/components/buttons/PlayButton.vue';
 
 	import { useProgressStore } from '@rock/store/progress';
 

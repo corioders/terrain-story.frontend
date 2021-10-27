@@ -16,8 +16,8 @@
 	import { NCard, NSpace } from 'naive-ui';
 	import { defineComponent, ref } from 'vue';
 
-	import CheckButton from '@/components/CheckButton.vue';
 	import Video from '@/components/Video.vue';
+	import CheckButton from '@/components/buttons/CheckButton.vue';
 	import SingleChoiceQuestion from '@/components/closedQuestion/SingleChoiceQuestion.vue';
 
 	import { inspector as question } from '@/app/poszukiwacze-camienia/assets/questions';
