@@ -27,6 +27,10 @@
 				type: String,
 				default: 'normal',
 			},
+			gap: {
+				type: String,
+				default: '0',
+			},
 		},
 	});
 </script>
@@ -38,5 +42,6 @@
 		justify-content: v-bind('justifyContent');
 		align-items: v-bind('alignItems');
 		align-content: v-bind('alignContent');
+		gap: v-bind('gap');
 	}
 </style>
