@@ -21,8 +21,8 @@
 <script lang="ts">
 	import { defineComponent, ref } from 'vue';
 
-	import CheckButton from '@/components/CheckButton.vue';
 	import Video from '@/components/Video.vue';
+	import CheckButton from '@/components/buttons/CheckButton.vue';
 	import SingleChoiceQuestions from '@/components/closedQuestion/SingleChoiceQuestions.vue';
 
 	import { tourist as questions } from '@/app/poszukiwacze-camienia/assets/questions';

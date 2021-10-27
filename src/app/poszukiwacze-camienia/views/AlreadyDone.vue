@@ -12,7 +12,7 @@
 	import { NResult, NSpace } from 'naive-ui';
 	import { defineComponent } from 'vue';
 
-	import ResetProgressButton from '@/components/ResetProgressButton.vue';
+	import ResetProgressButton from '@/components/buttons/ResetProgressButton.vue';
 
 	export default defineComponent({
 		name: 'AlreadyDone',

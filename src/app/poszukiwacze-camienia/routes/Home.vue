@@ -1,7 +1,7 @@
 <template>
 	<h1>Poszukiwacze camienia</h1>
 	<p>strona główna (po wejściu na strone nie przez kod qr)</p>
-	<DevNav :routes="routes" />
+	<DevNav v-if="!__IS_PRODUCTION__" :routes="routes" />
 </template>
 
 <script lang="ts">
