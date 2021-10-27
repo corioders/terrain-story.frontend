@@ -6,7 +6,6 @@
 
 <script lang="ts">
 	import { defineComponent } from 'vue';
-	import { useRouter } from 'vue-router';
 
 	import PlayButton from '@/components/PlayButton.vue';
 	import Video from '@/components/Video.vue';
@@ -21,7 +20,6 @@
 		},
 		setup() {
 			const store = useProgressStore();
-			const router = useRouter();
 
 			const handleStart = (): void => {
 				store.start();
