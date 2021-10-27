@@ -6,6 +6,7 @@
 		<template #menu>
 			<n-button size="tiny" text @click="$router.push('/')">Poszukiwacze Camienia</n-button>
 			<n-button size="tiny" text @click="$router.push('/regulamin')">Regulamin</n-button>
+			<n-button size="tiny" text @click="$router.push('/polityka-prywatnosci')">Polityka Prywatności</n-button>
 			<n-button size="tiny" text @click="$router.push('/finansowanie')">Finansowanie</n-button>
 		</template>
 	</CFooter>
