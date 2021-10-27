@@ -1,7 +1,7 @@
 <template>
 	<p>Haker</p>
 	<Video url="https://www.youtube.com/embed/0Gzgvkis0RY" />
-	<Input label="Przesunięcie" name="displacement" @answer="submitDisplacement($event)" />
+	<Input label="Kod do złamania" name="displacement" @answer="submitDisplacement($event)" />
 	<Flex v-if="displacement == 13" gap="12px">
 		<p>MKWOUZĆ</p>
 		<CipherHelper :displacement="displacement" />
