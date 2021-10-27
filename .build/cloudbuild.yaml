@@ -57,8 +57,16 @@ steps:
 
   # Build.
   - name: 'node'
-    entrypoint: 'yarn'
-    args: ['produce']
+    entrypoint: 'bash'
+    args:
+      - '-c'
+      - |-
+        # When _MODE is empty then we are performing a standard build
+        if [[ "${_MODE}" == "" ]]; then
+            yarn produce
+            exit 0
+        fi
+        yarn build:dev
 
   # Save build output.
   - name: 'gcr.io/cloud-builders/gsutil'
