@@ -36,7 +36,7 @@
 		},
 		setup() {
 			document.title = 'Poszukiwacze Camienia';
-			return { nextRoute, themeOverrides,__IS_PRODUCTION__ };
+			return { nextRoute, themeOverrides,__IS_PRODUCTION__:__IS_PRODUCTION__ };
 		},
 	});
 </script>

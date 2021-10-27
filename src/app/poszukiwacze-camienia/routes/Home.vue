@@ -17,7 +17,7 @@
 			DevNav,
 		},
 		setup() {
-			return { routes, __IS_PRODUCTION__ };
+			return { routes, __IS_PRODUCTION__: __IS_PRODUCTION__ };
 		},
 	});
 </script>
