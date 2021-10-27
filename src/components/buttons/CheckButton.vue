@@ -1,5 +1,7 @@
 <template>
-	<n-button size="large" @click="$emit('click', $event)">Sprawdź</n-button>
+	<n-button :type="incorrectAnswer ? 'error' : 'default'" size="large" @click="$emit('click', $event)">
+		{{ incorrectAnswer ? 'Zła odpowiedź, Sprawdź ponownie' : 'Sprawdź' }}
+	</n-button>
 </template>
 
 <script lang="ts">
@@ -10,6 +12,12 @@
 		name: 'CheckButton',
 		components: {
 			NButton,
+		},
+		props: {
+			incorrectAnswer: {
+				type: Boolean,
+				required: true,
+			},
 		},
 		emits: ['click'],
 	});
