@@ -11,7 +11,7 @@ export function createLocalStoragePlugin(): PiniaStorePlugin {
 			return;
 		}
 
-		return JSON.parse(stateJson) as Object;
+		return JSON.parse(stateJson) as Record<string, unknown>;
 	};
 	return plugin;
 }
