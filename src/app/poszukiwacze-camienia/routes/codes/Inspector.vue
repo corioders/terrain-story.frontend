@@ -8,7 +8,7 @@
 			</n-card>
 		</n-space>
 	</n-card>
-  Wskaż sprawcę
+	<p>Wskaż sprawcę włamania</p>
 	<SingleChoiceQuestion :options="question.options" :answer="question.answer" disableMixing name="causer" @correct="isCorrect = true" @incorrect="isCorrect = false" />
 	<CheckButton @click="handleCheck" />
 </template>

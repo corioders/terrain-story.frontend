@@ -1,6 +1,7 @@
 <template>
 	<p>Księżniczka</p>
 	<Video url="https://www.youtube.com/embed/qJnJCPDnqvU" />
+	<p>Przejdź labirynt</p>
 	<Labyrinth :labyrinthDescriptor="labyrinthDescriptor" @correct="finishHandler()" />
 </template>
 
