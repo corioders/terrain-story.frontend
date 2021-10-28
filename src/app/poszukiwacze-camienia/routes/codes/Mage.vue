@@ -1,7 +1,7 @@
 <template>
 	<p>Mag</p>
 	<Video url="https://www.youtube.com/embed/rh04Fv24fjo" />
-	<p>Znajdź po trzy różnice na każdym ze zdjęć</p>
+	<p class="questionHelper">Znajdź po trzy różnice na każdym ze zdjęć</p>
 	<n-space vertical>
 		<Differences name="mage" :descriptors="descriptors" @correct="isCorrect = true" />
 	</n-space>
@@ -43,3 +43,8 @@
 		},
 	});
 </script>
+<style lang="scss" scoped>
+	.questionHelper {
+		text-align: center;
+	}
+</style>

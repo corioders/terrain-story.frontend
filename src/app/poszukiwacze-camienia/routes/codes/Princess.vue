@@ -1,7 +1,7 @@
 <template>
 	<p>Księżniczka</p>
 	<Video url="https://www.youtube.com/embed/qJnJCPDnqvU" />
-	<p>Przejdź labirynt</p>
+	<p class="questionHelper">Przejdź labirynt</p>
 	<Labyrinth :labyrinthDescriptor="labyrinthDescriptor" @correct="finishHandler()" />
 </template>
 
@@ -31,3 +31,8 @@
 		},
 	});
 </script>
+<style lang="scss" scoped>
+	.questionHelper {
+		text-align: center;
+	}
+</style>
