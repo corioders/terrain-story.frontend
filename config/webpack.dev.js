@@ -48,11 +48,12 @@ module.exports = {
 					cacheGroups: {
 						vendor: {
 							test: /node_modules\/.*/is,
-							name: (module) => {
-								const packageName = module.context.match(/\/node_modules\/(.*?)(\/|$)/is)[1].replace('@', '');
-								if (packageName[0] == '.') packageName = packageName.substring(1);
-								return `z.npm.${packageName}`;
-							},
+							// name: (module) => {
+              //   console.log(module.context)
+							// 	const packageName = module.context.match(/\/node_modules\/(.*?)(\/|$)/is)[1].replace('@', '');
+							// 	if (packageName[0] == '.') packageName = packageName.substring(1);
+							// 	return `z.npm.${packageName}`;
+							// },
 						},
 					},
 			  },
