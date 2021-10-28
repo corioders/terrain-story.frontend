@@ -14,7 +14,7 @@
 		<p>E8, K4, H5, R8, I4, F8, P7, O6, N5, K8, G6, I8, N8, O8, J8, L4, L8, S8, F7, P8, M4, G8, H8, M8, J4, D8</p>
 	</n-card>
 	<TrapezoidColoring :trapezoidDescriptor="trapezoidDescriptor" @correct="isCorrect = true" @incorrect="isCorrect = false" />
-  <CheckButton @click="handleCheck()" />
+	<CheckButton @click="handleCheck()" />
 </template>
 
 <script lang="ts">
@@ -25,6 +25,7 @@
 	import CheckButton from '@/components/buttons/CheckButton.vue';
 
 	import TrapezoidColoring from '@/app/poszukiwacze-camienia/components/trapezoidColoring/TrapezoidColoring.vue';
+	import { trapezoidDescriptor } from '@rock/assets/archaeologist';
 	import { useProgressStore } from '@rock/store/progress';
 
 	export default defineComponent({
@@ -43,47 +44,8 @@
 				if (isCorrect.value === true) store.finishPuzzle('Archaeologist');
 			};
 
-			return { isCorrect, handleCheck };
+			return { trapezoidDescriptor, isCorrect, handleCheck };
 		},
-		data: () => ({
-			trapezoidDescriptor: {
-				dimensions: {
-					width: 18,
-					height: 15,
-				},
-				correctColors: [
-					{ x: 3, y: 7 },
-					{ x: 4, y: 7 },
-					{ x: 5, y: 7 },
-					{ x: 6, y: 7 },
-					{ x: 7, y: 7 },
-					{ x: 8, y: 7 },
-					{ x: 9, y: 7 },
-					{ x: 10, y: 7 },
-					{ x: 11, y: 7 },
-					{ x: 12, y: 7 },
-					{ x: 13, y: 7 },
-					{ x: 14, y: 7 },
-					{ x: 15, y: 7 },
-					{ x: 16, y: 7 },
-					{ x: 17, y: 7 },
-
-					{ x: 15, y: 6 },
-					{ x: 14, y: 5 },
-					{ x: 13, y: 4 },
-
-					{ x: 12, y: 3 },
-					{ x: 11, y: 3 },
-					{ x: 10, y: 3 },
-					{ x: 9, y: 3 },
-					{ x: 8, y: 3 },
-
-					{ x: 7, y: 4 },
-					{ x: 6, y: 5 },
-					{ x: 5, y: 6 },
-				],
-			},
-		}),
 	});
 </script>
 <style lang="scss" scoped>
