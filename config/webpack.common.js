@@ -34,7 +34,8 @@ const paths = {
 
 const entries = {};
 const appsPath = path.resolve(paths.src, 'app');
-const apps = fs.readdirSync(appsPath);
+let apps = fs.readdirSync(appsPath);
+apps = apps.filter((app) => app != '.DS_Store');
 for (const app of apps) entries[app] = path.resolve(appsPath, app, 'index.ts');
 
 const options = {};
@@ -155,7 +156,7 @@ const webpack = {
 			// =========================================================================
 			// webpack 5 asset-modules
 			{
-        // Exclude .js .ts .vue files.
+				// Exclude .js .ts .vue files.
 				test: /\/assets\/.*\.(?!js|ts|vue)/,
 				type: 'asset',
 			},
