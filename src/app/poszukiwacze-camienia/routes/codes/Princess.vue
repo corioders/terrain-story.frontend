@@ -1,15 +1,13 @@
 <template>
 	<p>Księżniczka</p>
 	<Video url="https://www.youtube.com/embed/qJnJCPDnqvU" />
-	<Labyrinth :labyrinthDescriptor="labyrinthDescriptor" @correct="isCorrect = true" />
-	<CheckButton @click="handleCheck()">SPRAWDŹ</CheckButton>
+	<Labyrinth :labyrinthDescriptor="labyrinthDescriptor" @correct="finishHandler()" />
 </template>
 
 <script lang="ts">
-	import { defineComponent, ref } from 'vue';
+	import { defineComponent } from 'vue';
 
 	import Video from '@/components/Video.vue';
-	import CheckButton from '@/components/buttons/CheckButton.vue';
 
 	import { labyrinthDescriptor } from '@rock/assets/princess';
 	import Labyrinth from '@rock/components/labyrinth/Labyrinth.vue';
@@ -20,17 +18,15 @@
 		components: {
 			Video,
 			Labyrinth,
-			CheckButton,
 		},
 		setup() {
 			const store = useProgressStore();
-			const isCorrect = ref<boolean>(false);
 
-			const handleCheck = (): void => {
-				if (isCorrect.value === true) store.finishPuzzle('Princess');
+			const finishHandler = (): void => {
+				store.finishPuzzle('Princess');
 			};
 
-			return { labyrinthDescriptor, isCorrect, handleCheck };
+			return { labyrinthDescriptor, finishHandler };
 		},
 	});
 </script>
