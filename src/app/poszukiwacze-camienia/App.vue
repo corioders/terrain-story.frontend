@@ -4,7 +4,7 @@
 			<Flex gap="12px">
 				<router-view />
 				<MapLink mapUrl="/mapa" />
-				<SkipNav v-if="!__IS_PRODUCTION__" :nextRoute="nextRoute" />
+				<SkipNav v-if="!IS_PRODUCTION" :nextRoute="nextRoute" />
 			</Flex>
 			<CFooter />
 		</div>
@@ -36,7 +36,7 @@
 		},
 		setup() {
 			document.title = 'Poszukiwacze Camienia';
-			return { nextRoute, themeOverrides, __IS_PRODUCTION__: __IS_PRODUCTION__ };
+			return { nextRoute, themeOverrides, IS_PRODUCTION: __IS_PRODUCTION__ };
 		},
 	});
 </script>

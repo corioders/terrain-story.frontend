@@ -1,7 +1,7 @@
 <template>
 	<h1>Poszukiwacze camienia</h1>
 	<p>strona główna (po wejściu na strone nie przez kod qr)</p>
-	<DevNav v-if="!__IS_PRODUCTION__" :routes="routes" />
+	<DevNav v-if="!IS_PRODUCTION" :routes="routes" />
 </template>
 
 <script lang="ts">
@@ -17,7 +17,7 @@
 			DevNav,
 		},
 		setup() {
-			return { routes,__IS_PRODUCTION__:__IS_PRODUCTION__ };
+			return { routes, IS_PRODUCTION: __IS_PRODUCTION__ };
 		},
 	});
 </script>
