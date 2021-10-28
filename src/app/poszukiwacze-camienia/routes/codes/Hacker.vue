@@ -1,8 +1,10 @@
 <template>
 	<p>Haker</p>
 	<Video url="https://www.youtube.com/embed/0Gzgvkis0RY" />
-	<Input label="Kod do złamania" name="displacement" @answer="submitDisplacement($event)" />
+	<p>Wpisz liczbę zauważoną na filmiku. Liczba ta jest przesunięciem do w szyfru cezariańskiego.</p>
+	<Input label="Przesunięcie" name="displacement" @answer="submitDisplacement($event)" />
 	<Flex v-if="displacement == 13" gap="12px">
+		<p class="questionHelper">Odkoduj słowo przy użyciu szyfru cezariańskiego</p>
 		<p>MKWOUZĆ</p>
 		<CipherHelper :displacement="displacement" />
 		<Input label="Hasło" name="hackerPasswordInput" @answer="submitPass($event)" />
@@ -55,3 +57,8 @@
 		},
 	});
 </script>
+<style lang="scss" scoped>
+	.questionHelper {
+		text-align: center;
+	}
+</style>
