@@ -11,18 +11,21 @@
 			Powodzenia <br />
 			Wasz Scott
 		</h4>
-    <p>E8, K4, H5, R8, I4, F8, P7, O6, N5, K8, G6, I8, N8, O8, J8, L4, L8, S8, F7, P8, M4, G8, H8, M8, J4, D8</p>
+		<p>E8, K4, H5, R8, I4, F8, P7, O6, N5, K8, G6, I8, N8, O8, J8, L4, L8, S8, F7, P8, M4, G8, H8, M8, J4, D8</p>
 	</n-card>
-	<TrapezoidColoring :trapezoidDescriptor="trapezoidDescriptor" @correct="console.log('correct')" @incorrect="console.log('incorrect')" />
+	<TrapezoidColoring :trapezoidDescriptor="trapezoidDescriptor" @correct="isCorrect = true" @incorrect="isCorrect = false" />
+  <CheckButton @click="handleCheck()" />
 </template>
 
 <script lang="ts">
 	import { NCard } from 'naive-ui';
-	import { defineComponent } from 'vue';
+	import { defineComponent, ref } from 'vue';
 
 	import Video from '@/components/Video.vue';
+	import CheckButton from '@/components/buttons/CheckButton.vue';
 
 	import TrapezoidColoring from '@/app/poszukiwacze-camienia/components/trapezoidColoring/TrapezoidColoring.vue';
+	import { useProgressStore } from '@rock/store/progress';
 
 	export default defineComponent({
 		name: 'Archaeologist',
@@ -30,9 +33,17 @@
 			NCard,
 			Video,
 			TrapezoidColoring,
+			CheckButton,
 		},
 		setup() {
-			return { console };
+			const store = useProgressStore();
+			const isCorrect = ref<boolean>(false);
+
+			const handleCheck = (): void => {
+				if (isCorrect.value === true) store.finishPuzzle('Archaeologist');
+			};
+
+			return { isCorrect, handleCheck };
 		},
 		data: () => ({
 			trapezoidDescriptor: {

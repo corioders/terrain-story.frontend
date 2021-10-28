@@ -38,7 +38,7 @@
 	export default defineComponent({
 		name: 'TrapezoidColoring',
 		components: {
-			// NScrollbar,
+			NScrollbar,
 		},
 		props: {
 			trapezoidDescriptor: {
