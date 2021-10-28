@@ -20,7 +20,7 @@
 	import CheckButton from '@/components/buttons/CheckButton.vue';
 	import CipherHelper from '@/components/cipherHelper/CipherHelper.vue';
 
-	import { useProgressStore } from '../../store/progress';
+	import { useProgressStore } from '@rock/store/progress';
 
 	export default defineComponent({
 		name: 'Hacker',

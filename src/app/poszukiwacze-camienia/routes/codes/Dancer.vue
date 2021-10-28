@@ -14,7 +14,7 @@
 
 	import { dancer as questions } from '@/app/poszukiwacze-camienia/assets/questions';
 
-	import { useProgressStore } from '../../store/progress';
+	import { useProgressStore } from '@rock/store/progress';
 
 	export default defineComponent({
 		name: 'Dancer',
