@@ -1,6 +1,7 @@
 <template>
 	<p>Mag</p>
 	<Video url="https://www.youtube.com/embed/rh04Fv24fjo" />
+	Znajdź po trzy różnice na krażdym ze zdjęć
 	<n-space vertical>
 		<Differences name="mage" :descriptors="descriptors" @correct="isCorrect = true" />
 	</n-space>

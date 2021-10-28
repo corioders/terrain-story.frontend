@@ -1,6 +1,5 @@
 <template>
 	<Flex alignItems="flex-start">
-		<label :for="name">{{ label }}</label>
 		<n-input :id="name" type="text" :placeholder="label" @change="$emit('answer', $event)" @input="$emit('answer', $event)" />
 	</Flex>
 </template>
