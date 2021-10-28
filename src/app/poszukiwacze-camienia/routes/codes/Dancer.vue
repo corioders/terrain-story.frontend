@@ -1,7 +1,17 @@
 <template>
 	<p>Tancerz</p>
 	<Video url="https://www.youtube.com/embed/8O_EcEENaaw" />
-	<SingleChoiceQuestions :questions="questions" name="dance" @correct="isCorrect = true" @incorrect="isCorrect = false" />
+	<SingleChoiceQuestions :questions="questions" name="dance" @correct="isCorrect = true" @incorrect="isCorrect = false">
+		<template #0>
+			<audio controls :src="require('@rock/assets/dancer/belgijka.wav')"></audio>
+		</template>
+		<template #1>
+			<audio controls :src="require('@rock/assets/dancer/macarena.wav')"></audio>
+		</template>
+		<template #2>
+			<audio controls :src="require('@rock/assets/dancer/tango.wav')"></audio>
+		</template>
+	</SingleChoiceQuestions>
 	<CheckButton @click="handleCheck()" />
 </template>
 
@@ -13,7 +23,6 @@
 	import SingleChoiceQuestions from '@/components/closedQuestion/SingleChoiceQuestions.vue';
 
 	import { dancer as questions } from '@/app/poszukiwacze-camienia/assets/questions';
-
 	import { useProgressStore } from '@rock/store/progress';
 
 	export default defineComponent({
