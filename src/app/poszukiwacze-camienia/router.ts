@@ -110,13 +110,15 @@ const router = createRouter({
 
 router.beforeEach((to) => {
 	const store = useProgressStore();
-	const nameString = String(to.name);
+	const toNameString = String(to.name);
 
-	if (to.name !== 'End' && store.ended) return { name: 'End' };
-	if (to.name !== 'Start' && !store.started) return { name: 'Start', params: { toName: nameString } };
-	if (to.name === 'End' && !store.ended) return false;
+	if (toNameString === 'End' && !store.ended) return false;
+	if (toNameString === 'Start' && store.started) return false;
 
-	if (isPuzzleID(nameString) && store.puzzles[nameString] === true) return { name: 'AlreadyDone' };
+	if (!isPuzzleID(toNameString)) return true;
+	if (store.ended) return { name: 'End' };
+	if (!store.started) return { name: 'Start', params: { toName: toNameString } };
+	if (store.puzzles[toNameString] === true) return { name: 'AlreadyDone' };
 
 	return;
 });
