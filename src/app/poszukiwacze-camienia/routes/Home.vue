@@ -93,7 +93,7 @@
 				width: 200px;
 				max-height: 150px;
 				object-fit: contain;
-				margin: 8px 0;
+				margin: 18px 0;
 			}
 		}
 		.dark {
