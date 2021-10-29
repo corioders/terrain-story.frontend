@@ -101,6 +101,10 @@ export const routes: RouteRecordRaw[] = [
 		name: 'Financing',
 		component: (): Promise<Component> => import('@/components/Financing.vue'),
 	},
+	{
+		path: '/:pathMatch(.*)*',
+		redirect: '/',
+	},
 ];
 
 const router = createRouter({
