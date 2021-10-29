@@ -62,7 +62,7 @@ steps:
         # When _MODE is empty then we are performing a standard build
         if [[ "${_MODE}" == "" ]]; then
             yarn produce
-            exit 0
+            exit $?
         fi
         yarn build:dev
 
