@@ -1,5 +1,5 @@
 <template>
-	<n-button :type="wrongAnswerState ? 'error' : 'default'" size="large" @click="handleClick($event)">
+	<n-button :type="wrongAnswerState ? 'error' : 'primary'" size="large" @click="handleClick($event)">
 		{{ wrongAnswerState ? 'Zła odpowiedź' : 'Sprawdź' }}
 	</n-button>
 </template>
