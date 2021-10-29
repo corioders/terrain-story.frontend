@@ -1,12 +1,11 @@
 <template>
-	<n-space :wrap="false">
+	<div class="container">
 		<canvas ref="canvasRef" class="image"></canvas>
 		<img :src="differenceDescriptor.originalPhotoSrc" class="image" />
-	</n-space>
+	</div>
 </template>
 
 <script lang="ts">
-	import { NSpace } from 'naive-ui';
 	import { defineComponent, onMounted, PropType, ref } from 'vue';
 
 	import { DifferenceDescriptor, PhotoDifference } from './difference';
@@ -31,9 +30,6 @@
 	}
 
 	export default defineComponent({
-		components: {
-			NSpace,
-		},
 		props: {
 			differenceDescriptor: {
 				type: Object as PropType<DifferenceDescriptor>,
@@ -94,11 +90,19 @@
 </script>
 
 <style lang="scss" scoped>
-	.n-space {
+	.container {
+		margin: 16px 0;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 8px;
+		width: 100%;
+		max-width: 950px;
 		canvas,
 		img {
-			width: 46vw;
-			max-width: 469px;
+			width: 95%;
+			max-height: 48vh;
+			object-fit: contain;
 		}
 	}
 </style>
