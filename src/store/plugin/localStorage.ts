@@ -1,4 +1,4 @@
-import { PiniaStorePlugin } from 'pinia';
+import { PiniaStorePlugin, Store } from 'pinia';
 
 export function createLocalStoragePlugin(): PiniaStorePlugin {
 	const plugin: PiniaStorePlugin = (context) => {
@@ -11,9 +11,14 @@ export function createLocalStoragePlugin(): PiniaStorePlugin {
 			return;
 		}
 
-		return JSON.parse(stateJson) as Object;
+		return JSON.parse(stateJson) as Record<string, unknown>;
 	};
 	return plugin;
+}
+
+export function removeLocalStorage(store: Store): void {
+	const key = getKey(store.$id);
+	window.localStorage.removeItem(key);
 }
 
 function getKey(storeId: string): string {

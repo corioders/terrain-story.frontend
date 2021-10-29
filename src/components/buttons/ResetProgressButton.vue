@@ -6,15 +6,22 @@
 	import { NButton } from 'naive-ui';
 	import { defineComponent } from 'vue';
 
+	import { removeLocalStorage } from '@/store/plugin/localStorage';
+
+	import { useProgressStore } from '@rock/store/progress';
+
 	export default defineComponent({
 		name: 'ResetProgressButton',
 		components: {
 			NButton,
 		},
 		setup() {
+			const store = useProgressStore();
+
 			function handleClick(): void {
-				console.log('Reset progress');
+				removeLocalStorage(store);
 			}
+
 			return { handleClick };
 		},
 	});
