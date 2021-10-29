@@ -14,7 +14,7 @@
 		<p>E8, K4, H5, R8, I4, F8, P7, O6, N5, K8, G6, I8, N8, O8, J8, L4, L8, S8, F7, P8, M4, G8, H8, M8, J4, D8</p>
 	</n-card>
 	<TrapezoidColoring :trapezoidDescriptor="trapezoidDescriptor" @correct="isCorrect = true" @incorrect="isCorrect = false" />
-	<CheckButton @click="handleCheck()" />
+	<CheckButton :isCorrect="isCorrectState" @click="handleCheck" />
 </template>
 
 <script lang="ts">
@@ -39,12 +39,15 @@
 		setup() {
 			const store = useProgressStore();
 			const isCorrect = ref<boolean>(false);
+			const isCorrectState = ref(false);
 
 			const handleCheck = (): void => {
+				isCorrectState.value = isCorrect.value;
+				console.log(isCorrectState);
 				if (isCorrect.value === true) store.finishPuzzle('Archaeologist');
 			};
 
-			return { trapezoidDescriptor, isCorrect, handleCheck };
+			return { trapezoidDescriptor, isCorrect, handleCheck, isCorrectState };
 		},
 	});
 </script>
