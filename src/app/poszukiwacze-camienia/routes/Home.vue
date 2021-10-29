@@ -67,6 +67,7 @@
 </script>
 <style lang="scss" scoped>
 	.flex {
+		width: 100%;
 		img {
 			width: 100%;
 			max-height: 100%;
