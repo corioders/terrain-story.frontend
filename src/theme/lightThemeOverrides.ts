@@ -29,5 +29,10 @@ export const themeOverrides: GlobalThemeOverrides = {
 		successColorHover: primary,
 		successColorPressed: primaryDark,
 		successColorSuppl: primary,
+
+		warningColor: accentDark,
+		warningColorHover: accent,
+		warningColorPressed: accentDark,
+		warningColorSuppl: accent,
 	},
 };

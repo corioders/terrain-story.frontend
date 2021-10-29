@@ -1,6 +1,7 @@
 <template>
 	<n-config-provider :theme-overrides="themeOverrides">
 		<div id="app">
+			<Header />
 			<Flex gap="12px">
 				<router-view />
 				<MapLink v-if="isPuzzleID($route.name)" mapUrl="/mapa" />
@@ -18,6 +19,7 @@
 
 	import Flex from '@/layouts/Flex.vue';
 
+	import Header from '@/components/Header.vue';
 	import SkipNav from '@/components/devHelpers/SkipNav.vue';
 	import MapLink from '@/components/map/MapLink.vue';
 
@@ -30,6 +32,7 @@
 		components: {
 			CFooter,
 			Flex,
+			Header,
 			NConfigProvider,
 			NGlobalStyle,
 			MapLink,
