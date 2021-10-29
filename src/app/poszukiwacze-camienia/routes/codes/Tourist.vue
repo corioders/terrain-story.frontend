@@ -1,5 +1,4 @@
 <template>
-	<p>Turysta</p>
 	<Video url="https://www.youtube.com/embed/HcVCHKHy-Xw" />
 	<SingleChoiceQuestions :questions="questions" name="place" @correct="isCorrect = true" @incorrect="isCorrect = false">
 		<template #0>
@@ -15,7 +14,7 @@
 			<img src="@rock/assets/places/3.jpg" alt="Miejsce 4" />
 		</template>
 	</SingleChoiceQuestions>
-	<CheckButton @click="handleCheck" />
+	<CheckButton :isCorrect="isCorrect" @click="handleCheck" />
 </template>
 
 <script lang="ts">

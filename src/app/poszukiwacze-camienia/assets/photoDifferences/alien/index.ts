@@ -1,16 +1,16 @@
 import { DifferenceDescriptor } from '@rock/components/photoDifferences/difference';
 
-import img1 from './1.jpg';
-import img2 from './2.jpg';
+import img1 from './1.png';
+import img2 from './2.png';
 
 const differenceDescriptor: DifferenceDescriptor = {
 	originalPhotoSrc: img1 as string,
 	differentPhotoSrc: img2 as string,
-	strokeStyle: 'green',
+	strokeStyle: 'red',
 	differences: [
-		{ x: 415, y: 555, radius: 35 },
-		{ x: 595, y: 103, radius: 35 },
-		{ x: 308, y: 785, radius: 35 },
+		{ x: 595, y: 12, radius: 40 },
+		{ x: 413, y: 462, radius: 57 },
+		{ x: 305, y: 688, radius: 45 },
 	],
 };
 

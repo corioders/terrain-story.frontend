@@ -92,9 +92,18 @@ export const routes: RouteRecordRaw[] = [
 		component: (): Promise<Component> => import('@rock/routes/TermsOfUse.vue'),
 	},
 	{
+		path: '/polityka-prywatnosci',
+		name: 'PrivacyPolicy',
+		component: (): Promise<Component> => import('@rock/routes/PrivacyPolicy.vue'),
+	},
+	{
 		path: '/finansowanie',
 		name: 'Financing',
 		component: (): Promise<Component> => import('@/components/Financing.vue'),
+	},
+	{
+		path: '/:pathMatch(.*)*',
+		redirect: '/',
 	},
 ];
 
@@ -105,11 +114,15 @@ const router = createRouter({
 
 router.beforeEach((to) => {
 	const store = useProgressStore();
-	if (to.name !== 'Start' && !store.started) return { name: 'Start', params: { toName: String(to.name) } };
-	if (to.name === 'End' && !store.ended) return false;
-  
-	const nameString = String(to.name);
-	if (isPuzzleID(nameString) && store.puzzles[nameString] === true) return { name: 'AlreadyDone' };
+	const toNameString = String(to.name);
+
+	if (toNameString === 'End' && !store.ended) return false;
+	if (toNameString === 'Start' && store.started) return false;
+
+	if (!isPuzzleID(toNameString)) return true;
+	if (store.ended) return { name: 'End' };
+	if (!store.started) return { name: 'Start', params: { toName: toNameString } };
+	if (store.puzzles[toNameString] === true) return { name: 'AlreadyDone' };
 
 	return;
 });

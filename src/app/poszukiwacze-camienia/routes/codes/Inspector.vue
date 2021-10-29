@@ -1,5 +1,4 @@
 <template>
-	<p>Inspektor</p>
 	<Video url="https://www.youtube.com/embed/6sP82sl1tZY" />
 	<n-card title="Zeznania świadków" class="witnesses">
 		<n-space vertical>
@@ -8,8 +7,9 @@
 			</n-card>
 		</n-space>
 	</n-card>
+	<p class="questionHelper">Wskaż sprawcę włamania</p>
 	<SingleChoiceQuestion :options="question.options" :answer="question.answer" disableMixing name="causer" @correct="isCorrect = true" @incorrect="isCorrect = false" />
-	<CheckButton @click="handleCheck" />
+	<CheckButton :isCorrect="isCorrect" @click="handleCheck" />
 </template>
 
 <script lang="ts">
@@ -57,5 +57,8 @@
 				width: 100%;
 			}
 		}
+	}
+	.questionHelper {
+		text-align: center;
 	}
 </style>

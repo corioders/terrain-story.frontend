@@ -43,7 +43,14 @@ export const useProgressStore = defineStore({
 
 		finishPuzzle(puzzleId: puzzleID) {
 			this.puzzles[puzzleId] = true;
-			router.replace({ name: 'Done' });
+
+			// Check if all puzzles are solved.
+			if (!Object.values(this.puzzles).includes(false)) {
+				this.ended = true;
+				router.replace({ name: 'End' });
+			} else {
+				router.replace({ name: 'Done' });
+			}
 		},
 	},
 });

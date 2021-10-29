@@ -1,10 +1,10 @@
 <template>
-	<p>Mag</p>
 	<Video url="https://www.youtube.com/embed/rh04Fv24fjo" />
+	<p class="questionHelper">Znajdź po trzy różnice na każdym ze zdjęć</p>
 	<n-space vertical>
 		<Differences name="mage" :descriptors="descriptors" @correct="isCorrect = true" />
 	</n-space>
-	<CheckButton @click="handleCheck()" />
+	<CheckButton :isCorrect="isCorrect" @click="handleCheck()" />
 </template>
 
 <script lang="ts">
@@ -42,3 +42,8 @@
 		},
 	});
 </script>
+<style lang="scss" scoped>
+	.questionHelper {
+		text-align: center;
+	}
+</style>

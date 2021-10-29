@@ -5,6 +5,11 @@
 <script lang="ts">
 	import { NButton } from 'naive-ui';
 	import { defineComponent } from 'vue';
+	import { useRouter } from 'vue-router';
+
+	import { removeLocalStorage } from '@/store/plugin/localStorage';
+
+	import { useProgressStore } from '@rock/store/progress';
 
 	export default defineComponent({
 		name: 'ResetProgressButton',
@@ -12,9 +17,14 @@
 			NButton,
 		},
 		setup() {
+			const store = useProgressStore();
+			const router = useRouter();
+
 			function handleClick(): void {
-				console.log('Reset progress');
+				removeLocalStorage(store);
+				router.replace({ name: 'Home' });
 			}
+
 			return { handleClick };
 		},
 	});

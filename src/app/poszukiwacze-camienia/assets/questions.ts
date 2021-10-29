@@ -59,8 +59,8 @@ export const treasurer: Question[] = [
 		answer: 'w słowniku',
 	},
 	{
-		question: 'Parys rozdzielił po trzy jabłka dla każdej z Bogiń a mimo to jedno jabłko zostało w koszyku. Jak to możliwe?',
-		options: ['jednej dał jabłko z koszykiem', 'jedno jabłko było zepsute i zostało w koszyku', 'jedna z bogiń nie przyjęła podarunku', 'koszyk zawierał 10 jabłek'],
+		question: 'Parys miał 3 jabłka w koszyku. Każdej z bogiń dał po jednym jabłku. Mimo to jedno zostało w koszyku. Jak to jest możliwe?',
+		options: ['jednej dał jabłko z koszykiem', 'jedno jabłko było zepsute i zostało w koszyku', 'jedna z bogiń nie przyjęła podarunku', 'koszyk zawierał 2 jabłka'],
 		answer: 'jednej dał jabłko z koszykiem',
 	},
 	{

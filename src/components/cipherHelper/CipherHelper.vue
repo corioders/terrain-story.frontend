@@ -1,10 +1,12 @@
 <template>
 	<div class="alphabet">
 		<p>
-			<span v-for="(letter, i) in alphabet" :key="`${i}-letter-${letter}`"><span v-if="i > 0">, </span>{{ letter }}</span>
+			<span v-for="(displacedLetter, i) in displacedAlphabet" :key="`${i}-displacedLetter-${displacedLetter}`" class="letter">
+				{{ displacedLetter }}
+			</span>
 		</p>
 		<p>
-			<span v-for="(displacedLetter, i) in displacedAlphabet" :key="`${i}-displacedLetter-${displacedLetter}`"><span v-if="i > 0">, </span>{{ displacedLetter }}</span>
+			<span v-for="(letter, i) in alphabet" :key="`${i}-letter-${letter}`" class="letter">{{ letter }}</span>
 		</p>
 	</div>
 </template>
@@ -45,6 +47,10 @@
 		text-align: center;
 		p {
 			margin-left: 12px;
+		}
+		.letter {
+			display: inline-block;
+			width: 22px;
 		}
 	}
 </style>
