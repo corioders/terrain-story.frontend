@@ -1,12 +1,12 @@
 <template>
 	<div class="alphabet">
 		<p>
-			<span v-for="(letter, i) in alphabet" :key="`${i}-letter-${letter}`" class="letter">{{ letter }}</span>
-		</p>
-		<p>
 			<span v-for="(displacedLetter, i) in displacedAlphabet" :key="`${i}-displacedLetter-${displacedLetter}`" class="letter">
 				{{ displacedLetter }}
 			</span>
+		</p>
+		<p>
+			<span v-for="(letter, i) in alphabet" :key="`${i}-letter-${letter}`" class="letter">{{ letter }}</span>
 		</p>
 	</div>
 </template>
