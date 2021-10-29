@@ -1,5 +1,4 @@
 <template>
-	<p>Haker</p>
 	<Video url="https://www.youtube.com/embed/0Gzgvkis0RY" />
 	<p>Wpisz liczbę zauważoną na filmiku. Liczba ta jest przesunięciem do w szyfru cezariańskiego.</p>
 	<Input label="Przesunięcie" name="displacement" @answer="submitDisplacement($event)" />

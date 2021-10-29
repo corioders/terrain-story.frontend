@@ -1,5 +1,4 @@
 <template>
-	<p>Turysta</p>
 	<Video url="https://www.youtube.com/embed/HcVCHKHy-Xw" />
 	<SingleChoiceQuestions :questions="questions" name="place" @correct="isCorrect = true" @incorrect="isCorrect = false">
 		<template #0>

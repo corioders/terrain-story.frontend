@@ -27,6 +27,7 @@
 </script>
 <style lang="scss" scoped>
 	.container {
+		margin-top: 12px;
 		width: 95%;
 		max-width: 950px;
 		.inner {

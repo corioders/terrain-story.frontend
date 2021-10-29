@@ -1,5 +1,4 @@
 <template>
-	<p>Inspektor</p>
 	<Video url="https://www.youtube.com/embed/6sP82sl1tZY" />
 	<n-card title="Zeznania świadków" class="witnesses">
 		<n-space vertical>

@@ -1,5 +1,4 @@
 <template>
-	<p>Księżniczka</p>
 	<Video url="https://www.youtube.com/embed/qJnJCPDnqvU" />
 	<p class="questionHelper">Przejdź labirynt</p>
 	<Labyrinth :labyrinthDescriptor="labyrinthDescriptor" @correct="finishHandler()" />
