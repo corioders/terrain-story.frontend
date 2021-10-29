@@ -25,8 +25,6 @@ steps:
 
         last_hash=$(cat /workspace/.cloudbuild/frontend_sha)
         current_hash=${SHORT_SHA}
-        echo ${last_hash}
-        echo ${current_hash}
         if [[ ${last_hash} != ${current_hash} ]]; then
           exit 0
         fi
