@@ -6,11 +6,11 @@ import img2 from './2.png';
 const differenceDescriptor: DifferenceDescriptor = {
 	originalPhotoSrc: img1 as string,
 	differentPhotoSrc: img2 as string,
-	strokeStyle: 'green',
+	strokeStyle: 'red',
 	differences: [
-		{ x: 75, y: 202, radius: 35 },
-		{ x: 202, y: 517, radius: 35 },
-		{ x: 746, y: 447, radius: 20 },
+		{ x: 10, y: 194, radius: 35 },
+		{ x: 155, y: 532, radius:45 },
+		{ x: 700, y: 430, radius: 40 },
 	],
 };
 
