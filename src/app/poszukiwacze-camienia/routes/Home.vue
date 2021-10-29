@@ -21,7 +21,7 @@
 		<section class="dark">
 			<Flex>
 				<p class="head">Twórcy Gry</p>
-				<img class="logo" src="@/assets/logo.png" alt="Terrain Story" />
+				<img class="logo" src="@/assets/whiteLogo.png" alt="Terrain Story" />
 				<img class="logo" src="@/assets/CAMLogo.png" alt="CAM" />
 			</Flex>
 		</section>
@@ -93,7 +93,7 @@
 				width: 200px;
 				max-height: 150px;
 				object-fit: contain;
-				margin: 8px 0;
+				margin: 18px 0;
 			}
 		}
 		.dark {
