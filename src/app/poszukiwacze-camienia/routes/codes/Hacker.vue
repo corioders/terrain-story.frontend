@@ -5,7 +5,11 @@
 	<Flex v-if="displacement == 13" gap="12px">
 		<p class="questionHelper">Odkoduj słowo przy użyciu szyfru cezariańskiego</p>
 		<p>MKWOUZĆ</p>
-		<CipherHelper :displacement="displacement" />
+	</Flex>
+
+	<CipherHelper v-if="displacement == 13" :displacement="displacement" />
+
+	<Flex v-if="displacement == 13" gap="12px">
 		<Input label="Hasło" name="hackerPasswordInput" @answer="submitPass($event)" />
 		<CheckButton :isCorrect="isCorrect" @click="handleCheck()" />
 	</Flex>
