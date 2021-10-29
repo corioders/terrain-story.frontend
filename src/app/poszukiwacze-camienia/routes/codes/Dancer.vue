@@ -12,7 +12,7 @@
 			<audio controls :src="require('@rock/assets/dancer/tango.wav')"></audio>
 		</template>
 	</SingleChoiceQuestions>
-	<CheckButton @click="handleCheck()" />
+	<CheckButton :isCorrect="isCorrect" @click="handleCheck()" />
 </template>
 
 <script lang="ts">
