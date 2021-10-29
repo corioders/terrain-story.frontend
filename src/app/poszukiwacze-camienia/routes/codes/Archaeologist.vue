@@ -1,5 +1,4 @@
 <template>
-	<p>Archeolog</p>
 	<Video url="https://www.youtube.com/embed/ftyeIztSF1g" />
 	<n-card title="Szanowni Poszukiwacze Camienia,">
 		<p>

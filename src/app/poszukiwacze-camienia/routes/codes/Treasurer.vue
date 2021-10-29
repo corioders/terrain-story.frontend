@@ -1,5 +1,4 @@
 <template>
-	<p>Skarbek</p>
 	<Video url="https://www.youtube.com/embed/P2dcu-dIhhU" />
 	<SingleChoiceQuestions :questions="questions" name="mystery" @correct="isCorrect = true" @incorrect="isCorrect = false" />
 	<CheckButton :isCorrect="isCorrect" @click="handleCheck" />
