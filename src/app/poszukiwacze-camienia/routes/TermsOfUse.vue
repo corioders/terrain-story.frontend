@@ -9,7 +9,9 @@
 				<li>Organizatorami Gry jest: Centrum Aktywności Młodzieżowej ul. Kopernika 14, Stowarzyszenie Most wraz ze współpracą z Urzędem Miejskim w Katowicach.</li>
 				<li>
 					Regulamin jest dostępny w siedzibie Centrum Aktywności Młodzieżowej oraz na facebook
-					<a href="https://www.facebook.com/CentrumAktywnosciMlodziezowej">https://www.facebook.com/CentrumAktywnosciMlodziezowej</a>
+					<n-button tag="a" type="info" text href="https://www.facebook.com/CentrumAktywnosciMlodziezowej">
+						https://www.facebook.com/CentrumAktywnosciMlodziezowej
+					</n-button>
 				</li>
 			</ol>
 			<p><strong>Zasady gry</strong></p>
@@ -48,7 +50,7 @@
 				</li>
 				<li>
 					Wszelkie sytuacje sporne lub nieścisłości mogące powstać w grze należy kierować do Centrum Aktywności Młodzieżowej prowadzonego przez Stowarzyszenie MOST na
-					adres <a href="mailto:cam@mostkatowice.pl">cam@mostkatowice.pl</a>. Od decyzji osób prowadzących nie ma odwołania.
+					adres <n-button tag="a" type="info" text href="mailto:cam@mostkatowice.pl">cam@mostkatowice.pl</n-button>. Od decyzji osób prowadzących nie ma odwołania.
 				</li>
 				<li><p>Uczestnicy Gry powinni być w dobrym stanie zdrowia, umożliwiającym udział w Grze i biorąc udział w grze oświadczają, że:</p></li>
 				<li><p>są świadoma/y zagrożeń wynikających z narażenia na zakażenie wirusem SARS-CoV-2.</p></li>
@@ -110,7 +112,7 @@
 						przekazane będą GIS oraz podległym mu służbom. Dane o stanie zdrowia będą przechowywane przez 2 tygodnie od daty zakończenia wydarzenia, następnie zostaną
 						zniszczone przez Organizatora. Dane przetwarzane będą zgodnie z wytycznymi Ministerstwa Kultury i Dziedzictwa Narodowego oraz Głównego Inspektora Sanitarnego
 						dla dla organizatorów imprez kulturalnych i rozrywkowych w trakcie epidemii wirusa SARS-CoV-2 w Polsce. Wytyczne dostępne są na portalu
-						<a href="http://www.gov.pl/">www.gov.pl</a>
+						<n-button tag="a" type="info" text href="http://www.gov.pl/">www.gov.pl</n-button>
 					</p>
 				</li>
 				<li>
@@ -134,7 +136,6 @@
 			</ol>
 			<p><strong>Postanowienia końcowe</strong></p>
 			<ol>
-				<li>Regulamin Gry znajduje się na stronie …………………………………………..</li>
 				<li>Organizatorzy nie ponoszą odpowiedzialności za zachowanie uczestnikówGry mogące naruszyć porządek publiczny lub dobra osobiste osób trzecich.</li>
 				<li>Organizatorzy nie są stroną między uczestnikami, a osobami trzecimi, których dobra mogą być naruszone w czasie Gry.</li>
 				<li>W kwestiach dotyczących przebiegu Gry, nieprzewidzianych niniejszym regulaminem, głos rozstrzygający mają Organizatorzy.</li>
@@ -148,12 +149,13 @@
 </template>
 
 <script lang="ts">
-	import { NSpace } from 'naive-ui';
+	import { NButton, NSpace } from 'naive-ui';
 	import { defineComponent } from 'vue';
 
 	export default defineComponent({
 		name: 'TermsOfUse',
 		components: {
+			NButton,
 			NSpace,
 		},
 	});
