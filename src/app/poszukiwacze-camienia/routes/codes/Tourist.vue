@@ -15,7 +15,7 @@
 			<img src="@rock/assets/places/3.jpg" alt="Miejsce 4" />
 		</template>
 	</SingleChoiceQuestions>
-	<CheckButton @click="handleCheck" />
+	<CheckButton :isCorrect="isCorrect" @click="handleCheck" />
 </template>
 
 <script lang="ts">

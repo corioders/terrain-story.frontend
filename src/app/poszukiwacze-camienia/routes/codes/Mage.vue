@@ -5,7 +5,7 @@
 	<n-space vertical>
 		<Differences name="mage" :descriptors="descriptors" @correct="isCorrect = true" />
 	</n-space>
-	<CheckButton @click="handleCheck()" />
+	<CheckButton :isCorrect="isCorrect" @click="handleCheck()" />
 </template>
 
 <script lang="ts">

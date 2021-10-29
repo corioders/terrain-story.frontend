@@ -8,7 +8,7 @@
 		<p>MKWOUZĆ</p>
 		<CipherHelper :displacement="displacement" />
 		<Input label="Hasło" name="hackerPasswordInput" @answer="submitPass($event)" />
-		<CheckButton :incorrectAnswer="incorrectAnswer" @click="handleCheck()" />
+		<CheckButton :isCorrect="isCorrect" @click="handleCheck()" />
 	</Flex>
 </template>
 
@@ -47,14 +47,12 @@
 				if (pass.value.toLowerCase() === 'camelot') isCorrect = true;
 				else isCorrect = false;
 			}
-			const incorrectAnswer = ref(false);
 			const store = useProgressStore();
 			const handleCheck = (): void => {
 				if (isCorrect === true) store.finishPuzzle('Hacker');
-				else incorrectAnswer.value = true;
 			};
 
-			return { submitDisplacement, displacement, submitPass, pass, handleCheck, incorrectAnswer };
+			return { submitDisplacement, displacement, submitPass, pass, handleCheck };
 		},
 	});
 </script>

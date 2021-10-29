@@ -10,7 +10,7 @@
 	</n-card>
 	<p class="questionHelper">Wskaż sprawcę włamania</p>
 	<SingleChoiceQuestion :options="question.options" :answer="question.answer" disableMixing name="causer" @correct="isCorrect = true" @incorrect="isCorrect = false" />
-	<CheckButton @click="handleCheck" />
+	<CheckButton :isCorrect="isCorrect" @click="handleCheck" />
 </template>
 
 <script lang="ts">
