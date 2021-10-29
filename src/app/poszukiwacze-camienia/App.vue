@@ -1,9 +1,10 @@
 <template>
 	<n-config-provider :theme-overrides="themeOverrides">
 		<div id="app">
+			<Header />
 			<Flex gap="12px">
 				<router-view />
-				<MapLink mapUrl="/mapa" />
+				<MapLink v-if="isPuzzleID($route.name)" mapUrl="/mapa" />
 				<SkipNav v-if="!IS_PRODUCTION" :nextRoute="nextRoute" />
 			</Flex>
 			<CFooter />
@@ -18,17 +19,20 @@
 
 	import Flex from '@/layouts/Flex.vue';
 
+	import Header from '@/components/Header.vue';
 	import SkipNav from '@/components/devHelpers/SkipNav.vue';
 	import MapLink from '@/components/map/MapLink.vue';
 
 	import { themeOverrides } from '@/theme/lightThemeOverrides';
 	import CFooter from '@rock/components/Footer.vue';
 	import { nextRoute } from '@rock/router';
+	import { isPuzzleID } from '@rock/routes/codes/puzzle';
 
 	export default defineComponent({
 		components: {
 			CFooter,
 			Flex,
+			Header,
 			NConfigProvider,
 			NGlobalStyle,
 			MapLink,
@@ -36,7 +40,7 @@
 		},
 		setup() {
 			document.title = 'Poszukiwacze Camienia';
-			return { nextRoute, themeOverrides, IS_PRODUCTION: __IS_PRODUCTION__ };
+			return { nextRoute, themeOverrides, isPuzzleID, IS_PRODUCTION: __IS_PRODUCTION__ };
 		},
 	});
 </script>

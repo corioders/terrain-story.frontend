@@ -21,7 +21,7 @@
 		mounted() {
 			setTimeout(() => {
 				this.$router.replace('/mapa');
-			}, 6000);
+			}, 5000);
 		},
 	});
 </script>

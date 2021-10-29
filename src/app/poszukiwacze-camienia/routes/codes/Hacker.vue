@@ -3,9 +3,13 @@
 	<p>Wpisz liczbę zauważoną na filmiku. Liczba ta jest przesunięciem do w szyfru cezariańskiego.</p>
 	<Input label="Przesunięcie" name="displacement" @answer="submitDisplacement($event)" />
 	<Flex v-if="displacement == 13" gap="12px">
-		<p class="questionHelper">Odkoduj słowo przy użyciu szyfru cezariańskiego</p>
+		<p class="questionHelper">Odkoduj słowo przy użyciu szyfru cezariańskiego, pomoże Ci w tym alfabet - górny jest przesunięty, a dolny zwykły</p>
 		<p>MKWOUZĆ</p>
-		<CipherHelper :displacement="displacement" />
+	</Flex>
+
+	<CipherHelper v-if="displacement == 13" :displacement="displacement" />
+
+	<Flex v-if="displacement == 13" gap="12px">
 		<Input label="Hasło" name="hackerPasswordInput" @answer="submitPass($event)" />
 		<CheckButton :isCorrect="isCorrect" @click="handleCheck()" />
 	</Flex>
