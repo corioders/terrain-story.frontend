@@ -9,4 +9,5 @@ export interface DifferenceDescriptor {
 	originalPhotoSrc: string;
 	differentPhotoSrc: string;
 	strokeStyle: string;
+	photoAlt: string;
 }

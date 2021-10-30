@@ -64,6 +64,7 @@ common.vue = {
 		'vue/max-attributes-per-line': 'off',
 		'vue/singleline-html-element-content-newline': 'off',
 		'vue/no-parsing-error': [2, { 'invalid-first-character-of-tag-name': false }],
+		'vue/multi-word-component-names': 'off',
 	},
 };
 
@@ -115,7 +116,7 @@ module.exports = {
 		{
 			globals: {
 				module: true,
-        __IS_PRODUCTION__: true,
+				__IS_PRODUCTION__: true,
 			},
 			files: ['*.vue'],
 			parser: 'vue-eslint-parser',

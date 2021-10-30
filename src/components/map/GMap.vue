@@ -1,5 +1,5 @@
 <template>
-	<iframe :src="url" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
+	<iframe title="Mapa" :src="url" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
 </template>
 
 <script lang="ts">
@@ -21,5 +21,6 @@
 		height: 70vh;
 		max-width: 950px;
 		max-height: 700px;
+		margin: 0 12px;
 	}
 </style>

@@ -9,7 +9,7 @@
 				<n-space vertical>
 					<n-radio v-for="(option, i) in options" :key="`option${i}-${option}`" :value="option" @input="handleClick($event.target.value)">
 						<span v-if="!arePhotos">{{ option }}</span>
-						<img v-else :src="option" />
+						<img v-else :src="option" :alt="i" />
 					</n-radio>
 				</n-space>
 			</n-radio-group>

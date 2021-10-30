@@ -4,9 +4,11 @@
 			<p class="heading">Polityka Prywatności</p>
 			<p>
 				Niniejsza Polityka stanowi podstawową informację o celach, sposobach przetwarzania oraz bezpieczeństwie Twoich danych osobowych, jako użytkownika strony:
-				<n-button tag="a" type="info" text href="https://terrainstory.com/poszukiwacze-camienia/#/">https://terrainstory.com/poszukiwacze-camienia/#/</n-button> (zwanej
-				dalej Stroną). Zapoznając się z Polityką prywatności dowiesz się kto jest administratorem Twoich danych osobowych, jakie dane osobowe są przez Stronę zbierane, w
-				jakich celach są wykorzystywane oraz jak są chronione.
+				<n-button tag="a" target="_blank" rel="noreferrer" type="info" text href="https://terrainstory.com/poszukiwacze-camienia/#/">
+					https://terrainstory.com/poszukiwacze-camienia/#/
+				</n-button>
+				(zwanej dalej Stroną). Zapoznając się z Polityką prywatności dowiesz się kto jest administratorem Twoich danych osobowych, jakie dane osobowe są przez Stronę
+				zbierane, w jakich celach są wykorzystywane oraz jak są chronione.
 			</p>
 			<p>§1. Informacje podstawowe.</p>
 			<ol>
@@ -120,8 +122,8 @@
 				<li>
 					<p>
 						Więcej szczegółowych informacji na temat plików cookies dostępnych jest pod adresem
-						<n-button tag="a" type="info" text href="http://wszystkoociasteczkach.pl">http://wszystkoociasteczkach.pl</n-button> lub w sekcji „Pomoc&quot; w menu
-						przeglądarki internetowej.
+						<n-button tag="a" target="_blank" rel="noreferrer" type="info" text href="http://wszystkoociasteczkach.pl">http://wszystkoociasteczkach.pl</n-button> lub w
+						sekcji „Pomoc&quot; w menu przeglądarki internetowej.
 					</p>
 				</li>
 				<li><p>Jeżeli masz wątpliwości, co do ustawień plików cookies, skontaktuj się z operatorem swojej przeglądarki internetowej.</p></li>
@@ -129,7 +131,7 @@
 				<li>
 					<p>
 						Wzór niniejszej polityki prywatności pochodzi ze strony
-						<n-button tag="a" type="info" text href="https://sardynkibiznesu.pl/pp">https://sardynkibiznesu.pl/pp</n-button>
+						<n-button tag="a" target="_blank" rel="noreferrer" type="info" text href="https://sardynkibiznesu.pl/pp">https://sardynkibiznesu.pl/pp</n-button>
 					</p>
 				</li>
 			</ol>
@@ -150,11 +152,15 @@
 	});
 </script>
 <style lang="scss" scoped>
-	article {
-		.heading {
-			font-size: 2em;
+	.n-space {
+		max-width: 100%;
+		article {
+			.heading {
+				font-size: 2em;
+			}
+			width: 95%;
+			max-width: 950px;
+			padding: 12px;
 		}
-		width: 95%;
-		max-width: 950px;
 	}
 </style>

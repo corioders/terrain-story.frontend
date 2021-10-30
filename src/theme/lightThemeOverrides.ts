@@ -15,10 +15,10 @@ export const accentDarker = '#F1D81E'; // -10
 export const themeOverrides: GlobalThemeOverrides = {
 	common: {
 		fontWeightStrong: '600',
-		primaryColor: primaryDark,
-		primaryColorHover: primary,
-		primaryColorPressed: primaryDark,
-		primaryColorSuppl: primary,
+		primaryColor: primaryDarker,
+		primaryColorHover: primaryDark,
+		primaryColorPressed: primaryDarker,
+		primaryColorSuppl: primaryDark,
 
 		infoColor: secondaryDark,
 		infoColorHover: secondary,
