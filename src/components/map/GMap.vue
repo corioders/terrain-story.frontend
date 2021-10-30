@@ -21,5 +21,6 @@
 		height: 70vh;
 		max-width: 950px;
 		max-height: 700px;
+		margin: 0 12px;
 	}
 </style>
