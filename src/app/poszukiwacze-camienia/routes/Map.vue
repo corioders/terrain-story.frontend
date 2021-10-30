@@ -1,17 +1,17 @@
 <template>
-	<GMap />
+	<LeafletMap />
 	<p>W tych miejscach znajdują się kody QR. Znajdź i zeskanuj je wszystkie, żeby przejść całą grę</p>
 </template>
 
 <script lang="ts">
 	import { defineComponent } from 'vue';
 
-	import GMap from '@/components/map/GMap.vue';
+	import LeafletMap from '@/components/map/LeafletMap.vue';
 
 	export default defineComponent({
 		name: 'Map',
 		components: {
-			GMap,
+			LeafletMap,
 		},
 	});
 </script>
