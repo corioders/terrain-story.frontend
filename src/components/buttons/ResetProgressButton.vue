@@ -1,9 +1,14 @@
 <template>
-	<n-button size="large" type="info" @click="handleClick">Zacznij grać od początku</n-button>
+	<n-popconfirm positive-text="Tak" negative-text="Anuluj" @positive-click="handleClick">
+		<template #trigger>
+			<n-button size="large" type="info">Zacznij grać od początku</n-button>
+		</template>
+		Czy na pewno chcesz zacząć grać od początku?
+	</n-popconfirm>
 </template>
 
 <script lang="ts">
-	import { NButton } from 'naive-ui';
+	import { NButton, NPopconfirm } from 'naive-ui';
 	import { defineComponent } from 'vue';
 	import { useRouter } from 'vue-router';
 
@@ -15,6 +20,7 @@
 		name: 'ResetProgressButton',
 		components: {
 			NButton,
+			NPopconfirm,
 		},
 		setup() {
 			const store = useProgressStore();
