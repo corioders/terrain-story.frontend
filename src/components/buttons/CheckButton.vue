@@ -26,7 +26,7 @@
 			let wrongAnswerState = ref(false);
 			async function handleClick(e: MouseEvent): Promise<void> {
 				emit('click', e);
-				// await sleep(500);
+				await sleep(500);
 				if (!props.isCorrect) {
 					wrongAnswerState.value = true;
 					await sleep(4000);
