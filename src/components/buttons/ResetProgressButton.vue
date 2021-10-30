@@ -1,5 +1,5 @@
 <template>
-	<n-button size="large" type="info" @click="handleClick">Usuń mój postęp</n-button>
+	<n-button size="large" type="info" @click="handleClick">Zacznij grać od początku</n-button>
 </template>
 
 <script lang="ts">
