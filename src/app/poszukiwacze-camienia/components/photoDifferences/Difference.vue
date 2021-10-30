@@ -74,7 +74,7 @@
 
 					for (let i = 0; i < differences.length; i++) {
 						const difference = differences[i];
-						if (!isWithinCircle(x, y, difference.x, difference.y, difference.radius + 10)) {
+						if (!isWithinCircle(x, y, difference.x, difference.y, difference.radius +30)) {
 							continue;
 						}
 

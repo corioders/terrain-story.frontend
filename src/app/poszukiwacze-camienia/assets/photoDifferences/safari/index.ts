@@ -10,7 +10,7 @@ const differenceDescriptor: DifferenceDescriptor = {
 	differences: [
 		{ x: 25, y: 194, radius: 40 },
 		{ x: 155, y: 532, radius: 45 },
-		{ x: 700, y: 430, radius: 40 },
+		{ x: 690, y: 430, radius: 40 },
 	],
 	photoAlt: 'Druga różnica',
 };
