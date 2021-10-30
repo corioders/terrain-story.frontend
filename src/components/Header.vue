@@ -1,6 +1,6 @@
 <template>
 	<header>
-		<img src="@/assets/logo.png" alt="Logo Terrain Story" />
+		<img role="heading" aria-level="1" src="@/assets/logo.png" alt="Logo Terrain Story" />
 	</header>
 </template>
 <style lang="scss" scoped>

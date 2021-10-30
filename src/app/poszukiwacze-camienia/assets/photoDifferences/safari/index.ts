@@ -9,9 +9,10 @@ const differenceDescriptor: DifferenceDescriptor = {
 	strokeStyle: 'red',
 	differences: [
 		{ x: 10, y: 194, radius: 35 },
-		{ x: 155, y: 532, radius:45 },
+		{ x: 155, y: 532, radius: 45 },
 		{ x: 700, y: 430, radius: 40 },
 	],
+	photoAlt: 'Druga różnica',
 };
 
 export default differenceDescriptor;

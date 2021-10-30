@@ -12,6 +12,7 @@ const differenceDescriptor: DifferenceDescriptor = {
 		{ x: 413, y: 462, radius: 57 },
 		{ x: 305, y: 688, radius: 45 },
 	],
+	photoAlt: 'Pierwsza różnica',
 };
 
 export default differenceDescriptor;

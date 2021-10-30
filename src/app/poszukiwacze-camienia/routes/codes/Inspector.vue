@@ -1,8 +1,10 @@
 <template>
 	<Video url="https://www.youtube.com/embed/6sP82sl1tZY" />
-	<n-card title="Zeznania świadków" class="witnesses">
+	<n-card class="witnesses">
+		<h2>Zeznania świadków</h2>
 		<n-space vertical>
-			<n-card v-for="(witness, i) in witnesses" :key="`Witness${i + 1}`" :title="`Zeznanie ${i + 1} świadka`">
+			<n-card v-for="(witness, i) in witnesses" :key="`Witness${i + 1}`">
+				<h3>{{ `Zeznanie ${i + 1} świadka` }}</h3>
 				{{ witness }}
 			</n-card>
 		</n-space>
@@ -52,6 +54,11 @@
 	.witnesses {
 		width: 95%;
 		max-width: 950px;
+		h2,
+		h3 {
+			font-size: 1.3em;
+			margin: 0.5em 0;
+		}
 		.n-space {
 			.n-card {
 				width: 100%;

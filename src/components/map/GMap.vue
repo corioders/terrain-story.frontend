@@ -1,5 +1,5 @@
 <template>
-	<iframe :src="url" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
+	<iframe title="Mapa" :src="url" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
 </template>
 
 <script lang="ts">

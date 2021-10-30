@@ -62,5 +62,6 @@
 <style lang="scss" scoped>
 	.questionHelper {
 		text-align: center;
+		margin: initial 12px;
 	}
 </style>

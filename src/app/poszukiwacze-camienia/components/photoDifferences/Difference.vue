@@ -1,7 +1,7 @@
 <template>
 	<div class="container">
-		<canvas ref="canvasRef" class="image"></canvas>
-		<img :src="differenceDescriptor.originalPhotoSrc" class="image" />
+		<canvas ref="canvasRef" class="image" role="img" :aria-label="differenceDescriptor.photoAlt"></canvas>
+		<img :src="differenceDescriptor.originalPhotoSrc" class="image" :alt="differenceDescriptor.photoAlt" />
 	</div>
 </template>
 
