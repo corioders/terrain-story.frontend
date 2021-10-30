@@ -1,6 +1,6 @@
 <template>
 	<Video url="https://www.youtube.com/embed/0Gzgvkis0RY" />
-	<p>Wpisz liczbę zauważoną na filmiku. Liczba ta jest przesunięciem do w szyfru cezariańskiego.</p>
+	<p class="questionHelper">Wpisz liczbę zauważoną na filmiku. Liczba ta jest przesunięciem do w szyfru cezariańskiego.</p>
 	<Input label="Przesunięcie" name="displacement" @answer="submitDisplacement($event)" />
 	<Flex v-if="displacement == 13" gap="12px">
 		<p class="questionHelper">Odkoduj słowo przy użyciu szyfru cezariańskiego, pomoże Ci w tym alfabet - górny jest przesunięty, a dolny zwykły</p>
