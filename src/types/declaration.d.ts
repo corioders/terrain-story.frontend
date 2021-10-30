@@ -11,8 +11,23 @@ declare module '*.vue' {
 }
 
 // declare assets modules
-declare module '*.svg';
-declare module '*.png';
-declare module '*.jpg';
-declare module '*.scss';
-declare module '*.wav';
+declare module '*.scss' {
+	const data: string;
+	export default data;
+}
+declare module '*.svg' {
+	const data: string;
+	export default data;
+}
+declare module '*.png' {
+	const path: string;
+	export default path;
+}
+declare module '*.jpg' {
+	const data: string;
+	export default data;
+}
+declare module '*.wav' {
+	const data: string;
+	export default data;
+}

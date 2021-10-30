@@ -4,8 +4,8 @@ import img1 from './1.png';
 import img2 from './2.png';
 
 const differenceDescriptor: DifferenceDescriptor = {
-	originalPhotoSrc: img1 as string,
-	differentPhotoSrc: img2 as string,
+	originalPhotoSrc: img1,
+	differentPhotoSrc: img2,
 	strokeStyle: 'red',
 	differences: [
 		{ x: 595, y: 12, radius: 40 },
