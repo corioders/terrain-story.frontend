@@ -87,6 +87,7 @@
 			width: 100%;
 			max-height: 100%;
 			max-width: 950px;
+			margin-bottom: 32px;
 		}
 		section {
 			width: 100%;
