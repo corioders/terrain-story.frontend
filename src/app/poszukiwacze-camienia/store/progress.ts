@@ -1,6 +1,7 @@
 import { defineStore } from 'pinia';
 import { RouteLocationRaw } from 'vue-router';
 
+import mapData from '@rock/assets/map';
 import router from '@rock/router';
 import { puzzleID } from '@rock/routes/codes/puzzle';
 
@@ -26,6 +27,7 @@ export const useProgressStore = defineStore({
 			started: false,
 			ended: false,
 			puzzles: puzzlesDone,
+			mapData,
 		};
 	},
 	actions: {
@@ -43,6 +45,8 @@ export const useProgressStore = defineStore({
 
 		finishPuzzle(puzzleId: puzzleID) {
 			this.puzzles[puzzleId] = true;
+
+			this.mapData.pins[this.mapData.pins.findIndex((pin) => pin.mysteryName == puzzleId)].visited = true;
 
 			// Check if all puzzles are solved.
 			if (!Object.values(this.puzzles).includes(false)) {

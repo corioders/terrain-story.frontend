@@ -4,19 +4,39 @@
 
 <script lang="ts">
 	import * as L from 'leaflet';
-	import { defineComponent, onMounted, ref } from 'vue';
+	import { defineComponent, onMounted, ref, PropType } from 'vue';
+
+	import { useDefaultIcon, useVisitedIcon } from '@/components/map/icon';
+
+	import { MapData } from './map';
+
+	const defaultMarkerIcon = new L.Icon(useDefaultIcon(L.Icon.Default.prototype.options as L.IconOptions));
+	const visitedMarkerIcon = new L.Icon(useVisitedIcon(L.Icon.Default.prototype.options as L.IconOptions));
 
 	export default defineComponent({
 		name: 'LeafletMap',
-		setup() {
+		props: {
+			mapData: {
+				type: Object as PropType<MapData>,
+				required: true,
+			},
+		},
+		setup(props) {
 			const map = ref<HTMLDivElement | null>(null);
 			onMounted(() => {
 				if (map.value !== null) {
-					const myMap = L.map(map.value).setView([50.25667900327114, 19.017880926181164], 13);
+					const lMap = L.map(map.value).setView(props.mapData.center, props.mapData.zoom);
 
 					L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 						attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-					}).addTo(myMap);
+					}).addTo(lMap);
+					props.mapData.pins.forEach((pin) => {
+						L.marker(pin.localization, { icon: !pin.visited ? defaultMarkerIcon : visitedMarkerIcon })
+							.bindPopup(
+								`<p>${pin.name}</p><a href="https://www.google.com/maps/dir//${pin.localization[0]},${pin.localization[1]}" target="_blank" rel="noreferrer">Prowadź</a>`,
+							)
+							.addTo(lMap);
+					});
 				}
 			});
 			return { map };
