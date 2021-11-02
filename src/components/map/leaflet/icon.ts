@@ -1,4 +1,4 @@
-import { Icon, IconOptions } from 'leaflet';
+import { Icon } from 'leaflet';
 
 import iconRetinaVisitedUrl from './assets/marker-icon-2x-visited.png';
 import iconRetinaUrl from './assets/marker-icon-2x.png';
@@ -6,18 +6,18 @@ import iconVisitedUrl from './assets/marker-icon-visited.png';
 import iconUrl from './assets/marker-icon.png';
 import shadowUrl from './assets/marker-shadow.png';
 
-export function useDefaultIcon(options: IconOptions = Icon.Default.prototype.options as IconOptions): IconOptions {
-	const defaultIcon = { ...options };
-	defaultIcon.iconUrl = iconUrl as string;
-	defaultIcon.iconRetinaUrl = iconRetinaUrl as string;
-	defaultIcon.shadowUrl = shadowUrl as string;
-	return defaultIcon;
-}
+const defaultIconOptions = Icon.Default.prototype.options;
 
-export function useVisitedIcon(options: IconOptions = Icon.Default.prototype.options as IconOptions): IconOptions {
-	const visitedIcon = { ...options };
-	visitedIcon.iconUrl = iconVisitedUrl as string;
-	visitedIcon.iconRetinaUrl = iconRetinaVisitedUrl as string;
-	visitedIcon.shadowUrl = shadowUrl as string;
-	return visitedIcon;
-}
+export const defaultIcon = new Icon({
+	...defaultIconOptions,
+	iconUrl: iconUrl,
+	iconRetinaUrl: iconRetinaUrl,
+	shadowUrl: shadowUrl,
+});
+
+export const visitedIcon = new Icon({
+	...defaultIconOptions,
+	iconUrl: iconVisitedUrl,
+	iconRetinaUrl: iconRetinaVisitedUrl,
+	shadowUrl: shadowUrl,
+});

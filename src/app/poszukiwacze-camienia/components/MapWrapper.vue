@@ -1,5 +1,5 @@
 <template>
-	<LeafletMap :mapData="map" :icons="icons" />
+	<LeafletMap :mapData="mapData" :puzzlesDone="puzzlesDone" />
 </template>
 
 <script lang="ts">
@@ -7,8 +7,9 @@
 
 	import LeafletMap from '@/components/map/leaflet/LeafletMap.vue';
 
-	import mapData from '@rock/assets/map';
-	import { useProgressStore } from '@rock/store/progress';
+	import { mapData } from '@rock/assets/map';
+
+	import { useProgressStore } from '../store/progress';
 
 	export default defineComponent({
 		name: 'MapWrapper',
@@ -16,7 +17,9 @@
 			LeafletMap,
 		},
 		setup() {
-			return { map: mapData, icons: useProgressStore().icons };
+			const store = useProgressStore();
+
+			return { mapData, puzzlesDone: store.puzzles };
 		},
 	});
 </script>

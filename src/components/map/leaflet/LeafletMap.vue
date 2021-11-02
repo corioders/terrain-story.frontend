@@ -3,20 +3,21 @@
 </template>
 
 <script lang="ts">
-	import { map, tileLayer, marker, IconOptions, Icon } from 'leaflet';
+	import { map, tileLayer, marker } from 'leaflet';
 	import { defineComponent, onMounted, ref, PropType } from 'vue';
 
+	import { defaultIcon, visitedIcon } from './icon';
 	import { MapData } from './map';
 
 	export default defineComponent({
 		name: 'LeafletMap',
 		props: {
 			mapData: {
-				type: Object as PropType<MapData>,
+				type: Object as PropType<MapData<string>>,
 				required: true,
 			},
-			icons: {
-				type: Array as PropType<IconOptions[]>,
+			puzzlesDone: {
+				type: Object as PropType<Record<string, boolean>>,
 				required: true,
 			},
 		},
@@ -29,13 +30,19 @@
 				tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 					attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
 				}).addTo(lMap);
-				props.mapData.pins.forEach((pin, index) => {
-					marker(pin.localization, { icon: new Icon(props.icons[index]) })
+
+				for (const pin of props.mapData.pins) {
+					let icon = defaultIcon;
+					if (props.puzzlesDone[pin.puzzleID] === true) {
+						icon = visitedIcon;
+					}
+
+					marker(pin.localization, { icon })
 						.bindPopup(
 							`<p>${pin.name}</p><a href="https://www.google.com/maps/dir//${pin.localization[0]},${pin.localization[1]}" target="_blank" rel="noreferrer">Prowadź</a>`,
 						)
 						.addTo(lMap);
-				});
+				}
 			});
 			return { mapRef };
 		},

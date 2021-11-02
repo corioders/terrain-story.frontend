@@ -1,10 +1,6 @@
 import { defineStore } from 'pinia';
 import { RouteLocationRaw } from 'vue-router';
 
-import { useVisitedIcon } from '@/components/map/leaflet/icon';
-import { useDefaultIcon } from '@/components/map/leaflet/icon';
-
-import mapData from '@rock/assets/map';
 import router from '@rock/router';
 import { puzzleID } from '@rock/routes/codes/puzzle';
 
@@ -30,7 +26,6 @@ export const useProgressStore = defineStore({
 			started: false,
 			ended: false,
 			puzzles: puzzlesDone,
-			icons: Array(mapData.pins.length).fill(useDefaultIcon()),
 		};
 	},
 	actions: {
@@ -48,8 +43,6 @@ export const useProgressStore = defineStore({
 
 		finishPuzzle(puzzleId: puzzleID) {
 			this.puzzles[puzzleId] = true;
-
-			this.icons[mapData.pins.findIndex((pin) => pin.mysteryName === puzzleId)] = useVisitedIcon();
 
 			// Check if all puzzles are solved.
 			if (!Object.values(this.puzzles).includes(false)) {
