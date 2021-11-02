@@ -65,23 +65,29 @@
 				}
 
 				let doneDifferences = 0;
+				const differences = [...descriptor.differences];
 				canvas.addEventListener('click', (ev) => {
 					const boundingRect = canvas.getBoundingClientRect();
 
 					const x = map(ev.offsetX, 0, boundingRect.width, 0, canvas.width);
 					const y = map(ev.offsetY, 0, boundingRect.height, 0, canvas.height);
 
-					for (const difference of descriptor.differences) {
-						if (!isWithinCircle(x, y, difference.x, difference.y, difference.radius)) {
+					for (let i = 0; i < differences.length; i++) {
+						const difference = differences[i];
+						if (!isWithinCircle(x, y, difference.x, difference.y, difference.radius +30)) {
 							continue;
 						}
 
-						doneDifferences++;
-						if (doneDifferences === descriptor.differences.length) emit('correct');
+						differences.splice(i, 1);
+						if (differences.length === 0) emit('correct');
 
 						showDifference(difference);
 					}
 				});
+
+				// for (const d of descriptor.differences) {
+				// 	showDifference(d);
+				// }
 			});
 
 			return { canvasRef };
