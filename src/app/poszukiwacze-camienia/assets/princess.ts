@@ -119,3 +119,4 @@ export const labyrinthDescriptor = {
 		y: 12,
 	},
 };
+Object.freeze(labyrinthDescriptor)
