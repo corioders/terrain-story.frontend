@@ -11,7 +11,7 @@
 	import { useProgressStore } from '@rock/store/progress';
 
 	export default defineComponent({
-		name: 'Map',
+		name: 'MapWrapper',
 		components: {
 			LeafletMap,
 		},

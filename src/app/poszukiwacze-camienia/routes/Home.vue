@@ -8,7 +8,7 @@
 					Znajdź kody QR, zeskanuj je i rozwiąż wszystkie zagadki, aby odnaleźć Camień! Kody znajdują się w tych miejscach. Kolejność ich odwiedzania zależy tylko od
 					ciebie. Na wytrwałych czekają nagrody!
 				</p>
-				<Map style="margin-top: 32px" />
+				<MapWrapper style="margin-top: 32px" />
 			</Flex>
 		</section>
 		<section class="light">
@@ -61,14 +61,14 @@
 	import Video from '@/components/Video.vue';
 	import DevNav from '@/components/devHelpers/DevNav.vue';
 
-	import Map from '@rock/components/Map.vue';
+	import MapWrapper from '@rock/components/MapWrapper.vue';
 	import { routes } from '@rock/router';
 
 	export default defineComponent({
 		name: 'Home',
 		components: {
 			Flex,
-			Map,
+			MapWrapper,
 			NButton,
 			NCard,
 			NModal,

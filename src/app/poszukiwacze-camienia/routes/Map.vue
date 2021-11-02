@@ -1,17 +1,17 @@
 <template>
-	<Map />
+	<MapWrapper />
 	<p>W tych miejscach znajdują się kody QR. Znajdź i zeskanuj je wszystkie, żeby przejść całą grę</p>
 </template>
 
 <script lang="ts">
 	import { defineComponent } from 'vue';
 
-	import Map from '@rock/components/Map.vue';
+	import MapWrapper from '@rock/components/MapWrapper.vue';
 
 	export default defineComponent({
 		name: 'Map',
 		components: {
-			Map,
+			MapWrapper,
 		},
 	});
 </script>
