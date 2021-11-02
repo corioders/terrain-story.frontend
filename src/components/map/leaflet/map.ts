@@ -7,11 +7,10 @@ export interface Location {
 	localization: Localization;
 	name: string;
 	mysteryName: string;
-	visited: boolean;
 }
 
 export interface MapData {
 	center: Localization;
 	zoom: number;
-	pins: Location[] | [];
+	pins: Location[];
 }
