@@ -17,19 +17,19 @@ export const dancer: Question[] = [
 		answer: 'tango',
 	},
 ];
-Object.freeze(dancer)
+Object.freeze(dancer);
 
 export const inspector: Question = {
 	options: [
-		require<string>('@rock/assets/suspects/1.png'),
-		require<string>('@rock/assets/suspects/2.png'),
-		require<string>('@rock/assets/suspects/3.png'),
-		require<string>('@rock/assets/suspects/4.png'),
-		require<string>('@rock/assets/suspects/5.png'),
+		require<string>('@rock/assets/suspects/1.webp'),
+		require<string>('@rock/assets/suspects/2.webp'),
+		require<string>('@rock/assets/suspects/3.webp'),
+		require<string>('@rock/assets/suspects/4.webp'),
+		require<string>('@rock/assets/suspects/5.webp'),
 	],
-	answer: require<string>('@rock/assets/suspects/5.png'),
+	answer: require<string>('@rock/assets/suspects/5.webp'),
 };
-Object.freeze(inspector)
+Object.freeze(inspector);
 
 export const tourist: Question[] = [
 	{
@@ -53,7 +53,7 @@ export const tourist: Question[] = [
 		answer: 'Pomnik Beboków',
 	},
 ];
-Object.freeze(tourist)
+Object.freeze(tourist);
 
 export const treasurer: Question[] = [
 	{
@@ -72,4 +72,4 @@ export const treasurer: Question[] = [
 		answer: 'góry',
 	},
 ];
-Object.freeze(treasurer)
+Object.freeze(treasurer);

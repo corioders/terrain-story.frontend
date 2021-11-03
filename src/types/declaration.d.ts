@@ -27,6 +27,10 @@ declare module '*.jpg' {
 	const data: string;
 	export default data;
 }
+declare module '*.webp' {
+	const data: string;
+	export default data;
+}
 declare module '*.wav' {
 	const data: string;
 	export default data;

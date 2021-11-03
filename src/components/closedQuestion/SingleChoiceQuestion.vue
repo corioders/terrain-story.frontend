@@ -78,7 +78,7 @@
 			visibility: v-bind('hideInput(arePhotos)');
 		}
 		img {
-			width: 150px;
+			width: 200px;
 		}
 		p {
 			max-width: 100%;

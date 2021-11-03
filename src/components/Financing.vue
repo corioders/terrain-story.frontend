@@ -1,6 +1,6 @@
 <template>
 	<img
-		src="@/assets/financing.png"
+		src="@/assets/financing.webp"
 		alt="Inicjatywa młodzieżowa realizowana w ramach projektu pn. Centrum Aktywności Młodzieżowej
 Projekt dofinansowany ze środków Unii Europejskiej w ramach Regionalnego Programu Operacyjnego Województwa Śląskiego na lata 2014 – 2020, Działanie 9.1. Aktywna integracja"
 	/>

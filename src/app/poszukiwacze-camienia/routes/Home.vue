@@ -1,6 +1,6 @@
 <template>
 	<Flex>
-		<img src="@rock/assets/rockLogo.png" alt="Logo gry Poszukiwacze Camienia" role="heading" aria-level="2" />
+		<img src="@rock/assets/rockLogo.webp" alt="Logo gry Poszukiwacze Camienia" role="heading" aria-level="2" />
 		<section class="dark">
 			<Flex>
 				<h3>Jak grać?</h3>
@@ -8,21 +8,21 @@
 					Znajdź kody QR, zeskanuj je i rozwiąż wszystkie zagadki, aby odnaleźć Camień! Kody znajdują się w tych miejscach. Kolejność ich odwiedzania zależy tylko od
 					ciebie. Na wytrwałych czekają nagrody!
 				</p>
-				<GMap style="margin-top: 32px" />
+				<GMap url="https://www.google.com/maps/d/u/2/embed?mid=18uPKlUIeYkk0al-D2q9NAfdxmL2rZISO" style="margin-top: 32px" />
 			</Flex>
 		</section>
 		<section class="light">
 			<Flex>
 				<h4>Chcesz wiedzieć więcej?</h4>
-				<p>Nieodłączną częścią naszej gry są filmiki, tutaj możesz zobaczyć ich urywki</p>
+				<p>Nieodłączną częścią naszej gry są filmiki, tutaj możesz zobaczyć ich urywki.</p>
 				<Video url="https://www.youtube.com/embed/AmJaWzUYsow" />
 			</Flex>
 		</section>
 		<section class="dark">
 			<Flex>
 				<h5>Twórcy Gry</h5>
-				<img class="logo" src="@/assets/whiteLogo.png" alt="Terrain Story" />
-				<img class="logo" src="@/assets/CAMLogo.png" alt="CAM" />
+				<img class="logo" src="@/assets/whiteLogo.webp" alt="Terrain Story" />
+				<img class="logo" src="@/assets/CAMLogo.webp" alt="CAM" />
 			</Flex>
 		</section>
 		<section class="light">
@@ -107,6 +107,7 @@
 				max-width: 950px;
 				.n-button {
 					font-size: 18px;
+					text-decoration: underline;
 				}
 			}
 
@@ -136,6 +137,7 @@
 		}
 		.date {
 			color: $secondary;
+			text-decoration: underline;
 		}
 	}
 </style>
