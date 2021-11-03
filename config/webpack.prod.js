@@ -50,18 +50,7 @@ module.exports = {
 	plugins: [...common.webpack.plugins, ...htmlWebpackPlugins],
 
 	optimization: {
-		usedExports: true,
-		minimize: true,
 		minimizer: [new JsMinimizerPlugin({ extractComments: false, terserOptions: { toplevel: true, compress: { passes: 10 } } }), new CssMinimizerPlugin()],
-		splitChunks: {
-			chunks: 'all',
-			minSize: 0,
-			cacheGroups: {
-				vue: { name: 'vue', test: /node_modules\/(@vue|vue|pinia).*/is },
-				polyfills: { name: 'polyfills', test: /node_modules\/(@babel|core-js|regenerator-runtime).*/is },
-				vendor: { name: 'vendor', test: /node_modules.*/is, priority: -5 },
-			},
-		},
 	},
 
 	devServer: config.IS_DEBUG ? common.webpack.devServer : undefined,

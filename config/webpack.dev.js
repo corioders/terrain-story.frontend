@@ -39,24 +39,7 @@ module.exports = {
 
 	optimization: {
 		runtimeChunk: 'single',
-		splitChunks: config.IS_FAST
-			? false
-			: {
-					chunks: 'all',
-					maxInitialRequests: Infinity,
-					minSize: 0,
-					cacheGroups: {
-						vendor: {
-							test: /node_modules\/.*/is,
-							// name: (module) => {
-              //   console.log(module.context)
-							// 	const packageName = module.context.match(/\/node_modules\/(.*?)(\/|$)/is)[1].replace('@', '');
-							// 	if (packageName[0] == '.') packageName = packageName.substring(1);
-							// 	return `z.npm.${packageName}`;
-							// },
-						},
-					},
-			  },
+		splitChunks: config.IS_FAST ? false : undefined,
 	},
 
 	devServer: common.webpack.devServer,
