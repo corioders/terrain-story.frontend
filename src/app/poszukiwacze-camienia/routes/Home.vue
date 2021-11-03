@@ -1,6 +1,6 @@
 <template>
 	<Flex>
-		<img src="@rock/assets/rockLogo.png" alt="Logo gry Poszukiwacze Camienia" role="heading" aria-level="2" />
+		<img src="@rock/assets/rockLogo.webp" alt="Logo gry Poszukiwacze Camienia" role="heading" aria-level="2" />
 		<section class="dark">
 			<Flex>
 				<h3>Jak grać?</h3>
@@ -21,8 +21,8 @@
 		<section class="dark">
 			<Flex>
 				<h5>Twórcy Gry</h5>
-				<img class="logo" src="@/assets/whiteLogo.png" alt="Terrain Story" />
-				<img class="logo" src="@/assets/CAMLogo.png" alt="CAM" />
+				<img class="logo" src="@/assets/whiteLogo.webp" alt="Terrain Story" />
+				<img class="logo" src="@/assets/CAMLogo.webp" alt="CAM" />
 			</Flex>
 		</section>
 		<section class="light">
