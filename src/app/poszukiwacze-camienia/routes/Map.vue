@@ -1,6 +1,6 @@
 <template>
-	<GMap />
-	<p>W tych miejscach znajdują się kody QR. Znajdź i zeskanuj je wszystkie, żeby przejść całą grę</p>
+	<GMap url="https://www.google.com/maps/d/u/2/embed?mid=18uPKlUIeYkk0al-D2q9NAfdxmL2rZISO" />
+	<p>W tych miejscach znajdują się kody QR. Znajdź i zeskanuj je wszystkie, żeby przejść całą grę.</p>
 </template>
 
 <script lang="ts">

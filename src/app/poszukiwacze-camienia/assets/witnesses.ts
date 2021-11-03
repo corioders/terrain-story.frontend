@@ -4,5 +4,6 @@ const witnesses = [
 	'Szanowni Państwo, ja to nie widziałam sprawcy, ale siedzę sobie w toalecie i pudruję nosek a tu nagle jak ktoś nie puści wiązanki. Wszystkich Świętych zobaczyłam. I klnie i klnie przez 3 minuty. Komuś w kabinie oczko w rajtuzach puściło i strasznie się przejął. No grunt, że zaraz potem ktoś z tej kabiny wyleciał i pobiegł do sklepu. Pewnie po lakier… No tyle chciałam powiedzieć. Dziękuję.',
 	'A ja mam dowód! Kłębek kłaków. Urwałem tyle, że szło by z tego zrobić cały warkocz. Państwo teraz zrobię te całe CSI i zaraz będziemy wiedzieć co i jak.',
 ];
+Object.freeze(witnesses);
 
 export default witnesses;

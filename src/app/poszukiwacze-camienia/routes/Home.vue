@@ -8,13 +8,13 @@
 					Znajdź kody QR, zeskanuj je i rozwiąż wszystkie zagadki, aby odnaleźć Camień! Kody znajdują się w tych miejscach. Kolejność ich odwiedzania zależy tylko od
 					ciebie. Na wytrwałych czekają nagrody!
 				</p>
-				<GMap style="margin-top: 32px" />
+				<GMap url="https://www.google.com/maps/d/u/2/embed?mid=18uPKlUIeYkk0al-D2q9NAfdxmL2rZISO" style="margin-top: 32px" />
 			</Flex>
 		</section>
 		<section class="light">
 			<Flex>
 				<h4>Chcesz wiedzieć więcej?</h4>
-				<p>Nieodłączną częścią naszej gry są filmiki, tutaj możesz zobaczyć ich urywki</p>
+				<p>Nieodłączną częścią naszej gry są filmiki, tutaj możesz zobaczyć ich urywki.</p>
 				<Video url="https://www.youtube.com/embed/AmJaWzUYsow" />
 			</Flex>
 		</section>

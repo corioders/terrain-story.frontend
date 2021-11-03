@@ -20,10 +20,10 @@ export const themeOverrides: GlobalThemeOverrides = {
 		primaryColorPressed: primaryDarker,
 		primaryColorSuppl: primaryDark,
 
-		infoColor: secondaryDark,
-		infoColorHover: secondary,
-		infoColorPressed: secondaryDark,
-		infoColorSuppl: secondary,
+		infoColor: secondary,
+		infoColorHover: secondaryDark,
+		infoColorPressed: secondary,
+		infoColorSuppl: secondaryDark,
 
 		successColor: primaryDark,
 		successColorHover: primary,

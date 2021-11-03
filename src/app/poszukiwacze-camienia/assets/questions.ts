@@ -17,6 +17,7 @@ export const dancer: Question[] = [
 		answer: 'tango',
 	},
 ];
+Object.freeze(dancer)
 
 export const inspector: Question = {
 	options: [
@@ -28,6 +29,7 @@ export const inspector: Question = {
 	],
 	answer: require<string>('@rock/assets/suspects/5.png'),
 };
+Object.freeze(inspector)
 
 export const tourist: Question[] = [
 	{
@@ -51,6 +53,7 @@ export const tourist: Question[] = [
 		answer: 'Pomnik Beboków',
 	},
 ];
+Object.freeze(tourist)
 
 export const treasurer: Question[] = [
 	{
@@ -69,3 +72,4 @@ export const treasurer: Question[] = [
 		answer: 'góry',
 	},
 ];
+Object.freeze(treasurer)

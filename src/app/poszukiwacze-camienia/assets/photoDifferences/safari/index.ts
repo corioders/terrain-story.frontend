@@ -14,5 +14,6 @@ const differenceDescriptor: DifferenceDescriptor = {
 	],
 	photoAlt: 'Druga różnica',
 };
+Object.freeze(differenceDescriptor);
 
 export default differenceDescriptor;
