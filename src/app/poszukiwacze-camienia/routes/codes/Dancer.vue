@@ -2,13 +2,13 @@
 	<Video url="https://www.youtube.com/embed/8O_EcEENaaw" />
 	<SingleChoiceQuestions :questions="questions" name="dance" @correct="isCorrect = true" @incorrect="isCorrect = false">
 		<template #0>
-			<audio controls :src="require('@rock/assets/dancer/belgijka.wav')"></audio>
+			<audio controls :src="require('@rock/assets/dancer/belgijka.mp3')"></audio>
 		</template>
 		<template #1>
-			<audio controls :src="require('@rock/assets/dancer/macarena.wav')"></audio>
+			<audio controls :src="require('@rock/assets/dancer/macarena.mp3')"></audio>
 		</template>
 		<template #2>
-			<audio controls :src="require('@rock/assets/dancer/tango.wav')"></audio>
+			<audio controls :src="require('@rock/assets/dancer/tango.mp3')"></audio>
 		</template>
 	</SingleChoiceQuestions>
 	<CheckButton :isCorrect="isCorrect" @click="handleCheck()" />
