@@ -1,6 +1,6 @@
 <template>
 	<Video url="https://www.youtube.com/embed/rh04Fv24fjo" />
-	<p class="questionHelper">Znajdź po trzy różnice na każdym ze zdjęć</p>
+	<p class="questionHelper">Znajdź po trzy różnice w każdej parze zdjęć, zaznacz je na górnych zdjęciach.</p>
 	<n-space vertical>
 		<Differences name="mage" :descriptors="descriptors" @correct="isCorrect = true" />
 	</n-space>
