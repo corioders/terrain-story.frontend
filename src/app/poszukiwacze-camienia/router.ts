@@ -2,6 +2,8 @@ import { Component } from 'vue';
 import { createRouter, createWebHashHistory } from 'vue-router';
 import { RouteRecordRaw } from 'vue-router';
 
+import Home from '@rock/routes/Home.vue';
+
 import { isPuzzleID } from './routes/codes/puzzle';
 import { useProgressStore } from './store/progress';
 
@@ -48,7 +50,7 @@ export const routes: RouteRecordRaw[] = [
 	{
 		path: '/',
 		name: 'Home',
-		component: (): Promise<Component> => import('@rock/routes/Home.vue'),
+		component: Home,
 		meta: { to: 'Start' },
 	},
 	{
