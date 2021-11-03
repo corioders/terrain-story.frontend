@@ -14,7 +14,7 @@
 		<section class="light">
 			<Flex>
 				<h4>Chcesz wiedzieć więcej?</h4>
-				<p>Nieodłączną częścią naszej gry są filmiki, tutaj możesz zobaczyć ich urywki</p>
+				<p>Nieodłączną częścią naszej gry są filmiki, tutaj możesz zobaczyć ich urywki.</p>
 				<Video url="https://www.youtube.com/embed/AmJaWzUYsow" />
 			</Flex>
 		</section>
