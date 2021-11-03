@@ -107,6 +107,7 @@
 				max-width: 950px;
 				.n-button {
 					font-size: 18px;
+					text-decoration: underline;
 				}
 			}
 
@@ -136,6 +137,7 @@
 		}
 		.date {
 			color: $secondary;
+			text-decoration: underline;
 		}
 	}
 </style>
