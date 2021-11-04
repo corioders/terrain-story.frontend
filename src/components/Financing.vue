@@ -11,9 +11,6 @@ Projekt dofinansowany ze środków Unii Europejskiej w ramach Regionalnego Progr
 
 	export default defineComponent({
 		name: 'Financing',
-		setup() {
-			console.log('Aaaaaaaaaa');
-		},
 	});
 </script>
 <style lang="scss" scoped>
