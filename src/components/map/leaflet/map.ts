@@ -7,6 +7,7 @@ export interface Pin<puzzleIDT extends string> {
 	localization: Localization;
 	name: string;
 	puzzleID: puzzleIDT;
+	photo: string;
 }
 export interface MapData<puzzleIDT extends string> {
 	center: Localization;
