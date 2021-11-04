@@ -71,19 +71,16 @@
 				// Check correct answer.
 				for (const [key, value] of colorsMap) {
 					if (value === true && !correctColorsMap.has(key)) {
-						console.log('Wrong check', key);
 						emit('incorrect');
 						return;
 					}
 				}
 				for (const key of correctColorsMap.keys()) {
 					if (!colorsMap.has(key)) {
-						console.log('Not checked');
 						emit('incorrect');
 						return;
 					}
 					if (colorsMap.get(key) === false) {
-						console.log('Not checked');
 						emit('incorrect');
 						return;
 					}
@@ -117,7 +114,7 @@
 		flex-direction: row;
 		border: 1px #000 solid;
 		border-bottom: none;
-    z-index: 999;
+		z-index: 999;
 	}
 	.columnLabelContainer,
 	.rowLabelContainer {
