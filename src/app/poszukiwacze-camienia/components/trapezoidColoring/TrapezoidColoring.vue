@@ -117,6 +117,7 @@
 		flex-direction: row;
 		border: 1px #000 solid;
 		border-bottom: none;
+    z-index: 999;
 	}
 	.columnLabelContainer,
 	.rowLabelContainer {
