@@ -1,19 +1,19 @@
 <template>
 	<Video url="https://www.youtube.com/embed/0Gzgvkis0RY" />
 	<p class="questionHelper">Wpisz liczbę zauważoną na filmiku. Liczba ta jest przesunięciem do w szyfru cezariańskiego.</p>
-	<Input label="Przesunięcie" name="displacement" @answer="submitDisplacement($event)" />
-	<Flex v-if="displacement == 13" gap="12px">
+	<Input label="Przesunięcie" name="displacement" :isCorrect="isDisplacementCorrect" @answer="submitDisplacement($event)" />
+	<Flex v-if="isDisplacementCorrect" gap="12px">
 		<p class="questionHelper">
 			Odkoduj hasło przy użyciu szyfru cezariańskiego. Odnajdź litery hasła w górnym wierszu i przeczytaj te przyporządkowane do nich w dolnym wierszu.
 		</p>
 		<p>MKWOUZĆ</p>
 	</Flex>
 
-	<CipherHelper v-if="displacement == 13" :displacement="displacement" />
+	<CipherHelper v-if="isDisplacementCorrect" :displacement="displacement" />
 
-	<Flex v-if="displacement == 13" gap="12px">
-		<Input label="Hasło" name="hackerPasswordInput" @answer="submitPass($event)" />
-		<CheckButton :isCorrect="isCorrect" @click="handleCheck()" />
+	<Flex v-if="isDisplacementCorrect" gap="12px">
+		<Input label="Hasło" name="hackerPasswordInput" :isCorrect="isPasswordCorrect" @answer="submitPass($event)" />
+		<CheckButton :isCorrect="isPasswordCorrect" @click="handleCheck()" />
 	</Flex>
 </template>
 
@@ -40,24 +40,23 @@
 		},
 		setup() {
 			let displacement = ref(0);
-			let isCorrect = false;
-
+			let isDisplacementCorrect = ref(false);
 			function submitDisplacement(e: string): void {
 				displacement.value = parseInt(e);
+				isDisplacementCorrect.value = displacement.value === 13;
 			}
 
-			let pass = ref('');
+			let isPasswordCorrect = ref(false);
 			function submitPass(e: string): void {
-				pass.value = e;
-				if (pass.value.toLowerCase() === 'camelot') isCorrect = true;
-				else isCorrect = false;
+				isPasswordCorrect.value = e.toLowerCase() === 'camelot';
 			}
+
 			const store = useProgressStore();
 			const handleCheck = (): void => {
-				if (isCorrect === true) store.finishPuzzle('Hacker');
+				if (isPasswordCorrect.value === true) store.finishPuzzle('Hacker');
 			};
 
-			return { submitDisplacement, displacement, submitPass, pass, handleCheck };
+			return { submitDisplacement, displacement, isDisplacementCorrect, submitPass, isPasswordCorrect, handleCheck };
 		},
 	});
 </script>
