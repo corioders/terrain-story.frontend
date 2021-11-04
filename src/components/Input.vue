@@ -38,7 +38,7 @@
 			},
 			incorrectAnswerText: {
 				type: String,
-				default: 'Dobra odpowiedź',
+				default: 'Zła odpowiedź',
 			},
 		},
 		emits: ['answer'],
