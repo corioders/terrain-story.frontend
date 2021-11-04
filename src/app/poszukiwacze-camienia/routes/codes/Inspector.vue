@@ -10,7 +10,15 @@
 		</n-space>
 	</n-card>
 	<p class="questionHelper">Wskaż sprawcę włamania</p>
-	<SingleChoiceQuestion :options="question.options" :answer="question.answer" disableMixing name="causer" @correct="isCorrect = true" @incorrect="isCorrect = false" />
+	<SingleChoiceQuestion
+		:options="question.options"
+		:answer="question.answer"
+		disableMixing
+		name="causer"
+		:displayFeedback="displayFeedback"
+		@correct="handleAnswer(true)"
+		@incorrect="handleAnswer(false)"
+	/>
 	<CheckButton :isCorrect="isCorrect" @click="handleCheck" />
 </template>
 
@@ -38,14 +46,21 @@
 		setup() {
 			const store = useProgressStore();
 			const isCorrect = ref<boolean>(false);
+			const displayFeedback = ref<boolean>(false);
+
+			const handleAnswer = (isAnswerCorrect: boolean): void => {
+				isCorrect.value = isAnswerCorrect;
+				displayFeedback.value = false;
+			};
 
 			const handleCheck = (): void => {
 				if (isCorrect.value === true) {
 					store.finishPuzzle('Inspector');
 				}
+				displayFeedback.value = true;
 			};
 
-			return { question, witnesses, isCorrect, handleCheck };
+			return { question, witnesses, isCorrect, handleCheck, handleAnswer, displayFeedback };
 		},
 	});
 </script>

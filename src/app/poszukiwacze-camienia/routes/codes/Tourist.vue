@@ -1,6 +1,6 @@
 <template>
 	<Video url="https://www.youtube.com/embed/HcVCHKHy-Xw" />
-	<SingleChoiceQuestions :questions="questions" name="place" @correct="isCorrect = true" @incorrect="isCorrect = false">
+	<SingleChoiceQuestions :questions="questions" name="place" :displayFeedback="displayFeedback" @correct="handleAnswer(true)" @incorrect="handleAnswer(false)">
 		<template #0>
 			<img src="@rock/assets/places/0.webp" alt="Miejsce 1" />
 		</template>
@@ -37,12 +37,19 @@
 		setup() {
 			const store = useProgressStore();
 			const isCorrect = ref<boolean>(false);
+			const displayFeedback = ref<boolean>(false);
+
+			const handleAnswer = (isAnswerCorrect: boolean): void => {
+				isCorrect.value = isAnswerCorrect;
+				displayFeedback.value = false;
+			};
 
 			const handleCheck = (): void => {
 				if (isCorrect.value === true) store.finishPuzzle('Tourist');
+				displayFeedback.value = true;
 			};
 
-			return { questions, isCorrect, handleCheck };
+			return { questions, isCorrect, handleCheck, handleAnswer, displayFeedback };
 		},
 	});
 </script>

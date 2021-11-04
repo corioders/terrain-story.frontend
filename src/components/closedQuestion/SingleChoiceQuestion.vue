@@ -1,5 +1,5 @@
 <template>
-	<div class="container">
+	<div ref="container" class="container" :class="{ displayFeedback }">
 		<n-space vertical>
 			<p v-if="question !== ''">{{ question }}</p>
 			<div class="slot">
@@ -7,7 +7,7 @@
 			</div>
 			<n-radio-group name="radiogroup" style="max-width: 100%">
 				<n-space vertical>
-					<n-radio v-for="(option, i) in options" :key="`option${i}-${option}`" :value="option" @input="handleClick($event.target.value)">
+					<n-radio v-for="(option, i) in options" :key="`option${i}-${option}`" :value="option" @input="handleClick($event.target.parentElement, $event.target.value)">
 						<span v-if="!arePhotos">{{ option }}</span>
 						<img v-else :src="option" :alt="i" />
 					</n-radio>
@@ -19,7 +19,7 @@
 
 <script lang="ts">
 	import { NRadioGroup, NRadio, NSpace } from 'naive-ui';
-	import { defineComponent, PropType } from 'vue';
+	import { defineComponent, PropType, ref } from 'vue';
 
 	import arePhotos from './arePhotos';
 	import checkAnswer from './checkAnswer';
@@ -55,11 +55,40 @@
 				type: Boolean,
 				default: false,
 			},
+			displayFeedback: {
+				type: Boolean,
+				default: false,
+				required: true,
+			},
 		},
 		emits: ['correct', 'incorrect'],
 		setup(props, { emit }) {
-			function handleClick(val: string): void {
-				checkAnswer(val, props.answer) ? emit('correct') : emit('incorrect');
+			const container = ref<HTMLDivElement | null>(null);
+
+			function clear(): void {
+				container.value?.querySelectorAll('.incorrect').forEach((element) => {
+					element.classList.remove('incorrect');
+				});
+				container.value?.querySelectorAll('.correct').forEach((element) => {
+					element.classList.remove('correct');
+				});
+			}
+
+			function handleClick(parent: Element, val: string): void {
+				const el = parent.querySelector('div.n-radio__label');
+				if (checkAnswer(val, props.answer)) {
+					emit('correct');
+					if (el != null) {
+						clear();
+						el.classList.add('correct');
+					}
+				} else {
+					emit('incorrect');
+					if (el != null) {
+						clear();
+						el.classList.add('incorrect');
+					}
+				}
 			}
 
 			return {
@@ -67,6 +96,7 @@
 				shuffledOptions: props.disableMixing ? props.options : shuffleOptions(props.options),
 				hideInput,
 				handleClick,
+				container,
 			};
 		},
 	});
@@ -89,6 +119,25 @@
 			width: 95%;
 		}
 	}
+	.displayFeedback {
+		.correct {
+			span {
+				color: $primary;
+			}
+			img {
+				border: 5px $primary solid;
+			}
+		}
+		.incorrect {
+			span {
+				color: $errorDarker;
+			}
+			img {
+				border: 5px $errorDarker solid;
+			}
+		}
+	}
+
 	.slot {
 		width: 100%;
 		display: flex;

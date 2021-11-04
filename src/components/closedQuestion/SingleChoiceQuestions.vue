@@ -7,6 +7,7 @@
 			:options="question.options"
 			:answer="question.answer"
 			:name="name + i"
+			:displayFeedback="displayFeedback"
 			@correct="isCorrect[i] = true"
 			@incorrect="isCorrect[i] = false"
 		>
@@ -37,6 +38,10 @@
 				type: Array as PropType<Question[]>,
 				required: true,
 			},
+			displayFeedback: {
+				type: Boolean,
+				required: true,
+			},
 		},
 		emits: ['correct', 'incorrect'],
 		setup(props, { emit }) {
@@ -60,5 +65,3 @@
 		},
 	});
 </script>
-<style lang="scss" scoped>
-</style>
