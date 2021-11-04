@@ -90,10 +90,10 @@ const webpack = {
 	},
 
 	cache: {
-		// type: 'memory',
-		type: 'filesystem',
-		name: `${config.IS_PRODUCTION ? 'production' : 'development'}-${config.IS_FAST ? 'fast' : 'nonFast'}-${config.IS_DEBUG ? 'debug' : 'nonDebug'}`,
-		cacheDirectory: paths.cache,
+		type: 'memory',
+		// type: 'filesystem',
+		// name: `${config.IS_PRODUCTION ? 'production' : 'development'}-${config.IS_FAST ? 'fast' : 'nonFast'}-${config.IS_DEBUG ? 'debug' : 'nonDebug'}`,
+		// cacheDirectory: paths.cache,
 	},
 
 	module: {
