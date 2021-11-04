@@ -4,9 +4,9 @@
 		<article>
 			<h2>Szanowni Poszukiwacze Camienia,</h2>
 			<p>
-				winszuje inicjatywy. Cieszę się, że razem będziemy mogli ruszyć na poszukiwania tego niezwykłego artefaktu. Prawdę powiedziawszy sam, poczyniłem już pierwsze
-				kroki. W środku Wenezuelskiej dżungli, udało mi się odnaleźć starożytne ruiny majów, które kierują do lokalizacji Camienia. Niestety Doktor Zło czai się na każdym
-				kroku. Wysyłam je Wam w zakodowanej formie. Nanieście poniższe koordynaty na pole, wtedy ukaże wam się wskazówka.
+				winszuję inicjatywy. Cieszę się, że razem będziemy mogli ruszyć na poszukiwania tego niezwykłego artefaktu. Prawdę powiedziawszy, sam poczyniłem już pierwsze
+				kroki. W środku wenezuelskiej dżungli, udało mi się odnaleźć starożytne ruiny Majów, które kierują do lokalizacji Camienia. Niestety Doktor Zło czai się na każdym
+				kroku. Wysyłam je Wam w zakodowanej formie. Nanieście poniższe koordynaty na pole, wtedy ukaże Wam się wskazówka.
 			</p>
 			<h3>
 				Powodzenia <br />
