@@ -1,6 +1,6 @@
 <template>
 	<Video url="https://www.youtube.com/embed/8O_EcEENaaw" />
-	<SingleChoiceQuestions :questions="questions" name="dance" @correct="isCorrect = true" @incorrect="isCorrect = false">
+	<SingleChoiceQuestions :questions="questions" name="dance" :displayFeedback="displayFeedback" @correct="handleAnswer(true)" @incorrect="handleAnswer(false)">
 		<template #0>
 			<audio controls :src="require('@rock/assets/dancer/belgijka.mp3')"></audio>
 		</template>
@@ -33,15 +33,22 @@
 		},
 		setup() {
 			const store = useProgressStore();
-			const isCorrect = ref<boolean>(false);
+			let isCorrect = ref<boolean>(false);
+			const displayFeedback = ref<boolean>(false);
+
+			const handleAnswer = (isAnswerCorrect: boolean): void => {
+				isCorrect.value = isAnswerCorrect;
+				displayFeedback.value = false;
+			};
 
 			const handleCheck = (): void => {
 				if (isCorrect.value === true) {
 					store.finishPuzzle('Dancer');
 				}
+				displayFeedback.value = true;
 			};
 
-			return { questions, isCorrect, handleCheck };
+			return { questions, isCorrect, handleAnswer, handleCheck, displayFeedback };
 		},
 	});
 </script>

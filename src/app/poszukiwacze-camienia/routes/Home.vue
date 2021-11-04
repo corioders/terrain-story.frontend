@@ -8,13 +8,15 @@
 					Znajdź kody QR, zeskanuj je i rozwiąż wszystkie zagadki, aby odnaleźć Camień! Kody znajdują się w tych miejscach. Kolejność ich odwiedzania zależy tylko od
 					ciebie. Na wytrwałych czekają nagrody!
 				</p>
-				<MapWrapper style="margin-top: 32px" />
+				<n-button type="primary" style="margin-bottom: 24px" @click="$router.push('/jak-grac')">Dowiedz się jak grać w grę</n-button>
+				<MapWrapper />
 			</Flex>
 		</section>
 		<section class="light">
 			<Flex>
 				<h4>Chcesz wiedzieć więcej?</h4>
 				<p>Nieodłączną częścią naszej gry są filmiki, tutaj możesz zobaczyć ich urywki.</p>
+				<n-button type="info" style="margin-bottom: 24px" @click="$router.push('/o-grze')">Dowiedz się więcej o fabule gry</n-button>
 				<Video url="https://www.youtube.com/embed/AmJaWzUYsow" />
 			</Flex>
 		</section>

@@ -117,9 +117,14 @@
 		flex-direction: row;
 		border: 1px #000 solid;
 		border-bottom: none;
+    z-index: 999;
 	}
 	.columnLabelContainer,
 	.rowLabelContainer {
+		position: sticky;
+		top: 0;
+		left: 0;
+		background-color: #fff;
 		p {
 			text-align: center;
 		}
