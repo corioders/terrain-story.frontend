@@ -1,17 +1,17 @@
 <template>
-	<GMap url="https://www.google.com/maps/d/u/2/embed?mid=18uPKlUIeYkk0al-D2q9NAfdxmL2rZISO" />
+	<MapWrapper />
 	<p>W tych miejscach znajdują się kody QR. Znajdź i zeskanuj je wszystkie, żeby przejść całą grę.</p>
 </template>
 
 <script lang="ts">
 	import { defineComponent } from 'vue';
 
-	import GMap from '@/components/map/GMap.vue';
+	import MapWrapper from '@rock/components/MapWrapper.vue';
 
 	export default defineComponent({
 		name: 'Map',
 		components: {
-			GMap,
+			MapWrapper,
 		},
 	});
 </script>
