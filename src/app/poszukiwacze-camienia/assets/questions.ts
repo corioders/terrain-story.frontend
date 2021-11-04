@@ -67,7 +67,7 @@ export const treasurer: Question[] = [
 		answer: 'jednej dał jabłko z koszykiem',
 	},
 	{
-		question: 'Kości tego świata sięgają objęć nieba, skąpane w bieli niczym Panna Młoda witająca swojego wybrańca',
+		question: 'Kości tego świata sięgają objęć nieba, skąpane w bieli niczym panna młoda witająca swojego wybrańca',
 		options: ['góry', 'wieże', 'wieżowce', 'drapacze chmur'],
 		answer: 'góry',
 	},
