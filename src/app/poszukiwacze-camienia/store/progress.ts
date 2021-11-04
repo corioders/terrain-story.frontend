@@ -1,6 +1,8 @@
 import { defineStore } from 'pinia';
 import { RouteLocationRaw } from 'vue-router';
 
+import { removeLocalStorage } from '@/store/plugin/localStorage';
+
 import router from '@rock/router';
 import { puzzleID } from '@rock/routes/codes/puzzle';
 
@@ -31,14 +33,13 @@ export const useProgressStore = defineStore({
 	actions: {
 		start() {
 			this.started = true;
+			navigateToRedirectedFrom();
+		},
 
-			const toName = router.currentRoute.value.params['toName'] as string;
-
-			let location: RouteLocationRaw;
-			if (toName !== undefined) location = { name: toName };
-			else location = { path: '/' };
-
-			router.replace(location);
+		resetProgress() {
+			this.$reset();
+			removeLocalStorage(this);
+			navigateToRedirectedFrom();
 		},
 
 		finishPuzzle(puzzleId: puzzleID) {
@@ -54,3 +55,13 @@ export const useProgressStore = defineStore({
 		},
 	},
 });
+
+function navigateToRedirectedFrom(): void {
+	const redirectedFromName = router.currentRoute.value.params['redirectedFromName'] as string;
+
+	let location: RouteLocationRaw;
+	if (redirectedFromName !== undefined) location = { name: redirectedFromName };
+	else location = { name: 'Home' };
+
+	router.replace(location);
+}
