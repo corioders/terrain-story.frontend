@@ -14,9 +14,10 @@
 	import Video from '@/components/Video.vue';
 	import CheckButton from '@/components/buttons/CheckButton.vue';
 
-	import alienDescriptor from '@rock/assets/photoDifferences/alien';
-	import safariDescriptor from '@rock/assets/photoDifferences/safari';
-	import someoneDescriptor from '@rock/assets/photoDifferences/someone';
+	import magicDescriptor from '@rock/assets/photoDifferences/magic';
+	import rockDescriptor from '@rock/assets/photoDifferences/rock';
+	import touristDescriptor from '@rock/assets/photoDifferences/tourist';
+  
 	import Differences from '@rock/components/photoDifferences/Differences.vue';
 	import { useProgressStore } from '@rock/store/progress';
 
@@ -32,7 +33,7 @@
 		setup() {
 			const store = useProgressStore();
 			const isCorrect = ref<boolean>(false);
-			const descriptors = [alienDescriptor, safariDescriptor, someoneDescriptor];
+			const descriptors = [magicDescriptor, rockDescriptor, touristDescriptor];
 
 			const handleCheck = (): void => {
 				if (isCorrect.value === true) store.finishPuzzle('Mage');
