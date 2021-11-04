@@ -27,7 +27,12 @@
 			onMounted(() => {
 				if (mapRef.value === null) return;
 
-				const lMap = map(mapRef.value).setView(props.mapData.center, props.mapData.zoom);
+				const lMap = map(mapRef.value, {
+					// tapTolerance needs to be set to -1 beacause otherwise
+					// leaflet library will emit simulated click event and it will close popup...
+					// TODO: Stop using leaflets
+					tapTolerance: -1,
+				}).setView(props.mapData.center, props.mapData.zoom);
 
 				tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 					attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
