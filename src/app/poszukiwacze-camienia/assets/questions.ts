@@ -17,17 +17,19 @@ export const dancer: Question[] = [
 		answer: 'tango',
 	},
 ];
+Object.freeze(dancer);
 
 export const inspector: Question = {
 	options: [
-		require<string>('@rock/assets/suspects/1.png'),
-		require<string>('@rock/assets/suspects/2.png'),
-		require<string>('@rock/assets/suspects/3.png'),
-		require<string>('@rock/assets/suspects/4.png'),
-		require<string>('@rock/assets/suspects/5.png'),
+		require<string>('@rock/assets/suspects/1.webp'),
+		require<string>('@rock/assets/suspects/2.webp'),
+		require<string>('@rock/assets/suspects/3.webp'),
+		require<string>('@rock/assets/suspects/4.webp'),
+		require<string>('@rock/assets/suspects/5.webp'),
 	],
-	answer: require<string>('@rock/assets/suspects/5.png'),
+	answer: require<string>('@rock/assets/suspects/5.webp'),
 };
+Object.freeze(inspector);
 
 export const tourist: Question[] = [
 	{
@@ -51,6 +53,7 @@ export const tourist: Question[] = [
 		answer: 'Pomnik Beboków',
 	},
 ];
+Object.freeze(tourist);
 
 export const treasurer: Question[] = [
 	{
@@ -64,8 +67,9 @@ export const treasurer: Question[] = [
 		answer: 'jednej dał jabłko z koszykiem',
 	},
 	{
-		question: 'Kości tego świata sięgają objęć nieba, skąpane w bieli niczym Panna Młoda witająca swojego wybrańca',
+		question: 'Kości tego świata sięgają objęć nieba, skąpane w bieli niczym panna młoda witająca swojego wybrańca',
 		options: ['góry', 'wieże', 'wieżowce', 'drapacze chmur'],
 		answer: 'góry',
 	},
 ];
+Object.freeze(treasurer);

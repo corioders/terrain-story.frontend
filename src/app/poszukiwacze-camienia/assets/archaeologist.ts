@@ -35,3 +35,4 @@ export const trapezoidDescriptor = {
 		{ x: 5, y: 6 },
 	],
 };
+Object.freeze(trapezoidDescriptor)

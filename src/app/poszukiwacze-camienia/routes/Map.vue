@@ -1,6 +1,6 @@
 <template>
 	<MapWrapper />
-	<p>W tych miejscach znajdują się kody QR. Znajdź i zeskanuj je wszystkie, żeby przejść całą grę</p>
+	<p>W tych miejscach znajdują się kody QR. Znajdź i zeskanuj je wszystkie, żeby przejść całą grę.</p>
 </template>
 
 <script lang="ts">

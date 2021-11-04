@@ -10,7 +10,7 @@
 		props: {
 			url: {
 				type: String,
-				default: 'https://www.google.com/maps/d/u/2/embed?mid=18uPKlUIeYkk0al-D2q9NAfdxmL2rZISO',
+				required: true,
 			},
 		},
 	});

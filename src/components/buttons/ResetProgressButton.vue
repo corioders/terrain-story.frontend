@@ -3,7 +3,7 @@
 		<template #trigger>
 			<n-button size="large" type="info">Zacznij grać od początku</n-button>
 		</template>
-		Czy na pewno chcesz zacząć grać od początku?
+		Czy na pewno chcesz zacząć grać od początku? Usunie to Twój cały postęp w grze.
 	</n-popconfirm>
 </template>
 
