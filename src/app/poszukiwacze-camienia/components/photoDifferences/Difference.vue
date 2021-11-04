@@ -1,7 +1,7 @@
 <template>
 	<div class="container">
-		<canvas ref="canvasRef" class="image" role="img" :aria-label="differenceDescriptor.photoAlt"></canvas>
-		<img :src="differenceDescriptor.originalPhotoSrc" class="image" :alt="differenceDescriptor.photoAlt" />
+		<canvas ref="canvasRef" class="image" role="img" aria-label="Różnica"></canvas>
+		<img :src="differenceDescriptor.differentPhotoSrc" class="image" alt="Różnica" />
 	</div>
 </template>
 
@@ -48,7 +48,7 @@
 
 				const descriptor = props.differenceDescriptor;
 
-				const image = await loadImage(descriptor.differentPhotoSrc);
+				const image = await loadImage(descriptor.originalPhotoSrc);
 				canvas.width = image.width;
 				canvas.height = image.height;
 
@@ -59,19 +59,18 @@
 					// Draw a circle.
 					ctx.arc(difference.x, difference.y, difference.radius, 0, Math.PI * 2, true);
 
-					ctx.lineWidth = 10;
+					ctx.lineWidth = descriptor.lineWidth;
 					ctx.strokeStyle = descriptor.strokeStyle;
 					ctx.stroke();
 				}
 
-				let doneDifferences = 0;
 				const differences = [...descriptor.differences];
 				canvas.addEventListener('click', (ev) => {
 					const boundingRect = canvas.getBoundingClientRect();
 
 					const x = map(ev.offsetX, 0, boundingRect.width, 0, canvas.width);
 					const y = map(ev.offsetY, 0, boundingRect.height, 0, canvas.height);
-
+          
 					for (let i = 0; i < differences.length; i++) {
 						const difference = differences[i];
 						if (!isWithinCircle(x, y, difference.x, difference.y, difference.radius +30)) {
@@ -84,10 +83,6 @@
 						showDifference(difference);
 					}
 				});
-
-				// for (const d of descriptor.differences) {
-				// 	showDifference(d);
-				// }
 			});
 
 			return { canvasRef };

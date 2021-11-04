@@ -7,12 +7,12 @@ const differenceDescriptor: DifferenceDescriptor = {
 	originalPhotoSrc: img1,
 	differentPhotoSrc: img2,
 	strokeStyle: 'red',
+  lineWidth: 20,
 	differences: [
-		{ x: 25, y: 194, radius: 40 },
-		{ x: 155, y: 532, radius: 45 },
-		{ x: 690, y: 430, radius: 40 },
+		{ x: 359, y: 373, radius: 350 },
+		{ x: 1280, y: 368, radius: 350 },
+		{ x: 1289, y: 1560, radius: 440 },
 	],
-	photoAlt: 'Druga różnica',
 };
 Object.freeze(differenceDescriptor);
 
