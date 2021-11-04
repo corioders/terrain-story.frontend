@@ -37,3 +37,8 @@
 		},
 	});
 </script>
+<style lang="scss" scoped>
+	.n-button {
+		transition: all 1s;
+	}
+</style>
