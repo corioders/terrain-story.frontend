@@ -1,5 +1,5 @@
 <template>
-	<Video url="https://www.youtube.com/embed/8O_EcEENaaw" />
+	<Video videoId="8O_EcEENaaw" />
 	<SingleChoiceQuestions :questions="questions" name="dance" :displayFeedback="displayFeedback" @correct="handleAnswer(true)" @incorrect="handleAnswer(false)">
 		<template #0>
 			<audio controls :src="require('@rock/assets/dancer/belgijka.mp3')"></audio>
@@ -17,7 +17,7 @@
 <script lang="ts">
 	import { defineComponent, ref } from 'vue';
 
-	import Video from '@/components/Video.vue';
+	import Video from '@/components/YoutubeVideo.vue';
 	import CheckButton from '@/components/buttons/CheckButton.vue';
 	import SingleChoiceQuestions from '@/components/closedQuestion/SingleChoiceQuestions.vue';
 

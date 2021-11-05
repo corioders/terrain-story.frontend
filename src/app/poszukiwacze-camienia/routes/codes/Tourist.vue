@@ -1,5 +1,5 @@
 <template>
-	<Video url="https://www.youtube.com/embed/HcVCHKHy-Xw" />
+	<Video videoId="HcVCHKHy-Xw" />
 	<SingleChoiceQuestions :questions="questions" name="place" :displayFeedback="displayFeedback" @correct="handleAnswer(true)" @incorrect="handleAnswer(false)">
 		<template #0>
 			<img src="@rock/assets/places/0.webp" alt="Miejsce 1" />
@@ -20,7 +20,7 @@
 <script lang="ts">
 	import { defineComponent, ref } from 'vue';
 
-	import Video from '@/components/Video.vue';
+	import Video from '@/components/YoutubeVideo.vue';
 	import CheckButton from '@/components/buttons/CheckButton.vue';
 	import SingleChoiceQuestions from '@/components/closedQuestion/SingleChoiceQuestions.vue';
 

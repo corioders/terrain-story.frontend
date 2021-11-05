@@ -17,7 +17,7 @@
 				<h4>Chcesz wiedzieć więcej?</h4>
 				<p>Nieodłączną częścią naszej gry są filmiki, tutaj możesz zobaczyć ich urywki.</p>
 				<n-button type="info" style="margin-bottom: 24px" @click="$router.push('/o-grze')">Dowiedz się więcej o fabule gry</n-button>
-				<Video url="https://www.youtube.com/embed/AmJaWzUYsow" />
+				<Video videoId="AmJaWzUYsow" />
 			</Flex>
 		</section>
 		<section class="dark">
@@ -60,7 +60,7 @@
 
 	import Flex from '@/layouts/Flex.vue';
 
-	import Video from '@/components/Video.vue';
+	import Video from '@/components/YoutubeVideo.vue';
 	import DevNav from '@/components/devHelpers/DevNav.vue';
 
 	import MapWrapper from '@rock/components/MapWrapper.vue';

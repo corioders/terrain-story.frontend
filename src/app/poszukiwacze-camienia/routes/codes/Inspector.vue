@@ -1,5 +1,5 @@
 <template>
-	<Video url="https://www.youtube.com/embed/6sP82sl1tZY" />
+	<Video videoId="6sP82sl1tZY" />
 	<n-card class="witnesses">
 		<h2>Zeznania świadków</h2>
 		<n-space vertical>
@@ -26,7 +26,7 @@
 	import { NCard, NSpace } from 'naive-ui';
 	import { defineComponent, ref } from 'vue';
 
-	import Video from '@/components/Video.vue';
+	import Video from '@/components/YoutubeVideo.vue';
 	import CheckButton from '@/components/buttons/CheckButton.vue';
 	import SingleChoiceQuestion from '@/components/closedQuestion/SingleChoiceQuestion.vue';
 
