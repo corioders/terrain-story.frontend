@@ -16,4 +16,4 @@
 // 	module.hot.accept();
 // }
 
-location.pathname = "poszukiwacze-camienia/"
+location.pathname = 'poszukiwacze-camienia/';
