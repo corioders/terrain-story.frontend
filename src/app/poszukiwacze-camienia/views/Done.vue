@@ -13,15 +13,20 @@
 
 <script lang="ts">
 	import { NResult, NSpace, NSpin } from 'naive-ui';
-	import { defineComponent } from 'vue';
+	import { defineComponent, onMounted } from 'vue';
+	import { useRouter } from 'vue-router';
 
 	export default defineComponent({
 		name: 'AlreadyDone',
 		components: { NResult, NSpace, NSpin },
-		mounted() {
-			setTimeout(() => {
-				this.$router.replace('/mapa');
-			}, 5000);
+		setup() {
+			const router = useRouter();
+
+			onMounted(() => {
+				setTimeout(() => {
+					if (router.currentRoute.value.name === 'Done') router.replace('/mapa');
+				}, 5000);
+			});
 		},
 	});
 </script>

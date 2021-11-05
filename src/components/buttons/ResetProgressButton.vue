@@ -10,9 +10,6 @@
 <script lang="ts">
 	import { NButton, NPopconfirm } from 'naive-ui';
 	import { defineComponent } from 'vue';
-	import { useRouter } from 'vue-router';
-
-	import { removeLocalStorage } from '@/store/plugin/localStorage';
 
 	import { useProgressStore } from '@rock/store/progress';
 
@@ -24,11 +21,9 @@
 		},
 		setup() {
 			const store = useProgressStore();
-			const router = useRouter();
 
 			function handleClick(): void {
-				removeLocalStorage(store);
-				router.replace({ name: 'Home' });
+				store.resetProgress();
 			}
 
 			return { handleClick };

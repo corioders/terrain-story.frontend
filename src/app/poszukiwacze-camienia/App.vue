@@ -4,7 +4,7 @@
 			<Header />
 			<Flex gap="12px">
 				<router-view />
-				<MapLink v-if="isPuzzleID($route.name)" mapUrl="/mapa" />
+				<MapLink v-if="isPuzzleID($route.name) || $route.name === 'AlreadyDone'" mapUrl="/mapa" />
 				<SkipNav v-if="!IS_PRODUCTION" :nextRoute="nextRoute" />
 			</Flex>
 			<CFooter />
