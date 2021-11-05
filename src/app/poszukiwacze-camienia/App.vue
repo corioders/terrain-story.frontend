@@ -39,7 +39,6 @@
 			SkipNav,
 		},
 		setup() {
-			document.title = 'Poszukiwacze Camienia';
 			return { nextRoute, themeOverrides, isPuzzleID, IS_PRODUCTION: __IS_PRODUCTION__ };
 		},
 	});
