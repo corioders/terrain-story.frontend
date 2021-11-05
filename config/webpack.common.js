@@ -27,16 +27,12 @@ const paths = {
 	eslintConfig: path.resolve(config.ROOT_PATH, '.eslintrc.js'),
 	tsConfig: path.resolve(config.ROOT_PATH, 'tsconfig.json'),
 	babelConfig: path.resolve(config.CONFIG_PATH, 'babel.config.js'),
-
-	htmlWebpackPluginFavicon: path.resolve(config.ROOT_PATH, 'src/public/favicon.ico'),
-	htmlWebpackPluginTemplate: path.resolve(config.ROOT_PATH, 'src/public/index.html'),
 };
+paths.apps = path.resolve(paths.src, 'app');
 
 const entries = {};
-const appsPath = path.resolve(paths.src, 'app');
-let apps = fs.readdirSync(appsPath);
-apps = apps.filter((app) => app != '.DS_Store');
-for (const app of apps) entries[app] = path.resolve(appsPath, app, 'index.ts');
+const appsNames = fs.readdirSync(paths.apps).filter((app) => app != '.DS_Store');
+for (const app of appsNames) entries[app] = path.resolve(paths.apps, app, 'index.ts');
 
 const options = {};
 options.babel = {
@@ -282,4 +278,5 @@ const webpack = {
 module.exports = {
 	webpack,
 	paths,
+	appsNames
 };
