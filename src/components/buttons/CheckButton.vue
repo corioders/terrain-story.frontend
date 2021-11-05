@@ -1,5 +1,5 @@
 <template>
-	<n-button :type="wrongAnswerState ? 'error' : 'primary'" size="large" @click="handleClick($event)">
+	<n-button :type="wrongAnswerState ? 'error' : 'primary'" size="large" :disabled="disabled" @click="handleClick($event)">
 		{{ wrongAnswerState ? 'Zła odpowiedź' : 'Sprawdź' }}
 	</n-button>
 </template>
@@ -20,7 +20,14 @@
 				type: Boolean,
 				required: true,
 			},
+
+			disabled: {
+				type: Boolean,
+				default: false,
+				required: false,
+			},
 		},
+
 		emits: ['click'],
 		setup(props, { emit }) {
 			let wrongAnswerState = ref(false);

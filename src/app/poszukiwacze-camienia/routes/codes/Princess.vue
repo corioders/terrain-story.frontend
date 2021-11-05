@@ -1,5 +1,5 @@
 <template>
-	<Video url="https://www.youtube.com/embed/qJnJCPDnqvU" />
+	<Video videoId="qJnJCPDnqvU" />
 	<p class="questionHelper">Przejdź labirynt</p>
 	<Labyrinth :labyrinthDescriptor="labyrinthDescriptor" @correct="finishHandler()" />
 </template>
@@ -7,7 +7,7 @@
 <script lang="ts">
 	import { defineComponent } from 'vue';
 
-	import Video from '@/components/Video.vue';
+	import Video from '@/components/YoutubeVideo.vue';
 
 	import { labyrinthDescriptor } from '@rock/assets/princess';
 	import Labyrinth from '@rock/components/labyrinth/Labyrinth.vue';

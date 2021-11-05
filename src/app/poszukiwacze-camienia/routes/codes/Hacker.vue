@@ -1,5 +1,5 @@
 <template>
-	<Video url="https://www.youtube.com/embed/0Gzgvkis0RY" />
+	<Video videoId="0Gzgvkis0RY" />
 	<p class="questionHelper">Wpisz liczbę zauważoną na filmiku. Liczba ta jest przesunięciem do w szyfru cezariańskiego.</p>
 	<Input label="Przesunięcie" name="displacement" :isCorrect="isDisplacementCorrect" @answer="submitDisplacement($event)" />
 	<Flex v-if="isDisplacementCorrect" gap="12px">
@@ -23,7 +23,7 @@
 	import Flex from '@/layouts/Flex.vue';
 
 	import Input from '@/components/Input.vue';
-	import Video from '@/components/Video.vue';
+	import Video from '@/components/YoutubeVideo.vue';
 	import CheckButton from '@/components/buttons/CheckButton.vue';
 	import CipherHelper from '@/components/cipherHelper/CipherHelper.vue';
 

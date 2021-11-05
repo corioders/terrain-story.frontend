@@ -1,5 +1,5 @@
 <template>
-	<Video url="https://www.youtube.com/embed/rh04Fv24fjo" />
+	<Video videoId="rh04Fv24fjo" />
 	<p class="questionHelper">Znajdź po trzy różnice w każdej parze zdjęć, zaznacz je na górnych zdjęciach.</p>
 	<n-space vertical>
 		<Differences name="mage" :descriptors="descriptors" @correct="isCorrect = true" />
@@ -11,7 +11,7 @@
 	import { NSpace } from 'naive-ui';
 	import { defineComponent, ref } from 'vue';
 
-	import Video from '@/components/Video.vue';
+	import Video from '@/components/YoutubeVideo.vue';
 	import CheckButton from '@/components/buttons/CheckButton.vue';
 
 	import magicDescriptor from '@rock/assets/photoDifferences/magic';
