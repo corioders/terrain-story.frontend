@@ -1,22 +1,23 @@
 const config = require('./config');
 if (config.IS_PRODUCTION) console.warn('Waring: using webpack dev config in production env');
 
-const path = require('path');
-
 const common = require('./webpack.common.js');
 
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
+const htmlWebpackPluginConfig = {
+	favicon: common.paths.htmlWebpackPluginFavicon,
+	template: common.paths.htmlWebpackPluginTemplate,
+};
 
 const htmlWebpackPlugins = [];
-for (const appName of common.appsNames) {
+for (const chunkName in common.webpack.entry) {
 	htmlWebpackPlugins.push(
 		new HtmlWebpackPlugin({
-			chunks: [`${appName}`],
-			filename: `${appName}/index.html`,
+			chunks: [`${chunkName}`],
+			filename: `${chunkName}/index.html`,
 
-      favicon: path.resolve(common.paths.apps, appName, 'public', 'favicon.ico'),
-      template: path.resolve(common.paths.apps, appName, 'public', 'index.html')
+			...htmlWebpackPluginConfig,
 		}),
 	);
 }
