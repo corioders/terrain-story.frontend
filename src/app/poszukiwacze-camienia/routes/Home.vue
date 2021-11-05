@@ -9,6 +9,9 @@
 					ciebie. Na wytrwałych czekają nagrody!
 				</p>
 				<n-button type="primary" style="margin-bottom: 24px" @click="$router.push('/jak-grac')">Dowiedz się jak grać w grę</n-button>
+				<div v-if="showReset" style="margin-bottom: 32px">
+					<ResetProgressButton />
+				</div>
 				<MapWrapper />
 			</Flex>
 		</section>
@@ -61,10 +64,12 @@
 	import Flex from '@/layouts/Flex.vue';
 
 	import Video from '@/components/YoutubeVideo.vue';
+	import ResetProgressButton from '@/components/buttons/ResetProgressButton.vue';
 	import DevNav from '@/components/devHelpers/DevNav.vue';
 
 	import MapWrapper from '@rock/components/MapWrapper.vue';
 	import { routes } from '@rock/router';
+	import { useProgressStore } from '@rock/store/progress';
 
 	export default defineComponent({
 		name: 'Home',
@@ -75,11 +80,13 @@
 			NCard,
 			NModal,
 			Video,
+			ResetProgressButton,
 			DevNav,
 		},
 		setup() {
 			const showModal = ref(true);
-			return { routes, showModal, IS_PRODUCTION: __IS_PRODUCTION__ };
+			const store = useProgressStore();
+			return { routes, showModal, showReset: store.ended, IS_PRODUCTION: __IS_PRODUCTION__ };
 		},
 	});
 </script>
