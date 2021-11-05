@@ -1,6 +1,7 @@
 <template>
 	<Video videoId="q_O3LVHoFAw" @end="videoEnded = true" />
-	<PlayButton v-if="videoEnded" @click="handleStart()" />
+	<p>Zobacz cały film, a następnie zagraj!</p>
+	<PlayButton :disabled="!videoEnded" @click="handleStart()" />
 </template>
 
 <script lang="ts">
@@ -29,3 +30,11 @@
 		},
 	});
 </script>
+<style lang="scss" scoped>
+	p {
+		font-size: 1.1em;
+		text-align: center;
+		width: 95%;
+		max-width: 950px;
+	}
+</style>
