@@ -1,5 +1,5 @@
 <template>
-	<Video url="https://www.youtube.com/embed/P2dcu-dIhhU" />
+	<Video videoId="P2dcu-dIhhU" />
 	<SingleChoiceQuestions :questions="questions" name="mystery" :displayFeedback="displayFeedback" @correct="handleAnswer(true)" @incorrect="handleAnswer(false)" />
 	<CheckButton :isCorrect="isCorrect" @click="handleCheck" />
 </template>
@@ -7,7 +7,7 @@
 <script lang="ts">
 	import { defineComponent, ref } from 'vue';
 
-	import Video from '@/components/Video.vue';
+	import Video from '@/components/YoutubeVideo.vue';
 	import CheckButton from '@/components/buttons/CheckButton.vue';
 	import SingleChoiceQuestions from '@/components/closedQuestion/SingleChoiceQuestions.vue';
 

@@ -1,5 +1,5 @@
 <template>
-	<Video url="https://www.youtube.com/embed/ftyeIztSF1g" />
+	<Video videoId="ftyeIztSF1g" />
 	<n-card>
 		<article>
 			<h2>Szanowni Poszukiwacze Camienia,</h2>
@@ -23,7 +23,7 @@
 	import { NCard } from 'naive-ui';
 	import { defineComponent, ref } from 'vue';
 
-	import Video from '@/components/Video.vue';
+	import Video from '@/components/YoutubeVideo.vue';
 	import CheckButton from '@/components/buttons/CheckButton.vue';
 
 	import TrapezoidColoring from '@/app/poszukiwacze-camienia/components/trapezoidColoring/TrapezoidColoring.vue';

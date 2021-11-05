@@ -6,7 +6,8 @@
 
 		"moduleResolution": "node",
 		"types": [
-			"./node_modules/@types/webpack-env"
+			"./node_modules/@types/webpack-env",
+      "./node_modules/@types/youtube"
 		],
 		
 		"module": "esnext",
