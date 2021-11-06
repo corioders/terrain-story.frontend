@@ -59,8 +59,8 @@ steps:
     args:
       - '-c'
       - |-
-        # When _MODE dev then we are performing a development build
-        if [[ "${_MODE}" == "dev" ]]; then
+        # When _MODE is dev then we are performing a development build.
+        if [[ "${_MODE}" == "-dev" ]]; then
             yarn build:dev
             exit $?
         fi
