@@ -59,12 +59,14 @@ steps:
     args:
       - '-c'
       - |-
-        # When _MODE is empty then we are performing a standard build
-        if [[ "${_MODE}" == "" ]]; then
-            yarn produce
+        # When _MODE dev then we are performing a development build
+        if [[ "${_MODE}" == "dev" ]]; then
+            yarn build:dev
             exit $?
         fi
-        yarn build:dev
+
+        yarn produce
+      
 
   # Save build output.
   - name: 'gcr.io/cloud-builders/gsutil'
@@ -115,7 +117,7 @@ steps:
       - |-
         # When _MODE is empty then we are performing a standard build, but when
         # _MODE isn't then something else is going on - probably a dev build but we don't know 
-        # and we just pass ${_TRIGGER_ARGS}.
+        # and we just use ${_TRIGGER_ARGS}.
         if [[ "${_MODE}" == "" ]]; then
           # Get tag that build-server was last invoked on.
           last_server_tag=$(gcloud builds list --filter="substitutions.TRIGGER_NAME=build-server" --format="get(substitutions.TAG_NAME)" | sed -n 1p)
