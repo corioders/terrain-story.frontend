@@ -8,26 +8,32 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const JsMinimizerPlugin = require('terser-webpack-plugin');
 
+const terser = require('terser')
+
 const htmlWebpackPluginConfig = {
-	favicon: common.paths.htmlWebpackPluginFavicon,
-	template: common.paths.htmlWebpackPluginTemplate,
 	minify: {
-		collapseWhitespace: true,
-		removeComments: true,
-		removeRedundantAttributes: true,
-		removeScriptTypeAttributes: true,
-		removeStyleLinkTypeAttributes: true,
-		useShortDoctype: true,
+    caseSensitive: false,
+    removeComments: true,
+    collapseWhitespace: true,
+    removeRedundantAttributes: true,
+    useShortDoctype: false,
+    minifyJS: true,
+    minifyCSS: true,
+    minifyURLs: true,
+    sortAttributes: true,
+    sortClassName: true,
 	},
 };
 
 const htmlWebpackPlugins = [];
-for (const chunkName in common.webpack.entry) {
+for (const app of common.apps) {
 	htmlWebpackPlugins.push(
 		new HtmlWebpackPlugin({
-			chunks: [`${chunkName}`],
-			filename: `${chunkName}/index.html`,
+			chunks: [`${app.name}`],
+			filename: `${app.name}/index.html`,
 
+      template: app.htmlTemplatePath,
+			favicon: app.faviconPath,
 			...htmlWebpackPluginConfig,
 		}),
 	);
