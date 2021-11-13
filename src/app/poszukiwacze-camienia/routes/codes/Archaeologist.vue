@@ -13,10 +13,7 @@
 				Wasz Scott
 			</h3>
 		</article>
-		<!-- <p>E8, K4, H5, R8, I4, F8, P7, O6, N5, K8, G6, I8, N8, O8, J8, L4, L8, S8, F7, P8, M4, G8, H8, M8, J4, D8</p> -->
-
-
-    <p>G5, H2, F2, D4, J5, I3, E5, G2, J4, K5, C5, H5, E3, I5, F5, D5</p>
+		<p>G5, H2, F2, D4, J5, I3, E5, G2, J4, K5, C5, H5, E3, I5, F5, D5</p>
 	</n-card>
 	<TrapezoidColoring :trapezoidDescriptor="trapezoidDescriptor" @correct="isCorrect = true" @incorrect="isCorrect = false" />
 	<CheckButton :isCorrect="isCorrect" @click="handleCheck" />
@@ -66,7 +63,6 @@
 			h3 {
 				font-size: 1em;
 				margin: 0.75em 0;
-				// margin: 0;
 			}
 		}
 		width: 95%;
