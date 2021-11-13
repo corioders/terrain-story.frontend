@@ -42,23 +42,11 @@
 		</section>
 	</Flex>
 
-	<n-modal v-model:show="showModal">
-		<n-card :bordered="false" size="huge">
-			<h6>Premiera gry Poszukiwacze Camienia</h6>
-			<p>Zapraszamy do gry od <span class="date">05.11.2021</span></p>
-			<template #footer>
-				<Flex justifyContent="center" flexDirection="row">
-					<n-button type="info" @click="showModal = false">OK</n-button>
-				</Flex>
-			</template>
-		</n-card>
-	</n-modal>
-
 	<DevNav v-if="!IS_PRODUCTION" :routes="routes" />
 </template>
 
 <script lang="ts">
-	import { NButton, NCard, NModal } from 'naive-ui';
+	import { NButton } from 'naive-ui';
 	import { defineComponent, ref } from 'vue';
 
 	import Flex from '@/layouts/Flex.vue';
@@ -77,8 +65,6 @@
 			Flex,
 			MapWrapper,
 			NButton,
-			NCard,
-			NModal,
 			Video,
 			ResetProgressButton,
 			DevNav,

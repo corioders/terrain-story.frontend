@@ -34,9 +34,25 @@ const paths = {
 
 const entries = {};
 const appsPath = path.resolve(paths.src, 'app');
-let apps = fs.readdirSync(appsPath);
-apps = apps.filter((app) => app != '.DS_Store');
-for (const app of apps) entries[app] = path.resolve(appsPath, app, 'index.ts');
+const appFolders = fs.readdirSync(appsPath).filter((app) => app != '.DS_Store');
+const apps = appFolders.map((appFolder) => {
+	const appPath = path.resolve(appsPath, appFolder);
+	
+  const publicPath = path.resolve(appPath, 'public');
+  
+	const htmlTemplatePath = path.resolve(publicPath, 'index.html');
+	const faviconPath = path.resolve(publicPath, 'favicon.ico');
+
+	return {
+		name: appFolder,
+		path: appPath,
+		publicPath,
+		htmlTemplatePath,
+		faviconPath,
+	};
+});
+
+for (const app of apps) entries[app.name] = app.path;
 
 const options = {};
 options.babel = {
@@ -282,4 +298,5 @@ const webpack = {
 module.exports = {
 	webpack,
 	paths,
+	apps,
 };
