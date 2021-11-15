@@ -116,10 +116,6 @@
 			max-width: 100%;
 			white-space: normal;
 		}
-		.n-card {
-			max-width: 600px;
-			width: 95%;
-		}
 	}
 	.displayFeedback {
 		.correct {

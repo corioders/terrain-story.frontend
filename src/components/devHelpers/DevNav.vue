@@ -1,5 +1,5 @@
 <template>
-	<n-card style="width: 300px">
+	<Card style="width: 300px">
 		<n-collapse>
 			<n-collapse-item title="dev nav">
 				<Flex gap="12px">
@@ -7,20 +7,20 @@
 				</Flex>
 			</n-collapse-item>
 		</n-collapse>
-	</n-card>
+	</Card>
 </template>
 
 <script lang="ts">
-	import { NCard, NCollapse, NCollapseItem, NButton } from 'naive-ui';
+	import { NCollapse, NCollapseItem, NButton } from 'naive-ui';
 	import { defineComponent, PropType } from 'vue';
 	import { RouteRecordRaw } from 'vue-router';
 
-	import { Flex } from '@corioders/vueui';
+	import { Card, Flex } from '@corioders/vueui';
 
 	export default defineComponent({
 		name: 'DevNav',
 		components: {
-			NCard,
+			Card,
 			NCollapse,
 			NCollapseItem,
 			Flex,

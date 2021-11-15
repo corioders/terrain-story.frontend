@@ -1,14 +1,14 @@
 <template>
 	<Video videoId="6sP82sl1tZY" />
-	<n-card class="witnesses">
+	<Card class="witnesses">
 		<h2>Zeznania świadków</h2>
 		<Flex align="flex-start" gap="12px">
-			<n-card v-for="(witness, i) in witnesses" :key="`Witness${i + 1}`" class="witness">
+			<Card v-for="(witness, i) in witnesses" :key="`Witness${i + 1}`" class="witness">
 				<h3>{{ `Zeznanie ${i + 1} świadka` }}</h3>
 				{{ witness }}
-			</n-card>
+			</Card>
 		</Flex>
-	</n-card>
+	</Card>
 	<p class="questionHelper">Wskaż sprawcę włamania</p>
 	<SingleChoiceQuestion
 		:options="question.options"
@@ -23,7 +23,6 @@
 </template>
 
 <script lang="ts">
-	import { NCard } from 'naive-ui';
 	import { defineComponent, ref } from 'vue';
 
 	import Video from '@/components/YoutubeVideo.vue';
@@ -32,13 +31,14 @@
 
 	import { inspector as question } from '@/app/poszukiwacze-camienia/assets/questions';
 	import witnesses from '@/app/poszukiwacze-camienia/assets/witnesses';
+	import { Card } from '@corioders/vueui';
 	import { Flex } from '@corioders/vueui';
 	import { useProgressStore } from '@rock/store/progress';
 
 	export default defineComponent({
 		name: 'Inspector',
 		components: {
-			NCard,
+			Card,
 			Flex,
 			Video,
 			SingleChoiceQuestion,
