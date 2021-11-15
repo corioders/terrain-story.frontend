@@ -1,24 +1,26 @@
 <template>
-	<n-space vertical align="center" justify="center" class="done">
+	<Flex justify="center" gap="12px" style="height: 60vh">
 		<n-result status="success" title="Brawo udało Ci się rozwiązać tę zagadkę">
 			<template #footer>
-				<n-space vertical align="center">
+				<Flex gap="12px">
 					<p>Przenoszenie do mapy</p>
 					<n-spin size="large" />
-				</n-space>
+				</Flex>
 			</template>
 		</n-result>
-	</n-space>
+	</Flex>
 </template>
 
 <script lang="ts">
-	import { NResult, NSpace, NSpin } from 'naive-ui';
+	import { NResult, NSpin } from 'naive-ui';
 	import { defineComponent, onMounted } from 'vue';
 	import { useRouter } from 'vue-router';
 
+	import { Flex } from '@corioders/vueui';
+
 	export default defineComponent({
 		name: 'AlreadyDone',
-		components: { NResult, NSpace, NSpin },
+		components: { NResult, Flex, NSpin },
 		setup() {
 			const router = useRouter();
 
@@ -30,8 +32,3 @@
 		},
 	});
 </script>
-<style lang="scss" scoped>
-	.done {
-		height: 60vh;
-	}
-</style>

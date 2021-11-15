@@ -1,22 +1,24 @@
 <template>
 	<footer>
 		<n-divider />
-		<NSpace vertical align="center">
+		<Flex gap="12px">
 			<slot name="informations"></slot>
 			<slot name="menu"></slot>
-		</NSpace>
+		</Flex>
 	</footer>
 </template>
 
 <script lang="ts">
-	import { NDivider, NSpace } from 'naive-ui';
+	import { NDivider } from 'naive-ui';
 	import { defineComponent } from 'vue';
+
+	import { Flex } from '@corioders/vueui';
 
 	export default defineComponent({
 		name: 'Footer',
 		components: {
 			NDivider,
-			NSpace,
+			Flex,
 		},
 	});
 </script>
@@ -24,9 +26,6 @@
 	footer {
 		width: 100%;
 		margin-bottom: 32px;
-	}
-	.n-space {
-		width: 100%;
 		:deep(.n-button) {
 			color: #5a5a5a;
 		}

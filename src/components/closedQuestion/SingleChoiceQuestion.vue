@@ -1,25 +1,27 @@
 <template>
 	<div ref="container" class="container" :class="{ displayFeedback }">
-		<n-space vertical>
+		<Flex align="flex-start" gap="12px">
 			<p v-if="question !== ''">{{ question }}</p>
 			<div class="slot">
 				<slot></slot>
 			</div>
 			<n-radio-group name="radiogroup" style="max-width: 100%">
-				<n-space vertical>
+				<Flex align="flex-start" gap="12px">
 					<n-radio v-for="(option, i) in options" :key="`option${i}-${option}`" :value="option" @input="handleClick($event.target.parentElement, $event.target.value)">
 						<span v-if="!arePhotos">{{ option }}</span>
 						<img v-else :src="option" :alt="i" />
 					</n-radio>
-				</n-space>
+				</Flex>
 			</n-radio-group>
-		</n-space>
+		</Flex>
 	</div>
 </template>
 
 <script lang="ts">
-	import { NRadioGroup, NRadio, NSpace } from 'naive-ui';
+	import { NRadioGroup, NRadio } from 'naive-ui';
 	import { defineComponent, PropType, ref } from 'vue';
+
+	import { Flex } from '@corioders/vueui';
 
 	import arePhotos from './arePhotos';
 	import checkAnswer from './checkAnswer';
@@ -30,7 +32,7 @@
 	export default defineComponent({
 		name: 'SingleChoiceQuestion',
 		components: {
-			NSpace,
+			Flex,
 			NRadioGroup,
 			NRadio,
 		},

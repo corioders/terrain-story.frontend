@@ -20,13 +20,12 @@
 <script lang="ts">
 	import { defineComponent, ref } from 'vue';
 
-	import Flex from '@/layouts/Flex.vue';
-
 	import Input from '@/components/Input.vue';
 	import Video from '@/components/YoutubeVideo.vue';
 	import CheckButton from '@/components/buttons/CheckButton.vue';
 	import CipherHelper from '@/components/cipherHelper/CipherHelper.vue';
 
+	import { Flex } from '@corioders/vueui';
 	import { useProgressStore } from '@rock/store/progress';
 
 	export default defineComponent({

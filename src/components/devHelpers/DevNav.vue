@@ -2,18 +2,20 @@
 	<n-card style="width: 300px">
 		<n-collapse>
 			<n-collapse-item title="dev nav">
-				<n-space vertical align="center">
+				<Flex gap="12px">
 					<n-button v-for="(route, i) in routes" :key="`route${i}-${route.name}`" @click="$router.push(route.path)">{{ route.name }}</n-button>
-				</n-space>
+				</Flex>
 			</n-collapse-item>
 		</n-collapse>
 	</n-card>
 </template>
 
 <script lang="ts">
-	import { NCard, NCollapse, NCollapseItem, NSpace, NButton } from 'naive-ui';
+	import { NCard, NCollapse, NCollapseItem, NButton } from 'naive-ui';
 	import { defineComponent, PropType } from 'vue';
 	import { RouteRecordRaw } from 'vue-router';
+
+	import { Flex } from '@corioders/vueui';
 
 	export default defineComponent({
 		name: 'DevNav',
@@ -21,7 +23,7 @@
 			NCard,
 			NCollapse,
 			NCollapseItem,
-			NSpace,
+			Flex,
 			NButton,
 		},
 		props: {

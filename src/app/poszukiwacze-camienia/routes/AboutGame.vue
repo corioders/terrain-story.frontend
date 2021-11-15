@@ -17,7 +17,7 @@
 	import { NButton } from 'naive-ui';
 	import { defineComponent } from 'vue';
 
-	import Flex from '@/layouts/Flex.vue';
+	import { Flex } from '@corioders/vueui';
 
 	export default defineComponent({
 		name: 'AboutGame',

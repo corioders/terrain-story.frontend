@@ -1,5 +1,5 @@
 <template>
-	<Flex alignItems="flex-start">
+	<Flex align="flex-start">
 		<label :for="name" :class="answer === '' ? 'default' : isCorrect ? 'correct' : 'incorrect'">
 			{{ answer === '' ? label : isCorrect ? correctAnswerText : incorrectAnswerText }}
 		</label>
@@ -11,7 +11,7 @@
 	import { NInput } from 'naive-ui';
 	import { defineComponent } from 'vue';
 
-	import Flex from '@/layouts/Flex.vue';
+	import { Flex } from '@corioders/vueui';
 
 	export default defineComponent({
 		name: 'Input',

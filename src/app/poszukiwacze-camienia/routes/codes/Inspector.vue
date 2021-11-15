@@ -2,12 +2,12 @@
 	<Video videoId="6sP82sl1tZY" />
 	<n-card class="witnesses">
 		<h2>Zeznania świadków</h2>
-		<n-space vertical>
-			<n-card v-for="(witness, i) in witnesses" :key="`Witness${i + 1}`">
+		<Flex align="flex-start" gap="12px">
+			<n-card v-for="(witness, i) in witnesses" :key="`Witness${i + 1}`" class="witness">
 				<h3>{{ `Zeznanie ${i + 1} świadka` }}</h3>
 				{{ witness }}
 			</n-card>
-		</n-space>
+		</Flex>
 	</n-card>
 	<p class="questionHelper">Wskaż sprawcę włamania</p>
 	<SingleChoiceQuestion
@@ -23,7 +23,7 @@
 </template>
 
 <script lang="ts">
-	import { NCard, NSpace } from 'naive-ui';
+	import { NCard } from 'naive-ui';
 	import { defineComponent, ref } from 'vue';
 
 	import Video from '@/components/YoutubeVideo.vue';
@@ -32,13 +32,14 @@
 
 	import { inspector as question } from '@/app/poszukiwacze-camienia/assets/questions';
 	import witnesses from '@/app/poszukiwacze-camienia/assets/witnesses';
+	import { Flex } from '@corioders/vueui';
 	import { useProgressStore } from '@rock/store/progress';
 
 	export default defineComponent({
 		name: 'Inspector',
 		components: {
 			NCard,
-			NSpace,
+			Flex,
 			Video,
 			SingleChoiceQuestion,
 			CheckButton,
@@ -74,10 +75,9 @@
 			font-size: 1.3em;
 			margin: 0.5em 0;
 		}
-		.n-space {
-			.n-card {
-				width: 100%;
-			}
+
+		.witness {
+			width: 100%;
 		}
 	}
 	.questionHelper {

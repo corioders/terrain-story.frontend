@@ -1,18 +1,19 @@
 <template>
-	<n-space vertical align="center">
+	<Flex gap="12px">
 		<h1>Terrain Story</h1>
 		<h2>Strona w budowie</h2>
-	</n-space>
+	</Flex>
 </template>
 
 <script lang="ts">
-	import { NSpace } from 'naive-ui';
 	import { defineComponent } from 'vue';
+
+	import { Flex } from '@corioders/vueui';
 
 	export default defineComponent({
 		name: 'Home',
 		components: {
-			NSpace,
+			Flex,
 		},
 	});
 </script>

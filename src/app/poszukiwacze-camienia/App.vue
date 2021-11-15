@@ -17,13 +17,12 @@
 	import { NConfigProvider, NGlobalStyle } from 'naive-ui';
 	import { defineComponent } from 'vue';
 
-	import Flex from '@/layouts/Flex.vue';
-
 	import Header from '@/components/Header.vue';
 	import SkipNav from '@/components/devHelpers/SkipNav.vue';
 	import MapLink from '@/components/map/MapLink.vue';
 
 	import { themeOverrides } from '@/theme/lightThemeOverrides';
+	import { Flex } from '@corioders/vueui';
 	import CFooter from '@rock/components/Footer.vue';
 	import { nextRoute } from '@rock/router';
 	import { isPuzzleID } from '@rock/routes/codes/puzzle';

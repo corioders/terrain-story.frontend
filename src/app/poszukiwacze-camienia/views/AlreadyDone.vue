@@ -1,26 +1,23 @@
 <template>
-	<n-space vertical align="center" justify="center">
+	<Flex gap="12px" justify="center" style="height: 60vh">
 		<n-result status="info" title="Już rozwiązałeś tę zagadkę">
 			<template #footer>
 				<ResetProgressButton />
 			</template>
 		</n-result>
-	</n-space>
+	</Flex>
 </template>
 
 <script lang="ts">
-	import { NResult, NSpace } from 'naive-ui';
+	import { NResult } from 'naive-ui';
 	import { defineComponent } from 'vue';
 
 	import ResetProgressButton from '@/components/buttons/ResetProgressButton.vue';
 
+	import { Flex } from '@corioders/vueui';
+
 	export default defineComponent({
 		name: 'AlreadyDone',
-		components: { NResult, NSpace, ResetProgressButton },
+		components: { NResult, Flex, ResetProgressButton },
 	});
 </script>
-<style lang="scss" scoped>
-	.n-space {
-		height: 60vh;
-	}
-</style>

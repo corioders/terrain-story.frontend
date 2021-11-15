@@ -1,6 +1,6 @@
 <template>
 	<canvas ref="canvasRef"></canvas>
-	<n-space>
+	<Flex align="flex-start" direction="row" gap="12px">
 		<n-button text size="large" @click="moveRef('top')">
 			<n-icon size="36">
 				<img src="@rock/assets/arrows/top.svg" alt="strzałka w górę" />
@@ -21,13 +21,15 @@
 				<img src="@rock/assets/arrows/right.svg" alt="strzałka w prawo" />
 			</n-icon>
 		</n-button>
-	</n-space>
+	</Flex>
 </template>
 
 
 <script lang="ts">
-	import { NButton, NIcon, NSpace } from 'naive-ui';
+	import { NButton, NIcon } from 'naive-ui';
 	import { defineComponent, onMounted, PropType, ref } from 'vue';
+
+	import { Flex } from '@corioders/vueui';
 
 	import { LabyrinthDescriptor, Player, Directions, expandEmpty } from './labyrinth';
 
@@ -35,7 +37,7 @@
 		components: {
 			NButton,
 			NIcon,
-			NSpace,
+			Flex,
 		},
 		props: {
 			labyrinthDescriptor: {

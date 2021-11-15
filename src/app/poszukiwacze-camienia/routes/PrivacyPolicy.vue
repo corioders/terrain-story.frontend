@@ -1,5 +1,5 @@
 <template>
-	<n-space vertical align="center">
+	<Flex style="max-width: 100%" gap="12px">
 		<article>
 			<p class="heading">Polityka Prywatności</p>
 			<p>
@@ -136,31 +136,30 @@
 				</li>
 			</ol>
 		</article>
-	</n-space>
+	</Flex>
 </template>
 
 <script lang="ts">
-	import { NButton, NSpace } from 'naive-ui';
+	import { NButton } from 'naive-ui';
 	import { defineComponent } from 'vue';
+
+	import { Flex } from '@corioders/vueui';
 
 	export default defineComponent({
 		name: 'PrivacyPolicy',
 		components: {
 			NButton,
-			NSpace,
+			Flex,
 		},
 	});
 </script>
 <style lang="scss" scoped>
-	.n-space {
-		max-width: 100%;
-		article {
-			.heading {
-				font-size: 2em;
-			}
-			width: 95%;
-			max-width: 950px;
-			padding: 12px;
+	article {
+		.heading {
+			font-size: 2em;
 		}
+		width: 95%;
+		max-width: 950px;
+		padding: 12px;
 	}
 </style>
