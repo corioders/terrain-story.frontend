@@ -1,14 +1,14 @@
 <template>
 	<Video videoId="6sP82sl1tZY" />
-	<Card class="witnesses">
+	<VCard class="witnesses">
 		<h2>Zeznania świadków</h2>
-		<Flex align="flex-start" gap="12px">
-			<Card v-for="(witness, i) in witnesses" :key="`Witness${i + 1}`" class="witness">
+		<VFlex align="flex-start" gap="12px">
+			<VCard v-for="(witness, i) in witnesses" :key="`Witness${i + 1}`" class="witness">
 				<h3>{{ `Zeznanie ${i + 1} świadka` }}</h3>
 				{{ witness }}
-			</Card>
-		</Flex>
-	</Card>
+			</VCard>
+		</VFlex>
+	</VCard>
 	<p class="questionHelper">Wskaż sprawcę włamania</p>
 	<SingleChoiceQuestion
 		:options="question.options"
@@ -31,15 +31,14 @@
 
 	import { inspector as question } from '@/app/poszukiwacze-camienia/assets/questions';
 	import witnesses from '@/app/poszukiwacze-camienia/assets/witnesses';
-	import { Card } from '@corioders/vueui';
-	import { Flex } from '@corioders/vueui';
+	import { VFlex, VCard } from '@corioders/vueui';
 	import { useProgressStore } from '@rock/store/progress';
 
 	export default defineComponent({
 		name: 'Inspector',
 		components: {
-			Card,
-			Flex,
+			VCard,
+			VFlex,
 			Video,
 			SingleChoiceQuestion,
 			CheckButton,

@@ -1,5 +1,5 @@
 <template>
-	<Flex>
+	<VFlex>
 		<section>
 			<h2>Więcej o fabule gry</h2>
 			<p>
@@ -10,18 +10,18 @@
 			</p>
 			<n-button type="info" @click="$router.push('/')"> Wróć do strony głównej </n-button>
 		</section>
-	</Flex>
+	</VFlex>
 </template>
 
 <script lang="ts">
 	import { NButton } from 'naive-ui';
 	import { defineComponent } from 'vue';
 
-	import { Flex } from '@corioders/vueui';
+	import { VFlex } from '@corioders/vueui';
 
 	export default defineComponent({
 		name: 'AboutGame',
-		components: { Flex, NButton },
+		components: { VFlex, NButton },
 	});
 </script>
 <style lang="scss" scoped>

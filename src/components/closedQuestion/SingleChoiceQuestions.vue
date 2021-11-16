@@ -1,5 +1,5 @@
 <template>
-	<Flex align="flex-start">
+	<VFlex align="flex-start">
 		<SingleChoiceQuestion
 			v-for="(question, i) in questions"
 			:key="`${name}Question${i}`"
@@ -13,13 +13,13 @@
 		>
 			<slot :name="i"></slot>
 		</SingleChoiceQuestion>
-	</Flex>
+	</VFlex>
 </template>
 
 <script lang="ts">
 	import { defineComponent, PropType, ref, watch } from 'vue';
 
-	import { Flex } from '@corioders/vueui';
+	import { VFlex } from '@corioders/vueui';
 
 	import SingleChoiceQuestion from './SingleChoiceQuestion.vue';
 	import Question from './question';
@@ -28,7 +28,7 @@
 		name: 'SingleChoiceQuestions',
 		components: {
 			SingleChoiceQuestion,
-			Flex,
+			VFlex,
 		},
 		props: {
 			name: {

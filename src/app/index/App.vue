@@ -1,19 +1,19 @@
 <template>
 	<div id="app">
-		<Flex gap="12px">
+		<VFlex gap="12px">
 			<router-view />
-		</Flex>
+		</VFlex>
 	</div>
 </template>
 
 <script lang="ts">
 	import { defineComponent } from 'vue';
 
-	import { Flex } from '@corioders/vueui';
+	import { VFlex } from '@corioders/vueui';
 
 	export default defineComponent({
 		components: {
-			Flex,
+			VFlex,
 		},
 	});
 </script>

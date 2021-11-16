@@ -1,9 +1,9 @@
 <template>
 	<Video videoId="rh04Fv24fjo" />
 	<p class="questionHelper">Znajdź po trzy różnice w każdej parze zdjęć, zaznacz je na górnych zdjęciach.</p>
-	<Flex align="flex-start" gap="12px">
+	<VFlex align="flex-start" gap="12px">
 		<Differences name="mage" :descriptors="descriptors" @correct="isCorrect = true" />
-	</Flex>
+	</VFlex>
 	<CheckButton :isCorrect="isCorrect" @click="handleCheck()" />
 </template>
 
@@ -13,7 +13,7 @@
 	import Video from '@/components/YoutubeVideo.vue';
 	import CheckButton from '@/components/buttons/CheckButton.vue';
 
-	import { Flex } from '@corioders/vueui';
+	import { VFlex } from '@corioders/vueui';
 	import magicDescriptor from '@rock/assets/photoDifferences/magic';
 	import rockDescriptor from '@rock/assets/photoDifferences/rock';
 	import touristDescriptor from '@rock/assets/photoDifferences/tourist';
@@ -24,7 +24,7 @@
 		name: 'Mage',
 		components: {
 			Differences,
-			Flex,
+			VFlex,
 			Video,
 			CheckButton,
 		},

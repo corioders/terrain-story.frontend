@@ -1,6 +1,6 @@
 <template>
 	<Video videoId="ftyeIztSF1g" />
-	<Card style="width: 95%; max-width: 600px">
+	<VCard style="width: 95%; max-width: 600px">
 		<article>
 			<h2>Szanowni Poszukiwacze Camienia,</h2>
 			<p>
@@ -14,7 +14,7 @@
 			</h3>
 		</article>
 		<p>G5, H2, F2, D4, J5, I3, E5, G2, J4, K5, C5, H5, E3, I5, F5, D5</p>
-	</Card>
+	</VCard>
 	<TrapezoidColoring :trapezoidDescriptor="trapezoidDescriptor" @correct="isCorrect = true" @incorrect="isCorrect = false" />
 	<CheckButton :isCorrect="isCorrect" @click="handleCheck" />
 </template>
@@ -26,14 +26,14 @@
 	import CheckButton from '@/components/buttons/CheckButton.vue';
 
 	import TrapezoidColoring from '@/app/poszukiwacze-camienia/components/trapezoidColoring/TrapezoidColoring.vue';
-	import { Card } from '@corioders/vueui';
+	import { VCard } from '@corioders/vueui';
 	import { trapezoidDescriptor } from '@rock/assets/archaeologist';
 	import { useProgressStore } from '@rock/store/progress';
 
 	export default defineComponent({
 		name: 'Archaeologist',
 		components: {
-			Card,
+			VCard,
 			Video,
 			TrapezoidColoring,
 			CheckButton,

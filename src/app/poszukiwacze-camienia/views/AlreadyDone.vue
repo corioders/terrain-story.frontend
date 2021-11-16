@@ -1,11 +1,11 @@
 <template>
-	<Flex gap="12px" justify="center" style="height: 60vh">
+	<VFlex gap="12px" justify="center" style="height: 60vh">
 		<n-result status="info" title="Już rozwiązałeś tę zagadkę">
 			<template #footer>
 				<ResetProgressButton />
 			</template>
 		</n-result>
-	</Flex>
+	</VFlex>
 </template>
 
 <script lang="ts">
@@ -14,10 +14,14 @@
 
 	import ResetProgressButton from '@/components/buttons/ResetProgressButton.vue';
 
-	import { Flex } from '@corioders/vueui';
+	import { VFlex } from '@corioders/vueui';
 
 	export default defineComponent({
 		name: 'AlreadyDone',
-		components: { NResult, Flex, ResetProgressButton },
+		components: {
+			NResult,
+			VFlex,
+			ResetProgressButton,
+		},
 	});
 </script>

@@ -1,22 +1,22 @@
 <template>
-	<Flex align="flex-start">
+	<VFlex align="flex-start">
 		<label :for="name" :class="answer === '' ? 'default' : isCorrect ? 'correct' : 'incorrect'">
 			{{ answer === '' ? label : isCorrect ? correctAnswerText : incorrectAnswerText }}
 		</label>
 		<n-input :id="name" v-model:value="answer" type="text" size="large" :placeholder="label" @change="$emit('answer', $event)" @input="$emit('answer', $event)" />
-	</Flex>
+	</VFlex>
 </template>
 
 <script lang="ts">
 	import { NInput } from 'naive-ui';
 	import { defineComponent } from 'vue';
 
-	import { Flex } from '@corioders/vueui';
+	import { VFlex } from '@corioders/vueui';
 
 	export default defineComponent({
 		name: 'Input',
 		components: {
-			Flex,
+			VFlex,
 			NInput,
 		},
 		props: {

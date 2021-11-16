@@ -1,19 +1,19 @@
 <template>
-	<Flex gap="12px">
+	<VFlex gap="12px">
 		<h1>Terrain Story</h1>
 		<h2>Strona w budowie</h2>
-	</Flex>
+	</VFlex>
 </template>
 
 <script lang="ts">
 	import { defineComponent } from 'vue';
 
-	import { Flex } from '@corioders/vueui';
+	import { VFlex } from '@corioders/vueui';
 
 	export default defineComponent({
 		name: 'Home',
 		components: {
-			Flex,
+			VFlex,
 		},
 	});
 </script>

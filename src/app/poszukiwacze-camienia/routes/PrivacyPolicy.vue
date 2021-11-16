@@ -1,5 +1,5 @@
 <template>
-	<Flex style="max-width: 100%" gap="12px">
+	<VFlex style="max-width: 100%" gap="12px">
 		<article>
 			<p class="heading">Polityka Prywatności</p>
 			<p>
@@ -136,20 +136,20 @@
 				</li>
 			</ol>
 		</article>
-	</Flex>
+	</VFlex>
 </template>
 
 <script lang="ts">
 	import { NButton } from 'naive-ui';
 	import { defineComponent } from 'vue';
 
-	import { Flex } from '@corioders/vueui';
+	import { VFlex } from '@corioders/vueui';
 
 	export default defineComponent({
 		name: 'PrivacyPolicy',
 		components: {
 			NButton,
-			Flex,
+			VFlex,
 		},
 	});
 </script>

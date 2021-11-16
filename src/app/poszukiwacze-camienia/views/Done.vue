@@ -1,14 +1,14 @@
 <template>
-	<Flex justify="center" gap="12px" style="height: 60vh">
+	<VFlex justify="center" gap="12px" style="height: 60vh">
 		<n-result status="success" title="Brawo udało Ci się rozwiązać tę zagadkę">
 			<template #footer>
-				<Flex gap="12px">
+				<VFlex gap="12px">
 					<p>Przenoszenie do mapy</p>
 					<n-spin size="large" />
-				</Flex>
+				</VFlex>
 			</template>
 		</n-result>
-	</Flex>
+	</VFlex>
 </template>
 
 <script lang="ts">
@@ -16,11 +16,15 @@
 	import { defineComponent, onMounted } from 'vue';
 	import { useRouter } from 'vue-router';
 
-	import { Flex } from '@corioders/vueui';
+	import { VFlex } from '@corioders/vueui';
 
 	export default defineComponent({
 		name: 'AlreadyDone',
-		components: { NResult, Flex, NSpin },
+		components: {
+			NResult,
+			VFlex,
+			NSpin,
+		},
 		setup() {
 			const router = useRouter();
 

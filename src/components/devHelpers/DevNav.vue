@@ -1,13 +1,13 @@
 <template>
-	<Card style="width: 300px">
+	<VCard style="width: 300px">
 		<n-collapse>
 			<n-collapse-item title="dev nav">
-				<Flex gap="12px">
+				<VFlex gap="12px">
 					<n-button v-for="(route, i) in routes" :key="`route${i}-${route.name}`" @click="$router.push(route.path)">{{ route.name }}</n-button>
-				</Flex>
+				</VFlex>
 			</n-collapse-item>
 		</n-collapse>
-	</Card>
+	</VCard>
 </template>
 
 <script lang="ts">
@@ -15,15 +15,15 @@
 	import { defineComponent, PropType } from 'vue';
 	import { RouteRecordRaw } from 'vue-router';
 
-	import { Card, Flex } from '@corioders/vueui';
+	import { VCard, VFlex } from '@corioders/vueui';
 
 	export default defineComponent({
 		name: 'DevNav',
 		components: {
-			Card,
+			VCard,
 			NCollapse,
 			NCollapseItem,
-			Flex,
+			VFlex,
 			NButton,
 		},
 		props: {
