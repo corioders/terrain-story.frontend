@@ -22,10 +22,16 @@
 				type: String,
 				required: true,
 			},
+			// In seconds.
+			endBias: {
+				type: Number,
+				required: false,
+				default: 0,
+			},
 		},
 		emits: ['end'],
 		setup(props, { emit }) {
-			// Load youtube iframe api
+			// Load youtube iframe api.
 			if (window.ytAPILoaded === undefined) {
 				const ytAPI = window.document.createElement('script');
 				ytAPI.src = 'https://www.youtube.com/iframe_api';
@@ -33,9 +39,21 @@
 				window.document.body.appendChild(ytAPI);
 
 				window.ytAPILoaded = new Promise((resolve) => {
+					// This function is called by YouTubeApi when it's ready.
 					window.onYouTubeIframeAPIReady = resolve;
 					window.ytAPILoaded = null;
 				});
+			}
+
+			let ended = false;
+			function end(): void {
+				if (ended === true) return;
+				emit('end');
+				ended = true;
+			}
+
+			function checkBias(duration: number, currentTime: number): void {
+				if (duration - currentTime <= props.endBias) end();
 			}
 
 			const divRef = ref<HTMLDivElement | null>(null);
@@ -52,8 +70,36 @@
 				// Add scopedId.
 				iframe.setAttribute(scopeId.value, '');
 
+				let playerHackDone = false;
 				player.addEventListener('onStateChange', (event: YT.OnStateChangeEvent) => {
-					if (event.data === YT.PlayerState.ENDED) emit('end');
+					switch (event.data) {
+						case YT.PlayerState.PLAYING: {
+							if (props.endBias === 0) break;
+							if (playerHackDone === true) break;
+							playerHackDone = true;
+
+							const playerHack = player as unknown as { playerInfo: { currentTime: number } };
+							const playerInfo = {
+								...playerHack.playerInfo,
+								_currentTime: 0,
+								set currentTime(value: number) {
+									this._currentTime = value;
+									checkBias(player.getDuration(), this._currentTime);
+								},
+								get currentTime(): number {
+									return this._currentTime;
+								},
+							};
+
+							playerHack.playerInfo = playerInfo;
+							break;
+						}
+
+						case YT.PlayerState.ENDED: {
+							end();
+							break;
+						}
+					}
 				});
 			});
 
