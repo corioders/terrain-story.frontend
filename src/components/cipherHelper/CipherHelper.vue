@@ -1,5 +1,5 @@
 <template>
-	<div class="alphabet">
+	<VScrollbar class="alphabet">
 		<p>
 			<span v-for="(displacedLetter, i) in displacedAlphabet" :key="`${i}-displacedLetter-${displacedLetter}`" class="letter">
 				{{ displacedLetter }}
@@ -8,16 +8,19 @@
 		<p>
 			<span v-for="(letter, i) in alphabet" :key="`${i}-letter-${letter}`" class="letter">{{ letter }}</span>
 		</p>
-	</div>
+	</VScrollbar>
 </template>
 
 <script lang="ts">
 	import { defineComponent, toRefs, watch } from 'vue';
 
+	import { VScrollbar } from '@corioders/vueui';
+
 	import { displaceAlphabet } from './displaceAlphabet';
 
 	export default defineComponent({
 		name: 'CipherHelper',
+		components: { VScrollbar },
 		props: {
 			displacement: {
 				type: Number,

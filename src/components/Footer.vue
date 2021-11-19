@@ -1,6 +1,6 @@
 <template>
 	<footer>
-		<n-divider />
+		<VDivider style="font-size: 0.5rem" />
 		<VFlex gap="12px">
 			<slot name="informations"></slot>
 			<slot name="menu"></slot>
@@ -9,15 +9,14 @@
 </template>
 
 <script lang="ts">
-	import { NDivider } from 'naive-ui';
 	import { defineComponent } from 'vue';
 
-	import { VFlex } from '@corioders/vueui';
+	import { VFlex, VDivider } from '@corioders/vueui';
 
 	export default defineComponent({
 		name: 'Footer',
 		components: {
-			NDivider,
+			VDivider,
 			VFlex,
 		},
 	});

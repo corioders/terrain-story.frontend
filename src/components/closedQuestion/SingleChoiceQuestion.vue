@@ -5,23 +5,26 @@
 			<div class="slot">
 				<slot></slot>
 			</div>
-			<n-radio-group name="radiogroup" style="max-width: 100%">
-				<VFlex align="flex-start" gap="12px">
-					<n-radio v-for="(option, i) in options" :key="`option${i}-${option}`" :value="option" @input="handleClick($event.target.parentElement, $event.target.value)">
-						<span v-if="!arePhotos">{{ option }}</span>
-						<img v-else :src="option" :alt="i" />
-					</n-radio>
-				</VFlex>
-			</n-radio-group>
+			<VFlex align="flex-start" gap="12px" style="max-width: 100%">
+				<VRadio
+					v-for="(option, i) in options"
+					:key="`option${i}-${option}`"
+					:name="name"
+					:value="option"
+					@input="handleClick($event.target.parentElement, $event.target.value)"
+				>
+					<span v-if="!arePhotos">{{ option }}</span>
+					<img v-else :src="option" :alt="i" />
+				</VRadio>
+			</VFlex>
 		</VFlex>
 	</div>
 </template>
 
 <script lang="ts">
-	import { NRadioGroup, NRadio } from 'naive-ui';
 	import { defineComponent, PropType, ref } from 'vue';
 
-	import { VFlex } from '@corioders/vueui';
+	import { VFlex, VRadio } from '@corioders/vueui';
 
 	import arePhotos from './arePhotos';
 	import checkAnswer from './checkAnswer';
@@ -33,8 +36,7 @@
 		name: 'SingleChoiceQuestion',
 		components: {
 			VFlex,
-			NRadioGroup,
-			NRadio,
+			VRadio,
 		},
 		props: {
 			name: {

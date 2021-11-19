@@ -4,7 +4,7 @@
 			<template #footer>
 				<VFlex gap="12px">
 					<p>Przenoszenie do mapy</p>
-					<n-spin size="large" />
+					<VSpinner />
 				</VFlex>
 			</template>
 		</n-result>
@@ -12,18 +12,18 @@
 </template>
 
 <script lang="ts">
-	import { NResult, NSpin } from 'naive-ui';
+	import { NResult } from 'naive-ui';
 	import { defineComponent, onMounted } from 'vue';
 	import { useRouter } from 'vue-router';
 
-	import { VFlex } from '@corioders/vueui';
+	import { VFlex, VSpinner } from '@corioders/vueui';
 
 	export default defineComponent({
 		name: 'AlreadyDone',
 		components: {
 			NResult,
 			VFlex,
-			NSpin,
+			VSpinner,
 		},
 		setup() {
 			const router = useRouter();
