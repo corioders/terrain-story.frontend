@@ -1,30 +1,24 @@
 <template>
-	<n-button :type="wrongAnswerState ? 'error' : 'primary'" size="large" :disabled="disabled" @click="handleClick($event)">
+	<VButton class="CheckButton" :class="wrongAnswerState ? 'error' : 'primary'" @click="handleClick($event)">
 		{{ wrongAnswerState ? 'Zła odpowiedź' : 'Sprawdź' }}
-	</n-button>
+	</VButton>
 </template>
 
 <script lang="ts">
-	import { NButton } from 'naive-ui';
 	import { defineComponent, ref } from 'vue';
 
 	import { sleep } from '@corioders/jskit/time/time';
+	import { VButton } from '@corioders/vueui';
 
 	export default defineComponent({
 		name: 'CheckButton',
 		components: {
-			NButton,
+			VButton,
 		},
 		props: {
 			isCorrect: {
 				type: Boolean,
 				required: true,
-			},
-
-			disabled: {
-				type: Boolean,
-				default: false,
-				required: false,
 			},
 		},
 
@@ -45,7 +39,15 @@
 	});
 </script>
 <style lang="scss" scoped>
-	.n-button {
+	@use '../../theme/Button/Button.scss' as *;
+	.VButton {
+		@include Button;
 		transition: all 1s;
+	}
+	.primary {
+		@include Button($primary);
+	}
+	.error {
+		@include Button($error);
 	}
 </style>

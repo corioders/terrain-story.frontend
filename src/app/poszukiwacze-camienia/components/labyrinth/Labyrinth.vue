@@ -1,42 +1,33 @@
 <template>
 	<canvas ref="canvasRef"></canvas>
 	<VFlex align="flex-start" direction="row" gap="12px">
-		<n-button text size="large" @click="moveRef('top')">
-			<n-icon size="36">
-				<img src="@rock/assets/arrows/top.svg" alt="strzałka w górę" />
-			</n-icon>
-		</n-button>
-		<n-button text size="large" @click="moveRef('bottom')">
-			<n-icon size="36">
-				<img src="@rock/assets/arrows/bottom.svg" alt="strzałka w dół" />
-			</n-icon>
-		</n-button>
-		<n-button text size="large" @click="moveRef('left')">
-			<n-icon size="36">
-				<img src="@rock/assets/arrows/left.svg" alt="strzałka w lewo" />
-			</n-icon>
-		</n-button>
-		<n-button text size="large" @click="moveRef('right')">
-			<n-icon size="36">
-				<img src="@rock/assets/arrows/right.svg" alt="strzałka w prawo" />
-			</n-icon>
-		</n-button>
+		<PlainButton class="PlainButton" @click="moveRef('top')">
+			<img src="@rock/assets/arrows/top.svg" alt="strzałka w górę" />
+		</PlainButton>
+		<PlainButton class="PlainButton" @click="moveRef('bottom')">
+			<img src="@rock/assets/arrows/bottom.svg" alt="strzałka w dół" />
+		</PlainButton>
+		<PlainButton class="PlainButton" @click="moveRef('left')">
+			<img src="@rock/assets/arrows/left.svg" alt="strzałka w lewo" />
+		</PlainButton>
+		<PlainButton class="PlainButton" @click="moveRef('right')">
+			<img src="@rock/assets/arrows/right.svg" alt="strzałka w prawo" />
+		</PlainButton>
 	</VFlex>
 </template>
 
 
 <script lang="ts">
-	import { NButton, NIcon } from 'naive-ui';
 	import { defineComponent, onMounted, PropType, ref } from 'vue';
 
+	import { PlainButton } from '@/theme/Button';
 	import { VFlex } from '@corioders/vueui';
 
 	import { LabyrinthDescriptor, Player, Directions, expandEmpty } from './labyrinth';
 
 	export default defineComponent({
 		components: {
-			NButton,
-			NIcon,
+			PlainButton,
 			VFlex,
 		},
 		props: {
@@ -171,5 +162,10 @@
 		margin-top: 10px;
 		width: 95%;
 		max-width: 950px;
+	}
+	.PlainButton {
+		img {
+			width: 32px;
+		}
 	}
 </style>

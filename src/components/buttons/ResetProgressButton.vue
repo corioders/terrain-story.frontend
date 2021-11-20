@@ -1,30 +1,24 @@
 <template>
 	<n-popconfirm positive-text="Tak" negative-text="Anuluj" @positive-click="handleClick">
 		<template #trigger>
-			<n-button size="large" type="info" :disabled="disabled">Zacznij grać od początku</n-button>
+			<InfoButton>Zacznij grać od początku</InfoButton>
 		</template>
 		Czy na pewno chcesz zacząć grać od początku? Usunie to Twój cały postęp w grze.
 	</n-popconfirm>
 </template>
 
 <script lang="ts">
-	import { NButton, NPopconfirm } from 'naive-ui';
+	import { NPopconfirm } from 'naive-ui';
 	import { defineComponent } from 'vue';
 
+	import { InfoButton } from '@/theme/Button';
 	import { useProgressStore } from '@rock/store/progress';
 
 	export default defineComponent({
 		name: 'ResetProgressButton',
 		components: {
-			NButton,
+			InfoButton,
 			NPopconfirm,
-		},
-		props: {
-			disabled: {
-				type: Boolean,
-				default: false,
-				required: false,
-			},
 		},
 		setup() {
 			const store = useProgressStore();

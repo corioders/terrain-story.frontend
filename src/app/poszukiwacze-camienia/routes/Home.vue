@@ -8,7 +8,7 @@
 					Znajdź kody QR, zeskanuj je i rozwiąż wszystkie zagadki, aby odnaleźć Camień! Kody znajdują się w tych miejscach. Kolejność ich odwiedzania zależy tylko od
 					ciebie. Na wytrwałych czekają nagrody!
 				</p>
-				<n-button type="primary" style="margin-bottom: 24px" @click="$router.push('/jak-grac')">Dowiedz się jak grać w grę</n-button>
+				<PrimaryButton style="margin-bottom: 24px" @click="$router.push('/jak-grac')">Dowiedz się jak grać w grę</PrimaryButton>
 				<div v-if="showReset" style="margin-bottom: 32px">
 					<ResetProgressButton />
 				</div>
@@ -19,7 +19,7 @@
 			<VFlex>
 				<h4>Chcesz wiedzieć więcej?</h4>
 				<p>Nieodłączną częścią naszej gry są filmiki, tutaj możesz zobaczyć ich urywki.</p>
-				<n-button type="info" style="margin-bottom: 24px" @click="$router.push('/o-grze')">Dowiedz się więcej o fabule gry</n-button>
+				<InfoButton style="margin-bottom: 24px" @click="$router.push('/o-grze')">Dowiedz się więcej o fabule gry</InfoButton>
 				<Video videoId="AmJaWzUYsow" />
 			</VFlex>
 		</section>
@@ -35,8 +35,8 @@
 				<h6>Kontakt</h6>
 				<p>terrainstory@gmail.com</p>
 				<p style="margin-top: 0">
-					Wiadomość na <n-button tag="a" type="info" text href="https://www.instagram.com/terrain.story/" target="_blank" rel="noreferrer">Instagramie</n-button> lub
-					<n-button tag="a" type="info" text href="https://www.facebook.com/terrain.story/" target="_blank" rel="noreferrer">Facebooku</n-button>
+					Wiadomość na <InfoLink href="https://www.instagram.com/terrain.story/" newCard>Instagramie</InfoLink> lub
+					<InfoLink href="https://www.facebook.com/terrain.story/" newCard>Facebooku</InfoLink>
 				</p>
 			</VFlex>
 		</section>
@@ -46,13 +46,14 @@
 </template>
 
 <script lang="ts">
-	import { NButton } from 'naive-ui';
 	import { defineComponent, ref } from 'vue';
 
 	import Video from '@/components/YoutubeVideo.vue';
 	import ResetProgressButton from '@/components/buttons/ResetProgressButton.vue';
 	import DevNav from '@/components/devHelpers/DevNav.vue';
 
+	import { PrimaryButton, InfoButton } from '@/theme/Button';
+	import { InfoLink } from '@/theme/Link';
 	import { VFlex } from '@corioders/vueui';
 	import MapWrapper from '@rock/components/MapWrapper.vue';
 	import { routes } from '@rock/router';
@@ -61,9 +62,11 @@
 	export default defineComponent({
 		name: 'Home',
 		components: {
+			PrimaryButton,
+			InfoButton,
+			InfoLink,
 			VFlex,
 			MapWrapper,
-			NButton,
 			Video,
 			ResetProgressButton,
 			DevNav,
@@ -100,10 +103,6 @@
 			p {
 				font-size: 18px;
 				max-width: 950px;
-				.n-button {
-					font-size: 18px;
-					text-decoration: underline;
-				}
 			}
 
 			.logo {
@@ -117,5 +116,10 @@
 			background-color: $secondaryDarker;
 			color: #fff;
 		}
+	}
+</style>
+<style lang="scss">
+	body {
+		margin: 0;
 	}
 </style>

@@ -1,15 +1,16 @@
 <template>
-	<n-button size="large" @click="nextRoute()">Dalej</n-button>
+	<DefaultButton @click="nextRoute()">Dalej</DefaultButton>
 </template>
 
 <script lang="ts">
-	import { NButton } from 'naive-ui';
 	import { defineComponent } from 'vue';
+
+	import { DefaultButton } from '@/theme/Button';
 
 	export default defineComponent({
 		name: 'SkipNav',
 		components: {
-			NButton,
+			DefaultButton,
 		},
 		props: {
 			nextRoute: {

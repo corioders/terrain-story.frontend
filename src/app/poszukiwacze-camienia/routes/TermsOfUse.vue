@@ -9,9 +9,7 @@
 				<li>Organizatorami Gry jest: Centrum Aktywności Młodzieżowej ul. Kopernika 14, Stowarzyszenie Most wraz ze współpracą z Urzędem Miejskim w Katowicach.</li>
 				<li>
 					Regulamin jest dostępny w siedzibie Centrum Aktywności Młodzieżowej oraz na
-					<n-button tag="a" target="_blank" rel="noreferrer" type="info" text href="https://www.facebook.com/CentrumAktywnosciMlodziezowej">
-						facebooku Centrum Aktywności Młodzieżowej
-					</n-button>
+					<InfoLink newCard href="https://www.facebook.com/CentrumAktywnosciMlodziezowej"> facebooku Centrum Aktywności Młodzieżowej </InfoLink>
 				</li>
 			</ol>
 			<p class="strong">Zasady gry</p>
@@ -50,8 +48,7 @@
 				</li>
 				<li>
 					Wszelkie sytuacje sporne lub nieścisłości mogące powstać w grze należy kierować do Centrum Aktywności Młodzieżowej prowadzonego przez Stowarzyszenie MOST na
-					adres <n-button tag="a" target="_blank" rel="noreferrer" type="info" text href="mailto:cam@mostkatowice.pl">cam@mostkatowice.pl</n-button>. Od decyzji osób
-					prowadzących nie ma odwołania.
+					adres <InfoLink newCard href="mailto:cam@mostkatowice.pl">cam@mostkatowice.pl</InfoLink>. Od decyzji osób prowadzących nie ma odwołania.
 				</li>
 				<li><p>Uczestnicy Gry powinni być w dobrym stanie zdrowia, umożliwiającym udział w Grze i biorąc udział w grze oświadczają, że:</p></li>
 				<li><p>są świadoma/y zagrożeń wynikających z narażenia na zakażenie wirusem SARS-CoV-2.</p></li>
@@ -113,7 +110,7 @@
 						przekazane będą GIS oraz podległym mu służbom. Dane o stanie zdrowia będą przechowywane przez 2 tygodnie od daty zakończenia wydarzenia, następnie zostaną
 						zniszczone przez Organizatora. Dane przetwarzane będą zgodnie z wytycznymi Ministerstwa Kultury i Dziedzictwa Narodowego oraz Głównego Inspektora Sanitarnego
 						dla dla organizatorów imprez kulturalnych i rozrywkowych w trakcie epidemii wirusa SARS-CoV-2 w Polsce. Wytyczne dostępne są na portalu
-						<n-button tag="a" target="_blank" rel="noreferrer" type="info" text href="http://www.gov.pl/">www.gov.pl</n-button>
+						<InfoLink newCard href="http://www.gov.pl/">www.gov.pl</InfoLink>
 					</p>
 				</li>
 				<li>
@@ -150,15 +147,15 @@
 </template>
 
 <script lang="ts">
-	import { NButton } from 'naive-ui';
 	import { defineComponent } from 'vue';
 
+	import { InfoLink } from '@/theme/Link';
 	import { VFlex } from '@corioders/vueui';
 
 	export default defineComponent({
 		name: 'TermsOfUse',
 		components: {
-			NButton,
+			InfoLink,
 			VFlex,
 		},
 	});
