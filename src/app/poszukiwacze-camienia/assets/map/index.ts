@@ -31,10 +31,10 @@ export const mapData: MapData<puzzleID> = {
 			photo: require<string>('./kosciolGarnizonowy.webp'),
 		},
 		{
-			localization: [50.25667416780812, 19.021111506988316],
-			name: 'Kinoteatr Rialto',
+			localization: [50.255481545175385, 19.018445075626712],
+			name: 'Faza Charity Shop',
 			puzzleID: 'Mage',
-			photo: require<string>('./rialto.webp'),
+			photo: require<string>('./fazaCharityShop.webp'),
 		},
 		{
 			localization: [50.25556372937672, 19.014722451529728],

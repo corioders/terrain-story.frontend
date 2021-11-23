@@ -1,5 +1,5 @@
 <template>
-	<Video videoId="q_O3LVHoFAw" @end="videoEnded = true" />
+	<Video :endBias="10" videoId="q_O3LVHoFAw" @end="videoEnded = true" />
 	<p>Zobacz cały film, a następnie zagraj!</p>
 	<PlayButton :disabled="!videoEnded" @click="handleStart()" />
 </template>
