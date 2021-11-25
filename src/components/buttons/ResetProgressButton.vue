@@ -1,33 +1,45 @@
 <template>
-	<n-popconfirm positive-text="Tak" negative-text="Anuluj" @positive-click="handleClick">
-		<template #trigger>
-			<InfoButton>Zacznij grać od początku</InfoButton>
-		</template>
-		Czy na pewno chcesz zacząć grać od początku? Usunie to Twój cały postęp w grze.
-	</n-popconfirm>
+	<section v-if="showPopup">
+		<p>Czy na pewno chcesz zacząć grać od początku? Usunie to Twój cały postęp w grze.</p>
+		<VFlex direction="row" gap="12px" justify="flex-end">
+			<ErrorButton @click="handleClick">Tak</ErrorButton>
+			<DefaultButton @click="showPopup = false">Anuluj</DefaultButton>
+		</VFlex>
+	</section>
+	<InfoButton class="showPopupButton" @click="showPopup = !showPopup">Zacznij grać od początku</InfoButton>
 </template>
 
 <script lang="ts">
-	import { NPopconfirm } from 'naive-ui';
-	import { defineComponent } from 'vue';
+	import { defineComponent, ref } from 'vue';
 
-	import { InfoButton } from '@/theme/Button';
+	import { InfoButton, ErrorButton, DefaultButton } from '@/theme/Button';
+	import { VFlex } from '@corioders/vueui';
 	import { useProgressStore } from '@rock/store/progress';
 
 	export default defineComponent({
 		name: 'ResetProgressButton',
 		components: {
 			InfoButton,
-			NPopconfirm,
+			ErrorButton,
+			DefaultButton,
+			VFlex,
 		},
 		setup() {
 			const store = useProgressStore();
-
+			const showPopup = ref<boolean>(false);
 			function handleClick(): void {
 				store.resetProgress();
 			}
 
-			return { handleClick };
+			return { handleClick, showPopup };
 		},
 	});
 </script>
+<style lang="scss" scoped>
+	section {
+		padding: 12px;
+		border: 1px solid #e0e0e6;
+		border-radius: 5px;
+		background: #fff;
+	}
+</style>

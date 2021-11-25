@@ -39,7 +39,7 @@
 	});
 </script>
 <style lang="scss" scoped>
-	@use '../../theme/Button/Button.scss' as *;
+	@use '@/theme/Button/Button.scss' as *;
 	.VButton {
 		@include Button;
 		transition: all 1s;
