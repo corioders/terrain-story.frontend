@@ -1,18 +1,19 @@
 <template>
 	<div id="app">
-		<n-space vertical>
+		<VFlex gap="12px">
 			<router-view />
-		</n-space>
+		</VFlex>
 	</div>
 </template>
 
 <script lang="ts">
-	import { NSpace } from 'naive-ui';
 	import { defineComponent } from 'vue';
+
+	import { VFlex } from '@corioders/vueui';
 
 	export default defineComponent({
 		components: {
-			NSpace,
+			VFlex,
 		},
 	});
 </script>

@@ -1,5 +1,5 @@
 <template>
-	<Flex>
+	<VFlex>
 		<section>
 			<h2>Więcej o fabule gry</h2>
 			<p>
@@ -8,20 +8,23 @@
 				Hakera, Inspektor Kluskę i wiele innych postaci, które doprowadzą Cię do rozwiązania zagadki. Przenieś się do świata fantazji i przeżyj z nami tę niesamowitą
 				przygodę.
 			</p>
-			<n-button type="info" @click="$router.push('/')"> Wróć do strony głównej </n-button>
+			<InfoButton @click="$router.push('/')">Wróć do strony głównej</InfoButton>
 		</section>
-	</Flex>
+	</VFlex>
 </template>
 
 <script lang="ts">
-	import { NButton } from 'naive-ui';
 	import { defineComponent } from 'vue';
 
-	import Flex from '@/layouts/Flex.vue';
+	import { InfoButton } from '@/theme/Button';
+	import { VFlex } from '@corioders/vueui';
 
 	export default defineComponent({
 		name: 'AboutGame',
-		components: { Flex, NButton },
+		components: {
+			VFlex,
+			InfoButton,
+		},
 	});
 </script>
 <style lang="scss" scoped>

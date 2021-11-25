@@ -1,29 +1,23 @@
 <template>
-	<n-config-provider :theme-overrides="themeOverrides">
-		<div id="app">
-			<Header />
-			<Flex gap="12px">
-				<router-view />
-				<MapLink v-if="isPuzzleID($route.name) || $route.name === 'AlreadyDone'" mapUrl="/mapa" />
-				<SkipNav v-if="!IS_PRODUCTION" :nextRoute="nextRoute" />
-			</Flex>
-			<CFooter />
-		</div>
-		<n-global-style />
-	</n-config-provider>
+	<div id="app">
+		<Header />
+		<VFlex gap="12px">
+			<router-view />
+			<MapLink v-if="isPuzzleID($route.name) || $route.name === 'AlreadyDone'" mapUrl="/mapa" />
+			<SkipNav v-if="!IS_PRODUCTION" :nextRoute="nextRoute" />
+		</VFlex>
+		<CFooter />
+	</div>
 </template>
 
 <script lang="ts">
-	import { NConfigProvider, NGlobalStyle } from 'naive-ui';
 	import { defineComponent } from 'vue';
-
-	import Flex from '@/layouts/Flex.vue';
 
 	import Header from '@/components/Header.vue';
 	import SkipNav from '@/components/devHelpers/SkipNav.vue';
 	import MapLink from '@/components/map/MapLink.vue';
 
-	import { themeOverrides } from '@/theme/lightThemeOverrides';
+	import { VFlex } from '@corioders/vueui';
 	import CFooter from '@rock/components/Footer.vue';
 	import { nextRoute } from '@rock/router';
 	import { isPuzzleID } from '@rock/routes/codes/puzzle';
@@ -31,24 +25,21 @@
 	export default defineComponent({
 		components: {
 			CFooter,
-			Flex,
+			VFlex,
 			Header,
-			NConfigProvider,
-			NGlobalStyle,
 			MapLink,
 			SkipNav,
 		},
 		setup() {
-			return { nextRoute, themeOverrides, isPuzzleID, IS_PRODUCTION: __IS_PRODUCTION__ };
+			return { nextRoute, isPuzzleID, IS_PRODUCTION: __IS_PRODUCTION__ };
 		},
 	});
 </script>
 <style lang="scss">
+	@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500&display=swap');
 	#app {
-		font-family: v-sans;
-		*,
-		*::before,
-		*::after {
+		font-family: 'Open Sans', sans-serif;
+		* {
 			box-sizing: border-box;
 		}
 	}

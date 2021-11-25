@@ -4,25 +4,31 @@
 			<p>Projekt dofinansowany ze środków Unii Europejskiej</p>
 		</template>
 		<template #menu>
-			<n-button size="tiny" text @click="$router.push('/')">Poszukiwacze Camienia</n-button>
-			<n-button size="tiny" text @click="$router.push('/regulamin')">Regulamin</n-button>
-			<n-button size="tiny" text @click="$router.push('/polityka-prywatnosci')">Polityka Prywatności</n-button>
-			<n-button size="tiny" text @click="$router.push('/finansowanie')">Finansowanie</n-button>
+			<TinyLink @click="$router.push('/')">Poszukiwacze Camienia</TinyLink>
+			<TinyLink @click="$router.push('/regulamin')">Regulamin</TinyLink>
+			<TinyLink @click="$router.push('/polityka-prywatnosci')">Polityka Prywatności</TinyLink>
+			<TinyLink @click="$router.push('/finansowanie')">Finansowanie</TinyLink>
 		</template>
 	</CFooter>
 </template>
 
 <script lang="ts">
-	import { NButton } from 'naive-ui';
 	import { defineComponent } from 'vue';
 
 	import CFooter from '@/components/Footer.vue';
+
+	import { TinyLink } from '@/theme/Link';
 
 	export default defineComponent({
 		name: 'Footer',
 		components: {
 			CFooter,
-			NButton,
+			TinyLink,
 		},
 	});
 </script>
+<style lang="scss" scoped>
+	p {
+		font-size: 0.8rem;
+	}
+</style>
