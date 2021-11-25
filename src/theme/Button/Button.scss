@@ -1,4 +1,3 @@
-$aaa: pink;
 @mixin Button($background-color: unset, $text: #fff, $disabled-background-color: $disabled) {
 	@if $background-color != unset {
 		background-color: $background-color;
