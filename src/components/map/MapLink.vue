@@ -1,17 +1,16 @@
 <template>
-	<div class="mapLink">
-		<n-button size="large" @click="$router.push(mapUrl)">Mapa</n-button>
-	</div>
+	<DefaultButton @click="$router.push(mapUrl)">Mapa</DefaultButton>
 </template>
 
 <script lang="ts">
-	import { NButton } from 'naive-ui';
 	import { defineComponent } from 'vue';
+
+	import { DefaultButton } from '@/theme/Button';
 
 	export default defineComponent({
 		name: 'MapLink',
 		components: {
-			NButton,
+			DefaultButton,
 		},
 		props: {
 			mapUrl: {

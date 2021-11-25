@@ -1,36 +1,46 @@
 <template>
 	<div class="container">
-		<n-scrollbar x-scrollable>
-			<div class="columnLabelContainer">
-				<div class="filler"></div>
-				<div v-for="column in COLUMNS" :key="`columnLabel${column}`" class="columnLabel">
-					<p>{{ alphabet[column - 1] }}</p>
-				</div>
-			</div>
-			<div class="trapezoidColoring">
-				<div class="rowLabelContainer">
-					<div v-for="row in ROWS" :key="`rowLabel${row}`" class="rowLabel">
-						<p>{{ row }}</p>
-					</div>
-				</div>
-				<div v-for="column in COLUMNS" :key="`column${column}`" class="column">
-					<div
-						v-for="row in ROWS"
-						:key="`row${row}`"
-						class="box"
-						@click="handleClick($event.target.classList, column, row)"
-						@tap="handleClick($event.target.classList, column, row)"
-					></div>
-				</div>
-			</div>
-		</n-scrollbar>
+		<VScrollbar class="scrollbar">
+			<table>
+				<thead>
+					<tr>
+						<th>
+							<div></div>
+						</th>
+						<th v-for="column in COLUMNS" :key="`columnLabel${column}`">
+							<div>
+								{{ alphabet[column - 1] }}
+							</div>
+						</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr v-for="row in ROWS" :key="`row${row}`">
+						<th>
+							<div>
+								{{ row }}
+							</div>
+						</th>
+						<td
+							v-for="column in COLUMNS"
+							:key="`box${row}${column}`"
+							class="box"
+							@click="handleClick($event.target.classList, column, row)"
+							@tap="handleClick($event.target.classList, column, row)"
+						>
+							<div></div>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</VScrollbar>
 	</div>
 </template>
 
 <script lang="ts">
-	import { NScrollbar } from 'naive-ui';
 	import { defineComponent, PropType } from 'vue';
 
+	import { VScrollbar } from '@corioders/vueui';
 	import { alphabetUpper } from '@rock/assets/alphabet';
 
 	import { TrapezoidDescriptor } from './trapezoid';
@@ -38,7 +48,7 @@
 	export default defineComponent({
 		name: 'TrapezoidColoring',
 		components: {
-			NScrollbar,
+			VScrollbar,
 		},
 		props: {
 			trapezoidDescriptor: {
@@ -98,58 +108,59 @@
 	}
 </script>
 <style lang="scss" scoped>
-	.trapezoidColoring {
-		box-sizing: border-box;
-		display: flex;
-		flex-direction: row;
-		border: 1px #000 solid;
-	}
-	.rowLabelContainer {
-		display: flex;
-		flex-direction: column;
-		border-right: 1px #000 solid;
-	}
-	.columnLabelContainer {
-		display: flex;
-		flex-direction: row;
-		border: 1px #000 solid;
-		border-bottom: none;
-		z-index: 999;
-	}
-	.columnLabelContainer,
-	.rowLabelContainer {
-		position: sticky;
-		top: 0;
-		left: 0;
+	table {
+		margin: 0;
+		table-layout: fixed;
+		border-collapse: separate;
+		border-spacing: 0;
+		border: 1px solid black;
+		text-align: center;
 		background-color: #fff;
-		p {
-			text-align: center;
+
+		tbody {
+			th {
+				position: sticky;
+				left: 0;
+				z-index: 1;
+				background-color: #fff;
+				border: 1px solid black;
+			}
 		}
 	}
-	.box,
-	.rowLabel,
-	.columnLabel {
-		width: 50px;
-		height: 50px;
-		border: 1px #000 solid;
-	}
-	.filler {
-		width: 50px;
-		width: 51px;
-		border: 1px #000 solid;
-		border-right: 2px #000 solid;
+
+	td,
+	th {
+		border: 1px solid black;
+		padding: 0;
+		div {
+			margin: 0;
+			line-height: 50px;
+			width: 50px;
+			height: 50px;
+		}
 	}
 	.checked {
 		background-color: $primary;
 	}
-	.column {
-		display: flex;
-		flex-direction: column;
+
+	thead {
+		th {
+			position: sticky;
+			top: 0;
+			z-index: 1;
+			&:first-child {
+				position: static;
+			}
+		}
 	}
+
 	.container {
 		max-width: 95%;
 		@media (min-width: 1000px) {
 			max-width: 950px;
 		}
+	}
+	.scrollbar {
+		overflow: auto;
 	}
 </style>

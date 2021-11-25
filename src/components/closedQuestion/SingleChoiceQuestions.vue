@@ -1,5 +1,5 @@
 <template>
-	<n-space vertical>
+	<VFlex align="flex-start">
 		<SingleChoiceQuestion
 			v-for="(question, i) in questions"
 			:key="`${name}Question${i}`"
@@ -13,12 +13,13 @@
 		>
 			<slot :name="i"></slot>
 		</SingleChoiceQuestion>
-	</n-space>
+	</VFlex>
 </template>
 
 <script lang="ts">
-	import { NSpace } from 'naive-ui';
 	import { defineComponent, PropType, ref, watch } from 'vue';
+
+	import { VFlex } from '@corioders/vueui';
 
 	import SingleChoiceQuestion from './SingleChoiceQuestion.vue';
 	import Question from './question';
@@ -27,7 +28,7 @@
 		name: 'SingleChoiceQuestions',
 		components: {
 			SingleChoiceQuestion,
-			NSpace,
+			VFlex,
 		},
 		props: {
 			name: {

@@ -6,10 +6,20 @@ $secondary: #083d77;
 $secondaryDark: #07325f;
 $secondaryDarker: #052548;
 
-$accent: #f4e04d;
-$accentDark: #f2dc36;
-$accentDarker: #f1d81e;
+$accent: #fcb040;
+$accentDark: #fca727;
+$accentDarker: #fb9c0e;
 
-$error: #e98b8b;
-$errorDark: #e57272;
-$errorDarker: rgb(208, 58, 82);
+$info: $secondary;
+$infoDark: $secondaryDark;
+$infoDarker: $secondaryDarker;
+
+$warning: $accent;
+$warningDark: $accentDark;
+$warningDarker: $accentDarker;
+
+$error: #de576d;
+$errorDark: #da445d;
+$errorDarker: #d62e4a;
+
+$disabled: #cccccc;

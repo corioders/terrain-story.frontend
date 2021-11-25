@@ -1,23 +1,19 @@
 <template>
-	<Flex alignItems="flex-start">
-		<label :for="name" :class="answer === '' ? 'default' : isCorrect ? 'correct' : 'incorrect'">
-			{{ answer === '' ? label : isCorrect ? correctAnswerText : incorrectAnswerText }}
-		</label>
-		<n-input :id="name" v-model:value="answer" type="text" size="large" :placeholder="label" @change="$emit('answer', $event)" @input="$emit('answer', $event)" />
-	</Flex>
+	<VFlex align="flex-start">
+		<VInput :id="name" v-model="answer" :name="text" :class="className" @input="$emit('answer', answer)" />
+	</VFlex>
 </template>
 
 <script lang="ts">
-	import { NInput } from 'naive-ui';
 	import { defineComponent } from 'vue';
 
-	import Flex from '@/layouts/Flex.vue';
+	import { VFlex, VInput } from '@corioders/vueui';
 
 	export default defineComponent({
 		name: 'Input',
 		components: {
-			Flex,
-			NInput,
+			VFlex,
+			VInput,
 		},
 		props: {
 			name: {
@@ -47,13 +43,24 @@
 				answer: '',
 			};
 		},
+		computed: {
+			text() {
+				return this.answer === '' ? this.label : this.isCorrect ? this.correctAnswerText : this.incorrectAnswerText;
+			},
+			className() {
+				return this.answer === '' ? 'default' : this.isCorrect ? 'correct' : 'incorrect';
+			},
+		},
 	});
 </script>
 <style lang="scss" scoped>
+	.default {
+		--accent-color: #{$secondary};
+	}
 	.correct {
-		color: $primary;
+		--accent-color: #{$primary};
 	}
 	.incorrect {
-		color: $errorDarker;
+		--accent-color: #{$errorDarker};
 	}
 </style>

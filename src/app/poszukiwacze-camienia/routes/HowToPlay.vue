@@ -1,5 +1,5 @@
 <template>
-	<Flex>
+	<VFlex>
 		<section>
 			<h2>Jak grać?</h2>
 			<p>
@@ -11,20 +11,23 @@
 				umiejscowieniem kolejnego kodu. Do zeskanowania i odnalezienia w jest w sumie 8 kodów umieszczonych w ścisłym centrum dzielnicy Śródmieście. Premiera gry odbędzie
 				się 05.11.2021 o godzinie 10.00. Tego dnia na wszystkich, którzy dotrą do finału czekają atrakcje i nagrody. Więcej informacji w regulaminie
 			</p>
-			<n-button type="info" @click="$router.push('/')"> Wróć do strony głównej </n-button>
+			<InfoButton @click="$router.push('/')">Wróć do strony głównej</InfoButton>
 		</section>
-	</Flex>
+	</VFlex>
 </template>
 
 <script lang="ts">
-	import { NButton } from 'naive-ui';
 	import { defineComponent } from 'vue';
 
-	import Flex from '@/layouts/Flex.vue';
+	import { InfoButton } from '@/theme/Button';
+	import { VFlex } from '@corioders/vueui';
 
 	export default defineComponent({
 		name: 'HowToPlay',
-		components: { Flex, NButton },
+		components: {
+			VFlex,
+			InfoButton,
+		},
 	});
 </script>
 <style lang="scss" scoped>

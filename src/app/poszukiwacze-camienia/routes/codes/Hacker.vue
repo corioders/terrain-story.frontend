@@ -2,38 +2,37 @@
 	<Video videoId="0Gzgvkis0RY" />
 	<p class="questionHelper">Wpisz liczbę zauważoną na filmiku. Liczba ta jest przesunięciem do w szyfru cezariańskiego.</p>
 	<Input label="Przesunięcie" name="displacement" :isCorrect="isDisplacementCorrect" @answer="submitDisplacement($event)" />
-	<Flex v-if="isDisplacementCorrect" gap="12px">
+	<VFlex v-if="isDisplacementCorrect" gap="12px">
 		<p class="questionHelper">
 			Odkoduj hasło przy użyciu szyfru cezariańskiego. Odnajdź litery hasła w górnym wierszu i przeczytaj te przyporządkowane do nich w dolnym wierszu.
 		</p>
 		<p>MKWOUZĆ</p>
-	</Flex>
+	</VFlex>
 
 	<CipherHelper v-if="isDisplacementCorrect" :displacement="displacement" />
 
-	<Flex v-if="isDisplacementCorrect" gap="12px">
+	<VFlex v-if="isDisplacementCorrect" gap="12px">
 		<Input label="Hasło" name="hackerPasswordInput" :isCorrect="isPasswordCorrect" @answer="submitPass($event)" />
 		<CheckButton :isCorrect="isPasswordCorrect" @click="handleCheck()" />
-	</Flex>
+	</VFlex>
 </template>
 
 <script lang="ts">
 	import { defineComponent, ref } from 'vue';
-
-	import Flex from '@/layouts/Flex.vue';
 
 	import Input from '@/components/Input.vue';
 	import Video from '@/components/YoutubeVideo.vue';
 	import CheckButton from '@/components/buttons/CheckButton.vue';
 	import CipherHelper from '@/components/cipherHelper/CipherHelper.vue';
 
+	import { VFlex } from '@corioders/vueui';
 	import { useProgressStore } from '@rock/store/progress';
 
 	export default defineComponent({
 		name: 'Hacker',
 		components: {
 			CipherHelper,
-			Flex,
+			VFlex,
 			Input,
 			Video,
 			CheckButton,

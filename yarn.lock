@@ -5400,31 +5400,6 @@ multicast-dns@^6.0.1:
     dns-packet "^1.3.1"
     thunky "^1.0.2"
 
-naive-ui@2.20.2:
-  version "2.20.2"
-  resolved "https://registry.yarnpkg.com/naive-ui/-/naive-ui-2.20.2.tgz#d0002c533281882b51e159280cfdc9b6925dfa7d"
-  integrity sha512-jfaYvziJY5/G0gdWoT9Fu8YeZrTZL2JnzZBi/Fq6BJM4jN1xPN4VSkEbVspHJYaBhAGtz0LCI/0ldCP9bjjxyA==
-  dependencies:
-    "@babel/eslint-parser" "^7.15.8"
-    "@css-render/plugin-bem" "^0.15.6"
-    "@css-render/vue3-ssr" "^0.15.6"
-    "@types/lodash" "^4.14.170"
-    "@types/lodash-es" "^4.17.4"
-    async-validator "^4.0.1"
-    css-render "^0.15.6"
-    date-fns "^2.19.0"
-    date-fns-tz "^1.1.6"
-    evtd "^0.2.2"
-    highlight.js "^11.0.1"
-    lodash "^4.17.21"
-    lodash-es "^4.17.21"
-    seemly "^0.3.2"
-    treemate "^0.3.8"
-    vdirs "^0.1.4"
-    vfonts "^0.1.0"
-    vooks "^0.2.10"
-    vueuc "^0.4.15"
-
 nanocolors@^0.1.12:
   version "0.1.12"
   resolved "https://registry.yarnpkg.com/nanocolors/-/nanocolors-0.1.12.tgz#8577482c58cbd7b5bb1681db4cf48f11a87fd5f6"

@@ -1,15 +1,16 @@
 <template>
-	<n-button size="large" type="primary" :disabled="disabled" @click="$emit('click')">Zagraj</n-button>
+	<PrimaryButton :disabled="disabled" @use-disabled-click="$emit('click')">Zagraj</PrimaryButton>
 </template>
 
 <script lang="ts">
-	import { NButton } from 'naive-ui';
 	import { defineComponent } from 'vue';
+
+	import { PrimaryButton } from '@/theme/Button';
 
 	export default defineComponent({
 		name: 'PlayButton',
 		components: {
-			NButton,
+			PrimaryButton,
 		},
 		props: {
 			disabled: {

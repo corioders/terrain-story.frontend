@@ -1,60 +1,60 @@
 <template>
-	<Flex>
+	<VFlex class="VFlex">
 		<img src="@rock/assets/rockLogo.webp" alt="Logo gry Poszukiwacze Camienia" role="heading" aria-level="2" />
 		<section class="dark">
-			<Flex>
+			<VFlex>
 				<h3>Jak grać?</h3>
 				<p>
 					Znajdź kody QR, zeskanuj je i rozwiąż wszystkie zagadki, aby odnaleźć Camień! Kody znajdują się w tych miejscach. Kolejność ich odwiedzania zależy tylko od
 					ciebie. Na wytrwałych czekają nagrody!
 				</p>
-				<n-button type="primary" style="margin-bottom: 24px" @click="$router.push('/jak-grac')">Dowiedz się jak grać w grę</n-button>
+				<PrimaryButton style="margin-bottom: 24px" @click="$router.push('/jak-grac')">Dowiedz się jak grać w grę</PrimaryButton>
 				<div v-if="showReset" style="margin-bottom: 32px">
 					<ResetProgressButton />
 				</div>
 				<MapWrapper />
-			</Flex>
+			</VFlex>
 		</section>
 		<section class="light">
-			<Flex>
+			<VFlex>
 				<h4>Chcesz wiedzieć więcej?</h4>
 				<p>Nieodłączną częścią naszej gry są filmiki, tutaj możesz zobaczyć ich urywki.</p>
-				<n-button type="info" style="margin-bottom: 24px" @click="$router.push('/o-grze')">Dowiedz się więcej o fabule gry</n-button>
+				<InfoButton style="margin-bottom: 24px" @click="$router.push('/o-grze')">Dowiedz się więcej o fabule gry</InfoButton>
 				<Video videoId="AmJaWzUYsow" />
-			</Flex>
+			</VFlex>
 		</section>
 		<section class="dark">
-			<Flex>
+			<VFlex>
 				<h5>Twórcy Gry</h5>
 				<img class="logo" src="@/assets/whiteLogo.webp" alt="Terrain Story" />
 				<img class="logo" src="@/assets/CAMLogo.webp" alt="CAM" />
-			</Flex>
+			</VFlex>
 		</section>
 		<section class="light">
-			<Flex>
+			<VFlex>
 				<h6>Kontakt</h6>
 				<p>terrainstory@gmail.com</p>
 				<p style="margin-top: 0">
-					Wiadomość na <n-button tag="a" type="info" text href="https://www.instagram.com/terrain.story/" target="_blank" rel="noreferrer">Instagramie</n-button> lub
-					<n-button tag="a" type="info" text href="https://www.facebook.com/terrain.story/" target="_blank" rel="noreferrer">Facebooku</n-button>
+					Wiadomość na <InfoLink href="https://www.instagram.com/terrain.story/" newCard>Instagramie</InfoLink> lub
+					<InfoLink href="https://www.facebook.com/terrain.story/" newCard>Facebooku</InfoLink>
 				</p>
-			</Flex>
+			</VFlex>
 		</section>
-	</Flex>
+	</VFlex>
 
 	<DevNav v-if="!IS_PRODUCTION" :routes="routes" />
 </template>
 
 <script lang="ts">
-	import { NButton } from 'naive-ui';
 	import { defineComponent, ref } from 'vue';
-
-	import Flex from '@/layouts/Flex.vue';
 
 	import Video from '@/components/YoutubeVideo.vue';
 	import ResetProgressButton from '@/components/buttons/ResetProgressButton.vue';
 	import DevNav from '@/components/devHelpers/DevNav.vue';
 
+	import { PrimaryButton, InfoButton } from '@/theme/Button';
+	import { InfoLink } from '@/theme/Link';
+	import { VFlex } from '@corioders/vueui';
 	import MapWrapper from '@rock/components/MapWrapper.vue';
 	import { routes } from '@rock/router';
 	import { useProgressStore } from '@rock/store/progress';
@@ -62,9 +62,11 @@
 	export default defineComponent({
 		name: 'Home',
 		components: {
-			Flex,
+			PrimaryButton,
+			InfoButton,
+			InfoLink,
+			VFlex,
 			MapWrapper,
-			NButton,
 			Video,
 			ResetProgressButton,
 			DevNav,
@@ -77,8 +79,9 @@
 	});
 </script>
 <style lang="scss" scoped>
-	.flex {
+	.VFlex {
 		width: 100%;
+
 		img {
 			width: 100%;
 			max-height: 100%;
@@ -100,10 +103,6 @@
 			p {
 				font-size: 18px;
 				max-width: 950px;
-				.n-button {
-					font-size: 18px;
-					text-decoration: underline;
-				}
 			}
 
 			.logo {
@@ -118,21 +117,9 @@
 			color: #fff;
 		}
 	}
-
-	.n-modal {
-		width: 95%;
-		max-width: 600px;
-		h6 {
-			font-size: 1.35em;
-			margin-bottom: 1em;
-		}
-		p {
-			margin: 0;
-			font-size: 1.1em;
-		}
-		.date {
-			color: $secondary;
-			text-decoration: underline;
-		}
+</style>
+<style lang="scss">
+	body {
+		margin: 0;
 	}
 </style>
