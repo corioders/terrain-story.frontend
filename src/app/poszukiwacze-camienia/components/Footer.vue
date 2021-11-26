@@ -1,6 +1,7 @@
 <template>
 	<CFooter>
 		<template #informations>
+			<img src="@/assets/zwztLogo.webp" alt="Projekt realizowany w ramach olimpiady 'Zwolnieni z Teorii'" />
 			<p>Projekt dofinansowany ze środków Unii Europejskiej</p>
 		</template>
 		<template #menu>
@@ -30,5 +31,11 @@
 <style lang="scss" scoped>
 	p {
 		font-size: 0.8rem;
+	}
+	img {
+		margin: 64px 0;
+		min-width: 200px;
+		width: 50vw;
+		max-width: 250px;
 	}
 </style>
