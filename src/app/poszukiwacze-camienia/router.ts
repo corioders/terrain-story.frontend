@@ -2,10 +2,15 @@ import { Component } from 'vue';
 import { createRouter, createWebHashHistory } from 'vue-router';
 import { RouteRecordRaw } from 'vue-router';
 
+
+
 import Home from '@rock/routes/Home.vue';
+
+
 
 import { isPuzzleID } from './routes/codes/puzzle';
 import { useProgressStore } from './store/progress';
+
 
 export const routes: RouteRecordRaw[] = [
 	{
@@ -22,12 +27,12 @@ export const routes: RouteRecordRaw[] = [
 	{
 		path: `/zrobione`,
 		name: 'Done',
-		component: (): Promise<Component> => import('@rock/views/Done.vue'),
+		component: (): Promise<Component> => import('@/views/Done.vue'),
 	},
 	{
 		path: `/juz-zrobione`,
 		name: 'AlreadyDone',
-		component: (): Promise<Component> => import('@rock/views/AlreadyDone.vue'),
+		component: (): Promise<Component> => import('@rock/views/AlreadyDoneWrapper.vue'),
 	},
 	{
 		path: `/archeolog`,
@@ -111,7 +116,7 @@ export const routes: RouteRecordRaw[] = [
 	{
 		path: '/finansowanie',
 		name: 'Financing',
-		component: (): Promise<Component> => import('@/components/Financing.vue'),
+		component: (): Promise<Component> => import('@/views/Financing.vue'),
 	},
 	{
 		path: '/:pathMatch(.*)*',

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="pl">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+		<title>Gra Angielska</title>
+		<meta name="description" content="Angielska gra terenowa" />
+
+		<script async src="https://www.googletagmanager.com/gtag/js?id=G-G32RC8TCXX"></script>
+		<script>
+			window.dataLayer = window.dataLayer || [];
+			function gtag() {
+				dataLayer.push(arguments);
+			}
+			gtag('js', new Date());
+
+			gtag('config', 'G-G32RC8TCXX');
+		</script>
+
+		<!-- Preloads for english-game, a better way of injecting those needs to be found  -->
+		<link rel="preload" as="image" href="<%= require('@/assets/logo.webp') %>" />
+	</head>
+	<body>
+		<div id="root"></div>
+	</body>
+</html>

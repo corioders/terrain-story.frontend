@@ -1,5 +1,6 @@
 {
 	"@": "src",
 	"@index": "src/app/index",
-	"@rock": "src/app/poszukiwacze-camienia"
+	"@rock": "src/app/poszukiwacze-camienia",
+	"@eng": "src/app/english"
 }
