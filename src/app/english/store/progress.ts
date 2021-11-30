@@ -16,6 +16,7 @@ export const useProgressStore = defineStore({
 		const puzzlesDone: Puzzles = {
 			Quiz: false,
 			FestivalsMatching: false,
+			Gaps: false,
 			QuestionTag: false,
 		};
 

@@ -28,12 +28,6 @@ export const quiz: Question[] = [
 	},
 ];
 
-export const questionTag: Question = {
-	question: 'They don’t like giving presentes, ... they?',
-	options: ['do', "don't", 'have', 'would', 'will', "didn't"],
-	answer: 'do',
-};
-
 export const festivalsMatching: Question[] = [
 	{
 		question:
@@ -54,3 +48,36 @@ export const festivalsMatching: Question[] = [
 		answer: 'Kwanzaa',
 	},
 ];
+
+export const gaps: Question[] = [
+	{
+		question:
+			'In Greece, terrible creatures called ... are believed to play tricks on people at Christmas. In order to get rid of them, an old shoe or salt must be burnt as the creatures hate the stench.',
+		options: ['Kallikantzaroi', 'Three Wise Men', 'a wafer', 'stocking'],
+		answer: 'Kallikantzaroi',
+	},
+	{
+		question:
+			'Christian children in Syria believe that their gifts are brought by a camel which belonged to one of the ... who visited the baby Jesus in Bethlehem. In the evening Syrian children leave water and hay outside of their house for the camel. In the morning those offerings are replaced by gifts.',
+		options: ['Kallikantzaroi', 'Three Wise Men', 'a wafer', 'stocking'],
+		answer: 'Three Wise Men',
+	},
+	{
+		question:
+			'In Poland, Ukraine and Lithuania, there are twelve meatless dishes in the Christmas Eve supper. According to the Christian tradition, they represent the twelve Apostles. Guests must try each dish. Before the meal ... is broken and shared among the guests. During the evening Christmas carols are sung. After the supper many people go to church for Midnight Mass.',
+		options: ['Kallikantzaroi', 'Three Wise Men', 'a wafer', 'stocking'],
+		answer: 'a wafer',
+	},
+	{
+		question:
+			'On Christmas Eve evening. British children hang Christmas stockings on their beds or in front the fireplace At night each ... is filled with small gifts. Larger gifts are placed under the Christmas tree Children believe that the gifts are brought by Father Christmas. Everybody open their gifts on Christmas morning.',
+		options: ['Kallikantzaroi', 'Three Wise Men', 'a wafer', 'stocking'],
+		answer: 'stocking',
+	},
+];
+
+export const questionTag: Question = {
+	question: 'They don’t like giving presentes, ... they?',
+	options: ['do', "don't", 'have', 'would', 'will', "didn't"],
+	answer: 'do',
+};
