@@ -4,8 +4,8 @@ import { RouteRecordRaw } from 'vue-router';
 
 import Home from '@eng/routes/Home.vue';
 
-// import { isPuzzleID } from './routes/codes/puzzle';
-// import { useProgressStore } from './store/progress';
+import { isPuzzleID } from './routes/codes/puzzle';
+import { useProgressStore } from './store/progress';
 
 export const routes: RouteRecordRaw[] = [
 	{
@@ -17,6 +17,7 @@ export const routes: RouteRecordRaw[] = [
 		path: `/start`,
 		name: 'Start',
 		component: (): Promise<Component> => import('@eng/views/Start.vue'),
+		meta: { to: 'Quiz' },
 	},
 	{
 		path: `/zrobione`,
@@ -38,6 +39,12 @@ export const routes: RouteRecordRaw[] = [
 		path: '/mapa',
 		name: 'Map',
 		component: (): Promise<Component> => import('@eng/routes/Map.vue'),
+	},
+	{
+		path: '/quiz',
+		name: 'Quiz',
+		component: (): Promise<Component> => import('@eng/routes/codes/Quiz.vue'),
+		// meta: { to: 'Start' },
 	},
 	// {
 	// 	path: '/o-grze',
@@ -78,32 +85,32 @@ const router = createRouter({
 	},
 });
 
-// router.beforeEach((to, from) => {
-// 	const store = useProgressStore();
-// 	const toNameString = String(to.name);
+router.beforeEach((to, from) => {
+	const store = useProgressStore();
+	const toNameString = String(to.name);
 
-// 	if (toNameString === 'End' && !store.ended) {
-// 		// from.name is undefined when users inserts link that points to End directly,
-// 		// so from is literally from empty browser plage.
-// 		if (from.name === undefined) return { name: 'Home' };
-// 		return false;
-// 	}
+	if (toNameString === 'End' && !store.ended) {
+		// from.name is undefined when users inserts link that points to End directly,
+		// so from is literally from empty browser plage.
+		if (from.name === undefined) return { name: 'Home' };
+		return false;
+	}
 
-// 	if (toNameString === 'Start' && store.started) {
-// 		if (from.name === undefined) return { name: 'Home' };
-// 		return false;
-// 	}
+	if (toNameString === 'Start' && store.started) {
+		if (from.name === undefined) return { name: 'Home' };
+		return false;
+	}
 
-// 	if (!isPuzzleID(toNameString)) return true;
-// 	if (store.ended) return { name: 'End' };
+	if (!isPuzzleID(toNameString)) return true;
+	if (store.ended) return { name: 'End' };
 
-// 	// If user was already redirected from some path then save the original path.
-// 	const redirectedFromName = from.params.redirectedFromName ?? toNameString;
-// 	if (!store.started) return { name: 'Start', params: { redirectedFromName } };
-// 	if (store.puzzles[toNameString] === true) return { name: 'AlreadyDone', params: { redirectedFromName } };
+	// If user was already redirected from some path then save the original path.
+	const redirectedFromName = from.params.redirectedFromName ?? toNameString;
+	if (!store.started) return { name: 'Start', params: { redirectedFromName } };
+	if (store.puzzles[toNameString] === true) return { name: 'AlreadyDone', params: { redirectedFromName } };
 
-// 	return true;
-// });
+	return true;
+});
 
 export default router;
 

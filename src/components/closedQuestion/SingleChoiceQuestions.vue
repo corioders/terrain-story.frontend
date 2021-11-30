@@ -8,6 +8,7 @@
 			:answer="question.answer"
 			:name="name + i"
 			:displayFeedback="displayFeedback"
+			:disableMixing="disableMixing"
 			@correct="isCorrect[i] = true"
 			@incorrect="isCorrect[i] = false"
 		>
@@ -42,6 +43,10 @@
 			displayFeedback: {
 				type: Boolean,
 				required: true,
+			},
+			disableMixing: {
+				type: Boolean,
+				default: false,
 			},
 		},
 		emits: ['correct', 'incorrect'],
