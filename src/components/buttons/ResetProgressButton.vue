@@ -10,11 +10,12 @@
 </template>
 
 <script lang="ts">
-	import { defineComponent, ref } from 'vue';
+	import { defineComponent, ref, PropType } from 'vue';
+
+	import ProgressStore from '@/store/ProgressStore';
 
 	import { InfoButton, ErrorButton, DefaultButton } from '@/theme/Button';
 	import { VFlex } from '@corioders/vueui';
-	import { useProgressStore } from '@rock/store/progress';
 
 	export default defineComponent({
 		name: 'ResetProgressButton',
@@ -24,11 +25,16 @@
 			DefaultButton,
 			VFlex,
 		},
-		setup() {
-			const store = useProgressStore();
+		props: {
+			progressStore: {
+				type: Object as PropType<ProgressStore>,
+				required: true,
+			},
+		},
+		setup(props) {
 			const showPopup = ref<boolean>(false);
 			function handleClick(): void {
-				store.resetProgress();
+				props.progressStore.resetProgress();
 			}
 
 			return { handleClick, showPopup };

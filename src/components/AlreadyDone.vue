@@ -5,12 +5,14 @@
 			<path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z" />
 		</svg>
 		<h2>Już rozwiązałeś tę zagadkę</h2>
-		<ResetProgressButton />
+		<ResetProgressButton :progressStore="progressStore" />
 	</VFlex>
 </template>
 
 <script lang="ts">
-	import { defineComponent } from 'vue';
+	import { defineComponent, PropType } from 'vue';
+
+	import ProgressStore from '@/store/ProgressStore';
 
 	import ResetProgressButton from '@/components/buttons/ResetProgressButton.vue';
 
@@ -21,6 +23,12 @@
 		components: {
 			VFlex,
 			ResetProgressButton,
+		},
+		props: {
+			progressStore: {
+				type: Object as PropType<ProgressStore>,
+				required: true,
+			},
 		},
 	});
 </script>
