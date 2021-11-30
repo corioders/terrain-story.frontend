@@ -1,7 +1,8 @@
 <template>
-	<div>Start</div>
-	<Video videoId="9hVk_cJyLQM" />
-	<PlayButton @click="handleStart()" />
+	<VFlex gap="12px" class="VFlex">
+		<Video videoId="9hVk_cJyLQM" class="video" />
+		<PlayButton @click="handleStart()" />
+	</VFlex>
 </template>
 
 <script lang="ts">
@@ -10,6 +11,7 @@
 	import Video from '@/components/YoutubeVideo.vue';
 	import PlayButton from '@/components/buttons/PlayButton.vue';
 
+	import { VFlex } from '@corioders/vueui';
 	import { useProgressStore } from '@eng/store/progress';
 
 	export default defineComponent({
@@ -17,6 +19,7 @@
 		components: {
 			Video,
 			PlayButton,
+			VFlex,
 		},
 		setup() {
 			const store = useProgressStore();
@@ -29,3 +32,9 @@
 		},
 	});
 </script>
+<style lang="scss" scoped>
+	.VFlex {
+		width: 100%;
+		max-width: 950px;
+	}
+</style>
