@@ -81,3 +81,26 @@ export const questionTag: Question = {
 	options: ['do', "don't", 'have', 'would', 'will', "didn't"],
 	answer: 'do',
 };
+
+export const carols: Question[] = [
+	{
+		question: 'Silent Night, Holy Night',
+		options: ['All is calm, all is bright', 'Born in the king of Israel', 'my true love sent to me', 'Oh come all ye faithful'],
+		answer: 'All is calm, all is bright',
+	},
+	{
+		question: 'Noel, Noel, Noel, Noel',
+		options: ['All is calm, all is bright', 'Born in the king of Israel', 'my true love sent to me', 'Oh come all ye faithful'],
+		answer: 'Born in the king of Israel',
+	},
+	{
+		question: 'On the first day of Christmas',
+		options: ['All is calm, all is bright', 'Born in the king of Israel', 'my true love sent to me', 'Oh come all ye faithful'],
+		answer: 'my true love sent to me',
+	},
+	{
+		question: 'Away in a manager',
+		options: ['All is calm, all is bright', 'Born in the king of Israel', 'my true love sent to me', 'Oh come all ye faithful'],
+		answer: 'Oh come all ye faithful',
+	},
+];

@@ -18,6 +18,7 @@ export const useProgressStore = defineStore({
 			FestivalsMatching: false,
 			Gaps: false,
 			QuestionTag: false,
+			Carols: false,
 		};
 
 		return {

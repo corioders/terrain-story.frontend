@@ -56,12 +56,18 @@ export const routes: RouteRecordRaw[] = [
 		path: '/gaps',
 		name: 'Gaps',
 		component: (): Promise<Component> => import('@eng/routes/codes/Gaps.vue'),
-		// meta: { to: 'Start' },
+		meta: { to: 'QuestionTag' },
 	},
 	{
 		path: '/question-tag',
 		name: 'QuestionTag',
 		component: (): Promise<Component> => import('@eng/routes/codes/QuestionTag.vue'),
+		meta: { to: 'Carols' },
+	},
+	{
+		path: '/carols',
+		name: 'Carols',
+		component: (): Promise<Component> => import('@eng/routes/codes/Carols.vue'),
 		// meta: { to: 'Start' },
 	},
 	// {
