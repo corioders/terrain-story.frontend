@@ -7,15 +7,14 @@
 
 	import AlreadyDone from '@/components/AlreadyDone.vue';
 
+	import { useProgressStore } from '@eng/store/progress';
+
 	export default defineComponent({
 		components: {
 			AlreadyDone,
 		},
 		setup() {
-			const progressStore = {
-				resetProgress: (): void => {},
-			};
-			return { progressStore };
+			return { progressStore: useProgressStore() };
 		},
 	});
 </script>
