@@ -1,13 +1,6 @@
 <template>
-	<p>Solve the quiz, mark which sentences are true and which are false.</p>
-	<SingleChoiceQuestions
-		disableMixing
-		:questions="questions"
-		name="quiz"
-		:displayFeedback="displayFeedback"
-		@correct="handleAnswer(true)"
-		@incorrect="handleAnswer(false)"
-	/>
+	<p>Match the festivals with the descriptions.</p>
+	<SingleChoiceQuestions :questions="questions" name="matchFestivals" :displayFeedback="displayFeedback" @correct="handleAnswer(true)" @incorrect="handleAnswer(false)" />
 	<CheckButton :isCorrect="isCorrect" @click="handleCheck" />
 </template>
 
@@ -17,11 +10,11 @@
 	import CheckButton from '@/components/buttons/CheckButton.vue';
 	import SingleChoiceQuestions from '@/components/closedQuestion/SingleChoiceQuestions.vue';
 
-	import { quiz as questions } from '@eng/assets/questions';
+	import { festivalsMatching as questions } from '@eng/assets/questions';
 	import { useProgressStore } from '@eng/store/progress';
 
 	export default defineComponent({
-		name: 'Quiz',
+		name: 'FestivalsMatching',
 		components: {
 			SingleChoiceQuestions,
 			CheckButton,
@@ -37,7 +30,7 @@
 			};
 
 			const handleCheck = (): void => {
-				if (isCorrect.value === true) store.finishPuzzle('Quiz');
+				if (isCorrect.value === true) store.finishPuzzle('FestivalsMatching');
 				displayFeedback.value = true;
 			};
 

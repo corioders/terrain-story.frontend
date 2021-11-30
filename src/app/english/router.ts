@@ -2,10 +2,15 @@ import { Component } from 'vue';
 import { createRouter, createWebHashHistory } from 'vue-router';
 import { RouteRecordRaw } from 'vue-router';
 
+
+
 import Home from '@eng/routes/Home.vue';
+
+
 
 import { isPuzzleID } from './routes/codes/puzzle';
 import { useProgressStore } from './store/progress';
+
 
 export const routes: RouteRecordRaw[] = [
 	{
@@ -44,6 +49,12 @@ export const routes: RouteRecordRaw[] = [
 		path: '/quiz',
 		name: 'Quiz',
 		component: (): Promise<Component> => import('@eng/routes/codes/Quiz.vue'),
+		meta: { to: 'FestivalsMatching' },
+	},
+	{
+		path: '/festivals-matching',
+		name: 'FestivalsMatching',
+		component: (): Promise<Component> => import('@eng/routes/codes/FestivalsMatching.vue'),
 		// meta: { to: 'Start' },
 	},
 	{

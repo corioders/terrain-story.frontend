@@ -1,5 +1,5 @@
-export type puzzleID = 'Quiz' | 'QuestionTag';
-const puzzleIDs = ['Quiz', 'QuestionTag'];
+export type puzzleID = 'Quiz' | 'FestivalsMatching' | 'QuestionTag';
+const puzzleIDs = ['Quiz', 'FestivalsMatching', 'QuestionTag'];
 
 export function isPuzzleID(id: string): id is puzzleID {
 	return puzzleIDs.includes(id);
