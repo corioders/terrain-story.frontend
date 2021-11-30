@@ -68,7 +68,13 @@ export const routes: RouteRecordRaw[] = [
 		path: '/carols',
 		name: 'Carols',
 		component: (): Promise<Component> => import('@eng/routes/codes/Carols.vue'),
-		// meta: { to: 'Start' },
+		meta: { to: 'Rebus' },
+	},
+	{
+		path: '/rebus',
+		name: 'Rebus',
+		component: (): Promise<Component> => import('@eng/routes/codes/Rebus.vue'),
+		meta: { to: 'End' },
 	},
 	// {
 	// 	path: '/o-grze',

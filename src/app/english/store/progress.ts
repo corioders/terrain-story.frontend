@@ -19,6 +19,7 @@ export const useProgressStore = defineStore({
 			Gaps: false,
 			QuestionTag: false,
 			Carols: false,
+			Rebus: false,
 		};
 
 		return {
