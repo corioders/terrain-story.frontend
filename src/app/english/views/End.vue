@@ -58,6 +58,7 @@
 
 			const handleRadioCheck = (): void => {
 				displayFeedback.value = true;
+				if (isAnswerCorrect.value) displayMark.value = true;
 			};
 
 			const displayMark = ref<boolean>(false);
