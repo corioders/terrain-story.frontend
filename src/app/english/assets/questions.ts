@@ -27,3 +27,9 @@ export const quiz: Question[] = [
 		answer: 'true',
 	},
 ];
+
+export const questionTag: Question = {
+	question: 'They don’t like giving presentes, ... they?',
+	options: ['do', "don't", 'have', 'would', 'will', "didn't"],
+	answer: 'do',
+};

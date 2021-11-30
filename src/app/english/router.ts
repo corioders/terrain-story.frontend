@@ -46,6 +46,12 @@ export const routes: RouteRecordRaw[] = [
 		component: (): Promise<Component> => import('@eng/routes/codes/Quiz.vue'),
 		// meta: { to: 'Start' },
 	},
+	{
+		path: '/question-tag',
+		name: 'QuestionTag',
+		component: (): Promise<Component> => import('@eng/routes/codes/QuestionTag.vue'),
+		// meta: { to: 'Start' },
+	},
 	// {
 	// 	path: '/o-grze',
 	// 	name: 'AboutGame',

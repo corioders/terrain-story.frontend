@@ -1,9 +1,10 @@
 <template>
-	<p>True/false quiz</p>
-	<SingleChoiceQuestions
-		disableMixing
-		:questions="questions"
-		name="quiz"
+	<p>Which word is a correct question tag?</p>
+	<p>{{ question.question }}</p>
+	<SingleChoiceQuestion
+		:options="question.options"
+		:answer="question.answer"
+		name="questionTag"
 		:displayFeedback="displayFeedback"
 		@correct="handleAnswer(true)"
 		@incorrect="handleAnswer(false)"
@@ -15,15 +16,15 @@
 	import { defineComponent, ref } from 'vue';
 
 	import CheckButton from '@/components/buttons/CheckButton.vue';
-	import SingleChoiceQuestions from '@/components/closedQuestion/SingleChoiceQuestions.vue';
+	import SingleChoiceQuestion from '@/components/closedQuestion/SingleChoiceQuestion.vue';
 
-	import { quiz as questions } from '@eng/assets/questions';
+	import { questionTag as question } from '@eng/assets/questions';
 	import { useProgressStore } from '@eng/store/progress';
 
 	export default defineComponent({
-		name: 'Quiz',
+		name: 'QuestionTag',
 		components: {
-			SingleChoiceQuestions,
+			SingleChoiceQuestion,
 			CheckButton,
 		},
 		setup() {
@@ -37,11 +38,13 @@
 			};
 
 			const handleCheck = (): void => {
-				if (isCorrect.value === true) store.finishPuzzle('Quiz');
+				if (isCorrect.value === true) {
+					store.finishPuzzle('QuestionTag');
+				}
 				displayFeedback.value = true;
 			};
 
-			return { questions, isCorrect, handleCheck, handleAnswer, displayFeedback };
+			return { question, isCorrect, handleCheck, handleAnswer, displayFeedback };
 		},
 	});
 </script>
