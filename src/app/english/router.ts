@@ -2,7 +2,9 @@ import { Component } from 'vue';
 import { createRouter, createWebHashHistory } from 'vue-router';
 import { RouteRecordRaw } from 'vue-router';
 
-import handleProgress from '@/handlers/handleProgress';
+import handleNextRoute from '@/router/handleNextRoute';
+import handleProgress from '@/router/handleProgress';
+
 import Home from '@eng/routes/Home.vue';
 
 import { isPuzzleID } from './routes/codes/puzzle';
@@ -116,13 +118,10 @@ const router = createRouter({
 	},
 });
 
-router.beforeEach((to, from) => handleProgress(to, from,isPuzzleID,useProgressStore()));
+router.beforeEach((to, from) => handleProgress(to, from, isPuzzleID, useProgressStore()));
 
 export default router;
 
 export function nextRoute(): void {
-	const meta = router.currentRoute.value.meta;
-	if (meta.to && typeof meta.to == 'string') {
-		router.replace({ name: meta.to, params: { artificial: 1 }, force: true });
-	}
+	handleNextRoute(router);
 }
