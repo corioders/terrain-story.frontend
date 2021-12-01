@@ -27,6 +27,7 @@ export const quiz: Question[] = [
 		answer: 'true',
 	},
 ];
+Object.freeze(quiz);
 
 export const festivalsMatching: Question[] = [
 	{
@@ -48,6 +49,7 @@ export const festivalsMatching: Question[] = [
 		answer: 'Kwanzaa',
 	},
 ];
+Object.freeze(festivalsMatching);
 
 export const gaps: Question[] = [
 	{
@@ -75,12 +77,14 @@ export const gaps: Question[] = [
 		answer: 'stocking',
 	},
 ];
+Object.freeze(gaps);
 
 export const questionTag: Question = {
 	question: 'They don’t like giving presentes, ... they?',
 	options: ['do', "don't", 'have', 'would', 'will', "didn't"],
 	answer: 'do',
 };
+Object.freeze(questionTag);
 
 export const carols: Question[] = [
 	{
@@ -104,3 +108,4 @@ export const carols: Question[] = [
 		answer: 'Oh come all ye faithful',
 	},
 ];
+Object.freeze(carols);
