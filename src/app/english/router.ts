@@ -2,6 +2,7 @@ import { Component } from 'vue';
 import { createRouter, createWebHashHistory } from 'vue-router';
 import { RouteRecordRaw } from 'vue-router';
 
+import handleProgress from '@/handlers/handleProgress';
 import Home from '@eng/routes/Home.vue';
 
 import { isPuzzleID } from './routes/codes/puzzle';
@@ -115,32 +116,7 @@ const router = createRouter({
 	},
 });
 
-router.beforeEach((to, from) => {
-	const store = useProgressStore();
-	const toNameString = String(to.name);
-
-	if (toNameString === 'End' && !store.ended) {
-		// from.name is undefined when users inserts link that points to End directly,
-		// so from is literally from empty browser plage.
-		if (from.name === undefined) return { name: 'Home' };
-		return false;
-	}
-
-	if (toNameString === 'Start' && store.started) {
-		if (from.name === undefined) return { name: 'Home' };
-		return false;
-	}
-
-	if (!isPuzzleID(toNameString)) return true;
-	if (store.ended) return { name: 'End' };
-
-	// If user was already redirected from some path then save the original path.
-	const redirectedFromName = from.params.redirectedFromName ?? toNameString;
-	if (!store.started) return { name: 'Start', params: { redirectedFromName } };
-	if (store.puzzles[toNameString] === true) return { name: 'AlreadyDone', params: { redirectedFromName } };
-
-	return true;
-});
+router.beforeEach((to, from) => handleProgress(to, from,isPuzzleID,useProgressStore()));
 
 export default router;
 
