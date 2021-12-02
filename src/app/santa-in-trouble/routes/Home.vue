@@ -1,5 +1,5 @@
 <template>
-	<div>Gra angielska</div>
+	<div>Santa in trouble</div>
 	<DevNav v-if="!IS_PRODUCTION" :routes="routes" />
 </template>
 
