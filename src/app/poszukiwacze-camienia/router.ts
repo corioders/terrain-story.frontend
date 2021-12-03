@@ -33,19 +33,19 @@ export const routes: RouteRecordRaw[] = [
 	{
 		path: `/archeolog`,
 		name: 'Archaeologist',
-		component: (): Promise<Component> => import('@rock/routes/codes/Archaeologist.vue'),
+		component: (): Promise<Component> => import('@rock/routes/puzzles/Archaeologist.vue'),
 		meta: { to: 'Tourist' },
 	},
 	{
 		path: `/tancerz`,
 		name: 'Dancer',
-		component: (): Promise<Component> => import('@rock/routes/codes/Dancer.vue'),
+		component: (): Promise<Component> => import('@rock/routes/puzzles/Dancer.vue'),
 		meta: { to: 'Princess' },
 	},
 	{
 		path: '/haker',
 		name: 'Hacker',
-		component: (): Promise<Component> => import('@rock/routes/codes/Hacker.vue'),
+		component: (): Promise<Component> => import('@rock/routes/puzzles/Hacker.vue'),
 		meta: { to: 'Mage' },
 	},
 	{
@@ -57,31 +57,31 @@ export const routes: RouteRecordRaw[] = [
 	{
 		path: '/inspektor',
 		name: 'Inspector',
-		component: (): Promise<Component> => import('@rock/routes/codes/Inspector.vue'),
+		component: (): Promise<Component> => import('@rock/routes/puzzles/Inspector.vue'),
 		meta: { to: 'Treasurer' },
 	},
 	{
 		path: '/mag',
 		name: 'Mage',
-		component: (): Promise<Component> => import('@rock/routes/codes/Mage.vue'),
+		component: (): Promise<Component> => import('@rock/routes/puzzles/Mage.vue'),
 		meta: { to: 'Inspector' },
 	},
 	{
 		path: '/ksiezniczka',
 		name: 'Princess',
-		component: (): Promise<Component> => import('@rock/routes/codes/Princess.vue'),
+		component: (): Promise<Component> => import('@rock/routes/puzzles/Princess.vue'),
 		meta: { to: 'Archaeologist' },
 	},
 	{
 		path: '/turysta',
 		name: 'Tourist',
-		component: (): Promise<Component> => import('@rock/routes/codes/Tourist.vue'),
+		component: (): Promise<Component> => import('@rock/routes/puzzles/Tourist.vue'),
 		meta: { to: 'End' },
 	},
 	{
 		path: '/skarbek',
 		name: 'Treasurer',
-		component: (): Promise<Component> => import('@rock/routes/codes/Treasurer.vue'),
+		component: (): Promise<Component> => import('@rock/routes/puzzles/Treasurer.vue'),
 		meta: { to: 'Dancer' },
 	},
 	{

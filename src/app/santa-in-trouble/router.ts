@@ -44,37 +44,37 @@ export const routes: RouteRecordRaw[] = [
 	{
 		path: '/quiz',
 		name: 'Quiz',
-		component: (): Promise<Component> => import('@eng/routes/codes/Quiz.vue'),
+		component: (): Promise<Component> => import('@eng/routes/puzzles/Quiz.vue'),
 		meta: { to: 'FestivalsMatching' },
 	},
 	{
 		path: '/festivals-matching',
 		name: 'FestivalsMatching',
-		component: (): Promise<Component> => import('@eng/routes/codes/FestivalsMatching.vue'),
+		component: (): Promise<Component> => import('@eng/routes/puzzles/FestivalsMatching.vue'),
 		meta: { to: 'Gaps' },
 	},
 	{
 		path: '/gaps',
 		name: 'Gaps',
-		component: (): Promise<Component> => import('@eng/routes/codes/Gaps.vue'),
+		component: (): Promise<Component> => import('@eng/routes/puzzles/Gaps.vue'),
 		meta: { to: 'QuestionTag' },
 	},
 	{
 		path: '/question-tag',
 		name: 'QuestionTag',
-		component: (): Promise<Component> => import('@eng/routes/codes/QuestionTag.vue'),
+		component: (): Promise<Component> => import('@eng/routes/puzzles/QuestionTag.vue'),
 		meta: { to: 'Carols' },
 	},
 	{
 		path: '/carols',
 		name: 'Carols',
-		component: (): Promise<Component> => import('@eng/routes/codes/Carols.vue'),
+		component: (): Promise<Component> => import('@eng/routes/puzzles/Carols.vue'),
 		meta: { to: 'Rebus' },
 	},
 	{
 		path: '/rebus',
 		name: 'Rebus',
-		component: (): Promise<Component> => import('@eng/routes/codes/Rebus.vue'),
+		component: (): Promise<Component> => import('@eng/routes/puzzles/Rebus.vue'),
 		meta: { to: 'End' },
 	},
 	// {
