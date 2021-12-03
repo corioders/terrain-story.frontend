@@ -37,9 +37,9 @@ const appsPath = path.resolve(paths.src, 'app');
 const appFolders = fs.readdirSync(appsPath).filter((app) => app != '.DS_Store');
 const apps = appFolders.map((appFolder) => {
 	const appPath = path.resolve(appsPath, appFolder);
-	
-  const publicPath = path.resolve(appPath, 'public');
-  
+
+	const publicPath = path.resolve(appPath, 'public');
+
 	const htmlTemplatePath = path.resolve(publicPath, 'index.html');
 	const faviconPath = path.resolve(publicPath, 'favicon.ico');
 
@@ -82,6 +82,14 @@ const target = config.IS_PRODUCTION ? 'browserslist' : 'web';
 const aliases = require(path.resolve(config.CONFIG_PATH, 'webpackAlias.json'));
 for (const key in aliases) aliases[key] = path.resolve(config.ROOT_PATH, aliases[key]);
 
+let experiments = {
+	lazyCompilation: true,
+	cacheUnaffected: true,
+};
+if (!config.IS_WATCH) {
+	experiments = undefined;
+}
+
 const webpack = {
 	context: config.ROOT_PATH,
 	entry: entries,
@@ -97,6 +105,7 @@ const webpack = {
 		module: false,
 		chunkLoadingGlobal: config.IS_PRODUCTION ? 'a' : undefined,
 	},
+	experiments: experiments,
 
 	resolve: {
 		alias: {

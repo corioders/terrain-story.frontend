@@ -28,6 +28,7 @@ module.exports = {
 	context: common.webpack.context,
 	entry: common.webpack.entry,
 	output: common.webpack.output,
+	experiments: common.webpack.experiments,
 	resolve: common.webpack.resolve,
 	cache: common.webpack.cache,
 
