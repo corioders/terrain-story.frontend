@@ -1,16 +1,16 @@
 <template>
-	<AlreadyDone :progressStore="progressStore" />
+	<Done />
 </template>
 
 <script lang="ts">
 	import { defineComponent } from 'vue';
 
-	import AlreadyDone from '@/views/AlreadyDone.vue';
-	import { useProgressStore } from '@eng/store/progress';
+	import Done from '@/views/Done.vue';
+	import { useProgressStore } from '@rock/store/progress';
 
 	export default defineComponent({
 		components: {
-			AlreadyDone,
+			Done,
 		},
 		setup() {
 			return { progressStore: useProgressStore() };
