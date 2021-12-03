@@ -3,7 +3,7 @@
 		<Header />
 		<VFlex gap="12px">
 			<router-view />
-			<MapLink v-if="isPuzzleID($route.name) || $route.name === 'AlreadyDone'" mapUrl="/mapa" />
+			<MapLink v-if="typeof $route.name === 'string' && isPuzzleID($route.name) || $route.name === 'AlreadyDone'" mapUrl="/mapa" />
 			<SkipNav v-if="!IS_PRODUCTION" :nextRoute="nextRoute" />
 		</VFlex>
 		<CFooter />
