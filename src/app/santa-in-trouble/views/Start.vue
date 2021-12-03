@@ -1,6 +1,6 @@
 <template>
 	<VFlex gap="12px" class="VFlex">
-		<Video videoId="9hVk_cJyLQM" class="video" />
+		<Video videoId="FvMA_kX_qjA" class="video" />
 		<PlayButton @click="handleStart()" />
 	</VFlex>
 </template>

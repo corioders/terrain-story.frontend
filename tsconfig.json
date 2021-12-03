@@ -30,7 +30,7 @@
 		    "src/app/poszukiwacze-camienia/*"
 		  ],
 			"@eng/*": [
-				"src/app/english/*"
+				"src/app/santa-in-trouble/*"
 			],
 		},
 
