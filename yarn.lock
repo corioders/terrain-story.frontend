@@ -1303,10 +1303,10 @@
   dependencies:
     "@improbable-eng/grpc-web" "^0.14.0"
 
-"@corioders/vueui@0.0.6":
-  version "0.0.6"
-  resolved "https://registry.yarnpkg.com/@corioders/vueui/-/vueui-0.0.6.tgz#8c528c36503a5428b25ac1e55ba0f53300524b58"
-  integrity sha512-qGO/oLhdNOTkFYSP7iFwHWH0dsPsRVWMTQ8N5p6hZoS3Vvm4qMZlmDC6o63q0kS3VXxps6P/1RnLW/5r2Vsbsg==
+"@corioders/vueui@0.0.7":
+  version "0.0.7"
+  resolved "https://registry.yarnpkg.com/@corioders/vueui/-/vueui-0.0.7.tgz#40c4de429eafc3a83acff2d577135b6a88ecfa17"
+  integrity sha512-9rRW413//WslkEEf8GmQKdSXbpa8wS2o0jbk81duQ416su9SqqH9ZSHpxSqOo8B3bqxyU1oMArLBWTF8Wb4SoQ==
   dependencies:
     vue "3.2.21"
 
