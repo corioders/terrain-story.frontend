@@ -1,8 +1,8 @@
 import { MapData } from '@/components/map/leaflet/map';
 
-import { puzzleID } from '@rock/routes/codes/puzzle';
+import { PuzzleID } from '@rock/store/progress';
 
-export const mapData: MapData<puzzleID> = {
+export const mapData: MapData<PuzzleID> = {
 	center: [50.25876354879924, 19.021294856020486],
 	zoom: 14,
 	pins: [
