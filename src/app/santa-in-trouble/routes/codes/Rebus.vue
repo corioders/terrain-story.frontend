@@ -20,12 +20,13 @@
 			CheckButton,
 		},
 		setup() {
+			const store = useProgressStore();
+
 			let isAnswerCorrect = ref(false);
 			function submitAnswer(e: string): void {
 				isAnswerCorrect.value = e.toLowerCase() === 'monkeys';
 			}
 
-			const store = useProgressStore();
 			const handleCheck = (): void => {
 				if (isAnswerCorrect.value === true) store.finishPuzzle('Rebus');
 			};

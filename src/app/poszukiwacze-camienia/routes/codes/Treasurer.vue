@@ -5,11 +5,12 @@
 </template>
 
 <script lang="ts">
-	import { defineComponent, ref } from 'vue';
+	import { defineComponent } from 'vue';
 
 	import Video from '@/components/YoutubeVideo.vue';
 	import CheckButton from '@/components/buttons/CheckButton.vue';
 	import SingleChoiceQuestions from '@/components/closedQuestion/SingleChoiceQuestions.vue';
+	import { questionExecutor } from '@/components/closedQuestion/question';
 
 	import { treasurer as questions } from '@/app/poszukiwacze-camienia/assets/questions';
 	import { useProgressStore } from '@rock/store/progress';
@@ -23,20 +24,7 @@
 		},
 		setup() {
 			const store = useProgressStore();
-			const isCorrect = ref<boolean>(false);
-			const displayFeedback = ref<boolean>(false);
-
-			const handleAnswer = (isAnswerCorrect: boolean): void => {
-				isCorrect.value = isAnswerCorrect;
-				displayFeedback.value = false;
-			};
-
-			const handleCheck = (): void => {
-				if (isCorrect.value === true) store.finishPuzzle('Treasurer');
-				displayFeedback.value = true;
-			};
-
-			return { questions, isCorrect, handleCheck, handleAnswer, displayFeedback };
+			return { questions, ...questionExecutor(() => store.finishPuzzle('Treasurer')) };
 		},
 	});
 </script>

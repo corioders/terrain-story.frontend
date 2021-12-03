@@ -15,11 +15,12 @@
 </template>
 
 <script lang="ts">
-	import { defineComponent, ref } from 'vue';
+	import { defineComponent } from 'vue';
 
 	import Video from '@/components/YoutubeVideo.vue';
 	import CheckButton from '@/components/buttons/CheckButton.vue';
 	import SingleChoiceQuestions from '@/components/closedQuestion/SingleChoiceQuestions.vue';
+	import { questionExecutor } from '@/components/closedQuestion/question';
 
 	import { dancer as questions } from '@/app/poszukiwacze-camienia/assets/questions';
 	import { useProgressStore } from '@rock/store/progress';
@@ -33,22 +34,6 @@
 		},
 		setup() {
 			const store = useProgressStore();
-			let isCorrect = ref<boolean>(false);
-			const displayFeedback = ref<boolean>(false);
-
-			const handleAnswer = (isAnswerCorrect: boolean): void => {
-				isCorrect.value = isAnswerCorrect;
-				displayFeedback.value = false;
-			};
-
-			const handleCheck = (): void => {
-				if (isCorrect.value === true) {
-					store.finishPuzzle('Dancer');
-				}
-				displayFeedback.value = true;
-			};
-
-			return { questions, isCorrect, handleAnswer, handleCheck, displayFeedback };
-		},
+			return { questions, ...questionExecutor(() => store.finishPuzzle('Dancer')) };		},
 	});
 </script>

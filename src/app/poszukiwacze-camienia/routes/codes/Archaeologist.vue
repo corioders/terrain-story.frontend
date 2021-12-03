@@ -15,7 +15,7 @@
 		</article>
 		<p>G5, H2, F2, D4, J5, I3, E5, G2, J4, K5, C5, H5, E3, I5, F5, D5</p>
 	</VCard>
-	<TrapezoidColoring :trapezoidDescriptor="trapezoidDescriptor" @correct="isCorrect = true" @incorrect="isCorrect = false" />
+	<TrapezoidColoring :trapezoidDescriptor="trapezoidDescriptor" @correct="handleAnswer(true)" @incorrect="handleAnswer(false)" />
 	<CheckButton :isCorrect="isCorrect" @click="handleCheck" />
 </template>
 
@@ -24,6 +24,7 @@
 
 	import Video from '@/components/YoutubeVideo.vue';
 	import CheckButton from '@/components/buttons/CheckButton.vue';
+	import { questionExecutor } from '@/components/closedQuestion/question';
 
 	import TrapezoidColoring from '@/app/poszukiwacze-camienia/components/trapezoidColoring/TrapezoidColoring.vue';
 	import { VCard } from '@corioders/vueui';
@@ -40,13 +41,7 @@
 		},
 		setup() {
 			const store = useProgressStore();
-			const isCorrect = ref<boolean>(false);
-
-			const handleCheck = (): void => {
-				if (isCorrect.value === true) store.finishPuzzle('Archaeologist');
-			};
-
-			return { trapezoidDescriptor, isCorrect, handleCheck };
+			return { trapezoidDescriptor, ...questionExecutor(() => store.finishPuzzle('Archaeologist')) };
 		},
 	});
 </script>
