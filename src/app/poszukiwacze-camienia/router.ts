@@ -7,8 +7,7 @@ import handleProgress from '@/router/handleProgress';
 
 import Home from '@rock/routes/Home.vue';
 
-import { isPuzzleID } from './routes/codes/puzzle';
-import { useProgressStore } from './store/progress';
+import { useProgressStore, isPuzzleID } from '@rock/store/progress';
 
 export const routes: RouteRecordRaw[] = [
 	{

@@ -20,7 +20,7 @@
 	import { VFlex } from '@corioders/vueui';
 	import CFooter from '@rock/components/Footer.vue';
 	import { nextRoute } from '@rock/router';
-	import { isPuzzleID } from '@rock/routes/codes/puzzle';
+	import { isPuzzleID } from '@rock/store/progress';
 
 	export default defineComponent({
 		components: {

@@ -12,7 +12,7 @@
 <script lang="ts">
 	import { defineComponent, PropType } from 'vue';
 
-	import ProgressStore from '@/store/ProgressStore';
+	import { ProgressStore } from '@/store/ProgressStore';
 
 	import ResetProgressButton from '@/components/buttons/ResetProgressButton.vue';
 

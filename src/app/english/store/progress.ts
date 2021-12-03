@@ -1,19 +1,21 @@
-import { defineStore } from 'pinia';
 import { RouteLocationRaw } from 'vue-router';
 
+import { defineProgressStore, Puzzles } from '@/store/ProgressStore';
 import { removeLocalStorage } from '@/store/plugin/localStorage';
 
 import router from '@eng/router';
-import { puzzleID } from '@eng/routes/codes/puzzle';
 
-type Puzzles = {
-	[key in puzzleID]: boolean;
-};
+export type PuzzleID = 'Quiz' | 'FestivalsMatching' | 'Gaps' | 'QuestionTag' | 'Carols' | 'Rebus';
+const puzzleIDs = ['Quiz', 'FestivalsMatching', 'Gaps', 'QuestionTag', 'Carols', 'Rebus'];
 
-export const useProgressStore = defineStore({
+export function isPuzzleID(id: string): id is PuzzleID {
+	return puzzleIDs.includes(id);
+}
+
+export const useProgressStore = defineProgressStore({
 	id: 'english.progress',
 	state: () => {
-		const puzzlesDone: Puzzles = {
+		const puzzlesDone: Puzzles<PuzzleID> = {
 			Quiz: false,
 			FestivalsMatching: false,
 			Gaps: false,
@@ -23,8 +25,8 @@ export const useProgressStore = defineStore({
 		};
 
 		return {
-			started: false,
-			ended: false,
+			started: false as boolean,
+			ended: false as boolean,
 			puzzles: puzzlesDone,
 		};
 	},
@@ -40,7 +42,7 @@ export const useProgressStore = defineStore({
 			navigateToRedirectedFrom();
 		},
 
-		finishPuzzle(puzzleId: puzzleID) {
+		finishPuzzle(puzzleId: PuzzleID) {
 			this.puzzles[puzzleId] = true;
 
 			// Check if all puzzles are solved.
