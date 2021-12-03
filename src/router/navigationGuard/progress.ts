@@ -1,10 +1,10 @@
-import { RouteLocationNormalized, RouteLocationRaw } from 'vue-router';
+import { RouteLocationNormalized } from 'vue-router';
 
 import { ProgressStore, IsPuzzleID } from '@/store/ProgressStore';
 
-type NavigationGuardReturn = void | Error | RouteLocationRaw | boolean;
+import { NavigationGuardReturn } from './navigationGuard';
 
-export default function handleProgress<PuzzleID extends string>(
+export function progressNavigationGuard<PuzzleID extends string>(
 	to: RouteLocationNormalized,
 	from: RouteLocationNormalized,
 	isPuzzleID: IsPuzzleID<PuzzleID>,

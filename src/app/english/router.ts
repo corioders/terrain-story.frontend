@@ -1,9 +1,9 @@
 import { Component } from 'vue';
-import { createRouter, createWebHashHistory } from 'vue-router';
 import { RouteRecordRaw } from 'vue-router';
 
-import handleNextRoute from '@/router/handleNextRoute';
-import handleProgress from '@/router/handleProgress';
+import { createRouter } from '@/router';
+import { nextRouteDevHelper } from '@/router/devHelpers/nextRoute';
+import { progressNavigationGuard } from '@/router/navigationGuard/progress';
 
 import Home from '@eng/routes/Home.vue';
 import { isPuzzleID, useProgressStore } from '@eng/store/progress';
@@ -108,18 +108,12 @@ export const routes: RouteRecordRaw[] = [
 	},
 ];
 
-const router = createRouter({
-	routes,
-	history: createWebHashHistory(),
-	scrollBehavior() {
-		return { top: 0 };
-	},
-});
+const router = createRouter(routes);
 
-router.beforeEach((to, from) => handleProgress(to, from, isPuzzleID, useProgressStore()));
+router.beforeEach((to, from) => progressNavigationGuard(to, from, isPuzzleID, useProgressStore()));
 
 export default router;
 
 export function nextRoute(): void {
-	handleNextRoute(router);
+	nextRouteDevHelper(router);
 }
