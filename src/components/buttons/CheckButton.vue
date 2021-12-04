@@ -1,5 +1,5 @@
 <template>
-	<VButton class="CheckButton" :class="wrongAnswerState ? 'error' : 'primary'" @click="handleClick($event)">
+	<VButton class="checkButton" :class="wrongAnswerState ? 'error' : ''" @click="handleClick($event)">
 		{{ wrongAnswerState ? 'Zła odpowiedź' : 'Sprawdź' }}
 	</VButton>
 </template>
@@ -7,7 +7,6 @@
 <script lang="ts">
 	import { defineComponent, ref } from 'vue';
 
-	import { sleep } from '@corioders/jskit/time/time';
 	import { VButton } from '@corioders/vueui';
 
 	export default defineComponent({
@@ -25,13 +24,15 @@
 		emits: ['click'],
 		setup(props, { emit }) {
 			let wrongAnswerState = ref(false);
+			const timeout = ref<number | null>(null);
 			async function handleClick(e: MouseEvent): Promise<void> {
 				emit('click', e);
-				await sleep(500);
+				if (timeout.value !== null) clearTimeout(timeout.value);
 				if (!props.isCorrect) {
 					wrongAnswerState.value = true;
-					await sleep(4000);
-					wrongAnswerState.value = false;
+					timeout.value = setTimeout(function () {
+						wrongAnswerState.value = false;
+					}, 4000);
 				}
 			}
 			return { handleClick, wrongAnswerState };
@@ -40,14 +41,11 @@
 </script>
 <style lang="scss" scoped>
 	@use '@/theme/Button/Button.scss' as *;
-	.VButton {
-		@include Button;
-		transition: all 1s;
-	}
-	.primary {
+	.checkButton {
 		@include Button($primary);
+		transition: all 0.5s;
 	}
 	.error {
-		@include Button($error);
+		background-color: #{$error};
 	}
 </style>
