@@ -1,19 +1,15 @@
-import { defineStore } from 'pinia';
-import { RouteLocationRaw } from 'vue-router';
-
-import { removeLocalStorage } from '@/store/plugin/localStorage';
+import { defaultAction, defineProgressStore, isPuzzleIDFactory, Puzzles } from '@/store/ProgressStore';
 
 import router from '@rock/router';
-import { puzzleID } from '@rock/routes/codes/puzzle';
 
-type Puzzles = {
-	[key in puzzleID]: boolean;
-};
+export type PuzzleID = 'Archaeologist' | 'Dancer' | 'Hacker' | 'Inspector' | 'Mage' | 'Princess' | 'Tourist' | 'Treasurer';
+const puzzleIDs: PuzzleID[] = ['Archaeologist', 'Dancer', 'Hacker', 'Inspector', 'Mage', 'Princess', 'Tourist', 'Treasurer'];
+export const isPuzzleID = isPuzzleIDFactory(puzzleIDs);
 
-export const useProgressStore = defineStore({
+export const useProgressStore = defineProgressStore({
 	id: 'rock.progress',
 	state: () => {
-		const puzzlesDone: Puzzles = {
+		const puzzlesDone: Puzzles<PuzzleID> = {
 			Archaeologist: false,
 			Dancer: false,
 			Hacker: false,
@@ -25,43 +21,21 @@ export const useProgressStore = defineStore({
 		};
 
 		return {
-			started: false,
-			ended: false,
+			started: false as boolean,
+			ended: false as boolean,
 			puzzles: puzzlesDone,
 		};
 	},
 	actions: {
 		start() {
-			this.started = true;
-			navigateToRedirectedFrom();
+			defaultAction.start(this, router);
 		},
-
 		resetProgress() {
-			this.$reset();
-			removeLocalStorage(this);
-			navigateToRedirectedFrom();
+			defaultAction.resetProgress(this, router);
 		},
 
-		finishPuzzle(puzzleId: puzzleID) {
-			this.puzzles[puzzleId] = true;
-
-			// Check if all puzzles are solved.
-			if (!Object.values(this.puzzles).includes(false)) {
-				this.ended = true;
-				router.replace({ name: 'End' });
-			} else {
-				router.replace({ name: 'Done' });
-			}
+		finishPuzzle(puzzleID: PuzzleID) {
+			defaultAction.finishPuzzle(this, router, puzzleID);
 		},
 	},
 });
-
-function navigateToRedirectedFrom(): void {
-	const redirectedFromName = router.currentRoute.value.params['redirectedFromName'] as string;
-
-	let location: RouteLocationRaw;
-	if (redirectedFromName !== undefined) location = { name: redirectedFromName };
-	else location = { name: 'Home' };
-
-	router.replace(location);
-}

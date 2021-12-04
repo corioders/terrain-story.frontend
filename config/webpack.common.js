@@ -37,9 +37,9 @@ const appsPath = path.resolve(paths.src, 'app');
 const appFolders = fs.readdirSync(appsPath).filter((app) => app != '.DS_Store');
 const apps = appFolders.map((appFolder) => {
 	const appPath = path.resolve(appsPath, appFolder);
-	
-  const publicPath = path.resolve(appPath, 'public');
-  
+
+	const publicPath = path.resolve(appPath, 'public');
+
 	const htmlTemplatePath = path.resolve(publicPath, 'index.html');
 	const faviconPath = path.resolve(publicPath, 'favicon.ico');
 
@@ -82,6 +82,15 @@ const target = config.IS_PRODUCTION ? 'browserslist' : 'web';
 const aliases = require(path.resolve(config.CONFIG_PATH, 'webpackAlias.json'));
 for (const key in aliases) aliases[key] = path.resolve(config.ROOT_PATH, aliases[key]);
 
+let experiments = {
+	lazyCompilation: true,
+	cacheUnaffected: true,
+};
+if (!config.IS_WATCH) {
+  console.log(process.env)
+	experiments = undefined;
+}
+
 const webpack = {
 	context: config.ROOT_PATH,
 	entry: entries,
@@ -97,6 +106,7 @@ const webpack = {
 		module: false,
 		chunkLoadingGlobal: config.IS_PRODUCTION ? 'a' : undefined,
 	},
+	experiments: experiments,
 
 	resolve: {
 		alias: {
@@ -220,8 +230,6 @@ const webpack = {
 					if (name == 'webpack-dev-server') return true;
 				});
 
-				const chalk = require('chalk');
-
 				const friendlyErrorsOutput = require('@soda/friendly-errors-webpack-plugin/src/output');
 				class FriendlyErrorsWebpackPluginModified extends FriendlyErrorsWebpackPlugin {
 					constructor() {
@@ -254,9 +262,13 @@ const webpack = {
 				}
 
 				let once = false;
-				const addLogging = (isWatching) => {
+				const addLogging = async (isWatching) => {
 					if (once) return;
 					once = true;
+
+          // Load chalk.
+					const chalkESM = await import('chalk');
+					chalk = chalkESM.default;
 
 					const webpackBar = new WebpackBarModified();
 					webpackBar._ensureState();
@@ -268,8 +280,8 @@ const webpack = {
 					}
 				};
 
-				compiler.hooks.watchRun.tap(this.PLUGIN_NAME, addLogging.bind(undefined, true));
-				compiler.hooks.beforeRun.tap(this.PLUGIN_NAME, addLogging.bind(undefined, false));
+				compiler.hooks.watchRun.tapPromise(this.PLUGIN_NAME, addLogging.bind(undefined, true));
+				compiler.hooks.beforeRun.tapPromise(this.PLUGIN_NAME, addLogging.bind(undefined, false));
 			},
 		},
 	],

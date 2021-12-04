@@ -1,7 +1,7 @@
-import { PiniaStorePlugin, Store } from 'pinia';
+import { PiniaPlugin, Store } from 'pinia';
 
-export function createLocalStoragePlugin(): PiniaStorePlugin {
-	const plugin: PiniaStorePlugin = (context) => {
+export function createLocalStoragePlugin(): PiniaPlugin {
+	const plugin: PiniaPlugin = (context) => {
 		context.store.$subscribe((mutation, state) => {
 			window.localStorage.setItem(getKey(mutation.storeId), JSON.stringify(state));
 		});

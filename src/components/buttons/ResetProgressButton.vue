@@ -20,7 +20,7 @@
 <script lang="ts">
 	import { defineComponent, ref, PropType } from 'vue';
 
-	import ProgressStore from '@/store/ProgressStore';
+	import { ProgressStore } from '@/store/ProgressStore';
 
 	import { InfoButton, ErrorButton, DefaultButton } from '@/theme/Button';
 	import { VFlex } from '@corioders/vueui';

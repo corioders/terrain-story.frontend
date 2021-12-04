@@ -2,16 +2,17 @@
 	<Video videoId="rh04Fv24fjo" />
 	<p class="questionHelper">Znajdź po trzy różnice w każdej parze zdjęć, zaznacz je na górnych zdjęciach.</p>
 	<VFlex align="flex-start" gap="12px">
-		<Differences name="mage" :descriptors="descriptors" @correct="isCorrect = true" />
+		<Differences name="mage" :descriptors="descriptors" @correct="handleAnswer(true)" />
 	</VFlex>
 	<CheckButton :isCorrect="isCorrect" @click="handleCheck()" />
 </template>
 
 <script lang="ts">
-	import { defineComponent, ref } from 'vue';
+	import { defineComponent } from 'vue';
 
 	import Video from '@/components/YoutubeVideo.vue';
 	import CheckButton from '@/components/buttons/CheckButton.vue';
+	import { questionExecutor } from '@/components/closedQuestion/question';
 
 	import { VFlex } from '@corioders/vueui';
 	import magicDescriptor from '@rock/assets/photoDifferences/magic';
@@ -31,14 +32,8 @@
 		emits: ['correct'],
 		setup() {
 			const store = useProgressStore();
-			const isCorrect = ref<boolean>(false);
 			const descriptors = [magicDescriptor, rockDescriptor, touristDescriptor];
-
-			const handleCheck = (): void => {
-				if (isCorrect.value === true) store.finishPuzzle('Mage');
-			};
-
-			return { descriptors, isCorrect, handleCheck };
+			return { descriptors, ...questionExecutor(() => store.finishPuzzle('Mage')) };
 		},
 	});
 </script>

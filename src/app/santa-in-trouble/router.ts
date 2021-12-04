@@ -1,14 +1,12 @@
 import { Component } from 'vue';
-import { createRouter, createWebHashHistory } from 'vue-router';
 import { RouteRecordRaw } from 'vue-router';
 
-import handleNextRoute from '@/router/handleNextRoute';
-import handleProgress from '@/router/handleProgress';
+import { createRouter } from '@/router';
+import { nextRouteDevHelper } from '@/router/devHelpers/nextRoute';
+import { progressNavigationGuard } from '@/router/navigationGuard/progress';
 
 import Home from '@eng/routes/Home.vue';
-
-import { isPuzzleID } from './routes/codes/puzzle';
-import { useProgressStore } from './store/progress';
+import { isPuzzleID, useProgressStore } from '@eng/store/progress';
 
 export const routes: RouteRecordRaw[] = [
 	{
@@ -46,37 +44,37 @@ export const routes: RouteRecordRaw[] = [
 	{
 		path: '/quiz',
 		name: 'Quiz',
-		component: (): Promise<Component> => import('@eng/routes/codes/Quiz.vue'),
+		component: (): Promise<Component> => import('@eng/routes/puzzles/Quiz.vue'),
 		meta: { to: 'FestivalsMatching' },
 	},
 	{
 		path: '/festivals-matching',
 		name: 'FestivalsMatching',
-		component: (): Promise<Component> => import('@eng/routes/codes/FestivalsMatching.vue'),
+		component: (): Promise<Component> => import('@eng/routes/puzzles/FestivalsMatching.vue'),
 		meta: { to: 'Gaps' },
 	},
 	{
 		path: '/gaps',
 		name: 'Gaps',
-		component: (): Promise<Component> => import('@eng/routes/codes/Gaps.vue'),
+		component: (): Promise<Component> => import('@eng/routes/puzzles/Gaps.vue'),
 		meta: { to: 'QuestionTag' },
 	},
 	{
 		path: '/question-tag',
 		name: 'QuestionTag',
-		component: (): Promise<Component> => import('@eng/routes/codes/QuestionTag.vue'),
+		component: (): Promise<Component> => import('@eng/routes/puzzles/QuestionTag.vue'),
 		meta: { to: 'Carols' },
 	},
 	{
 		path: '/carols',
 		name: 'Carols',
-		component: (): Promise<Component> => import('@eng/routes/codes/Carols.vue'),
+		component: (): Promise<Component> => import('@eng/routes/puzzles/Carols.vue'),
 		meta: { to: 'Rebus' },
 	},
 	{
 		path: '/rebus',
 		name: 'Rebus',
-		component: (): Promise<Component> => import('@eng/routes/codes/Rebus.vue'),
+		component: (): Promise<Component> => import('@eng/routes/puzzles/Rebus.vue'),
 		meta: { to: 'End' },
 	},
 	// {
@@ -110,18 +108,12 @@ export const routes: RouteRecordRaw[] = [
 	},
 ];
 
-const router = createRouter({
-	routes,
-	history: createWebHashHistory(),
-	scrollBehavior() {
-		return { top: 0 };
-	},
-});
+const router = createRouter(routes);
 
-router.beforeEach((to, from) => handleProgress(to, from, isPuzzleID, useProgressStore()));
+router.beforeEach((to, from) => progressNavigationGuard(to, from, isPuzzleID, useProgressStore()));
 
 export default router;
 
 export function nextRoute(): void {
-	handleNextRoute(router);
+	nextRouteDevHelper(router);
 }

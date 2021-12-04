@@ -1,14 +1,12 @@
 import { Component } from 'vue';
-import { createRouter, createWebHashHistory } from 'vue-router';
 import { RouteRecordRaw } from 'vue-router';
 
-import handleNextRoute from '@/router/handleNextRoute';
-import handleProgress from '@/router/handleProgress';
+import { createRouter } from '@/router';
+import { nextRouteDevHelper } from '@/router/devHelpers/nextRoute';
+import { progressNavigationGuard } from '@/router/navigationGuard/progress';
 
 import Home from '@rock/routes/Home.vue';
-
-import { isPuzzleID } from './routes/codes/puzzle';
-import { useProgressStore } from './store/progress';
+import { useProgressStore, isPuzzleID } from '@rock/store/progress';
 
 export const routes: RouteRecordRaw[] = [
 	{
@@ -35,19 +33,19 @@ export const routes: RouteRecordRaw[] = [
 	{
 		path: `/archeolog`,
 		name: 'Archaeologist',
-		component: (): Promise<Component> => import('@rock/routes/codes/Archaeologist.vue'),
+		component: (): Promise<Component> => import('@rock/routes/puzzles/Archaeologist.vue'),
 		meta: { to: 'Tourist' },
 	},
 	{
 		path: `/tancerz`,
 		name: 'Dancer',
-		component: (): Promise<Component> => import('@rock/routes/codes/Dancer.vue'),
+		component: (): Promise<Component> => import('@rock/routes/puzzles/Dancer.vue'),
 		meta: { to: 'Princess' },
 	},
 	{
 		path: '/haker',
 		name: 'Hacker',
-		component: (): Promise<Component> => import('@rock/routes/codes/Hacker.vue'),
+		component: (): Promise<Component> => import('@rock/routes/puzzles/Hacker.vue'),
 		meta: { to: 'Mage' },
 	},
 	{
@@ -59,31 +57,31 @@ export const routes: RouteRecordRaw[] = [
 	{
 		path: '/inspektor',
 		name: 'Inspector',
-		component: (): Promise<Component> => import('@rock/routes/codes/Inspector.vue'),
+		component: (): Promise<Component> => import('@rock/routes/puzzles/Inspector.vue'),
 		meta: { to: 'Treasurer' },
 	},
 	{
 		path: '/mag',
 		name: 'Mage',
-		component: (): Promise<Component> => import('@rock/routes/codes/Mage.vue'),
+		component: (): Promise<Component> => import('@rock/routes/puzzles/Mage.vue'),
 		meta: { to: 'Inspector' },
 	},
 	{
 		path: '/ksiezniczka',
 		name: 'Princess',
-		component: (): Promise<Component> => import('@rock/routes/codes/Princess.vue'),
+		component: (): Promise<Component> => import('@rock/routes/puzzles/Princess.vue'),
 		meta: { to: 'Archaeologist' },
 	},
 	{
 		path: '/turysta',
 		name: 'Tourist',
-		component: (): Promise<Component> => import('@rock/routes/codes/Tourist.vue'),
+		component: (): Promise<Component> => import('@rock/routes/puzzles/Tourist.vue'),
 		meta: { to: 'End' },
 	},
 	{
 		path: '/skarbek',
 		name: 'Treasurer',
-		component: (): Promise<Component> => import('@rock/routes/codes/Treasurer.vue'),
+		component: (): Promise<Component> => import('@rock/routes/puzzles/Treasurer.vue'),
 		meta: { to: 'Dancer' },
 	},
 	{
@@ -122,18 +120,12 @@ export const routes: RouteRecordRaw[] = [
 	},
 ];
 
-const router = createRouter({
-	routes,
-	history: createWebHashHistory(),
-	scrollBehavior() {
-		return { top: 0 };
-	},
-});
+const router = createRouter(routes);
 
-router.beforeEach((to, from) => handleProgress(to, from, isPuzzleID, useProgressStore()));
+router.beforeEach((to, from) => progressNavigationGuard(to, from, isPuzzleID, useProgressStore()));
 
 export default router;
 
 export function nextRoute(): void {
-	handleNextRoute(router);
+	nextRouteDevHelper(router);
 }

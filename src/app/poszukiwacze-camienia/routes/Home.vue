@@ -9,8 +9,8 @@
 					ciebie. Na wytrwałych czekają nagrody!
 				</p>
 				<PrimaryButton style="margin-bottom: 24px" @click="$router.push('/jak-grac')">Dowiedz się jak grać w grę</PrimaryButton>
-				<div v-if="showReset" style="margin-bottom: 32px">
-					<ResetProgressButton />
+				<div v-if="progressStore.ended" style="margin-bottom: 32px">
+					<ResetProgressButton :progressStore="progressStore" />
 				</div>
 				<MapWrapper />
 			</VFlex>
@@ -74,7 +74,7 @@
 		setup() {
 			const showModal = ref(true);
 			const store = useProgressStore();
-			return { routes, showModal, showReset: store.ended, IS_PRODUCTION: __IS_PRODUCTION__ };
+			return { routes, showModal, progressStore: store, IS_PRODUCTION: __IS_PRODUCTION__ };
 		},
 	});
 </script>
