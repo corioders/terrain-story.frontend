@@ -87,6 +87,7 @@ let experiments = {
 	cacheUnaffected: true,
 };
 if (!config.IS_WATCH) {
+  console.log(process.env)
 	experiments = undefined;
 }
 

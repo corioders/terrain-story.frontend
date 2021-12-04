@@ -23,6 +23,7 @@ module.exports = {
 	CONFIG_PATH,
 	ROOT_PATH,
 	IS_PRODUCTION,
+  IS_WATCH,
 	IS_DEBUG,
 	IS_ANALYZE,
 	IS_FAST,
