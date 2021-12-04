@@ -1,16 +1,10 @@
-import { RouteLocationRaw } from 'vue-router';
-
-import { defineProgressStore, Puzzles } from '@/store/ProgressStore';
-import { removeLocalStorage } from '@/store/plugin/localStorage';
+import { defaultAction, defineProgressStore, isPuzzleIDFactory, Puzzles } from '@/store/ProgressStore';
 
 import router from '@rock/router';
 
 export type PuzzleID = 'Archaeologist' | 'Dancer' | 'Hacker' | 'Inspector' | 'Mage' | 'Princess' | 'Tourist' | 'Treasurer';
-const puzzleIDs = ['Archaeologist', 'Dancer', 'Hacker', 'Inspector', 'Mage', 'Princess', 'Tourist', 'Treasurer'];
-
-export function isPuzzleID(id: string): id is PuzzleID {
-	return puzzleIDs.includes(id);
-}
+const puzzleIDs: PuzzleID[] = ['Archaeologist', 'Dancer', 'Hacker', 'Inspector', 'Mage', 'Princess', 'Tourist', 'Treasurer'];
+export const isPuzzleID = isPuzzleIDFactory(puzzleIDs);
 
 export const useProgressStore = defineProgressStore({
 	id: 'rock.progress',
@@ -34,36 +28,14 @@ export const useProgressStore = defineProgressStore({
 	},
 	actions: {
 		start() {
-			this.started = true;
-			navigateToRedirectedFrom();
+			defaultAction.start(this, router);
 		},
-
 		resetProgress() {
-			this.$reset();
-			removeLocalStorage(this);
-			navigateToRedirectedFrom();
+			defaultAction.resetProgress(this, router);
 		},
 
-		finishPuzzle(puzzleId: PuzzleID) {
-			this.puzzles[puzzleId] = true;
-
-			// Check if all puzzles are solved.
-			if (!Object.values(this.puzzles).includes(false)) {
-				this.ended = true;
-				router.replace({ name: 'End' });
-			} else {
-				router.replace({ name: 'Done' });
-			}
+		finishPuzzle(puzzleID: PuzzleID) {
+			defaultAction.finishPuzzle(this, router, puzzleID);
 		},
 	},
 });
-
-function navigateToRedirectedFrom(): void {
-	const redirectedFromName = router.currentRoute.value.params['redirectedFromName'] as string;
-
-	let location: RouteLocationRaw;
-	if (redirectedFromName !== undefined) location = { name: redirectedFromName };
-	else location = { name: 'Home' };
-
-	router.replace(location);
-}

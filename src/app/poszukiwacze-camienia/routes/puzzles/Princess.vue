@@ -1,7 +1,7 @@
 <template>
 	<Video videoId="qJnJCPDnqvU" />
 	<p class="questionHelper">Przejdź labirynt</p>
-	<Labyrinth :labyrinthDescriptor="labyrinthDescriptor" @correct="finishHandler()" />
+	<Labyrinth :labyrinthDescriptor="labyrinthDescriptor" @correct="handleFinish()" />
 </template>
 
 <script lang="ts">
@@ -21,12 +21,11 @@
 		},
 		setup() {
 			const store = useProgressStore();
-
-			const finishHandler = (): void => {
+			const handleFinish = (): void => {
 				store.finishPuzzle('Princess');
 			};
 
-			return { labyrinthDescriptor, finishHandler };
+			return { labyrinthDescriptor, handleFinish };
 		},
 	});
 </script>
