@@ -32,19 +32,19 @@ Object.freeze(quiz);
 export const festivalsMatching: Question[] = [
 	{
 		question:
-			'Mexicains start Christmas celebrations on 16 December with a ninc-day festival called .... It commemorates the journey of Mary and Joseph to Bethlehem and their search for lodging. During the festival. people for a procession and visit homes asking for shelter. Each night the procession is invitedinto a different house for a Posadas party.',
+			'Mexicans start Christmas celebrations on 16 December with a nine-day festival called .... It commemorates the journey of Mary and Joseph to Bethlehem and their search for lodging. During the festival people form a procession and visit homes asking for shelter. Each night the procession is invited into a different house for a party.',
 		options: ['Las Posadas', 'Hanukkah', 'Kwanzaa'],
 		answer: 'Las Posadas',
 	},
 	{
 		question:
-			"In December, Jewish people celebrate ...,also known as the Festival of Lights. This holiday lasts 1 eight days and nights. Each day a candle is lit on a special candlestick called a menorah and then gifts are exchanged. Children's favourite snack eaten during Hanukkah are latkes, pancakes made of potatoes and  onions, served with applesauce.",
+			"In December, Jewish people celebrate ...,also known as the Festival of Lights. This holiday lasts eight days and nights. Each day a candle is lit on a special candlestick called a menorah and then gifts are exchanged. Children's favourite snack eaten during the celebration are latkes, pancakes made of potatoes and  onions, served with applesauce.",
 		options: ['Las Posadas', 'Hanukkah', 'Kwanzaa'],
 		answer: 'Hanukkah',
 	},
 	{
 		question:
-			'Another December festival is ..., which is celebrated by African-American families in the USA. The festival is secular. It honours African-American heritage and culture. It lasts one week. Traditions include lighting a candle on cach day of the festival, exchanging gifts and having a special meal.',
+			'Another December festival is ..., which is celebrated by African-American families in the USA. The festival is secular. It honours African-American heritage and culture. It lasts one week. Traditions include lighting a candle on each day of the festival, exchanging gifts and having a special meal.',
 		options: ['Las Posadas', 'Hanukkah', 'Kwanzaa'],
 		answer: 'Kwanzaa',
 	},
@@ -72,7 +72,7 @@ export const gaps: Question[] = [
 	},
 	{
 		question:
-			'On Christmas Eve evening. British children hang Christmas stockings on their beds or in front the fireplace At night each ... is filled with small gifts. Larger gifts are placed under the Christmas tree Children believe that the gifts are brought by Father Christmas. Everybody open their gifts on Christmas morning.',
+			'On Christmas Eve evening. British children hang Christmas stockings on their beds or in front the fireplace. At night each ... is filled with small gifts. Larger gifts are placed under the Christmas tree. Children believe that the gifts are brought by Father Christmas. Everybody opens their gifts on Christmas morning.',
 		options: ['Kallikantzaroi', 'Three Wise Men', 'a wafer', 'stocking'],
 		answer: 'stocking',
 	},
@@ -80,7 +80,7 @@ export const gaps: Question[] = [
 Object.freeze(gaps);
 
 export const questionTag: Question = {
-	question: 'They don’t like giving presentes, ... they?',
+	question: 'They don’t like giving presents, ... they?',
 	options: ['do', "don't", 'have', 'would', 'will', "didn't"],
 	answer: 'do',
 };
@@ -89,22 +89,22 @@ Object.freeze(questionTag);
 export const carols: Question[] = [
 	{
 		question: 'Silent Night, Holy Night',
-		options: ['All is calm, all is bright', 'Born in the king of Israel', 'my true love sent to me', 'Oh come all ye faithful'],
+		options: ['All is calm, all is bright', 'Born is the king of Israel', 'my true love sent to me', 'Oh come all ye faithful'],
 		answer: 'All is calm, all is bright',
 	},
 	{
 		question: 'Noel, Noel, Noel, Noel',
-		options: ['All is calm, all is bright', 'Born in the king of Israel', 'my true love sent to me', 'Oh come all ye faithful'],
-		answer: 'Born in the king of Israel',
+		options: ['All is calm, all is bright', 'Born is the king of Israel', 'my true love sent to me', 'Oh come all ye faithful'],
+		answer: 'Born is the king of Israel',
 	},
 	{
 		question: 'On the first day of Christmas',
-		options: ['All is calm, all is bright', 'Born in the king of Israel', 'my true love sent to me', 'Oh come all ye faithful'],
+		options: ['All is calm, all is bright', 'Born is the king of Israel', 'my true love sent to me', 'Oh come all ye faithful'],
 		answer: 'my true love sent to me',
 	},
 	{
 		question: 'Away in a manager',
-		options: ['All is calm, all is bright', 'Born in the king of Israel', 'my true love sent to me', 'Oh come all ye faithful'],
+		options: ['All is calm, all is bright', 'Born is the king of Israel', 'my true love sent to me', 'Oh come all ye faithful'],
 		answer: 'Oh come all ye faithful',
 	},
 ];
