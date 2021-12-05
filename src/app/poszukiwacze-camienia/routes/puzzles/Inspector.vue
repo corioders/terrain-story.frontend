@@ -23,11 +23,12 @@
 </template>
 
 <script lang="ts">
-	import { defineComponent, ref } from 'vue';
+	import { defineComponent } from 'vue';
 
 	import Video from '@/components/YoutubeVideo.vue';
 	import CheckButton from '@/components/buttons/CheckButton.vue';
 	import SingleChoiceQuestion from '@/components/closedQuestion/SingleChoiceQuestion.vue';
+	import { questionExecutor } from '@/components/closedQuestion/question';
 
 	import { inspector as question } from '@/app/poszukiwacze-camienia/assets/questions';
 	import witnesses from '@/app/poszukiwacze-camienia/assets/witnesses';
@@ -45,22 +46,7 @@
 		},
 		setup() {
 			const store = useProgressStore();
-			const isCorrect = ref<boolean>(false);
-			const displayFeedback = ref<boolean>(false);
-
-			const handleAnswer = (isAnswerCorrect: boolean): void => {
-				isCorrect.value = isAnswerCorrect;
-				displayFeedback.value = false;
-			};
-
-			const handleCheck = (): void => {
-				if (isCorrect.value === true) {
-					store.finishPuzzle('Inspector');
-				}
-				displayFeedback.value = true;
-			};
-
-			return { question, witnesses, isCorrect, handleCheck, handleAnswer, displayFeedback };
+			return { question, witnesses, ...questionExecutor(() => store.finishPuzzle('Inspector')) };
 		},
 	});
 </script>

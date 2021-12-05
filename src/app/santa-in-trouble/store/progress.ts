@@ -1,23 +1,21 @@
 import { defaultAction, defineProgressStore, isPuzzleIDFactory, Puzzles } from '@/store/ProgressStore';
 
-import router from '@rock/router';
+import router from '@eng/router';
 
-export type PuzzleID = 'Archaeologist' | 'Dancer' | 'Hacker' | 'Inspector' | 'Mage' | 'Princess' | 'Tourist' | 'Treasurer';
-const puzzleIDs: PuzzleID[] = ['Archaeologist', 'Dancer', 'Hacker', 'Inspector', 'Mage', 'Princess', 'Tourist', 'Treasurer'];
+export type PuzzleID = 'Quiz' | 'FestivalsMatching' | 'Gaps' | 'QuestionTag' | 'Carols' | 'Rebus';
+const puzzleIDs: PuzzleID[] = ['Quiz', 'FestivalsMatching', 'Gaps', 'QuestionTag', 'Carols', 'Rebus'];
 export const isPuzzleID = isPuzzleIDFactory(puzzleIDs);
 
 export const useProgressStore = defineProgressStore({
-	id: 'rock.progress',
+	id: 'english.progress',
 	state: () => {
 		const puzzlesDone: Puzzles<PuzzleID> = {
-			Archaeologist: false,
-			Dancer: false,
-			Hacker: false,
-			Inspector: false,
-			Mage: false,
-			Princess: false,
-			Tourist: false,
-			Treasurer: false,
+			Quiz: false,
+			FestivalsMatching: false,
+			Gaps: false,
+			QuestionTag: false,
+			Carols: false,
+			Rebus: false,
 		};
 
 		return {
@@ -33,7 +31,6 @@ export const useProgressStore = defineProgressStore({
 		resetProgress() {
 			defaultAction.resetProgress(this, router);
 		},
-
 		finishPuzzle(puzzleID: PuzzleID) {
 			defaultAction.finishPuzzle(this, router, puzzleID);
 		},

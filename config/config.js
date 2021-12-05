@@ -5,6 +5,7 @@ const ip = require('ip');
 const CONFIG_PATH = __dirname;
 const ROOT_PATH = GET_ROOT_PATH();
 const IS_PRODUCTION = GET_IS_PRODUCTION();
+const IS_WATCH = GET_IS_WATCH();
 const IS_DEBUG = GET_IS_DEBUG();
 const IS_ANALYZE = GET_IS_ANALYZE();
 const IS_FAST = GET_IS_FAST();
@@ -22,6 +23,7 @@ module.exports = {
 	CONFIG_PATH,
 	ROOT_PATH,
 	IS_PRODUCTION,
+  IS_WATCH,
 	IS_DEBUG,
 	IS_ANALYZE,
 	IS_FAST,
@@ -57,6 +59,10 @@ function GET_IS_PRODUCTION() {
 		process.exit(1);
 	}
 	return process.env.NODE_ENV == 'production' ? true : false;
+}
+
+function GET_IS_WATCH() {
+	return process.env.WATCH == 'true' ? true : false;
 }
 
 function GET_IS_DEBUG() {

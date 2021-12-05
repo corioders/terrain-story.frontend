@@ -8,8 +8,7 @@
 	import LeafletMap from '@/components/map/leaflet/LeafletMap.vue';
 
 	import { mapData } from '@rock/assets/map';
-
-	import { useProgressStore } from '../store/progress';
+	import { useProgressStore } from '@rock/store/progress';
 
 	export default defineComponent({
 		name: 'MapWrapper',
