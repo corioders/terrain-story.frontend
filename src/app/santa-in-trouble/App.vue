@@ -3,10 +3,10 @@
 		<Header />
 		<VFlex gap="12px">
 			<router-view />
-			<MapLink v-if="typeof $route.name === 'string' && isPuzzleID($route.name) || $route.name === 'AlreadyDone'" mapUrl="/mapa" />
+			<MapLink v-if="(typeof $route.name === 'string' && isPuzzleID($route.name)) || $route.name === 'AlreadyDone'" mapUrl="/mapa" />
 			<SkipNav v-if="!IS_PRODUCTION" :nextRoute="nextRoute" />
 		</VFlex>
-		<CFooter />
+		<EngFooter />
 	</div>
 </template>
 
@@ -18,20 +18,21 @@
 	import MapLink from '@/components/map/MapLink.vue';
 
 	import { VFlex } from '@corioders/vueui';
-	import CFooter from '@rock/components/Footer.vue';
-	import { nextRoute } from '@rock/router';
-	import { isPuzzleID } from '@rock/store/progress';
+	import EngFooter from '@eng/components/Footer.vue';
+	import { nextRoute } from '@eng/router';
+	import { isPuzzleID } from '@eng/store/progress';
 
 	export default defineComponent({
+		name: 'App',
 		components: {
-			CFooter,
+			EngFooter,
 			VFlex,
 			Header,
 			MapLink,
 			SkipNav,
 		},
 		setup() {
-			return { nextRoute, isPuzzleID, IS_PRODUCTION: __IS_PRODUCTION__ };
+			return { nextRoute, isPuzzleID: isPuzzleID, IS_PRODUCTION: __IS_PRODUCTION__ };
 		},
 	});
 </script>

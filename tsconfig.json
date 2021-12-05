@@ -28,7 +28,10 @@
 		  ],
 		  "@rock/*": [
 		    "src/app/poszukiwacze-camienia/*"
-		  ]
+		  ],
+			"@eng/*": [
+				"src/app/santa-in-trouble/*"
+			],
 		},
 
 		"strict": true,
