@@ -23,7 +23,7 @@ export const routes: RouteRecordRaw[] = [
 	{
 		path: `/zrobione`,
 		name: 'Done',
-		component: (): Promise<Component> => import('@/views/Done.vue'),
+		component: (): Promise<Component> => import('@rock/views/DoneWrapper.vue'),
 	},
 	{
 		path: `/juz-zrobione`,
