@@ -5,13 +5,13 @@
 		<section class="dark">
 			<VFlex>
 				<h3>Jak grać?</h3>
-				<Video class="video" videoId="9JppXghMPtg" />
+				<Video class="video" videoId="osnMvAcWdZc" />
 			</VFlex>
 		</section>
 		<section class="light">
 			<VFlex>
 				<h3>Chcesz wiedzieć więcej?</h3>
-				<Video class="video" videoId="9JppXghMPtg" />
+				<Video class="video" videoId="U0Zl1PcSvHE" />
 			</VFlex>
 		</section>
 		<section class="dark">
