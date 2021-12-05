@@ -7,7 +7,8 @@
 		<template #menu>
 			<TinyLink @click="$router.push('/')">Santa in trouble</TinyLink>
 			<!-- <TinyLink @click="$router.push('/regulamin')">Regulamin</TinyLink> -->
-			<!-- <TinyLink @click="$router.push('/polityka-prywatnosci')">Polityka Prywatności</TinyLink> -->
+			<TinyLink @click="$router.push('/juz-zrobione')">Usuń Postęp</TinyLink>
+			<TinyLink @click="$router.push('/polityka-prywatnosci')">Polityka Prywatności</TinyLink>
 			<TinyLink @click="$router.push('/finansowanie')">Finansowanie</TinyLink>
 		</template>
 	</CFooter>

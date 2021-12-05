@@ -77,26 +77,11 @@ export const routes: RouteRecordRaw[] = [
 		component: (): Promise<Component> => import('@eng/routes/puzzles/Rebus.vue'),
 		meta: { to: 'End' },
 	},
-	// {
-	// 	path: '/o-grze',
-	// 	name: 'AboutGame',
-	// 	component: (): Promise<Component> => import('@eng/routes/AboutGame.vue'),
-	// },
-	// {
-	// 	path: '/jak-grac',
-	// 	name: 'HowToPlay',
-	// 	component: (): Promise<Component> => import('@eng/routes/HowToPlay.vue'),
-	// },
-	// {
-	// 	path: '/regulamin',
-	// 	name: 'TermsOfUse',
-	// 	component: (): Promise<Component> => import('@eng/routes/TermsOfUse.vue'),
-	// },
-	// {
-	// 	path: '/polityka-prywatnosci',
-	// 	name: 'PrivacyPolicy',
-	// 	component: (): Promise<Component> => import('@eng/routes/PrivacyPolicy.vue'),
-	// },
+	{
+		path: '/polityka-prywatnosci',
+		name: 'PrivacyPolicy',
+		component: (): Promise<Component> => import('@eng/routes/PrivacyPolicy.vue'),
+	},
 	{
 		path: '/finansowanie',
 		name: 'Financing',
