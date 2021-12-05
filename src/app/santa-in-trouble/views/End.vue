@@ -18,7 +18,7 @@
 		<CheckButton v-if="isSentenceCorrect" :isCorrect="isAnswerCorrect" @click="handleRadioCheck" />
 	</VFlex>
 	<VFlex v-else gap="12px" class="VFlex">
-		<p>Brawo, dostałeś 5</p>
+		<p>Well done, you've finished the game</p>
 	</VFlex>
 </template>
 
