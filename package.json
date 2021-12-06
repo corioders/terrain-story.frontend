@@ -86,6 +86,7 @@
 		"leaflet": "1.7.1",
 		"pinia": "2.0.5",
 		"vue": "3.2.23",
+		"vue-gtag-next": "1.14.0",
 		"vue-router": "4.0.12"
 	}
 }
