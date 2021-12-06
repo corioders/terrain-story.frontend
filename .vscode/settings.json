@@ -15,15 +15,6 @@
   ],
   "prettier.configPath": ".prettierrc",
   "commitlint.config.file": "tools/config/commitlint.config.js",
-  "[javascript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[typescript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[vue]": {
-    "editor.defaultFormatter": "octref.vetur"
-  },
   "cSpell.words": [
     "Assemblyscript",
     "MINVER",

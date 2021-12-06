@@ -3,6 +3,10 @@
 declare const __IS_PRODUCTION__: boolean;
 
 // =========================================================================
+// google analytics id
+declare const GTAG_ID: string;
+
+// =========================================================================
 // module declarations, so typescript will allow import them
 declare module '*.vue' {
 	import { Component } from 'vue';

@@ -1,3 +1,5 @@
+import { useGtag } from 'vue-gtag-next';
+
 import { defaultAction, defineProgressStore, isPuzzleIDFactory, Puzzles } from '@/store/ProgressStore';
 
 import router from '@rock/router';
@@ -36,6 +38,10 @@ export const useProgressStore = defineProgressStore({
 
 		finishPuzzle(puzzleID: PuzzleID) {
 			defaultAction.finishPuzzle(this, router, puzzleID);
+			if (this.ended) {
+				const gtag = useGtag();
+				gtag.event('game_end', { name: 'poszukiwacze-camienia' });
+			}
 		},
 	},
 });
