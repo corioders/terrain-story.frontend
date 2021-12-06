@@ -1,12 +1,13 @@
 <template>
 	<VFlex gap="12px" class="VFlex">
-		<Video videoId="Kc-vJEeuAqI" class="video" />
-		<PlayButton @click="handleStart()" />
+		<Video videoId="Kc-vJEeuAqI" class="video" :endBias="10" @end="videoEnded = true" />
+		<p>Watch the video and play!</p>
+		<PlayButton :disabled="!videoEnded" @click="handleStart()" />
 	</VFlex>
 </template>
 
 <script lang="ts">
-	import { defineComponent } from 'vue';
+	import { defineComponent, ref } from 'vue';
 
 	import Video from '@/components/YoutubeVideo.vue';
 	import PlayButton from '@/components/buttons/PlayButton.vue';
@@ -23,12 +24,13 @@
 		},
 		setup() {
 			const store = useProgressStore();
+			const videoEnded = ref<boolean>(false);
 
 			const handleStart = (): void => {
 				store.start();
 			};
 
-			return { handleStart };
+			return { handleStart, videoEnded };
 		},
 	});
 </script>
