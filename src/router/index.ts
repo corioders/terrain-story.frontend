@@ -1,7 +1,8 @@
+import { trackRouter } from 'vue-gtag-next';
 import { createRouter as createVRouter, createWebHashHistory, RouteLocationRaw, Router, RouteRecordRaw, RouterOptions } from 'vue-router';
 
 export function createRouter(routes: RouteRecordRaw[], options?: Omit<RouterOptions, 'history' | 'routes'>): Router {
-	return createVRouter({
+	const router = createVRouter({
 		routes: routes,
 		history: createWebHashHistory(),
 		scrollBehavior() {
@@ -10,6 +11,9 @@ export function createRouter(routes: RouteRecordRaw[], options?: Omit<RouterOpti
 
 		...options,
 	});
+	trackRouter(router);
+
+	return router;
 }
 
 export function navigateToRedirectedFrom(router: Router): void {
