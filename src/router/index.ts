@@ -1,6 +1,8 @@
 import { trackRouter } from 'vue-gtag-next';
 import { createRouter as createVRouter, createWebHashHistory, RouteLocationRaw, Router, RouteRecordRaw, RouterOptions } from 'vue-router';
 
+import { getRedirectedFromName } from './navigationGuard/progress';
+
 export function createRouter(routes: RouteRecordRaw[], options?: Omit<RouterOptions, 'history' | 'routes'>): Router {
 	const router = createVRouter({
 		routes: routes,
@@ -17,7 +19,7 @@ export function createRouter(routes: RouteRecordRaw[], options?: Omit<RouterOpti
 }
 
 export function navigateToRedirectedFrom(router: Router): void {
-	const redirectedFromName = router.currentRoute.value.params['redirectedFromName'] as string;
+	const redirectedFromName = getRedirectedFromName(router.currentRoute.value.query);
 
 	let location: RouteLocationRaw;
 	if (redirectedFromName !== undefined) location = { name: redirectedFromName };
