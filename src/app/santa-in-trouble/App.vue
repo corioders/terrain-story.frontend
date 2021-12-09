@@ -3,7 +3,7 @@
 		<Header />
 		<VFlex gap="12px">
 			<router-view />
-			<MapLink v-if="(typeof $route.name === 'string' && isPuzzleID($route.name)) || $route.name === 'AlreadyDone'" mapUrl="/mapa" />
+			<!-- <MapLink v-if="(typeof $route.name === 'string' && isPuzzleID($route.name)) || $route.name === 'AlreadyDone'" mapUrl="/mapa" /> -->
 			<SkipNav v-if="!IS_PRODUCTION" :nextRoute="nextRoute" />
 		</VFlex>
 		<EngFooter />
@@ -15,7 +15,7 @@
 
 	import Header from '@/components/Header.vue';
 	import SkipNav from '@/components/devHelpers/SkipNav.vue';
-	import MapLink from '@/components/map/MapLink.vue';
+	// import MapLink from '@/components/map/MapLink.vue';
 
 	import { VFlex } from '@corioders/vueui';
 	import EngFooter from '@eng/components/Footer.vue';
@@ -28,7 +28,7 @@
 			EngFooter,
 			VFlex,
 			Header,
-			MapLink,
+			// MapLink,
 			SkipNav,
 		},
 		setup() {
