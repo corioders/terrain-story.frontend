@@ -32,7 +32,7 @@ export function progressNavigationGuard<PuzzleID extends string>(
 	// If user was already redirected then use the original name.
 	const redirectedFromName = getRedirectedFromName(from.query) ?? toNameString;
 
-	const query = {};
+	const query = from.query;
 	setRedirectedFromName(query, redirectedFromName);
 
 	if (!progressStore.started) return { name: 'Start', query };
@@ -50,4 +50,8 @@ export function getRedirectedFromName(query: RouteLocationNormalized['query']): 
 
 export function setRedirectedFromName(query: RouteLocationNormalized['query'], redirectedFromName: string): void {
 	query[redirectedFromNameQueryKey] = redirectedFromName;
+}
+
+export function deleteRedirectedFromName(query: RouteLocationNormalized['query']): void {
+	delete query[redirectedFromNameQueryKey];
 }
