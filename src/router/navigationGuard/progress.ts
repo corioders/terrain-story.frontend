@@ -27,10 +27,31 @@ export function progressNavigationGuard<PuzzleID extends string>(
 	if (!isPuzzleID(toNameString)) return true;
 	if (progressStore.ended) return { name: 'End' };
 
-	// If user was already redirected from some path then save the original path.
-	const redirectedFromName = from.params.redirectedFromName ?? toNameString;
-	if (!progressStore.started) return { name: 'Start', params: { redirectedFromName } };
-	if (progressStore.puzzles[toNameString] === true) return { name: 'AlreadyDone', params: { redirectedFromName } };
+	// Redirect to route that user was originally on.
+
+	// If user was already redirected then use the original name.
+	const redirectedFromName = getRedirectedFromName(from.query) ?? toNameString;
+
+	const query = from.query;
+	setRedirectedFromName(query, redirectedFromName);
+
+	if (!progressStore.started) return { name: 'Start', query };
+	if (progressStore.puzzles[toNameString] === true) return { name: 'AlreadyDone', query };
 
 	return true;
+}
+
+const redirectedFromNameQueryKey = 'r';
+export function getRedirectedFromName(query: RouteLocationNormalized['query']): string | undefined {
+	let redirectedFromName = query[redirectedFromNameQueryKey];
+	if (redirectedFromName instanceof Array) redirectedFromName = redirectedFromName[0];
+	return redirectedFromName === null ? undefined : redirectedFromName;
+}
+
+export function setRedirectedFromName(query: RouteLocationNormalized['query'], redirectedFromName: string): void {
+	query[redirectedFromNameQueryKey] = redirectedFromName;
+}
+
+export function deleteRedirectedFromName(query: RouteLocationNormalized['query']): void {
+	delete query[redirectedFromNameQueryKey];
 }
