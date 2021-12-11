@@ -83,11 +83,10 @@ const aliases = require(path.resolve(config.CONFIG_PATH, 'webpackAlias.json'));
 for (const key in aliases) aliases[key] = path.resolve(config.ROOT_PATH, aliases[key]);
 
 let experiments = {
-	lazyCompilation: true,
 	cacheUnaffected: true,
 };
 if (!config.IS_WATCH) {
-  console.log(process.env)
+	console.log(process.env);
 	experiments = undefined;
 }
 
@@ -266,7 +265,7 @@ const webpack = {
 					if (once) return;
 					once = true;
 
-          // Load chalk.
+					// Load chalk.
 					const chalkESM = await import('chalk');
 					chalk = chalkESM.default;
 
