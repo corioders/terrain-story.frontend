@@ -2,12 +2,12 @@
 	<CFooter>
 		<template #informations>
 			<img src="@/assets/zwztLogo.webp" alt="Projekt realizowany w ramach olimpiady 'Zwolnieni z Teorii'" />
+			<p>Rozwiązałeś {{ progress().value }} z {{ progress().max }} zagadek</p>
 			<p>Projekt dofinansowany ze środków Unii Europejskiej</p>
 		</template>
 		<template #menu>
-			<TinyLink @click="$router.push('/')">Santa in trouble</TinyLink>
-			<!-- <TinyLink @click="$router.push('/regulamin')">Regulamin</TinyLink> -->
-			<TinyLink @click="$router.push('/juz-zrobione')">Usuń Postęp</TinyLink>
+			<TinyLink @click="$router.push('/')">Poszukiwacze Camienia</TinyLink>
+			<TinyLink @click="$router.push('/regulamin')">Regulamin</TinyLink>
 			<TinyLink @click="$router.push('/polityka-prywatnosci')">Polityka Prywatności</TinyLink>
 			<TinyLink @click="$router.push('/finansowanie')">Finansowanie</TinyLink>
 		</template>
@@ -18,14 +18,20 @@
 	import { defineComponent } from 'vue';
 
 	import CFooter from '@/components/Footer.vue';
+	import handleProgress, { HandleProgressReturn } from '@/components/progress/handleProgress';
 
 	import { TinyLink } from '@/theme/Link';
+	import { useProgressStore, PuzzleID } from '@rock/store/progress';
 
 	export default defineComponent({
 		name: 'Footer',
 		components: {
 			CFooter,
 			TinyLink,
+		},
+		setup() {
+			const progress: () => HandleProgressReturn = () => handleProgress<PuzzleID>(useProgressStore().puzzles);
+			return { progress };
 		},
 	});
 </script>
