@@ -41,7 +41,7 @@
 
 			onMounted(() => {
 				setTimeout(() => {
-					// if (router.currentRoute.value.name === 'Done') router.replace(props.replacePath);
+					if (router.currentRoute.value.name === 'Done') router.replace(props.replacePath);
 				}, props.timeout);
 			});
 		},
