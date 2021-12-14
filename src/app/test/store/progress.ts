@@ -2,15 +2,19 @@ import { defaultAction, defineProgressStore, isPuzzleIDFactory, Puzzles } from '
 
 import router from '@eng/router';
 
-// export type PuzzleID = 'puzzleA' | 'puzzleB';
-export type PuzzleID = never;
-const puzzleIDs: PuzzleID[] = [];
+export type PuzzleID = 'puzzleA' | 'puzzleB' | 'puzzleC' | 'puzzleD';
+const puzzleIDs: PuzzleID[] = ['puzzleA', 'puzzleB', 'puzzleC', 'puzzleD'];
 export const isPuzzleID = isPuzzleIDFactory(puzzleIDs);
 
 export const useProgressStore = defineProgressStore({
 	id: 'test.progress',
 	state: () => {
-		const puzzlesDone: Puzzles<PuzzleID> = {};
+		const puzzlesDone: Puzzles<PuzzleID> = {
+			puzzleA: false,
+			puzzleB: false,
+			puzzleC: false,
+			puzzleD: false,
+		};
 
 		return {
 			started: false as boolean,

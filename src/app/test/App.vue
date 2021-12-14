@@ -15,6 +15,8 @@
 
 	import { VFlex } from '@corioders/vueui';
 
+	import { nextRoute } from './router';
+
 	export default defineComponent({
 		name: 'App',
 		components: {
@@ -22,7 +24,7 @@
 			SkipNav,
 		},
 		setup() {
-			return { IS_PRODUCTION: __IS_PRODUCTION__ };
+			return { nextRoute, IS_PRODUCTION: __IS_PRODUCTION__ };
 		},
 	});
 </script>

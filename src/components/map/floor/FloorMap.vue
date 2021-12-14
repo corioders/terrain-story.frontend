@@ -20,17 +20,16 @@
 			},
 		},
 		setup(props) {
-
 			for (const floor of props.floorMapDescriptor.floors) {
 				for (const puzzleID of floor.puzzles) {
 					if (props.puzzlesDone[puzzleID] === true) {
 						// Do something when puzzle is done
 					} else {
 						// Do something when puzzle isn't  done
+						console.log(puzzleID);
 					}
 				}
 			}
-      
 		},
 	});
 </script>
