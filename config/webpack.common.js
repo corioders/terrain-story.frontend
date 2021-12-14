@@ -35,7 +35,7 @@ const paths = {
 const entries = {};
 const appsPath = path.resolve(paths.src, 'app');
 const appFolders = fs.readdirSync(appsPath).filter((app) => app != '.DS_Store');
-const apps = appFolders.map((appFolder) => {
+let apps = appFolders.map((appFolder) => {
 	const appPath = path.resolve(appsPath, appFolder);
 
 	const publicPath = path.resolve(appPath, 'public');
@@ -51,6 +51,10 @@ const apps = appFolders.map((appFolder) => {
 		faviconPath,
 	};
 });
+
+if (config.IS_PRODUCTION && !config.IS_DEBUG) {
+	apps = apps.filter(({ name }) => name !== 'test');
+}
 
 for (const app of apps) entries[app.name] = app.path;
 
@@ -86,7 +90,6 @@ let experiments = {
 	cacheUnaffected: true,
 };
 if (!config.IS_WATCH) {
-	console.log(process.env);
 	experiments = undefined;
 }
 
