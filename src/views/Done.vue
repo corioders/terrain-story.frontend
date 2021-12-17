@@ -8,7 +8,10 @@
 			<h2>Brawo, udało Ci się rozwiązać tę zagadkę</h2>
 		</slot>
 		<slot>
-			<h3>Przenoszenie do mapy</h3>
+			<h3>Znajdź i zeskanuj następny kod</h3>
+		</slot>
+		<slot name="action">
+			<h4>Przenoszenie do mapy</h4>
 		</slot>
 		<VSpinner />
 	</VFlex>
@@ -49,7 +52,8 @@
 </script>
 <style lang="scss" scoped>
 	:deep(h2),
-	:deep(h3) {
+	:deep(h3),
+	:deep(h4) {
 		font-weight: 500;
 		text-align: center;
 		max-width: 90%;
