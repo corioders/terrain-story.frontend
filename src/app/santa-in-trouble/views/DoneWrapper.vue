@@ -4,7 +4,9 @@
 			<ProgressBar style="margin-top: 20px" :max="progress().max" :value="progress().value" />
 			<h2>Well done, you've solved {{ progress().value }} of {{ progress().max }} mysteries</h2>
 		</template>
-		<h3>Moving to the home page</h3>
+		<template #action>
+			<h4>Moving to the home page</h4>
+		</template>
 	</Done>
 </template>
 
