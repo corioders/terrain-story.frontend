@@ -1,4 +1,5 @@
 <template>
+	<DevNav v-if="!IS_PRODUCTION" :routes="routes" />
 	<VFlex class="VFlex">
 		<img class="gameLogo" src="@eng/assets/santaLogo.webp" alt="Santa in trouble" role="heading" aria-level="2" />
 
@@ -32,7 +33,6 @@
 			</VFlex>
 		</section>
 	</VFlex>
-	<DevNav v-if="!IS_PRODUCTION" :routes="routes" />
 </template>
 
 <script lang="ts">
