@@ -9,6 +9,7 @@
 			<h3>Przenoszenie do mapy</h3>
 		</slot>
 		<VSpinner />
+		<PrimaryButton v-if="!IS_PRODUCTION" @click="$router.replace(replacePath)">Przenieś do {{ replacePath }}</PrimaryButton>
 	</VFlex>
 </template>
 
@@ -16,6 +17,7 @@
 	import { defineComponent, onMounted, PropType } from 'vue';
 	import { useRouter } from 'vue-router';
 
+	import { PrimaryButton } from '@/theme/Button';
 	import { VFlex, VSpinner } from '@corioders/vueui';
 
 	export default defineComponent({
@@ -23,6 +25,7 @@
 		components: {
 			VFlex,
 			VSpinner,
+			PrimaryButton,
 		},
 		props: {
 			replacePath: {
@@ -38,10 +41,12 @@
 			const router = useRouter();
 
 			onMounted(() => {
+				if (!__IS_PRODUCTION__) return;
 				setTimeout(() => {
 					if (router.currentRoute.value.name === 'Done') router.replace(props.replacePath);
 				}, props.timeout);
 			});
+			return { IS_PRODUCTION: __IS_PRODUCTION__ };
 		},
 	});
 </script>
