@@ -1,6 +1,10 @@
 <template>
 	<PrimaryButton :disabled="disabled" @click="handleClick" @use-disabled-click="$emit('click')"><slot>Zagraj</slot></PrimaryButton>
-	<VCard v-if="disabled" :style="`opacity:${showCard ? '1' : '0'}`" class="card"><slot name="card">Musisz najpierw zobaczyć film</slot></VCard>
+	<VCard v-if="disabled" :style="`opacity:${showCard ? '1' : '0'}`" class="card">
+		<slot name="card">
+			<p>Musisz najpierw zobaczyć film.</p>
+		</slot>
+	</VCard>
 </template>
 
 <script lang="ts">
@@ -25,12 +29,14 @@
 		emits: ['click'],
 		setup(props) {
 			const showCard = ref(false);
+			let timeout: number | null = null;
 			function handleClick(): void {
 				if (props.disabled === false) return;
+				if (timeout !== null) clearTimeout(timeout);
 				showCard.value = true;
-				setTimeout(() => {
+				timeout = setTimeout(() => {
 					showCard.value = false;
-				}, 1000);
+				}, 3000);
 			}
 			return { showCard, handleClick };
 		},

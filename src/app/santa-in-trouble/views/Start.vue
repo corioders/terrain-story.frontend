@@ -1,9 +1,14 @@
 <template>
-	<IncognitoWarning />
+	<IncognitoWarning>If your browser is in private mode progress will not be saved!</IncognitoWarning>
 	<VFlex gap="12px" class="VFlex">
 		<Video videoId="Kc-vJEeuAqI" class="video" :endBias="10" @end="videoEnded = true" />
 		<p>Watch the video and play!</p>
-		<PlayButton :disabled="!videoEnded" @click="handleStart()" />
+		<PlayButton :disabled="!videoEnded" @click="handleStart()">
+			Play
+			<template #card>
+				<p>You have to watch the video before playing.</p>
+			</template>
+		</PlayButton>
 	</VFlex>
 </template>
 
