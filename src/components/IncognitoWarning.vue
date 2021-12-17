@@ -26,7 +26,7 @@
 <style lang="scss" scoped>
 	section {
 		width: 95%;
-		max-width: 950px;
+		max-width: 900px;
 		border-radius: 5px;
 		background-color: $warning;
 
