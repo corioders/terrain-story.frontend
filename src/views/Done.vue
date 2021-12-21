@@ -10,26 +10,22 @@
 		<slot>
 			<h3>Znajdź i zeskanuj następny kod</h3>
 		</slot>
-		<slot name="action">
-			<h4>Przenoszenie do mapy</h4>
-		</slot>
-		<VSpinner />
-		<PrimaryButton v-if="!IS_PRODUCTION" @click="$router.replace(replacePath)">Przenieś do {{ replacePath }}</PrimaryButton>
+		<PrimaryButton @click="$router.replace(replacePath)">
+			<slot name="action">Przenieś do mapy</slot>
+		</PrimaryButton>
 	</VFlex>
 </template>
 
 <script lang="ts">
-	import { defineComponent, onMounted, PropType } from 'vue';
-	import { useRouter } from 'vue-router';
+	import { defineComponent, PropType } from 'vue';
 
 	import { PrimaryButton } from '@/theme/Button';
-	import { VFlex, VSpinner } from '@corioders/vueui';
+	import { VFlex } from '@corioders/vueui';
 
 	export default defineComponent({
 		name: 'Done',
 		components: {
 			VFlex,
-			VSpinner,
 			PrimaryButton,
 		},
 		props: {
@@ -37,21 +33,6 @@
 				type: String as PropType<string>,
 				default: '/mapa',
 			},
-			timeout: {
-				type: Number as PropType<number>,
-				default: 5000,
-			},
-		},
-		setup(props) {
-			const router = useRouter();
-
-			onMounted(() => {
-				if (!__IS_PRODUCTION__) return;
-				setTimeout(() => {
-					if (router.currentRoute.value.name === 'Done') router.replace(props.replacePath);
-				}, props.timeout);
-			});
-			return { IS_PRODUCTION: __IS_PRODUCTION__ };
 		},
 	});
 </script>

@@ -5,9 +5,7 @@
 			<h2>Well done, you've solved {{ progress().value }} of {{ progress().max }} mysteries</h2>
 		</template>
 		<h3>Find and scan another code</h3>
-		<template #action>
-			<h4>Moving to the home page</h4>
-		</template>
+		<template #action>Move to the home page</template>
 	</Done>
 </template>
 
