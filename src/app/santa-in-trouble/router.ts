@@ -10,15 +10,15 @@ import { isPuzzleID, useProgressStore } from '@eng/store/progress';
 
 export const routes: RouteRecordRaw[] = [
 	{
-		path: `/koniec`,
-		name: 'End',
-		component: (): Promise<Component> => import('@eng/views/End.vue'),
-	},
-	{
 		path: `/start`,
 		name: 'Start',
 		component: (): Promise<Component> => import('@eng/views/Start.vue'),
 		meta: { to: 'Quiz' },
+	},
+	{
+		path: `/koniec`,
+		name: 'End',
+		component: (): Promise<Component> => import('@eng/views/End.vue'),
 	},
 	{
 		path: `/zrobione`,
@@ -42,10 +42,10 @@ export const routes: RouteRecordRaw[] = [
 	// 	component: (): Promise<Component> => import('@eng/routes/Map.vue'),
 	// },
 	{
-		path: '/quiz',
-		name: 'Quiz',
-		component: (): Promise<Component> => import('@eng/routes/puzzles/Quiz.vue'),
-		meta: { to: 'FestivalsMatching' },
+		path: '/carols',
+		name: 'Carols',
+		component: (): Promise<Component> => import('@eng/routes/puzzles/Carols.vue'),
+		meta: { to: 'Rebus' },
 	},
 	{
 		path: '/festivals-matching',
@@ -66,10 +66,10 @@ export const routes: RouteRecordRaw[] = [
 		meta: { to: 'Carols' },
 	},
 	{
-		path: '/carols',
-		name: 'Carols',
-		component: (): Promise<Component> => import('@eng/routes/puzzles/Carols.vue'),
-		meta: { to: 'Rebus' },
+		path: '/quiz',
+		name: 'Quiz',
+		component: (): Promise<Component> => import('@eng/routes/puzzles/Quiz.vue'),
+		meta: { to: 'FestivalsMatching' },
 	},
 	{
 		path: '/rebus',
