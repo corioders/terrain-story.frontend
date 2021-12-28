@@ -10,15 +10,15 @@ import { useProgressStore, isPuzzleID } from '@rock/store/progress';
 
 export const routes: RouteRecordRaw[] = [
 	{
-		path: `/koniec`,
-		name: 'End',
-		component: (): Promise<Component> => import('@rock/views/End.vue'),
-	},
-	{
 		path: `/start`,
 		name: 'Start',
 		component: (): Promise<Component> => import('@rock/views/Start.vue'),
 		meta: { to: 'Hacker' },
+	},
+	{
+		path: `/koniec`,
+		name: 'End',
+		component: (): Promise<Component> => import('@rock/views/End.vue'),
 	},
 	{
 		path: `/zrobione`,
@@ -29,6 +29,17 @@ export const routes: RouteRecordRaw[] = [
 		path: `/juz-zrobione`,
 		name: 'AlreadyDone',
 		component: (): Promise<Component> => import('@rock/views/AlreadyDoneWrapper.vue'),
+	},
+	{
+		path: '/',
+		name: 'Home',
+		component: Home,
+		meta: { to: 'Start' },
+	},
+	{
+		path: '/mapa',
+		name: 'Map',
+		component: (): Promise<Component> => import('@rock/routes/Map.vue'),
 	},
 	{
 		path: `/archeolog`,
@@ -48,12 +59,7 @@ export const routes: RouteRecordRaw[] = [
 		component: (): Promise<Component> => import('@rock/routes/puzzles/Hacker.vue'),
 		meta: { to: 'Mage' },
 	},
-	{
-		path: '/',
-		name: 'Home',
-		component: Home,
-		meta: { to: 'Start' },
-	},
+
 	{
 		path: '/inspektor',
 		name: 'Inspector',
@@ -84,11 +90,7 @@ export const routes: RouteRecordRaw[] = [
 		component: (): Promise<Component> => import('@rock/routes/puzzles/Treasurer.vue'),
 		meta: { to: 'Dancer' },
 	},
-	{
-		path: '/mapa',
-		name: 'Map',
-		component: (): Promise<Component> => import('@rock/routes/Map.vue'),
-	},
+
 	{
 		path: '/o-grze',
 		name: 'AboutGame',
@@ -100,14 +102,14 @@ export const routes: RouteRecordRaw[] = [
 		component: (): Promise<Component> => import('@rock/routes/HowToPlay.vue'),
 	},
 	{
-		path: '/regulamin',
-		name: 'TermsOfUse',
-		component: (): Promise<Component> => import('@rock/routes/TermsOfUse.vue'),
-	},
-	{
 		path: '/polityka-prywatnosci',
 		name: 'PrivacyPolicy',
 		component: (): Promise<Component> => import('@rock/routes/PrivacyPolicy.vue'),
+	},
+	{
+		path: '/regulamin',
+		name: 'TermsOfUse',
+		component: (): Promise<Component> => import('@rock/routes/TermsOfUse.vue'),
 	},
 	{
 		path: '/finansowanie',
