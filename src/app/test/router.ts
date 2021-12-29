@@ -9,9 +9,9 @@ import { isPuzzleID, useProgressStore } from '@eng/store/progress';
 
 export const routes: RouteRecordRaw[] = [
 	{
-		path: `/floorMap`,
-		name: 'floorMap',
-		component: (): Promise<Component> => import('@test/routes/floorMapWrapper.vue'),
+		path: `/reportBug`,
+		name: 'reportBug',
+		component: (): Promise<Component> => import('@test/routes/reportBugWrapper.vue'),
 	},
 ];
 
