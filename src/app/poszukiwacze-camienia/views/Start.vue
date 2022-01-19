@@ -1,4 +1,5 @@
 <template>
+	<IncognitoWarning />
 	<Video :endBias="10" videoId="q_O3LVHoFAw" @end="videoEnded = true" />
 	<p>Zobacz cały film, a następnie zagraj!</p>
 	<PlayButton :disabled="!videoEnded" @click="handleStart()" />
@@ -7,6 +8,7 @@
 <script lang="ts">
 	import { defineComponent, ref } from 'vue';
 
+	import IncognitoWarning from '@/components/IncognitoWarning.vue';
 	import Video from '@/components/YoutubeVideo.vue';
 	import PlayButton from '@/components/buttons/PlayButton.vue';
 
@@ -15,6 +17,7 @@
 	export default defineComponent({
 		name: 'Start',
 		components: {
+			IncognitoWarning,
 			PlayButton,
 			Video,
 		},

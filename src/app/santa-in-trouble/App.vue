@@ -6,7 +6,7 @@
 			<!-- <MapLink v-if="(typeof $route.name === 'string' && isPuzzleID($route.name)) || $route.name === 'AlreadyDone'" mapUrl="/mapa" /> -->
 			<SkipNav v-if="!IS_PRODUCTION" :nextRoute="nextRoute" />
 		</VFlex>
-		<EngFooter />
+		<FooterWrapper />
 	</div>
 </template>
 
@@ -15,17 +15,17 @@
 
 	import Header from '@/components/Header.vue';
 	import SkipNav from '@/components/devHelpers/SkipNav.vue';
-	// import MapLink from '@/components/map/MapLink.vue';
 
+	import FooterWrapper from '@/app/santa-in-trouble/components/FooterWrapper.vue';
+	// import MapLink from '@/components/map/MapLink.vue';
 	import { VFlex } from '@corioders/vueui';
-	import EngFooter from '@eng/components/Footer.vue';
 	import { nextRoute } from '@eng/router';
 	import { isPuzzleID } from '@eng/store/progress';
 
 	export default defineComponent({
 		name: 'App',
 		components: {
-			EngFooter,
+			FooterWrapper,
 			VFlex,
 			Header,
 			// MapLink,

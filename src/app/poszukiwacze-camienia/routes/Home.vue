@@ -1,4 +1,5 @@
 <template>
+	<DevNav v-if="!IS_PRODUCTION" :routes="routes" />
 	<VFlex class="VFlex">
 		<img src="@rock/assets/rockLogo.webp" alt="Logo gry Poszukiwacze Camienia" role="heading" aria-level="2" />
 		<section class="dark">
@@ -41,8 +42,6 @@
 			</VFlex>
 		</section>
 	</VFlex>
-
-	<DevNav v-if="!IS_PRODUCTION" :routes="routes" />
 </template>
 
 <script lang="ts">
