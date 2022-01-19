@@ -1317,10 +1317,10 @@
   dependencies:
     "@improbable-eng/grpc-web" "^0.14.0"
 
-"@corioders/vueui@0.0.9":
-  version "0.0.9"
-  resolved "https://registry.yarnpkg.com/@corioders/vueui/-/vueui-0.0.9.tgz#ec42a5271ffb1452d3a3a3619a94557ae759124b"
-  integrity sha512-0U9p0ixIToUmX/YmXzMNy1yXewPguTPlaaFGEpcLC3OUljnASxHoIc/or4KCgcIw6JWSDUMNEyWoKXPHHa8Tvg==
+"@corioders/vueui@0.0.11":
+  version "0.0.11"
+  resolved "https://registry.yarnpkg.com/@corioders/vueui/-/vueui-0.0.11.tgz#7e26dbb5d4c192b732998c3316f51ff0983b451b"
+  integrity sha512-ta0hwDEtbrrSCEL1qYGZN+7ig6N3Q99RS+a8Aa4uI9rwNsL1Jo9PGwkfYASZByv6erTTwM8DvOpUEpopMNgx4g==
 
 "@csstools/convert-colors@2.0.0":
   version "2.0.0"
