@@ -14,7 +14,7 @@
 	import handleProgress, { HandleProgressReturn } from '@/components/progress/handleProgress';
 
 	import Done from '@/views/Done.vue';
-	import { useProgressStore, PuzzleID } from '@rock/store/progress';
+	import { useProgressStore, PuzzleID } from '@help/store/progress';
 
 	export default defineComponent({
 		components: {
