@@ -69,12 +69,18 @@ export const routes: RouteRecordRaw[] = [
 		path: '/rebus',
 		name: 'Rebus',
 		component: (): Promise<Component> => import('@help/routes/puzzles/Rebus.vue'),
-		meta: { to: 'Matching' },
+		meta: { to: 'Matching1' },
 	},
 	{
-		path: '/rozsypanka',
-		name: 'Matching',
-		component: (): Promise<Component> => import('@help/routes/puzzles/Matching.vue'),
+		path: '/rozsypanka1',
+		name: 'Matching1',
+		component: (): Promise<Component> => import('@help/routes/puzzles/Matching1.vue'),
+		meta: { to: 'Matching2' },
+	},
+	{
+		path: '/rozsypanka2',
+		name: 'Matching2',
+		component: (): Promise<Component> => import('@help/routes/puzzles/Matching2.vue'),
 		meta: { to: 'PhoneNumbers' },
 	},
 	{

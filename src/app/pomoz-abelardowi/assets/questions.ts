@@ -1,6 +1,6 @@
 import Question from '@/components/closedQuestion/question';
 
-export const emotions1: Question[] = [
+export const matching1: Question[] = [
 	{
 		question: 'Zacznij dzień od',
 		options: ['szklanki wody', 'wczoraj minęło, jutro dopiero nadejdzie, życie jest dziś', 'spaceruj, biegaj, ćwicz'],
@@ -27,9 +27,9 @@ export const emotions1: Question[] = [
 		answer: 'wczoraj minęło, jutro dopiero nadejdzie, życie jest dziś',
 	},
 ];
-Object.freeze(emotions1);
+Object.freeze(matching1);
 
-export const emotions2: Question[] = [
+export const matching2: Question[] = [
 	{
 		question: 'Skupiaj się na miłych drobiazgach',
 		options: ['dostrzegaj ile dobra dzieje się w ciągu każdego dnia', 'każdy ma swoją niepowtarzalną drogę', 'miej marzenia i walcz o nie'],
@@ -56,4 +56,4 @@ export const emotions2: Question[] = [
 		answer: 'odpoczynek, to nie strata czasu',
 	},
 ];
-Object.freeze(emotions2);
+Object.freeze(matching2);
