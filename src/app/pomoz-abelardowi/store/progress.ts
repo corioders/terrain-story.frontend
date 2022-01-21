@@ -4,8 +4,8 @@ import { defaultAction, defineProgressStore, isPuzzleIDFactory, Puzzles } from '
 
 import router from '@help/router';
 
-export type PuzzleID = 'Bingo' | 'Emotions1' | 'Jacobson' | 'Rebus' | 'Matching' | 'PhoneNumbers';
-const puzzleIDs: PuzzleID[] = ['Bingo', 'Emotions1', 'Jacobson', 'Rebus', 'Matching', 'PhoneNumbers'];
+export type PuzzleID = 'Bingo' | 'Emotions1' | 'Emotions2' | 'Jacobson' | 'Rebus' | 'Matching' | 'PhoneNumbers';
+const puzzleIDs: PuzzleID[] = ['Bingo', 'Emotions1', 'Emotions2', 'Jacobson', 'Rebus', 'Matching', 'PhoneNumbers'];
 export const isPuzzleID = isPuzzleIDFactory(puzzleIDs);
 
 export const useProgressStore = defineProgressStore({
@@ -14,6 +14,7 @@ export const useProgressStore = defineProgressStore({
 		const puzzlesDone: Puzzles<PuzzleID> = {
 			Bingo: false,
 			Emotions1: false,
+			Emotions2: false,
 			Jacobson: false,
 			Rebus: false,
 			Matching: false,

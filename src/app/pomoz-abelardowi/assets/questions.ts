@@ -28,3 +28,32 @@ export const emotions1: Question[] = [
 	},
 ];
 Object.freeze(emotions1);
+
+export const emotions2: Question[] = [
+	{
+		question: 'Skupiaj się na miłych drobiazgach',
+		options: ['dostrzegaj ile dobra dzieje się w ciągu każdego dnia', 'każdy ma swoją niepowtarzalną drogę', 'miej marzenia i walcz o nie'],
+		answer: 'dostrzegaj ile dobra dzieje się w ciągu każdego dnia',
+	},
+	{
+		question: 'Nie jesteś doskonały',
+		options: ['i nie musisz takim być', 'każdy ma swoją niepowtarzalną drogę', 'dostrzegaj ile dobra dzieje się w ciągu każdego dnia'],
+		answer: 'i nie musisz takim być',
+	},
+	{
+		question: 'Nie porównuj się do innych',
+		options: ['każdy ma swoją niepowtarzalną drogę', 'miej marzenia i walcz o nie', 'odpoczynek, to nie strata czasu'],
+		answer: 'każdy ma swoją niepowtarzalną drogę',
+	},
+	{
+		question: 'Wytycz sobie cel',
+		options: ['miej marzenia i walcz o nie', 'odpoczynek, to nie strata czasu', 'i nie musisz takim być'],
+		answer: 'miej marzenia i walcz o nie',
+	},
+	{
+		question: 'Odpoczywaj',
+		options: ['odpoczynek, to nie strata czasu', 'dostrzegaj ile dobra dzieje się w ciągu każdego dnia', 'każdy ma swoją niepowtarzalną drogę'],
+		answer: 'odpoczynek, to nie strata czasu',
+	},
+];
+Object.freeze(emotions2);
