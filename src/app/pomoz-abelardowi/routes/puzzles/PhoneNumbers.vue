@@ -1,4 +1,5 @@
 <template>
+	<p>Nigdy nie bójmy się prosić o pomoc</p>
 	<div>
 		<p>telefon zaufania dla dzieci i młodzieży</p>
 		<p>“116 ???” 11 * 11 - 10 = ???</p>

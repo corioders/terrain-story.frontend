@@ -1,5 +1,9 @@
 <template>
-	<h2>Procedura treningu Jacobsona</h2>
+	<p>
+		Pomóż naszemu bohaterowi zredukować napięcie, przećwicz skrócony trening Jacobsona, który pozwala pozbyć się napięć w mięśniach, pogłębić oddech, szybko zrelaksować
+		się.
+	</p>
+
 	<ol>
 		<li>Weź dwa głębokie oddechy. Powietrze staraj się wydychać powoli.</li>
 		<li>Zaciśnij pięści obu rąk. Poczuj napięcie. Przytrzymaj tak około 5 sekund… i odpuść… Poczuj, jak Twoje dłonie przyjemnie się odprężają.</li>
@@ -43,9 +47,6 @@
 	});
 </script>
 <style lang="scss" scoped>
-	h2 {
-		font-weight: 500;
-	}
 	ol {
 		li {
 			padding: 5px 0;
