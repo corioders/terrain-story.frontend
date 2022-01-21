@@ -6,7 +6,7 @@
 	import { defineComponent } from 'vue';
 
 	import AlreadyDone from '@/views/AlreadyDone.vue';
-	import { useProgressStore } from '@rock/store/progress';
+	import { useProgressStore } from '@help/store/progress';
 
 	export default defineComponent({
 		components: {
