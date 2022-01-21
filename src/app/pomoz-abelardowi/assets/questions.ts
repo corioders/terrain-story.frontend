@@ -93,3 +93,39 @@ export const emotions1: Question[] = [
 	},
 ];
 Object.freeze(emotions1);
+
+export const emotions2: Question[] = [
+	{
+		options: ['Ale przypał', 'Hahahahaha', 'Podoba mi się to'],
+		answer: 'Ale przypał',
+	},
+	{
+		options: ['Hahahahaha', 'Ok', 'Nie wierzę w to'],
+		answer: 'Hahahahaha',
+	},
+	{
+		options: ['Nie chcę już tego słuchać', 'Cieszę się', 'Nie wierzę w to'],
+		answer: 'Nie chcę już tego słuchać',
+	},
+	{
+		options: ['Nie wierzę w to', 'Ok', 'Hahahahaha'],
+		answer: 'Nie wierzę w to',
+	},
+	{
+		options: ['Podoba mi się to', 'Ale przypał', 'Nie chcę już tego słuchać'],
+		answer: 'Podoba mi się to',
+	},
+	{
+		options: ['Mam nastrój na wygłupy, poróbmy miny', 'Ale przypał', 'Cieszę się'],
+		answer: 'Mam nastrój na wygłupy, poróbmy miny',
+	},
+	{
+		options: ['Ok', 'Ale przypał', 'Hahahahaha'],
+		answer: 'Ok',
+	},
+	{
+		options: ['Cieszę się', 'Nie chcę już tego słuchać', 'Nie wierzę w to'],
+		answer: 'Cieszę się',
+	},
+];
+Object.freeze(emotions2);
