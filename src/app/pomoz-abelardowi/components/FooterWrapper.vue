@@ -1,7 +1,8 @@
 <template>
 	<CFooter>
 		<template #informations>
-			<img src="@/assets/zwztLogo.webp" alt="Projekt realizowany w ramach olimpiady 'Zwolnieni z Teorii'" />
+			<img src="@/assets/zwztLogo.webp" style="margin-top: 64px" alt="Projekt realizowany w ramach olimpiady 'Zwolnieni z Teorii'" />
+			<img src="@/assets/sftLogo.webp" alt="Samsung Solve for Tomorrow" />
 			<p>Rozwiązałeś {{ progress().value }} z {{ progress().max }} zagadek</p>
 			<p>Projekt dofinansowany ze środków Unii Europejskiej</p>
 		</template>
@@ -40,7 +41,7 @@
 		font-size: 0.8rem;
 	}
 	img {
-		margin: 64px 0;
+		margin-bottom: 64px;
 		min-width: 200px;
 		width: 50vw;
 		max-width: 250px;

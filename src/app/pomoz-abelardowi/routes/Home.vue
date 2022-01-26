@@ -1,8 +1,8 @@
 <template>
 	<DevNav v-if="!IS_PRODUCTION" :routes="routes" />
 	<VFlex class="VFlex">
-		<!-- <img class="gameLogo" src="@eng/assets/santaLogo.webp" alt="Santa in trouble" role="heading" aria-level="2" /> -->
-
+		<img v-if="window.width.value * 1.6 >= window.height.value" class="gameLogo" src="@help/assets/helpLogo.webp" alt="Pomóż Abelardowi" role="heading" aria-level="2" />
+		<img v-else class="gameLogo" src="@help/assets/helpLogoHorizontal.webp" alt="Pomóż Abelardowi" role="heading" aria-level="2" />
 		<section class="dark">
 			<VFlex>
 				<h3>Jak grać?</h3>
@@ -12,14 +12,14 @@
 		<section class="light">
 			<VFlex>
 				<h3>Chcesz wiedzieć więcej?</h3>
-				<Video class="video" videoId="h216m8E6ZGI" />
+				<Video class="video" videoId="yLmjRKen2UE" />
 			</VFlex>
 		</section>
 		<section class="dark">
 			<VFlex>
 				<h5>Twórcy Gry</h5>
 				<img class="logo" src="@/assets/whiteLogo.webp" alt="Terrain Story" />
-				<!-- <p>Nauczyciele angielskiego z VIII LO im. Marii Skłodowskiej-Curie w Katowicach</p> -->
+				<p>Psycholog Łucja Chwastek</p>
 			</VFlex>
 		</section>
 		<section class="light">
@@ -44,6 +44,7 @@
 	import { InfoLink } from '@/theme/Link';
 	import { VFlex } from '@corioders/vueui';
 	import { routes } from '@help/router';
+	import { useWindowSize } from '@vueuse/core';
 
 	export default defineComponent({
 		name: 'Home',
@@ -54,7 +55,7 @@
 			InfoLink,
 		},
 		setup() {
-			return { routes, IS_PRODUCTION: __IS_PRODUCTION__ };
+			return { routes, IS_PRODUCTION: __IS_PRODUCTION__, window: useWindowSize() };
 		},
 	});
 </script>
@@ -63,7 +64,7 @@
 		width: 100%;
 		.gameLogo {
 			width: 100%;
-			max-width: 950px;
+			max-width: 1500px;
 			margin-bottom: 64px;
 		}
 		section {
@@ -96,7 +97,7 @@
 		}
 	}
 	.dark {
-		background-color: $secondaryDarker;
+		background-color: #406258;
 		color: #fff;
 	}
 </style>

@@ -83,6 +83,7 @@
 		"@corioders/jskit": "0.0.6",
 		"@corioders/vueui": "0.0.11",
 		"@types/leaflet": "1.7.6",
+		"@vueuse/core": "7.5.5",
 		"leaflet": "1.7.1",
 		"pinia": "2.0.5",
 		"vue": "3.2.23",
