@@ -1,7 +1,7 @@
 <template>
 	<DevNav v-if="!IS_PRODUCTION" :routes="routes" />
 	<VFlex class="VFlex">
-		<img v-if="window.width.value * 1.6 >= window.height.value" class="gameLogo" src="@help/assets/helpLogo.webp" alt="Pomóż Abelardowi" role="heading" aria-level="2" />
+		<img v-if="window.width.value * 1.35 >= window.height.value" class="gameLogo" src="@help/assets/helpLogo.webp" alt="Pomóż Abelardowi" role="heading" aria-level="2" />
 		<img v-else class="gameLogo" src="@help/assets/helpLogoHorizontal.webp" alt="Pomóż Abelardowi" role="heading" aria-level="2" />
 		<section class="dark">
 			<VFlex>
