@@ -41,12 +41,19 @@
 <style lang="scss" scoped>
 	.container {
 		display: grid;
+		width: 100% !important;
+		max-width: 950px;
+		grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
 
-		grid-template-columns: repeat(v-bind('bingoDescriptor.dimensions.width'), 1fr);
-		grid-template-rows: repeat(v-bind('bingoDescriptor.dimensions.height'), 1fr);
+		justify-items: stretch;
+		align-items: stretch;
 	}
 
 	.checked {
-		background-color: red;
+		background-color: $primaryDarker;
+		color: #fff;
+	}
+	p {
+		padding: 12px;
 	}
 </style>

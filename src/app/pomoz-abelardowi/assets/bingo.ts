@@ -26,9 +26,5 @@ export const bingoDescriptor = {
 		'Osobie znajdującej się obok Ciebie pokaż bez słów co najbardziej lubisz robić.',
 		'Opisz sytuację, w której czułaś/eś się naprawdę pewna/y siebie.',
 	],
-	dimensions: {
-		width: 5,
-		height: 5,
-	},
 };
 Object.freeze(bingoDescriptor);
