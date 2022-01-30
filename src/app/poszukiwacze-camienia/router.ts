@@ -12,7 +12,7 @@ export const routes: RouteRecordRaw[] = [
 	{
 		path: `/start`,
 		name: 'Start',
-		component: (): Promise<Component> => import('@rock/views/Start.vue'),
+		component: (): Promise<Component> => import('@rock/views/StartWrapper.vue'),
 		meta: { to: 'Hacker' },
 	},
 	{

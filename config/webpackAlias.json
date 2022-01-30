@@ -2,5 +2,6 @@
 	"@": "src",
 	"@index": "src/app/index",
 	"@rock": "src/app/poszukiwacze-camienia",
-	"@eng": "src/app/santa-in-trouble"
+	"@eng": "src/app/santa-in-trouble",
+	"@help": "src/app/pomoz-abelardowi"
 }

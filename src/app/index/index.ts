@@ -17,4 +17,5 @@
 // }
 
 // location.pathname = 'poszukiwacze-camienia/';
-location.pathname = 'santa-in-trouble/';
+// location.pathname = 'santa-in-trouble/';
+location.pathname = 'pomoz-abelardowi/';
