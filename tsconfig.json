@@ -32,6 +32,9 @@
 			"@eng/*": [
 				"src/app/santa-in-trouble/*"
 			],
+			"@help/*": [
+				"src/app/pomoz-abelardowi/*"
+			],
 		},
 
 		"strict": true,
