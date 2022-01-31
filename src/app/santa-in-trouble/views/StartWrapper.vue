@@ -1,6 +1,7 @@
 <template>
 	<Start :start="handleStart" videoId="Kc-vJEeuAqI">
 		<template #incognitoWarning>If your browser is in private mode progress will not be saved!</template>
+		<template #howToPlayButton>How to play</template>
 		<template #info>Watch the video and play!</template>
 		<template #playButton>Play</template>
 		<template #playButtonCard><p>You have to watch the video before playing.</p></template>

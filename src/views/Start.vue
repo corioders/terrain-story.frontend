@@ -3,6 +3,7 @@
 		<slot name="incognitoWarning"></slot>
 	</IncognitoWarning>
 	<VFlex gap="12px" class="VFlex">
+		<InfoButton style="font-size: 1.2rem" @click="$router.push('/jak-grac')"><slot name="howToPlayButton">Zobacz jak grać</slot></InfoButton>
 		<Video :videoId="videoId" class="video" :endBias="10" @end="videoEnded = true" />
 		<p class="info">
 			<slot name="info">Zobacz cały film, a następnie zagraj!</slot>
@@ -23,6 +24,7 @@
 	import Video from '@/components/YoutubeVideo.vue';
 	import PlayButton from '@/components/buttons/PlayButton.vue';
 
+	import { InfoButton } from '@/theme/Button';
 	import { VFlex } from '@corioders/vueui';
 
 	export default defineComponent({
@@ -32,6 +34,7 @@
 			Video,
 			PlayButton,
 			VFlex,
+			InfoButton,
 		},
 		props: {
 			start: {

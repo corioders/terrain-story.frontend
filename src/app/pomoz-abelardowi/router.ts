@@ -31,6 +31,11 @@ export const routes: RouteRecordRaw[] = [
 		component: (): Promise<Component> => import('@help/views/AlreadyDoneWrapper.vue'),
 	},
 	{
+		path: `/jak-grac`,
+		name: 'HowToPlay',
+		component: (): Promise<Component> => import('@/views/HowToPlay.vue'),
+	},
+	{
 		path: '/',
 		name: 'Home',
 		component: Home,
