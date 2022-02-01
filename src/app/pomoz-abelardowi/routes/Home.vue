@@ -33,12 +33,8 @@
 		</section>
 		<section class="light">
 			<VFlex>
-				<h6>Kontakt</h6>
-				<p>terrainstory@gmail.com</p>
-				<p style="margin-top: 0">
-					Wiadomość na <InfoLink href="https://www.instagram.com/terrain.story/" newCard>Instagramie</InfoLink> lub
-					<InfoLink href="https://www.facebook.com/terrain.story/" newCard>Facebooku</InfoLink>
-				</p>
+				<h6>Patroni medialni</h6>
+				<img class="logo" src="@/assets/patrons/portalKatowice.webp" alt="Portal Katowice" />
 			</VFlex>
 		</section>
 	</VFlex>
@@ -50,7 +46,6 @@
 	import Video from '@/components/YoutubeVideo.vue';
 	import DevNav from '@/components/devHelpers/DevNav.vue';
 
-	import { InfoLink } from '@/theme/Link';
 	import { VFlex } from '@corioders/vueui';
 	import { routes } from '@help/router';
 	import { useWindowSize } from '@vueuse/core';
@@ -61,7 +56,6 @@
 			DevNav,
 			VFlex,
 			Video,
-			InfoLink,
 		},
 		setup() {
 			return { routes, IS_PRODUCTION: __IS_PRODUCTION__, window: useWindowSize() };
