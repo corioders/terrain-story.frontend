@@ -37,6 +37,12 @@
 				<img class="logo" src="@/assets/patrons/portalKatowice.webp" alt="Portal Katowice" />
 			</VFlex>
 		</section>
+		<section class="dark">
+			<VFlex>
+				<h6 style="margin: 0">Kontakt</h6>
+				<p style="margin-bottom: 0">terrainstory@gmail.com</p>
+			</VFlex>
+		</section>
 	</VFlex>
 </template>
 
