@@ -1,5 +1,14 @@
 import { trackRouter } from 'vue-gtag-next';
-import { createRouter as createVRouter, createWebHashHistory, RouteLocationNormalized, RouteLocationRaw, Router, RouteRecordRaw, RouterOptions } from 'vue-router';
+import {
+	createRouter as createVRouter,
+	createWebHashHistory,
+	LocationQueryValue,
+	RouteLocationNormalized,
+	RouteLocationRaw,
+	Router,
+	RouteRecordRaw,
+	RouterOptions,
+} from 'vue-router';
 
 import { NavigationGuardReturn } from './navigationGuard/navigationGuard';
 import { deleteRedirectedFromName, getRedirectedFromName } from './navigationGuard/progress';
@@ -32,6 +41,14 @@ export function navigateToRedirectedFrom(router: Router): void {
 	else location = { name: 'Home', query };
 
 	router.replace(location);
+}
+
+export function getLocationID(router: Router): string {
+	// Below code (query parameter name) must be keep in sync with https://github.com/corioders/terrain-story.api/blob/master/data/gamesCode.jsonc
+	const locationId = (router.currentRoute.value.query['p'] as LocationQueryValue) || undefined;
+	if (locationId === undefined || locationId === null) throw new Error("Failed to retrieve locationID, check that your url has 'p' query parameter");
+
+	return locationId;
 }
 
 function isEmpty(o: object): boolean {

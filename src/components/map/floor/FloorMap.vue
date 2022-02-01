@@ -1,8 +1,9 @@
 <template>
-	<VFlex class="container" gap="12px">
+	<div v-if="floorMapDescriptor === null">Loading...</div>
+	<VFlex v-else class="container" gap="12px">
 		<div v-for="(floor, i) in floorMapDescriptor.floors" :key="`floor${i}-${floor}`" class="floor">
-			<VFlex direction="row" justify="center" gap="12px">
-				<div v-for="(puzzleID, j) in floor.puzzles" :key="`puzzle${j}-${puzzleID}`" class="puzzle" :class="puzzlesDone[puzzleID] === true ? 'done' : ''" />
+			<VFlex direction="row" justify="center" gap="13px">
+				<div v-for="(puzzleID, j) in floor.puzzleIDs" :key="`puzzle${j}-${puzzleID}`" class="puzzle" :class="puzzlesDone[puzzleID] === true ? 'done' : ''" />
 			</VFlex>
 			<div class="floor --line" />
 			<p class="floor --label">{{ floor.name }}</p>
@@ -11,11 +12,11 @@
 </template>
 
 <script lang="ts">
-	import { defineComponent, PropType } from 'vue';
+	import { defineComponent, PropType, ref } from 'vue';
 
 	import { VFlex } from '@corioders/vueui';
 
-	import { FloorMapDescriptor } from './floorMap';
+	import { FloorMapDescriptor, getFloorMapDescriptor } from './floorMap';
 
 	export default defineComponent({
 		name: 'FloorMap',
@@ -23,14 +24,30 @@
 			VFlex,
 		},
 		props: {
-			floorMapDescriptor: {
-				type: Object as PropType<FloorMapDescriptor<string>>,
-				required: true,
-			},
 			puzzlesDone: {
 				type: Object as PropType<Record<string, boolean>>,
 				required: true,
 			},
+			locationID: {
+				type: String,
+				required: true,
+			},
+			gameName: {
+				type: String,
+				required: true,
+			},
+		},
+		// async setup is currently unstable :<, https://v3.vuejs.org/guide/migration/suspense.html
+		setup(props) {
+			const floorMapDescriptor = ref<FloorMapDescriptor<string> | null>(null);
+
+			const loadMap = async (): Promise<void> => {
+				floorMapDescriptor.value = await getFloorMapDescriptor(props.locationID, props.gameName);
+        console.log(floorMapDescriptor.value)
+			};
+			loadMap();
+
+			return { floorMapDescriptor };
 		},
 	});
 </script>
