@@ -85,7 +85,7 @@ export const routes: RouteRecordRaw[] = [
 	{
 		path: '/polityka-prywatnosci',
 		name: 'PrivacyPolicy',
-		component: (): Promise<Component> => import('@eng/routes/PrivacyPolicy.vue'),
+		component: (): Promise<Component> => import('@eng/routes/PrivacyPolicyWrapper.vue'),
 	},
 	{
 		path: '/finansowanie',

@@ -94,32 +94,16 @@ export const routes: RouteRecordRaw[] = [
 		component: (): Promise<Component> => import('@help/routes/puzzles/PhoneNumbers.vue'),
 		meta: { to: 'End' },
 	},
-
-	// {
-	// 	path: '/o-grze',
-	// 	name: 'AboutGame',
-	// 	component: (): Promise<Component> => import('@help/routes/AboutGame.vue'),
-	// },
-	// {
-	// 	path: '/jak-grac',
-	// 	name: 'HowToPlay',
-	// 	component: (): Promise<Component> => import('@help/routes/HowToPlay.vue'),
-	// },
-	// {
-	// 	path: '/polityka-prywatnosci',
-	// 	name: 'PrivacyPolicy',
-	// 	component: (): Promise<Component> => import('@help/routes/PrivacyPolicy.vue'),
-	// },
-	// {
-	// 	path: '/regulamin',
-	// 	name: 'TermsOfUse',
-	// 	component: (): Promise<Component> => import('@help/routes/TermsOfUse.vue'),
-	// },
-	// {
-	// 	path: '/finansowanie',
-	// 	name: 'Financing',
-	// 	component: (): Promise<Component> => import('@/views/Financing.vue'),
-	// },
+	{
+		path: '/polityka-prywatnosci',
+		name: 'PrivacyPolicy',
+		component: (): Promise<Component> => import('@help/routes/PrivacyPolicyWrapper.vue'),
+	},
+	{
+		path: '/finansowanie',
+		name: 'Financing',
+		component: (): Promise<Component> => import('@/views/Financing.vue'),
+	},
 	{
 		path: '/:pathMatch(.*)*',
 		redirect: '/',
