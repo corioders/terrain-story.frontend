@@ -4,7 +4,7 @@
 			<p class="heading">Polityka Prywatności</p>
 			<p>
 				Niniejsza Polityka stanowi podstawową informację o celach, sposobach przetwarzania oraz bezpieczeństwie Twoich danych osobowych, jako użytkownika strony:
-				<InfoLink newCard href="https://terrainstory.com/santa-in-trouble/#/"> https://terrainstory.com/santa-in-trouble/#/ </InfoLink>
+				<InfoLink newCard :href="href"> {{ href }} </InfoLink>
 				(zwanej dalej Stroną). Zapoznając się z Polityką prywatności dowiesz się kto jest administratorem Twoich danych osobowych, jakie dane osobowe są przez Stronę
 				zbierane, w jakich celach są wykorzystywane oraz jak są chronione.
 			</p>
@@ -138,7 +138,7 @@
 </template>
 
 <script lang="ts">
-	import { defineComponent } from 'vue';
+	import { defineComponent, PropType } from 'vue';
 
 	import { InfoLink } from '@/theme/Link';
 	import { VFlex } from '@corioders/vueui';
@@ -148,6 +148,12 @@
 		components: {
 			InfoLink,
 			VFlex,
+		},
+		props: {
+			href: {
+				required: true,
+				type: String as PropType<string>,
+			},
 		},
 	});
 </script>
