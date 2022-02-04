@@ -9,7 +9,7 @@
 					Znajdź kody QR, zeskanuj je i rozwiąż wszystkie zagadki, aby odnaleźć Camień! Kody znajdują się w tych miejscach. Kolejność ich odwiedzania zależy tylko od
 					ciebie. Na wytrwałych czekają nagrody!
 				</p>
-				<PrimaryButton style="margin-bottom: 24px" @click="$router.push('/jak-grac')">Dowiedz się jak grać w grę</PrimaryButton>
+				<PrimaryButton style="margin-bottom: 24px" @click="$router.push('/jak-grac1')">Dowiedz się jak grać w grę</PrimaryButton>
 				<div v-if="progressStore.ended" style="margin-bottom: 32px">
 					<ResetProgressButton :progressStore="progressStore" />
 				</div>
