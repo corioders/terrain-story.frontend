@@ -8,7 +8,7 @@
 
 	import ResetProgressButton from '@/components/buttons/ResetProgressButton.vue';
 
-	import { useProgressStore } from '@rock/store/progress';
+	import { useProgressStore } from '@help/store/progress';
 
 	export default defineComponent({
 		name: 'End',
