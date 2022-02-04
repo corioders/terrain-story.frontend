@@ -43,7 +43,7 @@
 		@include Button($primary);
 		transition: all 0.5s;
 		div {
-			width: 108px;
+			width: 110px;
 			height: 22px;
 			position: relative;
 			&::before {

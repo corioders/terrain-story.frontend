@@ -3,10 +3,10 @@
 		<Header />
 		<VFlex gap="12px">
 			<router-view />
-			<MapLink v-if="typeof $route.name === 'string' && isPuzzleID($route.name) || $route.name === 'AlreadyDone'" mapUrl="/mapa" />
+			<MapLink v-if="(typeof $route.name === 'string' && isPuzzleID($route.name)) || $route.name === 'AlreadyDone'" mapUrl="/mapa" />
 			<SkipNav v-if="!IS_PRODUCTION" :nextRoute="nextRoute" />
 		</VFlex>
-		<CFooter />
+		<FooterWrapper />
 	</div>
 </template>
 
@@ -17,14 +17,14 @@
 	import SkipNav from '@/components/devHelpers/SkipNav.vue';
 	import MapLink from '@/components/map/MapLink.vue';
 
+	import FooterWrapper from '@/app/poszukiwacze-camienia/components/FooterWrapper.vue';
 	import { VFlex } from '@corioders/vueui';
-	import CFooter from '@rock/components/Footer.vue';
 	import { nextRoute } from '@rock/router';
 	import { isPuzzleID } from '@rock/store/progress';
 
 	export default defineComponent({
 		components: {
-			CFooter,
+			FooterWrapper,
 			VFlex,
 			Header,
 			MapLink,
