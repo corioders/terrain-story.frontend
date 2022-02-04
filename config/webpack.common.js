@@ -36,6 +36,9 @@ const entries = {};
 const appsPath = path.resolve(paths.src, 'app');
 const appFolders = fs.readdirSync(appsPath).filter((app) => app != '.DS_Store');
 let apps = appFolders.map((appFolder) => {
+	// Disable games that name is staring with @
+	if (appFolder.startsWith('@')) return null;
+
 	const appPath = path.resolve(appsPath, appFolder);
 
 	const publicPath = path.resolve(appPath, 'public');
@@ -50,7 +53,7 @@ let apps = appFolders.map((appFolder) => {
 		htmlTemplatePath,
 		faviconPath,
 	};
-});
+}).filter((app) => app !== null);
 
 if (config.IS_PRODUCTION && !config.IS_DEBUG) {
 	apps = apps.filter(({ name }) => name !== 'test');
