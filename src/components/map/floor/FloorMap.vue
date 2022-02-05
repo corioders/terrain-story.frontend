@@ -43,7 +43,6 @@
 
 			const loadMap = async (): Promise<void> => {
 				floorMapDescriptor.value = await getFloorMapDescriptor(props.locationID, props.gameName);
-        console.log(floorMapDescriptor.value)
 			};
 			loadMap();
 

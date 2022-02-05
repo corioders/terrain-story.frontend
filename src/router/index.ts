@@ -43,12 +43,47 @@ export function navigateToRedirectedFrom(router: Router): void {
 	router.replace(location);
 }
 
-export function getLocationID(router: Router): string {
-	// Below code (query parameter name) must be keep in sync with https://github.com/corioders/terrain-story.api/blob/master/data/gamesCode.jsonc
-	const locationId = (router.currentRoute.value.query['p'] as LocationQueryValue) || undefined;
-	if (locationId === undefined || locationId === null) throw new Error("Failed to retrieve locationID, check that your url has 'p' query parameter");
+function geLocationID(router: Router, queryParamName: string): string | null {
+	const floorMapLocationID = router.currentRoute.value.query[queryParamName] as LocationQueryValue | undefined;
+	if (floorMapLocationID === undefined || floorMapLocationID === null) return null;
+	return floorMapLocationID;
+}
 
-	return locationId;
+function getFloorMapLocationID(router: Router): string | null {
+	// Below code (query parameter name) must be keep in sync with https://github.com/corioders/terrain-story.api/blob/master/data/gamesCode.jsonc
+	return geLocationID(router, 'p');
+}
+
+function getLeafletMapLocationID(router: Router): string | null {
+	// Below code (query parameter name) must be keep in sync with https://github.com/corioders/terrain-story.api/blob/master/data/gamesCode.jsonc
+	return geLocationID(router, 'l');
+}
+
+function getLocationIDNoThrow(router: Router): string | null {
+	return getFloorMapLocationID(router) ?? getLeafletMapLocationID(router);
+}
+
+export function getLocationID(router: Router): string {
+	const locationID = getLocationIDNoThrow(router);
+	if (locationID === null) throw new Error("Failed to retrieve locationID, check that your url has 'p' or 'l' query parameter");
+	return locationID;
+}
+
+export function hasLocationID(router: Router): boolean {
+	if (getLocationIDNoThrow(router) === null) return false;
+	return true;
+}
+
+export function isFloorMap(router: Router): boolean {
+	if (!hasLocationID(router)) return false;
+	if (getFloorMapLocationID(router) === null) return false;
+	return true;
+}
+
+export function isLeafletMap(router: Router): boolean {
+	if (!hasLocationID(router)) return false;
+	if (getLeafletMapLocationID(router) === null) return false;
+	return true;
 }
 
 function isEmpty(o: object): boolean {
