@@ -1,5 +1,5 @@
 <template>
-	<div v-if="floorMapDescriptor === null">Loading...</div>
+	<MapLoader v-if="floorMapDescriptor === null" />
 	<VFlex v-else class="container" gap="12px">
 		<div v-for="(floor, i) in floorMapDescriptor.floors" :key="`floor${i}-${floor}`" class="floor">
 			<VFlex direction="row" justify="center" gap="13px">
@@ -18,10 +18,13 @@
 
 	import { FloorMapDescriptor, getFloorMapDescriptor } from './floorMap';
 
+	import MapLoader from '../MapLoader.vue';
+
 	export default defineComponent({
 		name: 'FloorMap',
 		components: {
 			VFlex,
+			MapLoader,
 		},
 		props: {
 			puzzlesDone: {

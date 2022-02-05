@@ -1,11 +1,12 @@
 <template>
-	<div v-if="mapData === null">Loading...</div>
+	<MapLoader v-if="mapData === null" />
 	<LeafletMap v-else :mapData="mapData" :puzzlesDone="puzzlesDone" />
 </template>
 
 <script lang="ts">
 	import { defineComponent, ref } from 'vue';
 
+	import MapLoader from '@/components/map/MapLoader.vue';
 	import LeafletMap from '@/components/map/leaflet/LeafletMap.vue';
 	import { MapData } from '@/components/map/leaflet/map';
 
@@ -15,6 +16,7 @@
 		name: 'MapWrapper',
 		components: {
 			LeafletMap,
+			MapLoader,
 		},
 		props: {
 			locationID: {
