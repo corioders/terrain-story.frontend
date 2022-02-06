@@ -86,13 +86,18 @@ export function isLeafletMap(router: Router): boolean {
 	return true;
 }
 
-function isEmpty(o: object): boolean {
-	return Object.keys(o).length === 0;
-}
+// function isEmpty(o: object): boolean {
+// 	return Object.keys(o).length === 0;
+// }
 
 function keepQueryParamsNavigationGuard(to: RouteLocationNormalized, from: RouteLocationNormalized): NavigationGuardReturn {
-	if (isEmpty(to.query) && !isEmpty(from.query)) {
-		to.query = from.query;
-		return to;
-	}
+	to.query = {
+		...from.query,
+		...to.query,
+	};
+	return to;
+	// if (isEmpty(to.query) && !isEmpty(from.query)) {
+	// 	to.query = from.query;
+	// 	return to;
+	// }
 }
