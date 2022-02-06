@@ -21,6 +21,8 @@
 	import { PrimaryButton } from '@/theme/Button';
 	import { VFlex, VDropdown, VInput } from '@corioders/vueui';
 
+	import { submitBug as firebaseSubmitBug } from './firebase';
+
 	export default defineComponent({
 		name: 'ReportBug',
 		components: {
@@ -35,11 +37,10 @@
 
 			const data = ref('');
 
-			function submitBug(): void {
+			async function submitBug(): Promise<void> {
 				if (selectedBugType.value === '' || data.value === '') return;
-				const bug = { type: selectedBugType.value, data: data.value };
-				console.log('submit');
-				console.log(bug);
+
+				await firebaseSubmitBug(`Bug type: ${selectedBugType.value}\nUser message: ${data.value}`);
 
 				selectedBugType.value = '';
 				data.value = '';

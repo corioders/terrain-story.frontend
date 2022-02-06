@@ -1,7 +1,8 @@
-import { initializeApp } from 'firebase/app';
 import { getFirestore, collection } from 'firebase/firestore';
 import { doc, getDocs, getDoc } from 'firebase/firestore';
 import { DocumentData, DocumentReference } from 'firebase/firestore';
+
+import '@/firebaseInit';
 
 export async function getFloorMapDescriptor<PuzzleID extends string>(locationID: string, gameName: string): Promise<FloorMapDescriptor<PuzzleID>> {
 	return {
@@ -18,11 +19,6 @@ export interface FloorDescriptor<PuzzleID extends string> {
 	name: string;
 	puzzleIDs: PuzzleID[];
 }
-
-const app = initializeApp({
-	apiKey: 'AIzaSyDOlR963Jp-FjS_upzGyoyrY8X7RB5f5bI',
-	projectId: 'core-folio-327613',
-});
 
 async function getFloors<PuzzleID extends string>(locationID: string, gameName: string): Promise<FloorDescriptor<PuzzleID>[]> {
 	const gameReference = await getGameReference(locationID, gameName);
@@ -42,7 +38,7 @@ async function getFloors<PuzzleID extends string>(locationID: string, gameName: 
 }
 
 async function getGameReference(locationID: string, gameName: string): Promise<DocumentReference<DocumentData>> {
-	const db = getFirestore(app);
+	const db = getFirestore();
 	const mapCms = collection(db, 'map-cms');
 
 	const locationSnapshot = await getDoc(doc(mapCms, locationID));
