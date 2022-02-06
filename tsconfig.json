@@ -26,6 +26,9 @@
 			"@index/*": [
 		    "src/app/index/*"
 		  ],
+      "@test/*": [
+		    "src/app/test/*"
+		  ],
 		  "@rock/*": [
 		    "src/app/poszukiwacze-camienia/*"
 		  ],

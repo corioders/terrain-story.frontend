@@ -41,11 +41,11 @@ export const routes: RouteRecordRaw[] = [
 		component: Home,
 		meta: { to: 'Start' },
 	},
-	// {
-	// 	path: '/mapa',
-	// 	name: 'Map',
-	// 	component: (): Promise<Component> => import('@help/routes/Map.vue'),
-	// },
+	{
+		path: '/mapa',
+		name: 'Map',
+		component: (): Promise<Component> => import('@help/routes/Map.vue'),
+	},
 	{
 		path: `/bingo`,
 		name: 'Bingo',
