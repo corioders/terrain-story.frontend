@@ -12,7 +12,7 @@ export const routes: RouteRecordRaw[] = [
 	{
 		path: `/start`,
 		name: 'Start',
-		component: (): Promise<Component> => import('@eng/views/Start.vue'),
+		component: (): Promise<Component> => import('@eng/views/StartWrapper.vue'),
 		meta: { to: 'Quiz' },
 	},
 	{
@@ -29,6 +29,11 @@ export const routes: RouteRecordRaw[] = [
 		path: `/juz-zrobione`,
 		name: 'AlreadyDone',
 		component: (): Promise<Component> => import('@eng/views/AlreadyDoneWrapper.vue'),
+	},
+	{
+		path: `/jak-grac`,
+		name: 'HowToPlay',
+		component: (): Promise<Component> => import('@/views/HowToPlay.vue'),
 	},
 	{
 		path: '/',
@@ -80,7 +85,7 @@ export const routes: RouteRecordRaw[] = [
 	{
 		path: '/polityka-prywatnosci',
 		name: 'PrivacyPolicy',
-		component: (): Promise<Component> => import('@eng/routes/PrivacyPolicy.vue'),
+		component: (): Promise<Component> => import('@eng/routes/PrivacyPolicyWrapper.vue'),
 	},
 	{
 		path: '/finansowanie',

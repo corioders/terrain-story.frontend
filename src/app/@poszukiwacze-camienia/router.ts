@@ -12,7 +12,7 @@ export const routes: RouteRecordRaw[] = [
 	{
 		path: `/start`,
 		name: 'Start',
-		component: (): Promise<Component> => import('@rock/views/Start.vue'),
+		component: (): Promise<Component> => import('@rock/views/StartWrapper.vue'),
 		meta: { to: 'Hacker' },
 	},
 	{
@@ -97,14 +97,19 @@ export const routes: RouteRecordRaw[] = [
 		component: (): Promise<Component> => import('@rock/routes/AboutGame.vue'),
 	},
 	{
-		path: '/jak-grac',
-		name: 'HowToPlay',
+		path: '/jak-grac1',
+		name: 'HowToPlay1',
 		component: (): Promise<Component> => import('@rock/routes/HowToPlay.vue'),
+	},
+	{
+		path: `/jak-grac`,
+		name: 'HowToPlay',
+		component: (): Promise<Component> => import('@/views/HowToPlay.vue'),
 	},
 	{
 		path: '/polityka-prywatnosci',
 		name: 'PrivacyPolicy',
-		component: (): Promise<Component> => import('@rock/routes/PrivacyPolicy.vue'),
+		component: (): Promise<Component> => import('@rock/routes/PrivacyPolicyWrapper.vue'),
 	},
 	{
 		path: '/regulamin',
