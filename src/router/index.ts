@@ -86,18 +86,15 @@ export function isLeafletMap(router: Router): boolean {
 	return true;
 }
 
-// function isEmpty(o: object): boolean {
-// 	return Object.keys(o).length === 0;
-// }
-
+// Below code (locationKeys) must be keep in sync with https://github.com/corioders/terrain-story.api/blob/master/data/gamesCode.jsonc
+const locationKeys = ['p', 'l'];
 function keepQueryParamsNavigationGuard(to: RouteLocationNormalized, from: RouteLocationNormalized): NavigationGuardReturn {
-	to.query = {
-		...from.query,
-		...to.query,
-	};
-	return to;
-	// if (isEmpty(to.query) && !isEmpty(from.query)) {
-	// 	to.query = from.query;
-	// 	return to;
-	// }
+	let wasInvalid = false;
+	for (const key of locationKeys) {
+		if (to.query[key] === undefined && from.query[key] !== undefined) {
+			to.query[key] = from.query[key];
+			wasInvalid = true;
+		}
+	}
+	if (wasInvalid) return to;
 }
