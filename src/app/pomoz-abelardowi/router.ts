@@ -105,6 +105,11 @@ export const routes: RouteRecordRaw[] = [
 		component: (): Promise<Component> => import('@/views/Financing.vue'),
 	},
 	{
+		path: '/zglos-blad',
+		name: 'ReportBug',
+		component: (): Promise<Component> => import('@/views/ReportBug'),
+	},
+	{
 		path: '/:pathMatch(.*)*',
 		redirect: '/',
 	},
