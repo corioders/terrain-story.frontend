@@ -1,5 +1,5 @@
 <template>
-	<VFlex gap="12px" class="VFlex">
+	<VFlex v-if="showForm" gap="12px" class="VFlex">
 		<h2>Zgłoś błąd</h2>
 		<div>
 			<span>Wybierz typ błędu</span>
@@ -12,6 +12,10 @@
 			<textarea id="reportBugTextArea" v-model="data" name="reportBugTextArea" />
 		</div>
 		<PrimaryButton v-if="selectedBugType !== '' && data !== ''" @click="submitBug">Wyślij</PrimaryButton>
+	</VFlex>
+	<VFlex v-else gap="12px">
+		<h2>Dziękujemy za zgłoszenie błędu</h2>
+		<PrimaryButton @click="showForm = true">Zgłoś następny błąd</PrimaryButton>
 	</VFlex>
 </template>
 
@@ -37,6 +41,8 @@
 
 			const data = ref('');
 
+			const showForm = ref(true);
+
 			async function submitBug(): Promise<void> {
 				if (selectedBugType.value === '' || data.value === '') return;
 
@@ -44,13 +50,14 @@
 
 				selectedBugType.value = '';
 				data.value = '';
+				showForm.value = false;
 			}
 
 			watch(selectedBugType, () => {
 				data.value = '';
 			});
 
-			return { bugTypes, selectedBugType, data, submitBug };
+			return { bugTypes, selectedBugType, data, submitBug, showForm };
 		},
 	});
 </script>
