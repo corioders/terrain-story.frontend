@@ -28,13 +28,19 @@
 			VInput,
 		},
 		setup() {
+			const commonNumber = '116';
 			const number1 = ref('');
 			const number2 = ref('');
 			const isCorrect = ref(false);
 			const store = useProgressStore();
 
 			function submitAnswer(): void {
-				isCorrect.value = parseInt(number1.value) === 111 && parseInt(number2.value) === 123;
+				if (
+					(parseInt(number1.value) === 111 || number1.value == `${commonNumber}111` || number1.value == `${commonNumber} 111`) &&
+					(parseInt(number2.value) === 123 || number2.value == `${commonNumber}123` || number2.value == `${commonNumber} 123`)
+				) {
+					isCorrect.value = true;
+				}
 			}
 
 			const handleCheck = (): void => {
