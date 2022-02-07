@@ -49,14 +49,18 @@ function geLocationID(router: Router, queryParamName: string): string | null {
 	return floorMapLocationID;
 }
 
+// Below code (locationKeys) must be keep in sync with https://github.com/corioders/terrain-story.api/blob/master/data/gamesCode.jsonc
+const floorMapQueryParameterName = 'p';
+const leafletMapQueryParameterName = 'l';
+const mapQueryParameterNames = [floorMapQueryParameterName, leafletMapQueryParameterName];
+// Keep in sync end.
+
 function getFloorMapLocationID(router: Router): string | null {
-	// Below code (query parameter name) must be keep in sync with https://github.com/corioders/terrain-story.api/blob/master/data/gamesCode.jsonc
-	return geLocationID(router, 'p');
+	return geLocationID(router, floorMapQueryParameterName);
 }
 
 function getLeafletMapLocationID(router: Router): string | null {
-	// Below code (query parameter name) must be keep in sync with https://github.com/corioders/terrain-story.api/blob/master/data/gamesCode.jsonc
-	return geLocationID(router, 'l');
+	return geLocationID(router, leafletMapQueryParameterName);
 }
 
 function getLocationIDNoThrow(router: Router): string | null {
@@ -86,11 +90,9 @@ export function isLeafletMap(router: Router): boolean {
 	return true;
 }
 
-// Below code (locationKeys) must be keep in sync with https://github.com/corioders/terrain-story.api/blob/master/data/gamesCode.jsonc
-const locationKeys = ['p', 'l'];
 function keepQueryParamsNavigationGuard(to: RouteLocationNormalized, from: RouteLocationNormalized): NavigationGuardReturn {
 	let wasInvalid = false;
-	for (const key of locationKeys) {
+	for (const key of mapQueryParameterNames) {
 		if (to.query[key] === undefined && from.query[key] !== undefined) {
 			to.query[key] = from.query[key];
 			wasInvalid = true;

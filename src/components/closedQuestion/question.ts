@@ -13,19 +13,22 @@ export interface QuestionExecutorReturn {
 	handleCheck: () => void;
 }
 
-export function questionExecutor(finishPuzzle: () => void): QuestionExecutorReturn {
+export function questionExecutor(finishPuzzle: () => void, displayFeedback?: boolean): QuestionExecutorReturn {
 	const isCorrect = ref<boolean>(false);
-	const displayFeedback = ref<boolean>(false);
+	const displayFeedbackRef = ref<boolean>(false);
 
 	const handleAnswer = (isAnswerCorrect: boolean): void => {
 		isCorrect.value = isAnswerCorrect;
-		displayFeedback.value = false;
+		displayFeedbackRef.value = false;
 	};
 
 	const handleCheck = (): void => {
-		if (isCorrect.value === true) finishPuzzle();
-		displayFeedback.value = true;
+		if (isCorrect.value === true) {
+			finishPuzzle();
+			return;
+		}
+		if (displayFeedback === true) displayFeedbackRef.value = true;
 	};
 
-	return { isCorrect, displayFeedback, handleAnswer, handleCheck };
+	return { isCorrect, displayFeedback: displayFeedbackRef, handleAnswer, handleCheck };
 }
