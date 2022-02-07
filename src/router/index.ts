@@ -1,5 +1,14 @@
 import { trackRouter } from 'vue-gtag-next';
-import { createRouter as createVRouter, createWebHashHistory, RouteLocationNormalized, RouteLocationRaw, Router, RouteRecordRaw, RouterOptions } from 'vue-router';
+import {
+	createRouter as createVRouter,
+	createWebHashHistory,
+	LocationQueryValue,
+	RouteLocationNormalized,
+	RouteLocationRaw,
+	Router,
+	RouteRecordRaw,
+	RouterOptions,
+} from 'vue-router';
 
 import { NavigationGuardReturn } from './navigationGuard/navigationGuard';
 import { deleteRedirectedFromName, getRedirectedFromName } from './navigationGuard/progress';
@@ -34,13 +43,60 @@ export function navigateToRedirectedFrom(router: Router): void {
 	router.replace(location);
 }
 
-function isEmpty(o: object): boolean {
-	return Object.keys(o).length === 0;
+function geLocationID(router: Router, queryParamName: string): string | null {
+	const floorMapLocationID = router.currentRoute.value.query[queryParamName] as LocationQueryValue | undefined;
+	if (floorMapLocationID === undefined || floorMapLocationID === null) return null;
+	return floorMapLocationID;
+}
+
+// Below code (locationKeys) must be keep in sync with https://github.com/corioders/terrain-story.api/blob/master/data/gamesCode.jsonc
+const floorMapQueryParameterName = 'p';
+const leafletMapQueryParameterName = 'l';
+const mapQueryParameterNames = [floorMapQueryParameterName, leafletMapQueryParameterName];
+// Keep in sync end.
+
+function getFloorMapLocationID(router: Router): string | null {
+	return geLocationID(router, floorMapQueryParameterName);
+}
+
+function getLeafletMapLocationID(router: Router): string | null {
+	return geLocationID(router, leafletMapQueryParameterName);
+}
+
+function getLocationIDNoThrow(router: Router): string | null {
+	return getFloorMapLocationID(router) ?? getLeafletMapLocationID(router);
+}
+
+export function getLocationID(router: Router): string {
+	const locationID = getLocationIDNoThrow(router);
+	if (locationID === null) throw new Error("Failed to retrieve locationID, check that your url has 'p' or 'l' query parameter");
+	return locationID;
+}
+
+export function hasLocationID(router: Router): boolean {
+	if (getLocationIDNoThrow(router) === null) return false;
+	return true;
+}
+
+export function isFloorMap(router: Router): boolean {
+	if (!hasLocationID(router)) return false;
+	if (getFloorMapLocationID(router) === null) return false;
+	return true;
+}
+
+export function isLeafletMap(router: Router): boolean {
+	if (!hasLocationID(router)) return false;
+	if (getLeafletMapLocationID(router) === null) return false;
+	return true;
 }
 
 function keepQueryParamsNavigationGuard(to: RouteLocationNormalized, from: RouteLocationNormalized): NavigationGuardReturn {
-	if (isEmpty(to.query) && !isEmpty(from.query)) {
-		to.query = from.query;
-		return to;
+	let wasInvalid = false;
+	for (const key of mapQueryParameterNames) {
+		if (to.query[key] === undefined && from.query[key] !== undefined) {
+			to.query[key] = from.query[key];
+			wasInvalid = true;
+		}
 	}
+	if (wasInvalid) return to;
 }

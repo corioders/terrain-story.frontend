@@ -1,5 +1,5 @@
 <template>
-	Bingo
+	<p>Rozluźnij się! Zrób rzeczy zapisane na kartach bingo, potem odznacz wykonanie zadania.</p>
 	<Bingo :bingoDescriptor="bingoDescriptor" @correct="handleFinish()" />
 </template>
 

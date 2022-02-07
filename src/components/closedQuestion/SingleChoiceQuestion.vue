@@ -69,29 +69,17 @@
 		setup(props, { emit }) {
 			const container = ref<HTMLDivElement | null>(null);
 
-			function clear(): void {
-				container.value?.querySelectorAll('.incorrect').forEach((element) => {
-					element.classList.remove('incorrect');
-				});
-				container.value?.querySelectorAll('.correct').forEach((element) => {
-					element.classList.remove('correct');
-				});
-			}
+			let lastTargetParentElement: Element | null = null;
+			function handleClick(targetParentElement: Element, val: string): void {
+				if (lastTargetParentElement !== null) lastTargetParentElement.classList.remove('correct', 'incorrect');
+				lastTargetParentElement = targetParentElement;
 
-			function handleClick(parent: Element, val: string): void {
-				const el = parent.querySelector('div.n-radio__label');
 				if (checkAnswer(val, props.answer)) {
 					emit('correct');
-					if (el != null) {
-						clear();
-						el.classList.add('correct');
-					}
+					targetParentElement.classList.add('correct');
 				} else {
 					emit('incorrect');
-					if (el != null) {
-						clear();
-						el.classList.add('incorrect');
-					}
+					targetParentElement.classList.add('incorrect');
 				}
 			}
 
@@ -105,7 +93,7 @@
 		},
 	});
 </script>
-<style lang="scss" scoped >
+<style lang="scss" scoped>
 	.container {
 		padding: 12px;
 		input {

@@ -41,11 +41,11 @@ export const routes: RouteRecordRaw[] = [
 		component: Home,
 		meta: { to: 'Start' },
 	},
-	// {
-	// 	path: '/mapa',
-	// 	name: 'Map',
-	// 	component: (): Promise<Component> => import('@help/routes/Map.vue'),
-	// },
+	{
+		path: '/mapa',
+		name: 'Map',
+		component: (): Promise<Component> => import('@help/routes/Map.vue'),
+	},
 	{
 		path: `/bingo`,
 		name: 'Bingo',
@@ -103,6 +103,11 @@ export const routes: RouteRecordRaw[] = [
 		path: '/finansowanie',
 		name: 'Financing',
 		component: (): Promise<Component> => import('@/views/Financing.vue'),
+	},
+	{
+		path: '/zglos-blad',
+		name: 'ReportBug',
+		component: (): Promise<Component> => import('@/views/ReportBug'),
 	},
 	{
 		path: '/:pathMatch(.*)*',
