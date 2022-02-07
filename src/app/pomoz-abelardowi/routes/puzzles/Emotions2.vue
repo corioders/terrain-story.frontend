@@ -54,7 +54,7 @@
 		},
 		setup() {
 			const store = useProgressStore();
-			return { questions, ...questionExecutor(() => store.finishPuzzle('Emotions2')) };
+			return { questions, ...questionExecutor(() => store.finishPuzzle('Emotions2'), true) };
 		},
 	});
 </script>
