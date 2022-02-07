@@ -1,7 +1,11 @@
 <template>
 	<FloorMap v-if="isFloorMap" :puzzlesDone="puzzlesDone" :gameName="gameName" :locationID="locationID" />
 	<LeafletMapWrapper v-if="isLeafletMap" :locationID="locationID" />
-	<div v-if="!isFloorMap && !isLeafletMap">ERROR</div>
+	<div v-if="!isFloorMap && !isLeafletMap">
+		<h2>Nie znaleziono odpowiedniej mapy</h2>
+		<p>Prosimy o zgłoszenie błędu, wybranie kategorii "Kod QR nie działa" i wpisanie lokalizacji</p>
+		<PrimaryButton @click="$router.push('/zglos-blad')">Zgłoś błąd</PrimaryButton>
+	</div>
 </template>
 
 <script lang="ts">
@@ -12,6 +16,7 @@
 
 	import FloorMap from '@/components/map/floor/FloorMap.vue';
 
+	import { PrimaryButton } from '@/theme/Button';
 	import LeafletMapWrapper from '@help/components/map/LeafletMapWrapper.vue';
 	import { useMainStore } from '@help/store/main';
 	import { useProgressStore } from '@help/store/progress';
@@ -21,6 +26,7 @@
 		components: {
 			FloorMap,
 			LeafletMapWrapper,
+			PrimaryButton,
 		},
 		setup() {
 			const progressStore = useProgressStore();
