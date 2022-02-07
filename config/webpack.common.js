@@ -59,6 +59,10 @@ if (config.IS_PRODUCTION && !config.IS_DEBUG) {
 	apps = apps.filter(({ name }) => name !== 'test');
 }
 
+if (config.IS_PRODUCTION && !config.IS_DEBUG) {
+	apps = apps.filter(({ name }) => name !== 'test');
+}
+
 for (const app of apps) entries[app.name] = app.path;
 
 const options = {};
