@@ -7,6 +7,8 @@
 			:options="question.options"
 			:answer="question.answer"
 			:displayFeedback="displayFeedback"
+			@correct="handleAnswer(true)"
+			@incorrect="handleAnswer(false)"
 		>
 			<div v-html="question.question"></div>
 		</SingleChoiceQuestionHtml>
