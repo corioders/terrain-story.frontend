@@ -6,7 +6,7 @@
 			<!-- <MapLink v-if="(typeof $route.name === 'string' && isPuzzleID($route.name)) || $route.name === 'AlreadyDone'" mapUrl="/mapa" /> -->
 			<SkipNav v-if="!IS_PRODUCTION" :nextRoute="nextRoute" />
 		</VFlex>
-		<FooterWrapper />
+		<!-- <FooterWrapper /> -->
 	</div>
 </template>
 <script lang="ts">

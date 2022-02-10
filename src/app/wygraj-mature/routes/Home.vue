@@ -2,15 +2,8 @@
 	<DevNav v-if="!IS_PRODUCTION" :routes="routes" />
 	<VFlex class="VFlex">
 		<div v-once>
-			<!-- <img
-				v-if="window.width.value * 1.5 >= window.height.value"
-				class="gameLogo"
-				src="@help/assets/helpLogo.webp"
-				alt="Pomóż Abelardowi"
-				role="heading"
-				aria-level="2"
-			/>
-			<img v-else class="gameLogo" src="@help/assets/helpLogoHorizontal.webp" alt="Pomóż Abelardowi" role="heading" aria-level="2" /> -->
+			<img v-if="window.width.value * 1.5 >= window.height.value" class="gameLogo" src="@recap/assets/recapLogo.webp" alt="Wygraj Maturę" role="heading" aria-level="2" />
+			<img v-else class="gameLogo" src="@recap/assets/recapLogoHorizontal.webp" alt="Wygraj Maturę" role="heading" aria-level="2" />
 		</div>
 		<section class="dark">
 			<VFlex>
