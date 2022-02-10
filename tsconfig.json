@@ -38,6 +38,9 @@
 			"@help/*": [
 				"src/app/pomoz-abelardowi/*"
 			],
+			"@recap/*": [
+				"src/app/powtorka-maturalna/*"
+			],
 		},
 
 		"strict": true,
