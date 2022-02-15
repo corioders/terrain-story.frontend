@@ -39,7 +39,7 @@
 				"src/app/pomoz-abelardowi/*"
 			],
 			"@recap/*": [
-				"src/app/powtorka-maturalna/*"
+				"src/app/wygraj-mature/*"
 			],
 		},
 
