@@ -21,19 +21,19 @@
 	import SingleChoiceQuestionHtml from '@/components/closedQuestion/SingleChoiceQuestionHtml.vue';
 	import { questionExecutor } from '@/components/closedQuestion/question';
 
-	import QuestionsDescriptor from './QuestionsDescriptor';
+	import { QuestionsDescriptor } from './QuestionsDescriptor';
 
 	export default defineComponent({
 		name: 'Questions',
 		components: {
 			SingleChoiceQuestionHtml,
 		},
-		// props: {
-		// 	questions: {
-		// 		type: Array as PropType<QuestionsDescriptor>,
-		// 		required: true,
-		// 	},
-		// },
+		props: {
+			// questions: {
+			// 	type: Array as PropType<QuestionsDescriptor>,
+			// 	required: true,
+			// },
+		},
 		emits: ['solved'],
 		setup(props, { emit }) {
 			const questions: QuestionsDescriptor = [
