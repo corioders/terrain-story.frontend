@@ -29,35 +29,14 @@
 			SingleChoiceQuestionHtml,
 		},
 		props: {
-			// questions: {
-			// 	type: Array as PropType<QuestionsDescriptor>,
-			// 	required: true,
-			// },
+			questions: {
+				type: Array as unknown as PropType<QuestionsDescriptor>,
+				required: true,
+			},
 		},
 		emits: ['solved'],
-		setup(props, { emit }) {
-			const questions: QuestionsDescriptor = [
-				{
-					subject: 'Polski',
-					question: '<p>aaaaaaa</p>',
-					options: ['<p>a</p>', '<p>aa</p>', '<p>aaa</p>'],
-					answer: '<p>a</p>',
-				},
-				{
-					subject: 'Matematyka',
-					question: '<p>bbbbbbb</p>',
-					options: ['<p>b</p>', '<p>bb</p>', '<p>bbb</p>'],
-					answer: '<p>b</p>',
-				},
-				{
-					subject: 'Angielski',
-					question: '<p>ccccccc</p>',
-					options: ['<p>c</p>', '<p>cc</p>', '<p>ccc</p>'],
-					answer: '<p>c</p>',
-				},
-			];
-
-			return { ...questionExecutor(() => emit('solved')), questions };
+		setup(_, { emit }) {
+			return { ...questionExecutor(() => emit('solved')) };
 		},
 	});
 </script>
