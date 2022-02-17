@@ -34,7 +34,7 @@
 		<section class="light">
 			<VFlex>
 				<h6>Patroni medialni</h6>
-				<img class="logo" src="@/assets/patrons/portalKatowice.webp" alt="Portal Katowice" />
+				<img class="logo logoLink" src="@/assets/patrons/portalKatowice.webp" alt="Portal Katowice" @click="redirect" />
 			</VFlex>
 		</section>
 		<section class="dark">
@@ -64,7 +64,10 @@
 			Video,
 		},
 		setup() {
-			return { routes, IS_PRODUCTION: __IS_PRODUCTION__, window: useWindowSize() };
+			function redirect(): void {
+				location.href = 'http://www.portal.katowice.pl';
+			}
+			return { routes, IS_PRODUCTION: __IS_PRODUCTION__, window: useWindowSize(), redirect };
 		},
 	});
 </script>
@@ -108,6 +111,9 @@
 	.dark {
 		background-color: #406258;
 		color: #fff;
+	}
+	.logoLink {
+		cursor: pointer;
 	}
 </style>
 <style lang="scss">
