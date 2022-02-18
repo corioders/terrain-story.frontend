@@ -1,12 +1,11 @@
 process.env.NODE_ENV = process.env.NODE_ENV || 'development';
-const path = require('path');
+const config = require('./config/config.js');
 const fs = require('fs');
 
-const config = require('./config/config');
-
 const commonConfig = {
-	'no-unused-vars': ['error', { varsIgnorePattern: '_', argsIgnorePattern: '_', caughtErrorsIgnorePattern: '_' }],
+	'no-unused-vars': ['warn', { varsIgnorePattern: '_', argsIgnorePattern: '_', caughtErrorsIgnorePattern: '_' }],
 };
+
 const common = {};
 common.js = {
 	extends: ['eslint:recommended'],
@@ -16,9 +15,6 @@ common.js = {
 
 		'no-unused-vars': commonConfig['no-unused-vars'],
 		'no-unreachable': 'warn',
-
-		// 'no-console': config.IS_PRODUCTION ? 'error' : 'off',
-		// 'no-debugger': config.IS_PRODUCTION ? 'error' : 'off',
 	},
 };
 common.ts = {
@@ -47,7 +43,6 @@ common.ts = {
 		'@typescript-eslint/no-unsafe-return': 'error',
 	},
 };
-
 common.vue = {
 	extends: [...common.ts.extends, 'plugin:vue/vue3-recommended'],
 	rules: {
@@ -73,57 +68,30 @@ module.exports = {
 	// Ignore every file and folder except src.
 	ignorePatterns: [...fs.readdirSync(__dirname).filter((name) => name != 'src')],
 	env: {
-		browser: true,
+		node: true,
 		es6: true,
 	},
 	overrides: [
 		{
-			files: ['*.js'],
-			// ignore protobuf generated files
-			excludedFiles: [`./src/api/proto/generated/**/*`],
-			parser: '@babel/eslint-parser',
-			parserOptions: {
-				babelOptions: { configFile: path.resolve(config.CONFIG_PATH, 'babel.config.js') },
-			},
-			rules: common.js.rules,
-			extends: common.js.extends,
-		},
-		{
 			files: ['*.ts'],
-			excludedFiles: [`*.test.ts`],
 			parser: '@typescript-eslint/parser',
 			parserOptions: {
 				project: './tsconfig.json',
-				tsconfigRootDir: config.ROOT_PATH,
+				tsconfigRootDir: __dirname,
 			},
 			rules: common.ts.rules,
-			extends: common.ts.extends,
-		},
-		{
-			files: ['*.test.ts'],
-			parser: '@typescript-eslint/parser',
-			parserOptions: {
-				project: './config/tsconfig/tsconfig.jest.json',
-				tsconfigRootDir: config.ROOT_PATH,
-			},
-			rules: {
-				...common.ts.rules,
-				// allow @ts-ignore for tests
-				'@typescript-eslint/ban-ts-comment': ['error', { 'ts-ignore': false }],
-			},
 			extends: common.ts.extends,
 		},
 		{
 			globals: {
 				module: true,
 				__IS_PRODUCTION__: true,
-				YT: true,
 			},
 			files: ['*.vue'],
 			parser: 'vue-eslint-parser',
 			parserOptions: {
 				parser: '@typescript-eslint/parser',
-				project: './tsconfig.vue.json',
+				project: './tsconfig.json',
 				tsconfigRootDir: config.ROOT_PATH,
 				extraFileExtensions: ['.vue'],
 			},

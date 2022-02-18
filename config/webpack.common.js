@@ -5,19 +5,18 @@ const config = require('./config.js');
 
 const { DefinePlugin } = require('webpack');
 const { VueLoaderPlugin } = require('vue-loader');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const ESLintPlugin = require('eslint-webpack-plugin');
+const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
-
-const mergeSourceMapLoader = require(path.resolve(config.MORE.LOADERS_PATH, 'merge-source-map-loader'));
 
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 
 const FriendlyErrorsWebpackPlugin = require('@soda/friendly-errors-webpack-plugin');
 const WebpackBar = require('webpackbar');
 
-const browserSyncReloadPlugin = require(path.resolve(config.MORE.BROWSER_SYNC_PLUGINS_PATH, 'reloadPlugin'));
+const browserSyncReloadPlugin = require(path.resolve(config.MORE.BROWSER_SYNC_PATH, 'reloadPlugin'));
+const OnlyWebpackErrorsInForkTsCheckerWebpackPlugin = require(path.resolve(config.MORE.WEBPACK_PATH, 'onlyWebpackErrorsInForkTsCheckerWebpackPlugin.js'));
 
 const paths = {
 	src: path.resolve(config.ROOT_PATH, 'src'),
@@ -27,95 +26,75 @@ const paths = {
 	eslintConfig: path.resolve(config.ROOT_PATH, '.eslintrc.js'),
 	tsConfig: path.resolve(config.ROOT_PATH, 'tsconfig.json'),
 	babelConfig: path.resolve(config.CONFIG_PATH, 'babel.config.js'),
-
-	htmlWebpackPluginFavicon: path.resolve(config.ROOT_PATH, 'src/public/favicon.ico'),
-	htmlWebpackPluginTemplate: path.resolve(config.ROOT_PATH, 'src/public/index.html'),
 };
 
-const entries = {};
 const appsPath = path.resolve(paths.src, 'app');
-const appFolders = fs.readdirSync(appsPath).filter((app) => app != '.DS_Store');
-let apps = appFolders.map((appFolder) => {
-	// Disable games that name is staring with @
-	if (appFolder.startsWith('@')) return null;
+const appFolders = fs.readdirSync(appsPath).filter((app) => !app.startsWith('.'));
+let apps = appFolders
+	.map((appFolder) => {
+		// Disable games that name is staring with @
+		if (appFolder.startsWith('@')) return null;
 
-	const appPath = path.resolve(appsPath, appFolder);
+		const appPath = path.resolve(appsPath, appFolder);
 
-	const publicPath = path.resolve(appPath, 'public');
+		const publicPath = path.resolve(appPath, 'public');
 
-	const htmlTemplatePath = path.resolve(publicPath, 'index.html');
-	const faviconPath = path.resolve(publicPath, 'favicon.ico');
+		const pluginsOptions = {};
+		pluginsOptions.htmlWebpackPlugin = {
+			favicon: path.resolve(publicPath, 'favicon.ico'),
+			template: path.resolve(publicPath, 'index.html'),
+		};
 
-	return {
-		name: appFolder,
-		path: appPath,
-		publicPath,
-		htmlTemplatePath,
-		faviconPath,
-	};
-}).filter((app) => app !== null);
+		return {
+			name: appFolder,
+			path: appPath,
+			publicPath,
+			pluginsOptions,
+		};
+	})
+	.filter((app) => app !== null);
 
-if (config.IS_PRODUCTION && !config.IS_DEBUG) {
-	apps = apps.filter(({ name }) => name !== 'test');
-}
+if (config.IS_PRODUCTION && !config.IS_DEBUG) apps = apps.filter(({ name }) => name !== 'test');
 
-if (config.IS_PRODUCTION && !config.IS_DEBUG) {
-	apps = apps.filter(({ name }) => name !== 'test');
-}
-
+const entries = {};
 for (const app of apps) entries[app.name] = app.path;
 
-const options = {};
-options.babel = {
+const pluginsOptions = {};
+
+const loaderOptions = {};
+loaderOptions.babel = {
 	configFile: paths.babelConfig,
 	cacheDirectory: true,
 };
-options.ts = {
-	useCaseSensitiveFileNames: true,
-	onlyCompileBundledFiles: true,
-	configFile: paths.tsConfig,
-	appendTsSuffixTo: [/\.vue$/],
+loaderOptions.postcss = {
+	postcssOptions: {
+		syntax: 'postcss-scss',
+		plugins: ['stylelint', 'postcss-preset-env'],
+	},
 };
-options.vue = {
-	exposeFilename: config.IS_DEBUG || !config.IS_PRODUCTION,
-};
-options.postcss = {
-	postcssOptions: { plugins: ['postcss-preset-env'] },
-};
-options.sass = {
+loaderOptions.sass = {
 	additionalData: `@use './scss/global/*.scss' as *;`,
 	sassOptions: { includePaths: [paths.src], importer: require('node-sass-glob-importer')() },
 };
+loaderOptions.vue = {
+	exposeFilename: config.IS_DEBUG || !config.IS_PRODUCTION,
+};
 
-const fileName = config.IS_PRODUCTION && !config.IS_ANALYZE ? '[contenthash]' : '[name]';
-const target = config.IS_PRODUCTION ? 'browserslist' : 'web';
-
-const aliases = require(path.resolve(config.CONFIG_PATH, 'webpackAlias.json'));
+const aliases = require(path.resolve(config.CONFIG_PATH, 'alias.json'));
 for (const key in aliases) aliases[key] = path.resolve(config.ROOT_PATH, aliases[key]);
 
-let experiments = {
-	cacheUnaffected: true,
-};
-if (!config.IS_WATCH) {
-	experiments = undefined;
-}
-
-const webpack = {
+const filename = `${config.IS_PRODUCTION && !config.IS_ANALYZE ? '[contenthash]' : '[name]'}.js`;
+const webpackConfig = {
 	context: config.ROOT_PATH,
 	entry: entries,
-	// stats: {
-	//   logging: "error"
-	// },
 
-	target: target,
+	// target: (see webpack.js.org/configuration/target),
 	output: {
+		clean: true,
 		path: paths.out,
-		filename: `${fileName}.js`,
+		filename,
 		publicPath: '/',
-		module: false,
-		chunkLoadingGlobal: config.IS_PRODUCTION ? 'a' : undefined,
 	},
-	experiments: experiments,
 
 	resolve: {
 		alias: {
@@ -134,32 +113,22 @@ const webpack = {
 	module: {
 		rules: [
 			// =========================================================================
+			// asset
+			{
+				// Include all assets listed in types/assets.d.ts
+				test: /assets\/.*(\.txt|\.json|\.apng|\.gif|\.jpg|\.jpeg|\.jfif|\.pjpeg|\.pjp|\.png|\.svg|\.webp|\.bmp|\.ico|\.cur|\.tif|\.tiff|\.wav|\.wave|\.mp3|\.aac|\.caf|\.flac|\.mp4|\.webm|\.3gp|\.dat|\.mpg|\.mpeg|\.mp1|\.mp2|\.mp3|\.m1v|\.m1a|\.m2a|\.mpa|\.mpv|\.mov|\.ogg|\.ogv|\.oga|\.ogx|\.ogm|\.spx|\.opus)/,
+				type: 'asset',
+			},
+
+			// =========================================================================
 			// loaders
 			{
-				test: /\.js$/,
-				exclude: /node_modules\/(core-js).*/is,
-				loader: 'babel-loader',
-				options: options.babel,
-				include: config.IS_FAST ? paths.src : undefined,
-			},
-			{
-				test: /\.ts$/,
+				test: /\.(ts|js)$/,
+				exclude: /node_modules\/(core-js|css-loader)/,
 				use: [
 					{
 						loader: 'babel-loader',
-						options: options.babel,
-					},
-					{
-						loader: mergeSourceMapLoader,
-						options: { post: true },
-					},
-					{
-						loader: 'ts-loader',
-						options: options.ts,
-					},
-					{
-						loader: mergeSourceMapLoader,
-						options: { pre: true },
+						options: loaderOptions.babel,
 					},
 				],
 			},
@@ -169,26 +138,19 @@ const webpack = {
 					MiniCssExtractPlugin.loader,
 					'css-loader',
 					{
-						loader: 'postcss-loader',
-						options: options.postcss,
+						loader: 'sass-loader',
+						options: loaderOptions.sass,
 					},
 					{
-						loader: 'sass-loader',
-						options: options.sass,
+						loader: 'postcss-loader',
+						options: loaderOptions.postcss,
 					},
 				],
 			},
 			{
 				test: /\.vue$/,
 				loader: 'vue-loader',
-				options: options.vue,
-			},
-
-			// webpack 5 asset-modules
-			{
-				// Exclude .js .ts .vue files.
-				test: /\/assets\/.*\.(?!js|ts|vue)/,
-				type: 'asset',
+				options: loaderOptions.vue,
 			},
 		],
 	},
@@ -196,18 +158,35 @@ const webpack = {
 	plugins: [
 		...(config.IS_ANALYZE ? [new BundleAnalyzerPlugin()] : []),
 
-		new CleanWebpackPlugin(),
+		new VueLoaderPlugin(),
 
 		new DefinePlugin({
 			__IS_PRODUCTION__: config.IS_PRODUCTION,
 			__VUE_OPTIONS_API__: true,
 			__VUE_PROD_DEVTOOLS__: false,
 		}),
+
 		new MiniCssExtractPlugin({
-			filename: `${fileName}.css`,
-			chunkFilename: `${fileName}.css`,
+			filename: `${filename}.css`,
+			chunkFilename: `${filename}.css`,
 		}),
-		new VueLoaderPlugin(),
+
+		new ForkTsCheckerWebpackPlugin({
+			typescript: {
+				memoryLimit: 4096,
+				context: config.ROOT_PATH,
+				extensions: {
+					vue: {
+						enabled: true,
+						compiler: '@vue/compiler-sfc',
+					},
+				},
+			},
+			issue: {
+				scope: 'webpack',
+			},
+		}),
+		new OnlyWebpackErrorsInForkTsCheckerWebpackPlugin(),
 
 		new ESLintPlugin({
 			extensions: ['js', 'ts', 'vue'],
@@ -234,6 +213,8 @@ const webpack = {
 			 * @param {import('webpack').Compiler} compiler
 			 */
 			apply(compiler) {
+				let chalk;
+
 				// Disable webpack-dev-server output.
 				compiler.hooks.infrastructureLog.tap(this.PLUGIN_NAME, (name, type, args) => {
 					if (name == 'webpack-dev-server') return true;
@@ -317,7 +298,10 @@ const webpack = {
 };
 
 module.exports = {
-	webpack,
+	webpackConfig,
 	paths,
+
+	pluginsOptions,
+
 	apps,
 };

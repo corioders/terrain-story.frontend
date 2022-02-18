@@ -8,14 +8,13 @@ const IS_PRODUCTION = GET_IS_PRODUCTION();
 const IS_WATCH = GET_IS_WATCH();
 const IS_DEBUG = GET_IS_DEBUG();
 const IS_ANALYZE = GET_IS_ANALYZE();
-const IS_FAST = GET_IS_FAST();
 const ENV = GET_ENV(ROOT_PATH);
 const PACKAGE_JSON = GET_PACKAGE_JSON(ROOT_PATH);
 
 const MORE = GET_MORE(CONFIG_PATH);
 
-if ((IS_DEBUG && IS_FAST) || (IS_DEBUG && IS_ANALYZE) || (IS_FAST && IS_ANALYZE)) {
-	console.log('Error: you can specify only one of those: DEBUG, FAST, ANALYZE');
+if (IS_DEBUG && IS_ANALYZE) {
+	console.log('Error: you can specify only one of those: DEBUG, ANALYZE');
 	process.exit(1);
 }
 
@@ -23,18 +22,13 @@ module.exports = {
 	CONFIG_PATH,
 	ROOT_PATH,
 	IS_PRODUCTION,
-  IS_WATCH,
+	IS_WATCH,
 	IS_DEBUG,
 	IS_ANALYZE,
-	IS_FAST,
 	ENV,
 	MORE,
 	PACKAGE_JSON,
 };
-
-// import workarounds
-const activateWorkarounds = require(path.resolve(MORE.WORKAROUNDS_PATH, 'workarounds.js'));
-activateWorkarounds();
 
 function GET_ROOT_PATH() {
 	return path.resolve(__dirname, '..');
@@ -43,9 +37,8 @@ function GET_ROOT_PATH() {
 function GET_MORE(config_path) {
 	const base = path.resolve(config_path, 'more');
 	return {
-		WORKAROUNDS_PATH: path.resolve(base, 'workarounds'),
-		LOADERS_PATH: path.resolve(base, 'loaders'),
-		BROWSER_SYNC_PLUGINS_PATH: path.resolve(base, 'browserSyncPlugins'),
+		BROWSER_SYNC_PATH: path.resolve(base, 'browserSync'),
+		WEBPACK_PATH: path.resolve(base, 'webpack'),
 	};
 }
 
@@ -71,10 +64,6 @@ function GET_IS_DEBUG() {
 
 function GET_IS_ANALYZE() {
 	return process.env.ANALYZE == 'true' ? true : false;
-}
-
-function GET_IS_FAST() {
-	return process.env.FAST == 'true' ? true : false;
 }
 
 function GET_PACKAGE_JSON(root_path) {

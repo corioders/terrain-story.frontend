@@ -1,19 +1,23 @@
+# Source and config files
+.vscode
+config
+src
+
+.editorconfig
+.eslintrc.js
+.prettierrc
+
 ## Global
 # Dotenv environment variables file
 .env
 
 # Dependency directories
 node_modules
-package-lock.json
 
 # Logs
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-
-
-# Compiled output
-out
 
 # Logs
 logs
@@ -26,6 +30,5 @@ logs
 .eslintcache
 
 ## System Files
-
 .DS_Store
 Thumbs.db
