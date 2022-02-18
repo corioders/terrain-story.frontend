@@ -1,11 +1,15 @@
 <template>
-	<p v-if="loading">LOADING...</p>
+	<VFlex v-if="loading" style="font-size: 1.2rem">
+		<p>Ładowanie zadania</p>
+		<VSpinner style="font-size: 1em" />
+	</VFlex>
 	<Questions v-else :questions="questionsDescriptor" />
 </template>
 
 <script lang="ts">
 	import { defineComponent, ref, watch } from 'vue';
 
+	import { VSpinner, VFlex } from '@corioders/vueui';
 	import Questions from '@recap/components/questions/Questions.vue';
 	import { QuestionsDescriptor } from '@recap/components/questions/QuestionsDescriptor';
 	import { useQuestionsStore } from '@recap/store/questions';
@@ -14,6 +18,8 @@
 		name: 'Puzzle',
 		components: {
 			Questions,
+			VSpinner,
+			VFlex,
 		},
 		props: {
 			puzzleIndex: {
