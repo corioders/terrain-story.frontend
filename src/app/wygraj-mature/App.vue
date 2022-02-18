@@ -6,7 +6,7 @@
 			<!-- <MapLink v-if="(typeof $route.name === 'string' && isPuzzleID($route.name)) || $route.name === 'AlreadyDone'" mapUrl="/mapa" /> -->
 			<SkipNav v-if="!IS_PRODUCTION" :nextRoute="nextRoute" />
 		</VFlex>
-		<!-- <FooterWrapper /> -->
+		<FooterWrapper />
 	</div>
 </template>
 <script lang="ts">
@@ -17,7 +17,7 @@
 
 	// import MapLink from '@/components/map/MapLink.vue';
 	import { VFlex } from '@corioders/vueui';
-	// import FooterWrapper from '@recap/components/FooterWrapper.vue';
+	import FooterWrapper from '@recap/components/FooterWrapper.vue';
 	import { nextRoute } from '@recap/router';
 
 	// import { isPuzzleID } from '@recap/store/progress';
@@ -25,7 +25,7 @@
 	export default defineComponent({
 		name: 'App',
 		components: {
-			// FooterWrapper,
+			FooterWrapper,
 			VFlex,
 			Header,
 			// MapLink,

@@ -37,7 +37,7 @@ export const useProgressStore = defineProgressStore({
 			defaultAction.finishPuzzle(this, router, puzzleID);
 			if (this.ended) {
 				const gtag = useGtag();
-				gtag.event('game_end', { name: 'santa-in-trouble' });
+				gtag.event('game_end', { name: 'wygraj-mature' });
 			}
 		},
 	},
