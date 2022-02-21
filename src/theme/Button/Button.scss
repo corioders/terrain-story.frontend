@@ -1,3 +1,6 @@
+// TODO: remove this when QR-481 is done
+$disabled: #cccccc;
+
 @mixin Button($background-color: unset, $text: #fff, $disabled-background-color: $disabled) {
 	@if $background-color != unset {
 		background-color: $background-color;
