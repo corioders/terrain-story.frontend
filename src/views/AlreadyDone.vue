@@ -23,38 +23,37 @@
 </template>
 
 <script lang="ts">
-	import { defineComponent, PropType } from 'vue';
+import { VFlex } from '@corioders/vueui';
+import { defineComponent, PropType } from 'vue';
 
-	import { ProgressStore } from '@/store/ProgressStore';
+import ResetProgressButton from '@/components/buttons/ResetProgressButton.vue';
+import { ProgressStore } from '@/store/ProgressStore';
 
-	import ResetProgressButton from '@/components/buttons/ResetProgressButton.vue';
-
-	import { VFlex } from '@corioders/vueui';
-
-	export default defineComponent({
-		name: 'AlreadyDone',
-		components: {
-			VFlex,
-			ResetProgressButton,
+export default defineComponent({
+	name: 'AlreadyDone',
+	components: {
+		VFlex,
+		ResetProgressButton,
+	},
+	props: {
+		progressStore: {
+			type: Object as PropType<ProgressStore>,
+			required: true,
 		},
-		props: {
-			progressStore: {
-				type: Object as PropType<ProgressStore>,
-				required: true,
-			},
-		},
-	});
+	},
+});
 </script>
 <style lang="scss" scoped>
-	:deep(h2) {
-		font-weight: 500;
-		text-align: center;
-		max-width: 90%;
-		font-size: 1.5rem;
-	}
-	svg {
-		fill: $info;
-		width: 80%;
-		max-width: 200px;
-	}
+:deep(h2) {
+	font-weight: 500;
+	text-align: center;
+	max-width: 90%;
+	font-size: 1.5rem;
+}
+
+svg {
+	fill: $info;
+	width: 80%;
+	max-width: 200px;
+}
 </style>

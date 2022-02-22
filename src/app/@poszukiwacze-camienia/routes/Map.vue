@@ -4,20 +4,19 @@
 </template>
 
 <script lang="ts">
-	import { defineComponent } from 'vue';
+import MapWrapper from '@rock/components/MapWrapper.vue';
+import { defineComponent } from 'vue';
 
-	import MapWrapper from '@rock/components/MapWrapper.vue';
-
-	export default defineComponent({
-		name: 'Map',
-		components: {
-			MapWrapper,
-		},
-	});
+export default defineComponent({
+	name: 'Map',
+	components: {
+		MapWrapper,
+	},
+});
 </script>
 <style lang="scss" scoped>
-	p {
-		font-size: 1.2em;
-		padding: 0 12px;
-	}
+p {
+	font-size: 1.2em;
+	padding: 0 12px;
+}
 </style>

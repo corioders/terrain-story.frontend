@@ -8,42 +8,42 @@
 </template>
 
 <script lang="ts">
-	import { defineComponent, ref } from 'vue';
+import { VCard } from '@corioders/vueui';
+import { defineComponent, ref } from 'vue';
 
-	import { PrimaryButton } from '@/theme/Button';
-	import { VCard } from '@corioders/vueui';
+import { PrimaryButton } from '@/theme/Button';
 
-	export default defineComponent({
-		name: 'PlayButton',
-		components: {
-			PrimaryButton,
-			VCard,
+export default defineComponent({
+	name: 'PlayButton',
+	components: {
+		PrimaryButton,
+		VCard,
+	},
+	props: {
+		disabled: {
+			type: Boolean,
+			default: false,
+			required: false,
 		},
-		props: {
-			disabled: {
-				type: Boolean,
-				default: false,
-				required: false,
-			},
-		},
-		emits: ['click'],
-		setup(props) {
-			const showCard = ref(false);
-			let timeout: number | null = null;
-			function handleClick(): void {
-				if (props.disabled === false) return;
-				if (timeout !== null) clearTimeout(timeout);
-				showCard.value = true;
-				timeout = setTimeout(() => {
-					showCard.value = false;
-				}, 3000);
-			}
-			return { showCard, handleClick };
-		},
-	});
+	},
+	emits: ['click'],
+	setup(props) {
+		const showCard = ref(false);
+		let timeout: number | null = null;
+		function handleClick(): void {
+			if (props.disabled === false) return;
+			if (timeout !== null) clearTimeout(timeout);
+			showCard.value = true;
+			timeout = setTimeout(() => {
+				showCard.value = false;
+			}, 3000);
+		}
+		return { showCard, handleClick };
+	},
+});
 </script>
 <style lang="scss" scoped>
-	.card {
-		transition: opacity 0.2s ease-in-out;
-	}
+.card {
+	transition: opacity 0.2s ease-in-out;
+}
 </style>

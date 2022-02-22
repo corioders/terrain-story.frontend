@@ -7,24 +7,24 @@
 </template>
 
 <script lang="ts">
-	import { defineComponent, PropType } from 'vue';
-	import { RouteRecordRaw } from 'vue-router';
+import { VCard, VFlex } from '@corioders/vueui';
+import { defineComponent, PropType } from 'vue';
+import { RouteRecordRaw } from 'vue-router';
 
-	import { DefaultButton } from '@/theme/Button';
-	import { VCard, VFlex } from '@corioders/vueui';
+import { DefaultButton } from '@/theme/Button';
 
-	export default defineComponent({
-		name: 'DevNav',
-		components: {
-			VCard,
-			VFlex,
-			DefaultButton,
+export default defineComponent({
+	name: 'DevNav',
+	components: {
+		VCard,
+		VFlex,
+		DefaultButton,
+	},
+	props: {
+		routes: {
+			type: Array as PropType<RouteRecordRaw[]>,
+			required: true,
 		},
-		props: {
-			routes: {
-				type: Array as PropType<RouteRecordRaw[]>,
-				required: true,
-			},
-		},
-	});
+	},
+});
 </script>

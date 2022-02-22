@@ -5,33 +5,33 @@
 </template>
 
 <script lang="ts">
-	import { defineComponent, PropType } from 'vue';
+import { VButton } from '@corioders/vueui';
+import { defineComponent, PropType } from 'vue';
 
-	import { VButton } from '@corioders/vueui';
-
-	export default defineComponent({
-		name: 'InfoButton',
-		components: {
-			VButton,
+export default defineComponent({
+	name: 'InfoButton',
+	components: {
+		VButton,
+	},
+	props: {
+		disabled: {
+			type: Boolean as PropType<boolean>,
+			default: false,
 		},
-		props: {
-			disabled: {
-				type: Boolean as PropType<boolean>,
-				default: false,
-			},
+	},
+	emits: ['use-disabled-click'],
+	methods: {
+		handleClick(event: MouseEvent) {
+			if (this.disabled) return;
+			this.$emit('use-disabled-click', event);
 		},
-		emits: ['use-disabled-click'],
-		methods: {
-			handleClick(event: MouseEvent) {
-				if (this.disabled) return;
-				this.$emit('use-disabled-click', event);
-			},
-		},
-	});
+	},
+});
 </script>
 <style lang="scss" scoped>
-	@use '../Button' as *;
-	.InfoButton {
-		@include Button($info);
-	}
+@use '../Button' as *;
+
+.InfoButton {
+	@include Button($info);
+}
 </style>

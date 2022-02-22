@@ -22,118 +22,125 @@
 </template>
 
 <script lang="ts">
-	import { defineComponent, PropType, ref } from 'vue';
+import { VFlex, VRadio } from '@corioders/vueui';
+import { defineComponent, PropType, ref } from 'vue';
 
-	import { VFlex, VRadio } from '@corioders/vueui';
+import arePhotos from './arePhotos';
+import checkAnswer from './checkAnswer';
+import hideInput from './hideInput';
+import Question from './question';
+import shuffleOptions from './shuffleOptions';
 
-	import arePhotos from './arePhotos';
-	import checkAnswer from './checkAnswer';
-	import hideInput from './hideInput';
-	import Question from './question';
-	import shuffleOptions from './shuffleOptions';
-
-	export default defineComponent({
-		name: 'SingleChoiceQuestion',
-		components: {
-			VFlex,
-			VRadio,
+export default defineComponent({
+	name: 'SingleChoiceQuestion',
+	components: {
+		VFlex,
+		VRadio,
+	},
+	props: {
+		name: {
+			type: String,
+			required: true,
 		},
-		props: {
-			name: {
-				type: String,
-				required: true,
-			},
-			question: {
-				type: String as PropType<Question['question']>,
-				default: '',
-			},
-			options: {
-				type: Array as PropType<Question['options']>,
-				required: true,
-			},
-			answer: {
-				type: String as PropType<Question['answer']>,
-				required: true,
-			},
-			disableMixing: {
-				type: Boolean,
-				default: false,
-			},
-			displayFeedback: {
-				type: Boolean,
-				default: false,
-				required: true,
-			},
+		question: {
+			type: String as PropType<Question['question']>,
+			default: '',
 		},
-		emits: ['correct', 'incorrect'],
-		setup(props, { emit }) {
-			const container = ref<HTMLDivElement | null>(null);
+		options: {
+			type: Array as PropType<Question['options']>,
+			required: true,
+		},
+		answer: {
+			type: String as PropType<Question['answer']>,
+			required: true,
+		},
+		disableMixing: {
+			type: Boolean,
+			default: false,
+		},
+		displayFeedback: {
+			type: Boolean,
+			default: false,
+			required: true,
+		},
+	},
+	emits: ['correct', 'incorrect'],
+	setup(props, { emit }) {
+		const container = ref<HTMLDivElement | null>(null);
 
-			let lastTargetParentElement: Element | null = null;
-			function handleClick(targetParentElement: Element, val: string): void {
-				if (lastTargetParentElement !== null) lastTargetParentElement.classList.remove('correct', 'incorrect');
-				lastTargetParentElement = targetParentElement;
+		let lastTargetParentElement: Element | null = null;
+		function handleClick(targetParentElement: Element, val: string): void {
+			if (lastTargetParentElement !== null) lastTargetParentElement.classList.remove('correct', 'incorrect');
+			lastTargetParentElement = targetParentElement;
 
-				if (checkAnswer(val, props.answer)) {
-					emit('correct');
-					targetParentElement.classList.add('correct');
-				} else {
-					emit('incorrect');
-					targetParentElement.classList.add('incorrect');
-				}
+			if (checkAnswer(val, props.answer)) {
+				emit('correct');
+				targetParentElement.classList.add('correct');
+			} else {
+				emit('incorrect');
+				targetParentElement.classList.add('incorrect');
 			}
+		}
 
-			return {
-				arePhotos: arePhotos(props.options),
-				shuffledOptions: props.disableMixing ? props.options : shuffleOptions(props.options),
-				hideInput,
-				handleClick,
-				container,
-			};
-		},
-	});
+		return {
+			arePhotos: arePhotos(props.options),
+			shuffledOptions: props.disableMixing ? props.options : shuffleOptions(props.options),
+			hideInput,
+			handleClick,
+			container,
+		};
+	},
+});
 </script>
 <style lang="scss" scoped>
-	.container {
-		padding: 12px;
-		input {
-			visibility: v-bind('hideInput(arePhotos)');
-		}
-		img {
-			width: 200px;
-		}
-		p {
-			max-width: 100%;
-			white-space: normal;
-		}
+.container {
+	padding: 12px;
+
+	input {
+		visibility: v-bind('hideInput(arePhotos)');
 	}
-	.displayFeedback {
-		.correct {
-			span {
-				color: $primary;
-			}
-			img {
-				border: 5px $primary solid;
-			}
+
+	img {
+		width: 200px;
+	}
+
+	p {
+		max-width: 100%;
+		white-space: normal;
+	}
+}
+
+.displayFeedback {
+	.correct {
+		span {
+			color: $primary;
 		}
-		.incorrect {
-			span {
-				color: $errorDarker;
-			}
-			img {
-				border: 5px $errorDarker solid;
-			}
+
+		img {
+			border: 5px $primary solid;
 		}
 	}
 
-	.slot {
-		width: 100%;
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		:deep(img) {
-			width: 95%;
-			max-width: 950px;
+	.incorrect {
+		span {
+			color: $errorDarker;
+		}
+
+		img {
+			border: 5px $errorDarker solid;
 		}
 	}
+}
+
+.slot {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+
+	:deep(img) {
+		width: 95%;
+		max-width: 950px;
+	}
+}
 </style>

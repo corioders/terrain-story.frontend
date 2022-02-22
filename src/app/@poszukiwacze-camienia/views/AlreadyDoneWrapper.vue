@@ -3,17 +3,17 @@
 </template>
 
 <script lang="ts">
-	import { defineComponent } from 'vue';
+import { useProgressStore } from '@rock/store/progress';
+import { defineComponent } from 'vue';
 
-	import AlreadyDone from '@/views/AlreadyDone.vue';
-	import { useProgressStore } from '@rock/store/progress';
+import AlreadyDone from '@/views/AlreadyDone.vue';
 
-	export default defineComponent({
-		components: {
-			AlreadyDone,
-		},
-		setup() {
-			return { progressStore: useProgressStore() };
-		},
-	});
+export default defineComponent({
+	components: {
+		AlreadyDone,
+	},
+	setup() {
+		return { progressStore: useProgressStore() };
+	},
+});
 </script>

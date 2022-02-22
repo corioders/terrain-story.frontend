@@ -47,71 +47,75 @@
 </template>
 
 <script lang="ts">
-	import { defineComponent } from 'vue';
+import { VFlex } from '@corioders/vueui';
+import { routes } from '@help/router';
+import { useWindowSize } from '@vueuse/core';
+import { defineComponent } from 'vue';
 
-	import Video from '@/components/YoutubeVideo.vue';
-	import DevNav from '@/components/devHelpers/DevNav.vue';
+import Video from '@/components/YoutubeVideo.vue';
+import DevNav from '@/components/devHelpers/DevNav.vue';
 
-	import { VFlex } from '@corioders/vueui';
-	import { routes } from '@help/router';
-	import { useWindowSize } from '@vueuse/core';
-
-	export default defineComponent({
-		name: 'Home',
-		components: {
-			DevNav,
-			VFlex,
-			Video,
-		},
-		setup() {
-			return { routes, IS_PRODUCTION: __IS_PRODUCTION__, window: useWindowSize() };
-		},
-	});
+export default defineComponent({
+	name: 'Home',
+	components: {
+		DevNav,
+		VFlex,
+		Video,
+	},
+	setup() {
+		return { routes, IS_PRODUCTION: __IS_PRODUCTION__, window: useWindowSize() };
+	},
+});
 </script>
 <style lang="scss" scoped>
-	.VFlex {
+.VFlex {
+	width: 100%;
+
+	.gameLogo {
 		width: 100%;
-		.gameLogo {
-			width: 100%;
-			max-width: 1500px;
-			margin-bottom: 64px;
+		max-width: 1500px;
+		margin-bottom: 64px;
+	}
+
+	section {
+		width: 100%;
+		padding: 64px 8px;
+		text-align: center;
+
+		h3,
+		h4,
+		h5,
+		h6 {
+			font-weight: 600;
+			font-size: 2em;
+			margin-bottom: 0;
 		}
-		section {
-			width: 100%;
-			padding: 64px 8px;
-			text-align: center;
 
-			h3,
-			h4,
-			h5,
-			h6 {
-				font-weight: 600;
-				font-size: 2em;
-				margin-bottom: 0;
-			}
-			p {
-				font-size: 18px;
-				max-width: 950px;
-			}
+		p {
+			font-size: 18px;
+			max-width: 950px;
+		}
 
-			.logo {
-				width: 200px;
-				max-height: 150px;
-				object-fit: contain;
-				margin: 18px 0;
-			}
-			.video {
-				margin-top: 24px;
-			}
+		.logo {
+			width: 200px;
+			max-height: 150px;
+			object-fit: contain;
+			margin: 18px 0;
+		}
+
+		.video {
+			margin-top: 24px;
 		}
 	}
-	.dark {
-		background-color: #406258;
-		color: #fff;
-	}
+}
+
+.dark {
+	background-color: #406258;
+	color: #fff;
+}
 </style>
 <style lang="scss">
-	body {
-		margin: 0;
-	}
+body {
+	margin: 0;
+}
 </style>

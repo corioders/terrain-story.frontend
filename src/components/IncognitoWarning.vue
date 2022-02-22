@@ -12,32 +12,32 @@
 </template>
 
 <script lang="ts">
-	import { defineComponent } from 'vue';
+import { VFlex } from '@corioders/vueui';
+import { defineComponent } from 'vue';
 
-	import { VFlex } from '@corioders/vueui';
-
-	export default defineComponent({
-		name: 'IncognitoWarning',
-		components: {
-			VFlex,
-		},
-	});
+export default defineComponent({
+	name: 'IncognitoWarning',
+	components: {
+		VFlex,
+	},
+});
 </script>
 <style lang="scss" scoped>
-	section {
-		width: 95%;
-		max-width: 900px;
-		border-radius: 5px;
-		background-color: $warning;
+section {
+	width: 95%;
+	max-width: 900px;
+	border-radius: 5px;
+	background-color: $warning;
+	padding: 10px;
 
-		padding: 10px;
-		p {
-			margin: 0;
-		}
-		svg {
-			height: 100%;
-			min-width: 24px;
-			max-height: 32px;
-		}
+	p {
+		margin: 0;
 	}
+
+	svg {
+		height: 100%;
+		min-width: 24px;
+		max-height: 32px;
+	}
+}
 </style>

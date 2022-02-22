@@ -5,62 +5,63 @@
 </template>
 
 <script lang="ts">
-	import { defineComponent } from 'vue';
+import { VFlex, VInput } from '@corioders/vueui';
+import { defineComponent } from 'vue';
 
-	import { VFlex, VInput } from '@corioders/vueui';
-
-	export default defineComponent({
-		name: 'Input',
-		components: {
-			VFlex,
-			VInput,
+export default defineComponent({
+	name: 'Input',
+	components: {
+		VFlex,
+		VInput,
+	},
+	props: {
+		name: {
+			type: String,
+			required: true,
 		},
-		props: {
-			name: {
-				type: String,
-				required: true,
-			},
-			label: {
-				type: String,
-				required: true,
-			},
-			isCorrect: {
-				type: Boolean,
-				required: true,
-			},
-			correctAnswerText: {
-				type: String,
-				default: 'Dobra odpowiedź',
-			},
-			incorrectAnswerText: {
-				type: String,
-				default: 'Zła odpowiedź',
-			},
+		label: {
+			type: String,
+			required: true,
 		},
-		emits: ['answer'],
-		data() {
-			return {
-				answer: '',
-			};
+		isCorrect: {
+			type: Boolean,
+			required: true,
 		},
-		computed: {
-			text() {
-				return this.answer === '' ? this.label : this.isCorrect ? this.correctAnswerText : this.incorrectAnswerText;
-			},
-			className() {
-				return this.answer === '' ? 'default' : this.isCorrect ? 'correct' : 'incorrect';
-			},
+		correctAnswerText: {
+			type: String,
+			default: 'Dobra odpowiedź',
 		},
-	});
+		incorrectAnswerText: {
+			type: String,
+			default: 'Zła odpowiedź',
+		},
+	},
+	emits: ['answer'],
+	data() {
+		return {
+			answer: '',
+		};
+	},
+	computed: {
+		text() {
+			return this.answer === '' ? this.label : this.isCorrect ? this.correctAnswerText : this.incorrectAnswerText;
+		},
+		className() {
+			return this.answer === '' ? 'default' : this.isCorrect ? 'correct' : 'incorrect';
+		},
+	},
+});
 </script>
 <style lang="scss" scoped>
-	.default {
-		--accent-color: #{$secondary};
-	}
-	.correct {
-		--accent-color: #{$primary};
-	}
-	.incorrect {
-		--accent-color: #{$errorDarker};
-	}
+.default {
+	--accent-color: #{$secondary};
+}
+
+.correct {
+	--accent-color: #{$primary};
+}
+
+.incorrect {
+	--accent-color: #{$errorDarker};
+}
 </style>

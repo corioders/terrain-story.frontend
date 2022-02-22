@@ -17,39 +17,41 @@
 </template>
 
 <script lang="ts">
-	import { defineComponent, PropType } from 'vue';
+import { VFlex } from '@corioders/vueui';
+import { defineComponent, PropType } from 'vue';
 
-	import { PrimaryButton } from '@/theme/Button';
-	import { VFlex } from '@corioders/vueui';
+import { PrimaryButton } from '@/theme/Button';
 
-	export default defineComponent({
-		name: 'Done',
-		components: {
-			VFlex,
-			PrimaryButton,
+export default defineComponent({
+	name: 'Done',
+	components: {
+		VFlex,
+		PrimaryButton,
+	},
+	props: {
+		replacePath: {
+			type: String as PropType<string>,
+			default: '/mapa',
 		},
-		props: {
-			replacePath: {
-				type: String as PropType<string>,
-				default: '/mapa',
-			},
-		},
-	});
+	},
+});
 </script>
 <style lang="scss" scoped>
-	:deep(h2),
-	:deep(h3),
-	:deep(h4) {
-		font-weight: 500;
-		text-align: center;
-		max-width: 90%;
-	}
-	:deep(h2) {
-		font-size: 1.5rem;
-	}
-	svg {
-		fill: $primary;
-		width: 80%;
-		max-width: 200px;
-	}
+:deep(h2),
+:deep(h3),
+:deep(h4) {
+	font-weight: 500;
+	text-align: center;
+	max-width: 90%;
+}
+
+:deep(h2) {
+	font-size: 1.5rem;
+}
+
+svg {
+	fill: $primary;
+	width: 80%;
+	max-width: 200px;
+}
 </style>

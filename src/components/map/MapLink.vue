@@ -3,21 +3,20 @@
 </template>
 
 <script lang="ts">
-	import { defineComponent } from 'vue';
+import { defineComponent } from 'vue';
 
-	import { DefaultButton } from '@/theme/Button';
+import { DefaultButton } from '@/theme/Button';
 
-	export default defineComponent({
-		name: 'MapLink',
-		components: {
-			DefaultButton,
+export default defineComponent({
+	name: 'MapLink',
+	components: {
+		DefaultButton,
+	},
+	props: {
+		mapUrl: {
+			type: String,
+			required: true,
 		},
-		props: {
-			mapUrl: {
-				type: String,
-				required: true,
-			},
-		},
-	});
+	},
+});
 </script>
-

@@ -20,43 +20,42 @@
 </template>
 
 <script lang="ts">
-	import { defineComponent, ref } from 'vue';
+import { VCard } from '@corioders/vueui';
+import { trapezoidDescriptor } from '@rock/assets/archaeologist';
+import { useProgressStore } from '@rock/store/progress';
+import { defineComponent, ref } from 'vue';
 
-	import Video from '@/components/YoutubeVideo.vue';
-	import CheckButton from '@/components/buttons/CheckButton.vue';
-	import { questionExecutor } from '@/components/closedQuestion/question';
+import TrapezoidColoring from '@/app/poszukiwacze-camienia/components/trapezoidColoring/TrapezoidColoring.vue';
+import Video from '@/components/YoutubeVideo.vue';
+import CheckButton from '@/components/buttons/CheckButton.vue';
+import { questionExecutor } from '@/components/closedQuestion/question';
 
-	import TrapezoidColoring from '@/app/poszukiwacze-camienia/components/trapezoidColoring/TrapezoidColoring.vue';
-	import { VCard } from '@corioders/vueui';
-	import { trapezoidDescriptor } from '@rock/assets/archaeologist';
-	import { useProgressStore } from '@rock/store/progress';
-
-	export default defineComponent({
-		name: 'Archaeologist',
-		components: {
-			VCard,
-			Video,
-			TrapezoidColoring,
-			CheckButton,
-		},
-		setup() {
-			const store = useProgressStore();
-			return { trapezoidDescriptor, ...questionExecutor(() => store.finishPuzzle('Archaeologist')) };
-		},
-	});
+export default defineComponent({
+	name: 'Archaeologist',
+	components: {
+		VCard,
+		Video,
+		TrapezoidColoring,
+		CheckButton,
+	},
+	setup() {
+		const store = useProgressStore();
+		return { trapezoidDescriptor, ...questionExecutor(() => store.finishPuzzle('Archaeologist')) };
+	},
+});
 </script>
 <style lang="scss" scoped>
-	article {
-		h2 {
-			font-size: 1.4em;
-			margin: 0.75em 0;
-		}
-		p {
-			margin-bottom: 0;
-		}
-		h3 {
-			font-size: 1em;
-			margin: 0.75em 0;
-		}
+article {
+	h2 {
+		font-size: 1.4em;
+		margin: 0.75em 0;
 	}
+	p {
+		margin-bottom: 0;
+	}
+	h3 {
+		font-size: 1em;
+		margin: 0.75em 0;
+	}
+}
 </style>

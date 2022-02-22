@@ -23,49 +23,48 @@
 </template>
 
 <script lang="ts">
-	import { defineComponent } from 'vue';
+import { VFlex, VCard } from '@corioders/vueui';
+import { useProgressStore } from '@rock/store/progress';
+import { defineComponent } from 'vue';
 
-	import Video from '@/components/YoutubeVideo.vue';
-	import CheckButton from '@/components/buttons/CheckButton.vue';
-	import SingleChoiceQuestion from '@/components/closedQuestion/SingleChoiceQuestion.vue';
-	import { questionExecutor } from '@/components/closedQuestion/question';
+import { inspector as question } from '@/app/poszukiwacze-camienia/assets/questions';
+import witnesses from '@/app/poszukiwacze-camienia/assets/witnesses';
+import Video from '@/components/YoutubeVideo.vue';
+import CheckButton from '@/components/buttons/CheckButton.vue';
+import SingleChoiceQuestion from '@/components/closedQuestion/SingleChoiceQuestion.vue';
+import { questionExecutor } from '@/components/closedQuestion/question';
 
-	import { inspector as question } from '@/app/poszukiwacze-camienia/assets/questions';
-	import witnesses from '@/app/poszukiwacze-camienia/assets/witnesses';
-	import { VFlex, VCard } from '@corioders/vueui';
-	import { useProgressStore } from '@rock/store/progress';
-
-	export default defineComponent({
-		name: 'Inspector',
-		components: {
-			VCard,
-			VFlex,
-			Video,
-			SingleChoiceQuestion,
-			CheckButton,
-		},
-		setup() {
-			const store = useProgressStore();
-			return { question, witnesses, ...questionExecutor(() => store.finishPuzzle('Inspector')) };
-		},
-	});
+export default defineComponent({
+	name: 'Inspector',
+	components: {
+		VCard,
+		VFlex,
+		Video,
+		SingleChoiceQuestion,
+		CheckButton,
+	},
+	setup() {
+		const store = useProgressStore();
+		return { question, witnesses, ...questionExecutor(() => store.finishPuzzle('Inspector')) };
+	},
+});
 </script>
 
 <style lang="scss" scoped>
-	.witnesses {
-		width: 95%;
-		max-width: 950px;
-		h2,
-		h3 {
-			font-size: 1.3em;
-			margin: 0.5em 0;
-		}
+.witnesses {
+	width: 95%;
+	max-width: 950px;
+	h2,
+	h3 {
+		font-size: 1.3em;
+		margin: 0.5em 0;
+	}
 
-		.witness {
-			width: 100%;
-		}
+	.witness {
+		width: 100%;
 	}
-	.questionHelper {
-		text-align: center;
-	}
+}
+.questionHelper {
+	text-align: center;
+}
 </style>
