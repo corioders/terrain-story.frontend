@@ -53,15 +53,17 @@ export default defineComponent({
 });
 </script>
 <style lang="scss" scoped>
+@use '@scssGlobals/colors';
+
 .default {
-	--accent-color: #{$secondary};
+	--accent-color: #{colors.$secondary};
 }
 
 .correct {
-	--accent-color: #{$primary};
+	--accent-color: #{colors.$primary};
 }
 
 .incorrect {
-	--accent-color: #{$errorDarker};
+	--accent-color: #{colors.$errorDarker};
 }
 </style>

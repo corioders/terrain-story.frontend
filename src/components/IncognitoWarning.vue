@@ -23,11 +23,13 @@ export default defineComponent({
 });
 </script>
 <style lang="scss" scoped>
+@use '@scssGlobals/colors';
+
 section {
 	width: 95%;
 	max-width: 900px;
 	border-radius: 5px;
-	background-color: $warning;
+	background-color: colors.$warning;
 	padding: 10px;
 
 	p {

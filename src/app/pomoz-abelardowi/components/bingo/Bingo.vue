@@ -39,6 +39,8 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
+@use '@scssGlobals/colors';
+
 .container {
 	display: grid;
 	width: 100% !important;
@@ -49,7 +51,7 @@ export default defineComponent({
 }
 
 .checked {
-	background-color: $primaryDarker;
+	background-color: colors.$primaryDarker;
 	color: #fff;
 }
 

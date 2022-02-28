@@ -20,12 +20,14 @@ export default defineComponent({
 });
 </script>
 <style lang="scss" scoped>
+@use '@scssGlobals/colors';
+
 div {
 	width: 100%;
 	height: 5px;
 	position: relative;
 	box-sizing: border-box;
-	background-color: $disabled;
+	background-color: colors.$disabled;
 	border-radius: 5px;
 
 	&::after {
@@ -35,7 +37,7 @@ div {
 		top: 0;
 		height: 100%;
 		width: calc(v-bind('value') * 100% / v-bind('max'));
-		background-color: $primaryDarker;
+		background-color: colors.$primaryDarker;
 		border-radius: 5px;
 	}
 }

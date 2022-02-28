@@ -29,9 +29,10 @@ export default defineComponent({
 });
 </script>
 <style lang="scss" scoped>
+@use '@scssGlobals/colors';
 @use '../Button' as *;
 
 .PrimaryButton {
-	@include Button($primary);
+	@include Button(colors.$primary);
 }
 </style>

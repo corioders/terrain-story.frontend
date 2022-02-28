@@ -37,10 +37,11 @@ export default defineComponent({
 });
 </script>
 <style lang="scss" scoped>
+@use '@scssGlobals/colors';
 @use '@/theme/Button/Button.scss' as *;
 
 .checkButton {
-	@include Button($primary);
+	@include Button(colors.$primary);
 
 	transition: all 0.5s;
 
@@ -73,7 +74,7 @@ export default defineComponent({
 }
 
 .error {
-	background-color: $error;
+	background-color: colors.$error;
 
 	div {
 		&::before {

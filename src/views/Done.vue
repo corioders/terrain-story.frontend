@@ -37,6 +37,8 @@ export default defineComponent({
 });
 </script>
 <style lang="scss" scoped>
+@use '@scssGlobals/colors';
+
 :deep(h2),
 :deep(h3),
 :deep(h4) {
@@ -50,7 +52,7 @@ export default defineComponent({
 }
 
 svg {
-	fill: $primary;
+	fill: colors.$primary;
 	width: 80%;
 	max-width: 200px;
 }

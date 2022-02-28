@@ -93,6 +93,8 @@ export default defineComponent({
 });
 </script>
 <style lang="scss" scoped>
+@use '@scssGlobals/colors';
+
 .container {
 	padding: 12px;
 
@@ -113,21 +115,21 @@ export default defineComponent({
 .displayFeedback {
 	.correct {
 		span {
-			color: $primary;
+			color: colors.$primary;
 		}
 
 		img {
-			border: 5px $primary solid;
+			border: 5px colors.$primary solid;
 		}
 	}
 
 	.incorrect {
 		span {
-			color: $errorDarker;
+			color: colors.$errorDarker;
 		}
 
 		img {
-			border: 5px $errorDarker solid;
+			border: 5px colors.$errorDarker solid;
 		}
 	}
 }

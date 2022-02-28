@@ -21,9 +21,10 @@ export default defineComponent({
 });
 </script>
 <style lang="scss" scoped>
+@use '@scssGlobals/colors';
 @use '../Link' as *;
 
 a {
-	@include Link($infoDarker, $info);
+	@include Link(colors.$infoDarker, colors.$info);
 }
 </style>

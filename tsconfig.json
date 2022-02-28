@@ -35,6 +35,9 @@
 			"@help/*": [
 				"src/app/pomoz-abelardowi/*"
 			],
+			"@scssGlobals/*": [
+				"src/scss/global/*"
+			],
 		},
 
 		"outDir": "out",

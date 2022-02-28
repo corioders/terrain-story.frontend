@@ -62,6 +62,8 @@ export default defineComponent({
 });
 </script>
 <style lang="scss" scoped>
+@use '@scssGlobals/colors';
+
 .VFlex {
 	width: 100%;
 	max-width: 550px;
@@ -90,14 +92,14 @@ export default defineComponent({
 			width: 100%;
 			font-size: 1.2rem;
 			min-height: 150px;
-			caret-color: $primaryDarker;
-			border: $disabled solid 2px;
+			caret-color: colors.$primaryDarker;
+			border: colors.$disabled solid 2px;
 			border-radius: 5px;
 			padding: 4px;
 
 			&:focus {
 				outline: none;
-				border-color: $primaryDarker;
+				border-color: colors.$primaryDarker;
 			}
 		}
 	}

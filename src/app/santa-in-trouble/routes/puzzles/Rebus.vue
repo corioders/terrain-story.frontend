@@ -37,12 +37,14 @@ export default defineComponent({
 });
 </script>
 <style lang="scss" scoped>
+@use '@scssGlobals/colors';
+
 img {
 	width: 100%;
 	max-width: 950px;
 }
 
 .VInput {
-	--accent-color: #{$secondary};
+	--accent-color: #{colors.$secondary};
 }
 </style>

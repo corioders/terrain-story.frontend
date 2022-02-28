@@ -44,6 +44,8 @@ export default defineComponent({
 });
 </script>
 <style lang="scss" scoped>
+@use '@scssGlobals/colors';
+
 :deep(h2) {
 	font-weight: 500;
 	text-align: center;
@@ -52,7 +54,7 @@ export default defineComponent({
 }
 
 svg {
-	fill: $info;
+	fill: colors.$info;
 	width: 80%;
 	max-width: 200px;
 }

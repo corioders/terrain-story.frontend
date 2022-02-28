@@ -53,6 +53,8 @@ export default defineComponent({
 });
 </script>
 <style lang="scss" scoped>
+@use '@scssGlobals/colors';
+
 $offset: 4px;
 
 .container {
@@ -66,12 +68,12 @@ $offset: 4px;
 		.puzzle {
 			width: 25px;
 			height: 25px;
-			background-color: $disabled;
+			background-color: colors.$disabled;
 			border-radius: 50%;
 			margin-bottom: $offset;
 
 			&.done {
-				background-color: $primary;
+				background-color: colors.$primary;
 			}
 		}
 
@@ -79,7 +81,7 @@ $offset: 4px;
 			width: 100%;
 			height: $offset;
 			border-radius: 5px;
-			background-color: $infoDarker;
+			background-color: colors.$infoDarker;
 		}
 
 		&.--label {
