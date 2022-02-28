@@ -23,7 +23,7 @@ export const useQuestionsStore = defineStore({
 			// we provide the same QuestionsDescriptor for the same puzzleIndex.
 
 			let questionsDescriptor = this.questionsDescriptors[puzzleID];
-			// if (questionsDescriptor !== undefined) return questionsDescriptor;
+			if (questionsDescriptor !== undefined) return questionsDescriptor;
 
 			questionsDescriptor = await getQuestionsDescriptorFirebase(this.usedQuestionsIDs);
 			this.questionsDescriptors[puzzleID] = questionsDescriptor;
