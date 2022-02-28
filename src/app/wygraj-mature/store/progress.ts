@@ -4,6 +4,8 @@ import { defaultAction, defineProgressStore, isPuzzleIDFactory, Puzzles } from '
 
 import router from '@recap/router';
 
+import { useQuestionsStore } from './questions';
+
 export type PuzzleID = '1' | '2' | '3' | '4' | '5' | '6';
 export const puzzleIDs: PuzzleID[] = ['1', '2', '3', '4', '5', '6'];
 export const isPuzzleID = isPuzzleIDFactory(puzzleIDs);
@@ -32,6 +34,8 @@ export const useProgressStore = defineProgressStore({
 		},
 		resetProgress() {
 			defaultAction.resetProgress(this, router);
+			const questionsStore = useQuestionsStore();
+			questionsStore.reset();
 		},
 		finishPuzzle(puzzleID: PuzzleID) {
 			defaultAction.finishPuzzle(this, router, puzzleID);
