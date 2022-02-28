@@ -17,15 +17,16 @@ export const useQuestionsStore = defineStore({
 			this.questionsDescriptors = {};
 			this.usedQuestionsIDs = {};
 		},
-		async getQuestionsDescriptor(puzzleIndex: number): Promise<QuestionsDescriptor> {
+		async getQuestionsDescriptor(puzzleID: number): Promise<QuestionsDescriptor> {
 			// For the same puzzleIndex we provide the same QuestionsDescriptor if and only if
 			// there was no reset, after reset we fetch fresh data from firestore, but before
 			// we provide the same QuestionsDescriptor for the same puzzleIndex.
-			let questionsDescriptor = this.questionsDescriptors[puzzleIndex];
+
+			let questionsDescriptor = this.questionsDescriptors[puzzleID];
 			// if (questionsDescriptor !== undefined) return questionsDescriptor;
 
 			questionsDescriptor = await getQuestionsDescriptorFirebase(this.usedQuestionsIDs);
-			this.questionsDescriptors[puzzleIndex] = questionsDescriptor;
+			this.questionsDescriptors[puzzleID] = questionsDescriptor;
 			return questionsDescriptor;
 		},
 	},

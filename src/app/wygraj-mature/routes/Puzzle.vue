@@ -22,7 +22,7 @@
 			VFlex,
 		},
 		props: {
-			puzzleIndex: {
+			puzzleID: {
 				required: true,
 				type: Number,
 			},
@@ -43,7 +43,7 @@
 
 			const update = async (): Promise<void> => {
 				loading.value = true;
-				questionsDescriptor.value = await questionsStore.getQuestionsDescriptor(props.puzzleIndex);
+				questionsDescriptor.value = await questionsStore.getQuestionsDescriptor(props.puzzleID);
 				loading.value = false;
 			};
 
