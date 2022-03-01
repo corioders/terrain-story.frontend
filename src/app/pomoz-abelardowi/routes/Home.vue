@@ -33,6 +33,9 @@
 		</section>
 		<section class="light">
 			<VFlex>
+				<h6>Honorowe Patronaty</h6>
+				<img src="@/assets/patronage/silesia.webp" alt="Marszałek Województwa Śląskiego" class="logoVertical" />
+				<img src="@/assets/patronage/katowice.webp" alt="Prezydent Miasta Katowice" class="logoVertical" />
 				<h6>Patroni medialni</h6>
 				<img class="logo logoLink" src="@/assets/patrons/portalKatowice.webp" alt="Portal Katowice" @click="redirect" />
 			</VFlex>
@@ -102,6 +105,14 @@
 				max-height: 150px;
 				object-fit: contain;
 				margin: 18px 0;
+			}
+			.logoVertical {
+				@extend .logo;
+				width: 100vw;
+				max-height: 200px;
+				@media (min-width: 500px) {
+					width: 500px;
+				}
 			}
 			.video {
 				margin-top: 24px;
