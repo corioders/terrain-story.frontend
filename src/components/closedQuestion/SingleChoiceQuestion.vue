@@ -1,7 +1,7 @@
 <template>
 	<div ref="container" class="container" :class="{ displayFeedback }">
 		<VFlex align="flex-start" gap="12px">
-			<p v-if="question !== ''">{{ question }}</p>
+			<div v-if="question !== ''" v-html="question" />
 			<div class="slot">
 				<slot></slot>
 			</div>
