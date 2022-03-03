@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<SingleChoiceQuestionHtml
+		<SingleChoiceQuestion
 			v-for="(question, i) in questions"
 			:key="`${question.subject}-question${i}`"
 			:name="question.subject"
@@ -11,14 +11,14 @@
 			@incorrect="handleAnswer(false)"
 		>
 			<div v-html="question.question"></div>
-		</SingleChoiceQuestionHtml>
+		</SingleChoiceQuestion>
 	</div>
 </template>
 
 <script lang="ts">
 	import { defineComponent, PropType } from 'vue';
 
-	import SingleChoiceQuestionHtml from '@/components/closedQuestion/SingleChoiceQuestionHtml.vue';
+	import SingleChoiceQuestion from '@/components/closedQuestion/SingleChoiceQuestion.vue';
 	import { questionExecutor } from '@/components/closedQuestion/question';
 
 	import { QuestionsDescriptor } from './QuestionsDescriptor';
@@ -26,7 +26,7 @@
 	export default defineComponent({
 		name: 'Questions',
 		components: {
-			SingleChoiceQuestionHtml,
+			SingleChoiceQuestion,
 		},
 		props: {
 			questions: {

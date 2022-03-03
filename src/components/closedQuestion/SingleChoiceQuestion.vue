@@ -13,7 +13,7 @@
 					:value="option"
 					@input="handleClick($event.target.parentElement, $event.target.value)"
 				>
-					<span v-if="!arePhotos">{{ option }}</span>
+					<div v-if="!arePhotos" v-html="option" />
 					<img v-else :src="option" :alt="i" />
 				</VRadio>
 			</VFlex>
