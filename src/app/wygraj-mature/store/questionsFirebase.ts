@@ -66,10 +66,10 @@ async function getQuestionDescriptor<T extends string>(
 
 	return {
 		subject,
-
 		question: '<p>Lorem ipsum dolor sit amet</p>',
 		options: ['<p>magna</p>', '<p>tortor</p>', '<p>commodo</p>'],
 		answer: '<p>commodo</p>',
+		isHtml: true,
 	};
 }
 

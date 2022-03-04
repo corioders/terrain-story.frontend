@@ -1,7 +1,8 @@
 <template>
 	<div ref="container" class="container" :class="{ displayFeedback }">
 		<VFlex align="flex-start" gap="12px">
-			<div v-if="question !== ''" v-html="question" />
+			<p v-if="question !== '' && !isHtml">{{ question }}</p>
+			<div v-else-if="question !== ''" v-html="question" />
 			<div class="slot">
 				<slot></slot>
 			</div>
@@ -13,7 +14,8 @@
 					:value="option"
 					@input="handleClick($event.target.parentElement, $event.target.value)"
 				>
-					<div v-if="!arePhotos" v-html="option" />
+					<span v-if="!arePhotos && !isHtml">{{ option }}</span>
+					<div v-else-if="!arePhotos" v-html="option" />
 					<img v-else :src="option" :alt="i" />
 				</VRadio>
 			</VFlex>
@@ -63,6 +65,10 @@
 				type: Boolean,
 				default: false,
 				required: true,
+			},
+			isHtml: {
+				type: Boolean,
+				default: false,
 			},
 		},
 		emits: ['correct', 'incorrect'],
@@ -134,6 +140,11 @@
 		:deep(img) {
 			width: 95%;
 			max-width: 950px;
+		}
+	}
+	:deep(label) {
+		* {
+			margin: 0;
 		}
 	}
 </style>

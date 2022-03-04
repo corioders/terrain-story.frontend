@@ -9,6 +9,7 @@
 			:name="name + i"
 			:displayFeedback="displayFeedback"
 			:disableMixing="disableMixing"
+			:isHtml="isHtml[i]"
 			@correct="isCorrect[i] = true"
 			@incorrect="isCorrect[i] = false"
 		>
@@ -47,6 +48,14 @@
 			disableMixing: {
 				type: Boolean,
 				default: false,
+			},
+			isHtml: {
+				type: Array as PropType<boolean[]>,
+				// default() {
+				// 	return [false, false, false];
+				// },
+				// default: [false, false, false],
+				default: () => [false, false, false],
 			},
 		},
 		emits: ['correct', 'incorrect'],

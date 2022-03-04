@@ -1,4 +1,5 @@
 <template>
+	<!-- {{ questionsDescriptor.map((q) => q) }} -->
 	<VFlex v-if="loading" style="font-size: 1.2rem">
 		<p>Ładowanie zadania</p>
 		<VSpinner style="font-size: 1em" />
@@ -8,6 +9,7 @@
 		:questions="questionsDescriptor"
 		name="puzzle"
 		:displayFeedback="displayFeedback"
+		:isHtml="questionsDescriptor.map((q) => q.isHtml)"
 		@correct="handleAnswer(true)"
 		@incorrect="handleAnswer(false)"
 	/>
