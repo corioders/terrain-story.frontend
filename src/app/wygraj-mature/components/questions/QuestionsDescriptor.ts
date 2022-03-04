@@ -4,6 +4,7 @@ export interface QuestionDescriptor<Subject> {
 	question: Html;
 	options: Html[];
 	answer: Html;
+	isHtml: boolean;
 }
 
 export type QuestionsDescriptor = [QuestionDescriptor<'Polski'>, QuestionDescriptor<'Matematyka'>, QuestionDescriptor<'Angielski'>];
