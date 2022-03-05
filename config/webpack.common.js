@@ -192,7 +192,9 @@ const webpackConfig = {
 			extensions: ['js', 'ts', 'vue'],
 			lintDirtyModulesOnly: true,
 		}),
-		new StylelintPlugin(),
+		new StylelintPlugin({
+			files: ['src/**/*.{vue,scss}'],
+		}),
 
 		new BrowserSyncPlugin(
 			{
