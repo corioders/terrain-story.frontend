@@ -29,11 +29,11 @@ export const routes: RouteRecordRaw[] = [
 		name: 'AlreadyDone',
 		component: (): Promise<Component> => import('@recap/views/AlreadyDoneWrapper.vue'),
 	},
-	// {
-	// 	path: `/jak-grac`,
-	// 	name: 'HowToPlay',
-	// 	component: (): Promise<Component> => import('@/views/HowToPlay.vue'),
-	// },
+	{
+		path: `/jak-grac`,
+		name: 'HowToPlay',
+		component: (): Promise<Component> => import('@/views/HowToPlay.vue'),
+	},
 	{
 		path: '/',
 		name: 'Home',
@@ -81,11 +81,11 @@ export const routes: RouteRecordRaw[] = [
 		component: (): Promise<Component> => import('@recap/routes/Puzzle.vue'),
 		props: { puzzleID: 6 },
 	},
-	// {
-	// 	path: '/polityka-prywatnosci',
-	// 	name: 'PrivacyPolicy',
-	// 	component: (): Promise<Component> => import('@recap/routes/PrivacyPolicyWrapper.vue'),
-	// },
+	{
+		path: '/polityka-prywatnosci',
+		name: 'PrivacyPolicy',
+		component: (): Promise<Component> => import('@recap/routes/PrivacyPolicyWrapper.vue'),
+	},
 	{
 		path: '/finansowanie',
 		name: 'Financing',
