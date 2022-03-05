@@ -1,25 +1,29 @@
-// TODO: remove this when QR-481 is done
-$disabled: #cccccc;
+@use '@scssGlobals/colors';
 
-@mixin Button($background-color: unset, $text: #fff, $disabled-background-color: $disabled) {
+@mixin Button($background-color: unset, $text: #fff, $disabled-background-color: colors.$disabled) {
 	@if $background-color != unset {
 		background-color: $background-color;
 		color: $text;
 		border: none;
+
 		&::after {
 			border: none;
 			content: unset;
 			transition: unset;
 		}
 	}
+
 	cursor: pointer;
+
 	&:hover,
 	&:focus-visible {
 		transform: perspective(1px) translateZ(0) scale(1.05);
 	}
+
 	&.pressed {
 		transform: perspective(1px) translateZ(0) scale(0.95);
 	}
+
 	&.disabled {
 		cursor: not-allowed;
 		background-color: $disabled-background-color;
