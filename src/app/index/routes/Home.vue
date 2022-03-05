@@ -22,6 +22,7 @@ export default defineComponent({
 		width: 100%;
 		object-fit: cover;
 	}
+
 	width: 80%;
 	max-width: 800px;
 	margin: 0 auto;

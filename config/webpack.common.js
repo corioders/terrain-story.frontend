@@ -7,6 +7,7 @@ const { DefinePlugin } = require('webpack');
 const { VueLoaderPlugin } = require('vue-loader');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const ESLintPlugin = require('eslint-webpack-plugin');
+const StylelintPlugin = require('stylelint-webpack-plugin');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 
@@ -69,7 +70,7 @@ loaderOptions.babel = {
 loaderOptions.postcss = {
 	postcssOptions: {
 		syntax: 'postcss-scss',
-		plugins: ['stylelint', 'postcss-preset-env'],
+		plugins: ['postcss-preset-env'],
 	},
 };
 loaderOptions.sass = {
@@ -190,6 +191,9 @@ const webpackConfig = {
 		new ESLintPlugin({
 			extensions: ['js', 'ts', 'vue'],
 			lintDirtyModulesOnly: true,
+		}),
+		new StylelintPlugin({
+			files: ['src/**/*.{vue,scss}'],
 		}),
 
 		new BrowserSyncPlugin(
