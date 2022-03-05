@@ -99,6 +99,7 @@ export default defineComponent({
 	gap: 8px;
 	width: 100%;
 	max-width: 950px;
+
 	canvas,
 	img {
 		width: 95%;

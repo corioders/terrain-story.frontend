@@ -54,6 +54,7 @@ export default defineComponent({
 .witnesses {
 	width: 95%;
 	max-width: 950px;
+
 	h2,
 	h3 {
 		font-size: 1.3em;
@@ -64,6 +65,7 @@ export default defineComponent({
 		width: 100%;
 	}
 }
+
 .questionHelper {
 	text-align: center;
 }

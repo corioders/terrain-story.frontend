@@ -102,29 +102,36 @@ export default defineComponent({
 			max-width: 950px;
 		}
 
-		.logo {
+		.logo,
+		%logo {
 			width: 200px;
 			max-height: 150px;
 			object-fit: contain;
 			margin: 18px 0;
 		}
+
 		.logoVertical {
-			@extend .logo;
+			@extend %logo;
+
 			width: 100vw;
 			max-height: 200px;
+
 			@media (min-width: 500px) {
 				width: 500px;
 			}
 		}
+
 		.video {
 			margin-top: 24px;
 		}
 	}
 }
+
 .dark {
 	background-color: #406258;
 	color: #fff;
 }
+
 .logoLink {
 	cursor: pointer;
 }

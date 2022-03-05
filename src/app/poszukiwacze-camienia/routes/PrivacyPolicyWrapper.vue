@@ -156,6 +156,7 @@ article {
 	.heading {
 		font-size: 2em;
 	}
+
 	width: 95%;
 	max-width: 950px;
 	padding: 12px;

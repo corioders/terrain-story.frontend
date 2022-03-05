@@ -88,6 +88,7 @@ export default defineComponent({
 		max-width: 950px;
 		margin-bottom: 32px;
 	}
+
 	section {
 		width: 100%;
 		padding: 64px 8px;
@@ -114,6 +115,7 @@ export default defineComponent({
 			margin: 18px 0;
 		}
 	}
+
 	.dark {
 		background-color: colors.$secondaryDarker;
 		color: #fff;

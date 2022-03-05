@@ -162,6 +162,7 @@ canvas {
 	width: 95%;
 	max-width: 950px;
 }
+
 .PlainButton {
 	img {
 		width: 32px;

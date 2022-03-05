@@ -50,9 +50,11 @@ article {
 		font-size: 1.4em;
 		margin: 0.75em 0;
 	}
+
 	p {
 		margin-bottom: 0;
 	}
+
 	h3 {
 		font-size: 1em;
 		margin: 0.75em 0;
