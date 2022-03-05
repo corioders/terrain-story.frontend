@@ -33,8 +33,11 @@
 		</section>
 		<section class="light">
 			<VFlex>
+				<h6>Honorowe Patronaty</h6>
+				<img src="@/assets/patronage/silesia.webp" alt="Marszałek Województwa Śląskiego" class="logoVertical" />
+				<img src="@/assets/patronage/katowice.webp" alt="Prezydent Miasta Katowice" class="logoVertical" />
 				<h6>Patroni medialni</h6>
-				<img class="logo" src="@/assets/patrons/portalKatowice.webp" alt="Portal Katowice" />
+				<img class="logo logoLink" src="@/assets/patrons/portalKatowice.webp" alt="Portal Katowice" @click="redirect" />
 			</VFlex>
 		</section>
 		<section class="dark">
@@ -63,7 +66,10 @@ export default defineComponent({
 		Video,
 	},
 	setup() {
-		return { routes, IS_PRODUCTION: __IS_PRODUCTION__, window: useWindowSize() };
+		function redirect(): void {
+			location.href = 'http://www.portal.katowice.pl';
+		}
+		return { routes, IS_PRODUCTION: __IS_PRODUCTION__, window: useWindowSize(), redirect };
 	},
 });
 </script>
@@ -102,16 +108,25 @@ export default defineComponent({
 			object-fit: contain;
 			margin: 18px 0;
 		}
-
+		.logoVertical {
+			@extend .logo;
+			width: 100vw;
+			max-height: 200px;
+			@media (min-width: 500px) {
+				width: 500px;
+			}
+		}
 		.video {
 			margin-top: 24px;
 		}
 	}
 }
-
 .dark {
 	background-color: #406258;
 	color: #fff;
+}
+.logoLink {
+	cursor: pointer;
 }
 </style>
 <style lang="scss">

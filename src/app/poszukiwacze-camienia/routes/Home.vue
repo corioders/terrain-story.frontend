@@ -77,6 +77,8 @@ export default defineComponent({
 });
 </script>
 <style lang="scss" scoped>
+@use '@scssGlobals/colors';
+
 .VFlex {
 	width: 100%;
 
@@ -90,6 +92,7 @@ export default defineComponent({
 		width: 100%;
 		padding: 64px 8px;
 		text-align: center;
+
 		h3,
 		h4,
 		h5,
@@ -98,6 +101,7 @@ export default defineComponent({
 			font-size: 2em;
 			margin-bottom: 0;
 		}
+
 		p {
 			font-size: 18px;
 			max-width: 950px;
@@ -111,7 +115,7 @@ export default defineComponent({
 		}
 	}
 	.dark {
-		background-color: $secondaryDarker;
+		background-color: colors.$secondaryDarker;
 		color: #fff;
 	}
 }

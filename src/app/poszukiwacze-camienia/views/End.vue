@@ -30,11 +30,13 @@ export default defineComponent({
 });
 </script>
 <style lang="scss" scoped>
+@use '@scssGlobals/colors';
+
 p {
 	padding: 0 12px;
 	font-size: 1.2em;
 	span {
-		color: $secondary;
+		color: colors.$secondary;
 	}
 }
 </style>

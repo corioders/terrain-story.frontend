@@ -107,6 +107,29 @@ function getKey(x: number, y: number): string {
 }
 </script>
 <style lang="scss" scoped>
+@use '@scssGlobals/colors';
+
+td,
+th {
+	border: 1px solid black;
+	padding: 0;
+
+	div {
+		margin: 0;
+		line-height: 50px;
+		width: 50px;
+		height: 50px;
+	}
+}
+
+thead {
+	th {
+		position: sticky;
+		top: 0;
+		z-index: 1;
+	}
+}
+
 table {
 	margin: 0;
 	table-layout: fixed;
@@ -127,38 +150,22 @@ table {
 	}
 }
 
-td,
-th {
-	border: 1px solid black;
-	padding: 0;
-	div {
-		margin: 0;
-		line-height: 50px;
-		width: 50px;
-		height: 50px;
-	}
-}
-.checked {
-	background-color: $primary;
+thead th:first-child {
+	position: static;
 }
 
-thead {
-	th {
-		position: sticky;
-		top: 0;
-		z-index: 1;
-		&:first-child {
-			position: static;
-		}
-	}
+.checked {
+	background-color: colors.$primary;
 }
 
 .container {
 	max-width: 95%;
+
 	@media (min-width: 1000px) {
 		max-width: 950px;
 	}
 }
+
 .scrollbar {
 	overflow: auto;
 }
