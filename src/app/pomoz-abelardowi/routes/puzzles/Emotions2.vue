@@ -37,33 +37,33 @@
 </template>
 
 <script lang="ts">
-	import { defineComponent } from 'vue';
+import { emotions2 as questions } from '@help/assets/questions';
+import { useProgressStore } from '@help/store/progress';
+import { defineComponent } from 'vue';
 
-	import CheckButton from '@/components/buttons/CheckButton.vue';
-	import SingleChoiceQuestions from '@/components/closedQuestion/SingleChoiceQuestions.vue';
-	import { questionExecutor } from '@/components/closedQuestion/question';
+import CheckButton from '@/components/buttons/CheckButton.vue';
+import SingleChoiceQuestions from '@/components/closedQuestion/SingleChoiceQuestions.vue';
+import { questionExecutor } from '@/components/closedQuestion/question';
 
-	import { emotions2 as questions } from '@help/assets/questions';
-	import { useProgressStore } from '@help/store/progress';
-
-	export default defineComponent({
-		name: 'Emotions2',
-		components: {
-			SingleChoiceQuestions,
-			CheckButton,
-		},
-		setup() {
-			const store = useProgressStore();
-			return { questions, ...questionExecutor(() => store.finishPuzzle('Emotions2'), true) };
-		},
-	});
+export default defineComponent({
+	name: 'Emotions2',
+	components: {
+		SingleChoiceQuestions,
+		CheckButton,
+	},
+	setup() {
+		const store = useProgressStore();
+		return { questions, ...questionExecutor(() => store.finishPuzzle('Emotions2'), true) };
+	},
+});
 </script>
 <style lang="scss" scoped>
-	img {
-		width: 200px !important;
-		height: 200px !important;
-	}
-	:deep(.slot) {
-		align-items: flex-start;
-	}
+img {
+	width: 200px !important;
+	height: 200px !important;
+}
+
+:deep(.slot) {
+	align-items: flex-start;
+}
 </style>

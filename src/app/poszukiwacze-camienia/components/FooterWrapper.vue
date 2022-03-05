@@ -15,34 +15,34 @@
 </template>
 
 <script lang="ts">
-	import { defineComponent } from 'vue';
+import { useProgressStore, PuzzleID } from '@rock/store/progress';
+import { defineComponent } from 'vue';
 
-	import CFooter from '@/components/Footer.vue';
-	import handleProgress, { HandleProgressReturn } from '@/components/progress/handleProgress';
+import CFooter from '@/components/Footer.vue';
+import handleProgress, { HandleProgressReturn } from '@/components/progress/handleProgress';
+import { TinyLink } from '@/theme/Link';
 
-	import { TinyLink } from '@/theme/Link';
-	import { useProgressStore, PuzzleID } from '@rock/store/progress';
-
-	export default defineComponent({
-		name: 'Footer',
-		components: {
-			CFooter,
-			TinyLink,
-		},
-		setup() {
-			const progress: () => HandleProgressReturn = () => handleProgress<PuzzleID>(useProgressStore().puzzles);
-			return { progress };
-		},
-	});
+export default defineComponent({
+	name: 'Footer',
+	components: {
+		CFooter,
+		TinyLink,
+	},
+	setup() {
+		const progress: () => HandleProgressReturn = () => handleProgress<PuzzleID>(useProgressStore().puzzles);
+		return { progress };
+	},
+});
 </script>
 <style lang="scss" scoped>
-	p {
-		font-size: 0.8rem;
-	}
-	img {
-		margin: 64px 0;
-		min-width: 200px;
-		width: 50vw;
-		max-width: 250px;
-	}
+p {
+	font-size: 0.8rem;
+}
+
+img {
+	margin: 64px 0;
+	min-width: 200px;
+	width: 50vw;
+	max-width: 250px;
+}
 </style>

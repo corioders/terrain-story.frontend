@@ -20,80 +20,88 @@
 </template>
 
 <script lang="ts">
-	import { defineComponent, ref, watch } from 'vue';
+import { VFlex, VDropdown, VInput } from '@corioders/vueui';
+import { defineComponent, ref, watch } from 'vue';
 
-	import { PrimaryButton } from '@/theme/Button';
-	import { VFlex, VDropdown, VInput } from '@corioders/vueui';
+import { PrimaryButton } from '@/theme/Button';
 
-	import { submitBug as firebaseSubmitBug } from './firebase';
+import { submitBug as firebaseSubmitBug } from './firebase';
 
-	export default defineComponent({
-		name: 'ReportBug',
-		components: {
-			VFlex,
-			VDropdown,
-			VInput,
-			PrimaryButton,
-		},
-		setup() {
-			const bugTypes = ['Brak kodu QR', 'Kod QR nie działa', 'Inny błąd'];
-			const selectedBugType = ref('');
+export default defineComponent({
+	name: 'ReportBug',
+	components: {
+		VFlex,
+		VDropdown,
+		VInput,
+		PrimaryButton,
+	},
+	setup() {
+		const bugTypes = ['Brak kodu QR', 'Kod QR nie działa', 'Inny błąd'];
+		const selectedBugType = ref('');
 
-			const data = ref('');
+		const data = ref('');
 
-			const showForm = ref(true);
+		const showForm = ref(true);
 
-			async function submitBug(): Promise<void> {
-				if (selectedBugType.value === '' || data.value === '') return;
+		async function submitBug(): Promise<void> {
+			if (selectedBugType.value === '' || data.value === '') return;
 
-				await firebaseSubmitBug(`Bug type: ${selectedBugType.value}\nUser message: ${data.value}`);
+			await firebaseSubmitBug(`Bug type: ${selectedBugType.value}\nUser message: ${data.value}`);
 
-				selectedBugType.value = '';
-				data.value = '';
-				showForm.value = false;
-			}
+			selectedBugType.value = '';
+			data.value = '';
+			showForm.value = false;
+		}
 
-			watch(selectedBugType, () => {
-				data.value = '';
-			});
+		watch(selectedBugType, () => {
+			data.value = '';
+		});
 
-			return { bugTypes, selectedBugType, data, submitBug, showForm };
-		},
-	});
+		return { bugTypes, selectedBugType, data, submitBug, showForm };
+	},
+});
 </script>
 <style lang="scss" scoped>
-	.VFlex {
+@use '@scssGlobals/colors';
+
+.VFlex {
+	width: 100%;
+	max-width: 550px;
+	padding: 0 12px;
+
+	h2 {
+		font-weight: 500;
+		text-align: center;
+		font-size: 1.5rem;
+	}
+
+	span {
+		font-size: 1rem;
+		margin-left: 1em;
+	}
+
+	div {
 		width: 100%;
-		max-width: 550px;
-		padding: 0 12px;
-		h2 {
-			font-weight: 500;
-			text-align: center;
-			font-size: 1.5rem;
+
+		label {
+			margin-left: 4px;
 		}
-		span {
-			font-size: 1rem;
-			margin-left: 1em;
-		}
-		div {
+
+		textarea {
+			resize: vertical;
 			width: 100%;
-			label {
-				margin-left: 4px;
-			}
-			textarea {
-				resize: vertical;
-				width: 100%;
-				font-size: 1.2rem;
-				min-height: 150px;
-				caret-color: $primaryDarker;
-				border: $disabled solid 2px;
-				border-radius: 5px;
-				padding: 4px;
-				&:focus {
-					outline: none;
-					border-color: $primaryDarker;
-				}
+			font-size: 1.2rem;
+			min-height: 150px;
+			caret-color: colors.$primaryDarker;
+			border: colors.$disabled solid 2px;
+			border-radius: 5px;
+			padding: 4px;
+
+			&:focus {
+				outline: none;
+				border-color: colors.$primaryDarker;
 			}
 		}
 	}
+}
 </style>

@@ -5,59 +5,44 @@ const common = require('./webpack.common.js');
 
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const JsMinimizerPlugin = require('terser-webpack-plugin');
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 
-const terser = require('terser')
+const webpackConfig = {
+	...common.webpackConfig,
+	mode: 'production',
+	devtool: config.IS_DEBUG ? 'source-map' : false,
 
-const htmlWebpackPluginConfig = {
-	minify: {
-    caseSensitive: false,
-    removeComments: true,
-    collapseWhitespace: true,
-    removeRedundantAttributes: true,
-    useShortDoctype: false,
-    minifyJS: true,
-    minifyCSS: true,
-    minifyURLs: true,
-    sortAttributes: true,
-    sortClassName: true,
+	optimization: {
+		minimizer: [
+			new JsMinimizerPlugin({ extractComments: false, terserOptions: { toplevel: true, compress: { passes: 10 } } }),
+			new CssMinimizerPlugin({ minimizerOptions: { preset: ['default', { discardComments: { removeAll: true } }] } }),
+		],
 	},
+
+	devServer: common.webpackConfig.devServer,
 };
 
-const htmlWebpackPlugins = [];
 for (const app of common.apps) {
-	htmlWebpackPlugins.push(
+	webpackConfig.plugins.push(
 		new HtmlWebpackPlugin({
+			...app.pluginsOptions.htmlWebpackPlugin,
 			chunks: [`${app.name}`],
 			filename: `${app.name}/index.html`,
-
-      template: app.htmlTemplatePath,
-			favicon: app.faviconPath,
-			...htmlWebpackPluginConfig,
+			minify: {
+				caseSensitive: false,
+				removeComments: true,
+				collapseWhitespace: true,
+				removeRedundantAttributes: true,
+				useShortDoctype: false,
+				minifyJS: true,
+				minifyCSS: true,
+				minifyURLs: true,
+				sortAttributes: true,
+				sortClassName: true,
+			},
 		}),
 	);
 }
 
-module.exports = {
-	mode: 'production',
-	// use of es5 is needed as the webpack runtime is not transpiled by babel
-	target: common.webpack.target,
-	devtool: config.IS_DEBUG ? 'source-map' : false,
-
-	context: common.webpack.context,
-	entry: common.webpack.entry,
-	output: common.webpack.output,
-	resolve: common.webpack.resolve,
-	cache: common.webpack.cache,
-
-	module: { rules: common.webpack.module.rules },
-
-	plugins: [...common.webpack.plugins, ...htmlWebpackPlugins],
-
-	optimization: {
-		minimizer: [new JsMinimizerPlugin({ extractComments: false, terserOptions: { toplevel: true, compress: { passes: 10 } } }), new CssMinimizerPlugin()],
-	},
-
-	devServer: config.IS_DEBUG ? common.webpack.devServer : undefined,
-};
+module.exports = webpackConfig;

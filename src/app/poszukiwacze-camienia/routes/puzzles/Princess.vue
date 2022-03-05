@@ -5,32 +5,31 @@
 </template>
 
 <script lang="ts">
-	import { defineComponent } from 'vue';
+import { labyrinthDescriptor } from '@rock/assets/princess';
+import Labyrinth from '@rock/components/labyrinth/Labyrinth.vue';
+import { useProgressStore } from '@rock/store/progress';
+import { defineComponent } from 'vue';
 
-	import Video from '@/components/YoutubeVideo.vue';
+import Video from '@/components/YoutubeVideo.vue';
 
-	import { labyrinthDescriptor } from '@rock/assets/princess';
-	import Labyrinth from '@rock/components/labyrinth/Labyrinth.vue';
-	import { useProgressStore } from '@rock/store/progress';
+export default defineComponent({
+	name: 'Princess',
+	components: {
+		Video,
+		Labyrinth,
+	},
+	setup() {
+		const store = useProgressStore();
+		const handleFinish = (): void => {
+			store.finishPuzzle('Princess');
+		};
 
-	export default defineComponent({
-		name: 'Princess',
-		components: {
-			Video,
-			Labyrinth,
-		},
-		setup() {
-			const store = useProgressStore();
-			const handleFinish = (): void => {
-				store.finishPuzzle('Princess');
-			};
-
-			return { labyrinthDescriptor, handleFinish };
-		},
-	});
+		return { labyrinthDescriptor, handleFinish };
+	},
+});
 </script>
 <style lang="scss" scoped>
-	.questionHelper {
-		text-align: center;
-	}
+.questionHelper {
+	text-align: center;
+}
 </style>

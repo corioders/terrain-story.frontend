@@ -8,22 +8,21 @@
 </template>
 
 <script lang="ts">
-	import { defineComponent } from 'vue';
+import { useProgressStore, PuzzleID } from '@help/store/progress';
+import { defineComponent } from 'vue';
 
-	import ProgressBar from '@/components/progress/ProgressBar.vue';
-	import handleProgress, { HandleProgressReturn } from '@/components/progress/handleProgress';
+import ProgressBar from '@/components/progress/ProgressBar.vue';
+import handleProgress, { HandleProgressReturn } from '@/components/progress/handleProgress';
+import Done from '@/views/Done.vue';
 
-	import Done from '@/views/Done.vue';
-	import { useProgressStore, PuzzleID } from '@help/store/progress';
-
-	export default defineComponent({
-		components: {
-			Done,
-			ProgressBar,
-		},
-		setup() {
-			const progress: () => HandleProgressReturn = () => handleProgress<PuzzleID>(useProgressStore().puzzles);
-			return { progress };
-		},
-	});
+export default defineComponent({
+	components: {
+		Done,
+		ProgressBar,
+	},
+	setup() {
+		const progress: () => HandleProgressReturn = () => handleProgress<PuzzleID>(useProgressStore().puzzles);
+		return { progress };
+	},
+});
 </script>

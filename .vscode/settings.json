@@ -1,21 +1,18 @@
 {
-  "files.exclude": {
-    "out/**/*.map": true,
-  },
-  "path-intellisense.mappings": {
-    "@": "${workspaceRoot}/src",
-    "@index": "${workspaceRoot}/src/app/index",
-    "@rock": "${workspaceRoot}/src/app/poszukiwacze-camienia",
-  },
-  "eslint.workingDirectories": [
-    {
-      "directory": "${workspaceRoot}",
-      "changeProcessCWD": true
-    }
-  ],
-  "prettier.configPath": ".prettierrc",
-  "commitlint.config.file": "tools/config/commitlint.config.js",
-  "cSpell.words": [
+	"files.exclude": {
+		"out/**/*.map": true,
+	},
+	"eslint.workingDirectories": [
+		{
+			"directory": "${workspaceRoot}",
+			"changeProcessCWD": true
+		}
+	],
+	"prettier.configPath": ".prettierrc",
+	"[typescript]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+	"cSpell.words": [
     "Assemblyscript",
     "MINVER",
     "Proto",

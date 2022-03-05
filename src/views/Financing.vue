@@ -7,17 +7,17 @@ Projekt dofinansowany ze środków Unii Europejskiej w ramach Regionalnego Progr
 </template>
 
 <script lang="ts">
-	import { defineComponent } from 'vue';
+import { defineComponent } from 'vue';
 
-	export default defineComponent({
-		name: 'Financing',
-	});
+export default defineComponent({
+	name: 'Financing',
+});
 </script>
 <style lang="scss" scoped>
-	img,
-	div {
-		width: 95vw;
-		max-height: 95vh;
-		object-fit: contain;
-	}
+img,
+div {
+	width: 95vw;
+	max-height: 95vh;
+	object-fit: contain;
+}
 </style>
