@@ -8,28 +8,28 @@
 </template>
 
 <script lang="ts">
-	import { defineComponent } from 'vue';
+import { VFlex, VSpinner } from '@corioders/vueui';
+import { defineComponent } from 'vue';
 
-	import { VFlex, VSpinner } from '@corioders/vueui';
-
-	export default defineComponent({
-		name: 'FloorMapLoader',
-		components: {
-			VFlex,
-			VSpinner,
-		},
-	});
+export default defineComponent({
+	name: 'FloorMapLoader',
+	components: {
+		VFlex,
+		VSpinner,
+	},
+});
 </script>
 <style lang="scss" scoped>
-	:deep(h2) {
-		font-weight: 500;
-		text-align: center;
-		max-width: 90%;
-		font-size: 1.5rem;
-	}
-	.VFlex {
-		min-height: 60vh;
-		width: 100%;
-		max-width: 950px;
-	}
+:deep(h2) {
+	font-weight: 500;
+	text-align: center;
+	max-width: 90%;
+	font-size: 1.5rem;
+}
+
+.VFlex {
+	min-height: 60vh;
+	width: 100%;
+	max-width: 950px;
+}
 </style>

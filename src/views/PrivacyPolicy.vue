@@ -138,32 +138,33 @@
 </template>
 
 <script lang="ts">
-	import { defineComponent, PropType } from 'vue';
+import { VFlex } from '@corioders/vueui';
+import { defineComponent, PropType } from 'vue';
 
-	import { InfoLink } from '@/theme/Link';
-	import { VFlex } from '@corioders/vueui';
+import { InfoLink } from '@/theme/Link';
 
-	export default defineComponent({
-		name: 'PrivacyPolicy',
-		components: {
-			InfoLink,
-			VFlex,
+export default defineComponent({
+	name: 'PrivacyPolicy',
+	components: {
+		InfoLink,
+		VFlex,
+	},
+	props: {
+		href: {
+			required: true,
+			type: String as PropType<string>,
 		},
-		props: {
-			href: {
-				required: true,
-				type: String as PropType<string>,
-			},
-		},
-	});
+	},
+});
 </script>
 <style lang="scss" scoped>
-	article {
-		.heading {
-			font-size: 2em;
-		}
-		width: 95%;
-		max-width: 950px;
-		padding: 12px;
+article {
+	.heading {
+		font-size: 2em;
 	}
+
+	width: 95%;
+	max-width: 950px;
+	padding: 12px;
+}
 </style>

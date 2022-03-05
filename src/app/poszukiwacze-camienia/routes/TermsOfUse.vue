@@ -147,29 +147,29 @@
 </template>
 
 <script lang="ts">
-	import { defineComponent } from 'vue';
+import { VFlex } from '@corioders/vueui';
+import { defineComponent } from 'vue';
 
-	import { InfoLink } from '@/theme/Link';
-	import { VFlex } from '@corioders/vueui';
+import { InfoLink } from '@/theme/Link';
 
-	export default defineComponent({
-		name: 'TermsOfUse',
-		components: {
-			InfoLink,
-			VFlex,
-		},
-	});
+export default defineComponent({
+	name: 'TermsOfUse',
+	components: {
+		InfoLink,
+		VFlex,
+	},
+});
 </script>
 <style lang="scss" scoped>
-	article {
-		.heading {
-			font-size: 2em;
-		}
-		width: 95%;
-		max-width: 950px;
-		padding: 12px;
-		.strong {
-			font-weight: 700;
-		}
+article {
+	.heading {
+		font-size: 2em;
 	}
+	width: 95%;
+	max-width: 950px;
+	padding: 12px;
+	.strong {
+		font-weight: 700;
+	}
+}
 </style>

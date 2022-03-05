@@ -3,20 +3,20 @@
 </template>
 
 <script lang="ts">
-	import { defineComponent } from 'vue';
+import { defineComponent } from 'vue';
 
-	import { DefaultButton } from '@/theme/Button';
+import { DefaultButton } from '@/theme/Button';
 
-	export default defineComponent({
-		name: 'SkipNav',
-		components: {
-			DefaultButton,
+export default defineComponent({
+	name: 'SkipNav',
+	components: {
+		DefaultButton,
+	},
+	props: {
+		nextRoute: {
+			type: Function,
+			required: true,
 		},
-		props: {
-			nextRoute: {
-				type: Function,
-				required: true,
-			},
-		},
-	});
+	},
+});
 </script>

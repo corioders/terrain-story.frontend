@@ -1,8 +1,12 @@
+// TODO: remove this when QR-481 is done
+$primary: #2a9d8f;
+
 @mixin Link($color: #5c5c5c, $hoverColor: $primary) {
 	color: $color;
 	font-size: 1rem;
 	cursor: pointer;
 	text-decoration: underline;
+
 	&:hover {
 		color: $hoverColor;
 	}

@@ -3,34 +3,35 @@
 </template>
 
 <script lang="ts">
-	import { defineComponent, PropType } from 'vue';
+import { defineComponent, PropType } from 'vue';
 
-	export default defineComponent({
-		name: 'PlainButton',
-		props: {
-			disabled: {
-				type: Boolean as PropType<boolean>,
-				default: false,
-			},
+export default defineComponent({
+	name: 'PlainButton',
+	props: {
+		disabled: {
+			type: Boolean as PropType<boolean>,
+			default: false,
 		},
-		emits: ['use-disabled-click'],
-		methods: {
-			handleClick(event: MouseEvent) {
-				if (this.disabled) return;
-				this.$emit('use-disabled-click', event);
-			},
+	},
+	emits: ['use-disabled-click'],
+	methods: {
+		handleClick(event: MouseEvent) {
+			if (this.disabled) return;
+			this.$emit('use-disabled-click', event);
 		},
-	});
+	},
+});
 </script>
 <style lang="scss" scoped>
-	button {
-		margin: 0;
-		padding: 0;
-		border: none;
-		background-color: transparent;
-		cursor: pointer;
-		&.disabled {
-			cursor: not-allowed;
-		}
+button {
+	margin: 0;
+	padding: 0;
+	border: none;
+	background-color: transparent;
+	cursor: pointer;
+
+	&.disabled {
+		cursor: not-allowed;
 	}
+}
 </style>
