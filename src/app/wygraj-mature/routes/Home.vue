@@ -26,8 +26,11 @@
 		</section>
 		<section class="light">
 			<VFlex>
+				<h6>Honorowe Patronaty</h6>
+				<img src="@/assets/patronage/silesia.webp" alt="Marszałek Województwa Śląskiego" class="logoVertical" />
+				<img src="@/assets/patronage/katowice.webp" alt="Prezydent Miasta Katowice" class="logoVertical" />
 				<h6>Patroni medialni</h6>
-				<img class="logo" src="@/assets/patrons/portalKatowice.webp" alt="Portal Katowice" />
+				<img class="logo logoLink" src="@/assets/patrons/portalKatowice.webp" alt="Portal Katowice" @click="redirect" />
 			</VFlex>
 		</section>
 		<section class="dark">
@@ -64,11 +67,13 @@
 <style lang="scss" scoped>
 	.VFlex {
 		width: 100%;
+
 		.gameLogo {
 			width: 100%;
 			max-width: 1500px;
 			margin-bottom: 64px;
 		}
+
 		section {
 			width: 100%;
 			padding: 64px 8px;
@@ -82,6 +87,7 @@
 				font-size: 2em;
 				margin-bottom: 0;
 			}
+
 			p {
 				font-size: 18px;
 				max-width: 950px;
@@ -93,11 +99,22 @@
 				object-fit: contain;
 				margin: 18px 0;
 			}
+
+			.logoVertical {
+				@extend .logo;
+				width: 100vw;
+				max-height: 200px;
+				@media (min-width: 500px) {
+					width: 500px;
+				}
+			}
+
 			.video {
 				margin-top: 24px;
 			}
 		}
 	}
+
 	.dark {
 		background-color: #fedd76;
 	}
