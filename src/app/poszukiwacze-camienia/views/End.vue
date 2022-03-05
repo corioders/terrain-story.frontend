@@ -35,6 +35,7 @@ export default defineComponent({
 p {
 	padding: 0 12px;
 	font-size: 1.2em;
+
 	span {
 		color: colors.$secondary;
 	}

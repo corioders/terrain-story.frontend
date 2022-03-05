@@ -47,9 +47,11 @@ export default defineComponent({
 	white-space: nowrap;
 	overflow-y: auto;
 	text-align: center;
+
 	p {
 		margin-left: 12px;
 	}
+
 	.letter {
 		display: inline-block;
 		width: 22px;

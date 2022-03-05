@@ -38,6 +38,7 @@ export default defineComponent({
 p {
 	font-size: 0.8rem;
 }
+
 img {
 	margin: 64px 0;
 	min-width: 200px;
