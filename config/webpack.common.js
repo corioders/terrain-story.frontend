@@ -73,7 +73,6 @@ loaderOptions.postcss = {
 	},
 };
 loaderOptions.sass = {
-	sassOptions: { includePaths: [paths.src], importer: require('node-sass-glob-importer')() },
 	webpackImporter: true,
 };
 loaderOptions.vue = {
