@@ -1,4 +1,4 @@
-import { getFirestore, collection } from 'firebase/firestore';
+import { getFirestore, collection, query, orderBy } from 'firebase/firestore';
 import { doc, getDocs, getDoc } from 'firebase/firestore';
 import { DocumentData, DocumentReference } from 'firebase/firestore';
 
@@ -27,7 +27,7 @@ async function getFloors<PuzzleID extends string>(locationID: string, gameName: 
 		return [];
 	}
 
-	const floorsSnapshot = await getDocs(collection(gameSnapshot.ref, 'floors'));
+	const floorsSnapshot = await getDocs(query(collection(gameSnapshot.ref, 'floors'), orderBy('index')));
 	const floors: FloorDescriptor<PuzzleID>[] = await Promise.all(
 		floorsSnapshot.docs.map(async (floorDoc) => {
 			return floorDoc.data() as FloorDescriptor<PuzzleID>;
