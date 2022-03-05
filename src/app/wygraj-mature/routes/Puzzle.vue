@@ -13,30 +13,33 @@
 		@correct="handleAnswer(true)"
 		@incorrect="handleAnswer(false)"
 	/>
+	<CheckButton :isCorrect="isCorrect" @click="handleCheck" />
 </template>
 
 <script lang="ts">
 	import { defineComponent, ref, watch, PropType } from 'vue';
 
+	import CheckButton from '@/components/buttons/CheckButton.vue';
 	import SingleChoiceQuestions from '@/components/closedQuestion/SingleChoiceQuestions.vue';
 	import { questionExecutor } from '@/components/closedQuestion/question';
 
 	import { VSpinner, VFlex } from '@corioders/vueui';
 	import { QuestionsDescriptor } from '@recap/components/questions/QuestionsDescriptor';
-	import { useProgressStore, PuzzleID, PuzzleIDNumber } from '@recap/store/progress';
+	import { useProgressStore, PuzzleID } from '@recap/store/progress';
 	import { useQuestionsStore } from '@recap/store/questions';
 
 	export default defineComponent({
 		name: 'Puzzle',
 		components: {
 			SingleChoiceQuestions,
+			CheckButton,
 			VSpinner,
 			VFlex,
 		},
 		props: {
 			puzzleID: {
 				required: true,
-				type: Number as PropType<PuzzleIDNumber>,
+				type: String as PropType<PuzzleID>,
 			},
 		},
 		setup(props) {
@@ -68,7 +71,7 @@
 			return {
 				questionsDescriptor,
 				loading,
-				...questionExecutor(() => progressStore.finishPuzzle(`${props.puzzleID}` as PuzzleID)),
+				...questionExecutor(() => progressStore.finishPuzzle(props.puzzleID), true),
 			};
 		},
 	});

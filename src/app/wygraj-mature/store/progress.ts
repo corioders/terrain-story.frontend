@@ -7,7 +7,6 @@ import router from '@recap/router';
 import { useQuestionsStore } from './questions';
 
 export type PuzzleID = '1' | '2' | '3' | '4' | '5' | '6';
-export type PuzzleIDNumber = 1 | 2 | 3 | 4 | 5 | 6;
 export const puzzleIDs: PuzzleID[] = ['1', '2', '3', '4', '5', '6'];
 export const isPuzzleID = isPuzzleIDFactory(puzzleIDs);
 
@@ -15,12 +14,12 @@ export const useProgressStore = defineProgressStore({
 	id: 'recap.progress',
 	state: () => {
 		const puzzlesDone: Puzzles<PuzzleID> = {
-			1: false,
-			2: false,
-			3: false,
-			4: false,
-			5: false,
-			6: false,
+			'1': false,
+			'2': false,
+			'3': false,
+			'4': false,
+			'5': false,
+			'6': false,
 		};
 
 		return {

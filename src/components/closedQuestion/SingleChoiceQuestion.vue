@@ -115,17 +115,13 @@
 	}
 	.displayFeedback {
 		.correct {
-			span {
-				color: $primary;
-			}
+			color: $primary;
 			img {
 				border: 5px $primary solid;
 			}
 		}
 		.incorrect {
-			span {
-				color: $errorDarker;
-			}
+			color: $errorDarker;
 			img {
 				border: 5px $errorDarker solid;
 			}
