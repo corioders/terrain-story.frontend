@@ -110,9 +110,7 @@ export default defineComponent({
 	}
 
 	.incorrect {
-		span {
-			color: colors.$errorDarker;
-		}
+		color: colors.$errorDarker;
 
 		img {
 			border: 5px colors.$errorDarker solid;
