@@ -8,13 +8,13 @@
 		<section class="dark">
 			<VFlex>
 				<h3>Jak grać?</h3>
-				<Video class="video" videoId="CkPtuFFHjII" />
+				<Video class="video" videoId="osnMvAcWdZc" />
 			</VFlex>
 		</section>
 		<section class="light">
 			<VFlex>
 				<h3>Chcesz wiedzieć więcej?</h3>
-				<Video class="video" videoId="VeFpHN3-K2g" />
+				<Video class="video" videoId="pG1O9rnZ7n4" />
 			</VFlex>
 		</section>
 		<section class="dark">
@@ -118,7 +118,7 @@ export default defineComponent({
 }
 
 .dark {
-	background-color: #fedd76;
+	background-color: #ffe459;
 }
 </style>
 <style lang="scss">
