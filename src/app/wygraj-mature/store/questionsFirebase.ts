@@ -15,8 +15,15 @@ export async function getQuestionsDescriptor(usedQuestionsIDs: Record<string, st
 	return Promise.all([
 		getQuestionDescriptor<'Polski'>('Polski', getSubjectCollection('polish'), usedQuestionsIDs),
 		getQuestionDescriptor<'Matematyka'>('Matematyka', getSubjectCollection('math'), usedQuestionsIDs),
-		await getQuestionDescriptor<'Angielski'>('Angielski', getSubjectCollection('english'), usedQuestionsIDs),
+		getQuestionDescriptor<'Angielski'>('Angielski', getSubjectCollection('english'), usedQuestionsIDs),
 	]);
+}
+interface FirebaseQuestionDescriptor {
+	question: string;
+	options: string[];
+	answerIndex: number;
+
+	isHtml: boolean;
 }
 
 async function getQuestionDescriptor<T extends string>(
@@ -62,14 +69,13 @@ async function getQuestionDescriptor<T extends string>(
 	if (doc === null) throw new Error('questionsFirebase: I cannot fetch question, dont know why');
 	subjectUsedQuestionsIDs.push(doc.id);
 
-	// TODO: Convert doc.data() to QuestionDescriptor and return it 🥳
-
+	const descriptor = doc.data() as FirebaseQuestionDescriptor;
 	return {
 		subject,
-		question: '<p>Lorem ipsum dolor sit amet</p>',
-		options: ['<p>magna</p>', '<p>tortor</p>', '<p>commodo</p>'],
-		answer: '<p>commodo</p>',
-		isHtml: true,
+		question: descriptor.question,
+		options: descriptor.options,
+		answer: descriptor.options[descriptor.answerIndex],
+		isHtml: descriptor.isHtml,
 	};
 }
 
