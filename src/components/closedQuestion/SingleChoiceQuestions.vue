@@ -9,6 +9,7 @@
 			:name="name + i"
 			:displayFeedback="displayFeedback"
 			:disableMixing="disableMixing"
+			:isHtml="isHtml[i] ?? false"
 			@correct="isCorrect[i] = true"
 			@incorrect="isCorrect[i] = false"
 		>
@@ -30,6 +31,7 @@ export default defineComponent({
 		SingleChoiceQuestion,
 		VFlex,
 	},
+
 	props: {
 		name: {
 			type: String,
@@ -47,7 +49,12 @@ export default defineComponent({
 			type: Boolean,
 			default: false,
 		},
+		isHtml: {
+			type: Array as PropType<boolean[]>,
+			default: () => [],
+		},
 	},
+
 	emits: ['correct', 'incorrect'],
 	setup(props, { emit }) {
 		const isCorrect = ref<Array<boolean>>([]);

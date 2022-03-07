@@ -1,7 +1,8 @@
 <template>
 	<div ref="container" class="container" :class="{ displayFeedback }">
 		<VFlex align="flex-start" gap="12px">
-			<p v-if="question !== ''">{{ question }}</p>
+			<p v-if="question !== '' && !isHtml">{{ question }}</p>
+			<div v-else-if="question !== ''" v-html="question" />
 			<div class="slot">
 				<slot></slot>
 			</div>
@@ -13,7 +14,8 @@
 					:value="option"
 					@input="handleClick($event.target.parentElement, $event.target.value)"
 				>
-					<span v-if="!arePhotos">{{ option }}</span>
+					<span v-if="!arePhotos && !isHtml">{{ option }}</span>
+					<div v-else-if="!arePhotos" v-html="option" />
 					<img v-else :src="option" :alt="i" />
 				</VRadio>
 			</VFlex>
@@ -37,6 +39,7 @@ export default defineComponent({
 		VFlex,
 		VRadio,
 	},
+
 	props: {
 		name: {
 			type: String,
@@ -62,6 +65,10 @@ export default defineComponent({
 			type: Boolean,
 			default: false,
 			required: true,
+		},
+		isHtml: {
+			type: Boolean,
+			default: false,
 		},
 	},
 	emits: ['correct', 'incorrect'],
@@ -102,34 +109,35 @@ export default defineComponent({
 		visibility: v-bind('hideInput(arePhotos)');
 	}
 
-	img {
-		width: 200px;
-	}
-
-	p {
-		max-width: 100%;
-		white-space: normal;
-	}
-}
-
-.displayFeedback {
-	.correct {
-		span {
-			color: colors.$primary;
-		}
-
-		img {
-			border: 5px colors.$primary solid;
-		}
-	}
-
 	.incorrect {
-		span {
-			color: colors.$errorDarker;
-		}
+		color: colors.$errorDarker;
 
 		img {
 			border: 5px colors.$errorDarker solid;
+		}
+	}
+
+	.displayFeedback {
+		.correct {
+			color: colors.$primary;
+
+			img {
+				border: 5px colors.$primary solid;
+			}
+		}
+
+		.incorrect {
+			color: colors.$errorDarker;
+
+			img {
+				border: 5px colors.$errorDarker solid;
+			}
+		}
+	}
+
+	:deep(label) {
+		* {
+			margin: 0;
 		}
 	}
 }

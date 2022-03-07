@@ -60,6 +60,7 @@ common.vue = {
 		'vue/singleline-html-element-content-newline': 'off',
 		'vue/no-parsing-error': [2, { 'invalid-first-character-of-tag-name': false }],
 		'vue/multi-word-component-names': 'off',
+		'vue/no-v-html': 'off',
 	},
 };
 

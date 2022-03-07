@@ -35,6 +35,9 @@
 			"@help/*": [
 				"src/app/pomoz-abelardowi/*"
 			],
+			"@recap/*": [
+				"src/app/wygraj-mature/*"
+				],
 			"@scssGlobals/*": [
 				"src/scss/global/*"
 			],
