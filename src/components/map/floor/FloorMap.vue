@@ -12,75 +12,82 @@
 </template>
 
 <script lang="ts">
-	import { defineComponent, PropType, ref } from 'vue';
+import { VFlex } from '@corioders/vueui';
+import { defineComponent, PropType, ref } from 'vue';
 
-	import { VFlex } from '@corioders/vueui';
+import { FloorMapDescriptor, getFloorMapDescriptor } from './floorMap';
 
-	import { FloorMapDescriptor, getFloorMapDescriptor } from './floorMap';
+import MapLoader from '../MapLoader.vue';
 
-	import MapLoader from '../MapLoader.vue';
-
-	export default defineComponent({
-		name: 'FloorMap',
-		components: {
-			VFlex,
-			MapLoader,
+export default defineComponent({
+	name: 'FloorMap',
+	components: {
+		VFlex,
+		MapLoader,
+	},
+	props: {
+		puzzlesDone: {
+			type: Object as PropType<Record<string, boolean>>,
+			required: true,
 		},
-		props: {
-			puzzlesDone: {
-				type: Object as PropType<Record<string, boolean>>,
-				required: true,
-			},
-			locationID: {
-				type: String,
-				required: true,
-			},
-			gameName: {
-				type: String,
-				required: true,
-			},
+		locationID: {
+			type: String,
+			required: true,
 		},
-		// async setup is currently unstable :<, https://v3.vuejs.org/guide/migration/suspense.html
-		setup(props) {
-			const floorMapDescriptor = ref<FloorMapDescriptor<string> | null>(null);
-
-			const loadMap = async (): Promise<void> => {
-				floorMapDescriptor.value = await getFloorMapDescriptor(props.locationID, props.gameName);
-			};
-			loadMap();
-
-			return { floorMapDescriptor };
+		gameName: {
+			type: String,
+			required: true,
 		},
-	});
+	},
+	// async setup is currently unstable :<, https://v3.vuejs.org/guide/migration/suspense.html
+	setup(props) {
+		const floorMapDescriptor = ref<FloorMapDescriptor<string> | null>(null);
+
+		const loadMap = async (): Promise<void> => {
+			floorMapDescriptor.value = await getFloorMapDescriptor(props.locationID, props.gameName);
+		};
+		loadMap();
+
+		return { floorMapDescriptor };
+	},
+});
 </script>
 <style lang="scss" scoped>
-	$offset: 4px;
-	.container {
-		margin: 50px 0;
-		min-width: 300px;
-		max-width: 100%;
-		.floor {
-			width: 100%;
-			.puzzle {
-				width: 25px;
-				height: 25px;
-				background-color: $disabled;
-				border-radius: 50%;
-				margin-bottom: $offset;
-				&.done {
-					background-color: $primary;
-				}
-			}
-			&.--line {
-				width: 100%;
-				height: $offset;
-				border-radius: 5px;
-				background-color: $infoDarker;
-			}
-			&.--label {
-				margin: 0 0 0 $offset;
-				font-size: 0.8em;
+@use '@scssGlobals/colors';
+
+$offset: 4px;
+
+.container {
+	margin: 50px 0;
+	min-width: 300px;
+	max-width: 100%;
+
+	.floor {
+		width: 100%;
+
+		.puzzle {
+			width: 25px;
+			height: 25px;
+			background-color: colors.$disabled;
+			border-radius: 50%;
+			margin-bottom: $offset;
+
+			&.done {
+				background-color: colors.$primary;
 			}
 		}
+
+		&.--line {
+			width: 100%;
+			height: $offset;
+			border-radius: 5px;
+			background-color: colors.$infoDarker;
+		}
+
+		&.--label {
+			margin: 0 0 0 $offset;
+			font-size: 0.8em;
+		}
 	}
+}
 </style>

@@ -25,31 +25,31 @@
 </template>
 
 <script lang="ts">
-	import { defineComponent, ref, onMounted } from 'vue';
+import { useProgressStore } from '@help/store/progress';
+import { defineComponent, ref, onMounted } from 'vue';
 
-	import { PrimaryButton } from '@/theme/Button';
-	import { useProgressStore } from '@help/store/progress';
+import { PrimaryButton } from '@/theme/Button';
 
-	export default defineComponent({
-		name: 'Jacobson',
-		components: {
-			PrimaryButton,
-		},
-		setup() {
-			const showButton = ref(false);
-			onMounted(() => {
-				setTimeout(() => {
-					showButton.value = true;
-				}, 3000);
-			});
-			return { finish: useProgressStore().finishPuzzle, showButton };
-		},
-	});
+export default defineComponent({
+	name: 'Jacobson',
+	components: {
+		PrimaryButton,
+	},
+	setup() {
+		const showButton = ref(false);
+		onMounted(() => {
+			setTimeout(() => {
+				showButton.value = true;
+			}, 3000);
+		});
+		return { finish: useProgressStore().finishPuzzle, showButton };
+	},
+});
 </script>
 <style lang="scss" scoped>
-	ol {
-		li {
-			padding: 5px 0;
-		}
+ol {
+	li {
+		padding: 5px 0;
 	}
+}
 </style>

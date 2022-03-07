@@ -17,22 +17,22 @@
 </template>
 
 <script lang="ts">
-	import { defineComponent } from 'vue';
+import { VFlex } from '@corioders/vueui';
+import { defineComponent } from 'vue';
 
-	import { InfoButton } from '@/theme/Button';
-	import { VFlex } from '@corioders/vueui';
+import { InfoButton } from '@/theme/Button';
 
-	export default defineComponent({
-		name: 'HowToPlay',
-		components: {
-			VFlex,
-			InfoButton,
-		},
-	});
+export default defineComponent({
+	name: 'HowToPlay',
+	components: {
+		VFlex,
+		InfoButton,
+	},
+});
 </script>
 <style lang="scss" scoped>
-	section {
-		width: 95%;
-		max-width: 950px;
-	}
+section {
+	width: 95%;
+	max-width: 950px;
+}
 </style>

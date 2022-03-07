@@ -13,24 +13,23 @@
 </template>
 
 <script lang="ts">
-	import { defineComponent } from 'vue';
+import { questionTag as question } from '@eng/assets/questions';
+import { useProgressStore } from '@eng/store/progress';
+import { defineComponent } from 'vue';
 
-	import CheckButton from '@/components/buttons/CheckButton.vue';
-	import SingleChoiceQuestion from '@/components/closedQuestion/SingleChoiceQuestion.vue';
-	import { questionExecutor } from '@/components/closedQuestion/question';
+import CheckButton from '@/components/buttons/CheckButton.vue';
+import SingleChoiceQuestion from '@/components/closedQuestion/SingleChoiceQuestion.vue';
+import { questionExecutor } from '@/components/closedQuestion/question';
 
-	import { questionTag as question } from '@eng/assets/questions';
-	import { useProgressStore } from '@eng/store/progress';
-
-	export default defineComponent({
-		name: 'QuestionTag',
-		components: {
-			SingleChoiceQuestion,
-			CheckButton,
-		},
-		setup() {
-			const store = useProgressStore();
-			return { question, ...questionExecutor(() => store.finishPuzzle('QuestionTag')) };
-		},
-	});
+export default defineComponent({
+	name: 'QuestionTag',
+	components: {
+		SingleChoiceQuestion,
+		CheckButton,
+	},
+	setup() {
+		const store = useProgressStore();
+		return { question, ...questionExecutor(() => store.finishPuzzle('QuestionTag')) };
+	},
+});
 </script>

@@ -4,18 +4,16 @@
 </template>
 
 <script lang="ts">
-	import { defineComponent } from 'vue';
+import { defineComponent } from 'vue';
 
-	import Video from '@/components/YoutubeVideo.vue';
+import Video from '@/components/YoutubeVideo.vue';
+import { PrimaryButton } from '@/theme/Button';
 
-	import { PrimaryButton } from '@/theme/Button';
-
-	export default defineComponent({
-		name: 'HowToPlay',
-		components: {
-			Video,
-			PrimaryButton,
-		},
-	});
+export default defineComponent({
+	name: 'HowToPlay',
+	components: {
+		Video,
+		PrimaryButton,
+	},
+});
 </script>
-<style lang="scss" scoped></style>

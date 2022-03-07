@@ -50,85 +50,94 @@
 </template>
 
 <script lang="ts">
-	import { defineComponent } from 'vue';
+import { VFlex } from '@corioders/vueui';
+import { routes } from '@help/router';
+import { useWindowSize } from '@vueuse/core';
+import { defineComponent } from 'vue';
 
-	import Video from '@/components/YoutubeVideo.vue';
-	import DevNav from '@/components/devHelpers/DevNav.vue';
+import Video from '@/components/YoutubeVideo.vue';
+import DevNav from '@/components/devHelpers/DevNav.vue';
 
-	import { VFlex } from '@corioders/vueui';
-	import { routes } from '@help/router';
-	import { useWindowSize } from '@vueuse/core';
-
-	export default defineComponent({
-		name: 'Home',
-		components: {
-			DevNav,
-			VFlex,
-			Video,
-		},
-		setup() {
-			function redirect(): void {
-				location.href = 'http://www.portal.katowice.pl';
-			}
-			return { routes, IS_PRODUCTION: __IS_PRODUCTION__, window: useWindowSize(), redirect };
-		},
-	});
+export default defineComponent({
+	name: 'Home',
+	components: {
+		DevNav,
+		VFlex,
+		Video,
+	},
+	setup() {
+		function redirect(): void {
+			location.href = 'http://www.portal.katowice.pl';
+		}
+		return { routes, IS_PRODUCTION: __IS_PRODUCTION__, window: useWindowSize(), redirect };
+	},
+});
 </script>
 <style lang="scss" scoped>
-	.VFlex {
+.VFlex {
+	width: 100%;
+
+	.gameLogo {
 		width: 100%;
-		.gameLogo {
-			width: 100%;
-			max-width: 1500px;
-			margin-bottom: 64px;
-		}
-		section {
-			width: 100%;
-			padding: 64px 8px;
-			text-align: center;
+		max-width: 1500px;
+		margin-bottom: 64px;
+	}
 
-			h3,
-			h4,
-			h5,
-			h6 {
-				font-weight: 600;
-				font-size: 2em;
-				margin-bottom: 0;
-			}
-			p {
-				font-size: 18px;
-				max-width: 950px;
-			}
+	section {
+		width: 100%;
+		padding: 64px 8px;
+		text-align: center;
 
-			.logo {
-				width: 200px;
-				max-height: 150px;
-				object-fit: contain;
-				margin: 18px 0;
-			}
-			.logoVertical {
-				@extend .logo;
-				width: 100vw;
-				max-height: 200px;
-				@media (min-width: 500px) {
-					width: 500px;
-				}
-			}
-			.video {
-				margin-top: 24px;
+		h3,
+		h4,
+		h5,
+		h6 {
+			font-weight: 600;
+			font-size: 2em;
+			margin-bottom: 0;
+		}
+
+		p {
+			font-size: 18px;
+			max-width: 950px;
+		}
+
+		.logo,
+		%logo {
+			width: 200px;
+			max-height: 150px;
+			object-fit: contain;
+			margin: 18px 0;
+		}
+
+		.logoVertical {
+			@extend %logo;
+
+			width: 100vw;
+			max-height: 200px;
+
+			@media (min-width: 500px) {
+				width: 500px;
 			}
 		}
+
+		.video {
+			margin-top: 24px;
+		}
 	}
-	.dark {
-		background-color: #406258;
-		color: #fff;
-	}
-	.logoLink {
-		cursor: pointer;
-	}
+}
+
+.dark {
+	background-color: #406258;
+	color: #fff;
+}
+
+.logoLink {
+	cursor: pointer;
+}
 </style>
 <style lang="scss">
-	body {
-		margin: 0;
-	}
+body {
+	margin: 0;
+}
 </style>

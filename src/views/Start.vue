@@ -18,49 +18,49 @@
 </template>
 
 <script lang="ts">
-	import { defineComponent, ref, PropType } from 'vue';
+import { VFlex } from '@corioders/vueui';
+import { defineComponent, ref, PropType } from 'vue';
 
-	import IncognitoWarning from '@/components/IncognitoWarning.vue';
-	import Video from '@/components/YoutubeVideo.vue';
-	import PlayButton from '@/components/buttons/PlayButton.vue';
+import IncognitoWarning from '@/components/IncognitoWarning.vue';
+import Video from '@/components/YoutubeVideo.vue';
+import PlayButton from '@/components/buttons/PlayButton.vue';
+import { InfoButton } from '@/theme/Button';
 
-	import { InfoButton } from '@/theme/Button';
-	import { VFlex } from '@corioders/vueui';
-
-	export default defineComponent({
-		name: 'Start',
-		components: {
-			IncognitoWarning,
-			Video,
-			PlayButton,
-			VFlex,
-			InfoButton,
+export default defineComponent({
+	name: 'Start',
+	components: {
+		IncognitoWarning,
+		Video,
+		PlayButton,
+		VFlex,
+		InfoButton,
+	},
+	props: {
+		start: {
+			type: Function as PropType<() => void>,
+			required: true,
 		},
-		props: {
-			start: {
-				type: Function as PropType<() => void>,
-				required: true,
-			},
-			videoId: {
-				type: String as PropType<string>,
-				required: true,
-			},
+		videoId: {
+			type: String as PropType<string>,
+			required: true,
 		},
-		setup() {
-			const videoEnded = ref<boolean>(false);
-			return { videoEnded };
-		},
-	});
+	},
+	setup() {
+		const videoEnded = ref<boolean>(false);
+		return { videoEnded };
+	},
+});
 </script>
 <style lang="scss" scoped>
-	.VFlex {
-		width: 100%;
-		max-width: 950px;
-	}
-	:deep(.info) {
-		font-size: 1.1em;
-		text-align: center;
-		width: 95%;
-		max-width: 950px;
-	}
+.VFlex {
+	width: 100%;
+	max-width: 950px;
+}
+
+:deep(.info) {
+	font-size: 1.1em;
+	text-align: center;
+	width: 95%;
+	max-width: 950px;
+}
 </style>
