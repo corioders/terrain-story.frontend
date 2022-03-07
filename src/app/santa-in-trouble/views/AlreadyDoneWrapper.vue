@@ -1,6 +1,9 @@
 <template>
 	<AlreadyDone :progressStore="progressStore">
 		<h2>You've already solved this mystery</h2>
+		<template #mapLink>
+			<div />
+		</template>
 		<template #showPopupButton>Start playing from the beginning</template>
 		<template #popup>
 			<p>Are you sure you want to start the game from the beginning? <br />This will delete all of the progress in the game.</p>

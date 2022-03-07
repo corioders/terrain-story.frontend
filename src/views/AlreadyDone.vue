@@ -7,6 +7,9 @@
 		<slot>
 			<h2>Już rozwiązałeś tę zagadkę</h2>
 		</slot>
+		<slot name="mapLink">
+			<PrimaryButton @click="$router.push('/mapa')">Przenieś do mapy</PrimaryButton>
+		</slot>
 		<ResetProgressButton :progressStore="progressStore">
 			<slot name="popup"></slot>
 			<template #confirmResetButton>
@@ -28,12 +31,14 @@ import { defineComponent, PropType } from 'vue';
 
 import ResetProgressButton from '@/components/buttons/ResetProgressButton.vue';
 import { ProgressStore } from '@/store/ProgressStore';
+import { PrimaryButton } from '@/theme/Button';
 
 export default defineComponent({
 	name: 'AlreadyDone',
 	components: {
 		VFlex,
 		ResetProgressButton,
+		PrimaryButton,
 	},
 	props: {
 		progressStore: {
