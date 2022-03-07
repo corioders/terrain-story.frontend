@@ -1,5 +1,9 @@
 <template>
-	<AlreadyDone :progressStore="progressStore" />
+	<AlreadyDone :progressStore="progressStore">
+		<template #mapLink>
+			<div />
+		</template>
+	</AlreadyDone>
 </template>
 
 <script lang="ts">
