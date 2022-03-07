@@ -9,7 +9,7 @@
 			:name="name + i"
 			:displayFeedback="displayFeedback"
 			:disableMixing="disableMixing"
-			:isHtml="isHtml[i]"
+			:isHtml="isHtml[i] ?? false"
 			@correct="isCorrect[i] = true"
 			@incorrect="isCorrect[i] = false"
 		>
@@ -51,11 +51,7 @@ export default defineComponent({
 		},
 		isHtml: {
 			type: Array as PropType<boolean[]>,
-			// default() {
-			// 	return [false, false, false];
-			// },
-			// default: [false, false, false],
-			default: () => [false, false, false],
+			default: () => [],
 		},
 	},
 

@@ -1,9 +1,8 @@
-export type Html = string;
 export interface QuestionDescriptor<Subject> {
 	subject: Subject;
-	question: Html;
-	options: Html[];
-	answer: Html;
+	question: string;
+	options: string[];
+	answer: string;
 	isHtml: boolean;
 }
 
