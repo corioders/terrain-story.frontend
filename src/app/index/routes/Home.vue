@@ -6,25 +6,25 @@
 </template>
 
 <script lang="ts">
-	import { defineComponent } from 'vue';
+import { VFlex } from '@corioders/vueui';
+import { defineComponent } from 'vue';
 
-	import { VFlex } from '@corioders/vueui';
-
-	export default defineComponent({
-		name: 'Home',
-		components: {
-			VFlex,
-		},
-	});
+export default defineComponent({
+	name: 'Home',
+	components: {
+		VFlex,
+	},
+});
 </script>
 <style lang="scss">
-	.container {
-		img {
-			width: 100%;
-			object-fit: cover;
-		}
-		width: 80%;
-		max-width: 800px;
-		margin: 0 auto;
+.container {
+	img {
+		width: 100%;
+		object-fit: cover;
 	}
+
+	width: 80%;
+	max-width: 800px;
+	margin: 0 auto;
+}
 </style>

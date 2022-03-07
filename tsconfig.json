@@ -1,22 +1,19 @@
 {
 	"compilerOptions": {
-		"sourceMap": true,
-
 		"incremental": true,
 
-		"moduleResolution": "node",
+		"module": "ESNext",
+		"target": "ESNext",
 		"types": [
 			"./node_modules/@types/webpack-env",
       "./node_modules/@types/youtube"
 		],
-		
-		"module": "esnext",
-		"target": "esnext",
 		"lib": [
 			"ESNext",
 			"DOM"
 		],
 
+		"moduleResolution": "node",
 		"baseUrl": ".",
 		"rootDir": "./src",
 		"paths": {
@@ -38,11 +35,21 @@
 			"@help/*": [
 				"src/app/pomoz-abelardowi/*"
 			],
+			"@recap/*": [
+				"src/app/wygraj-mature/*"
+				],
+			"@scssGlobals/*": [
+				"src/scss/global/*"
+			],
 		},
+
+		"outDir": "out",
+		"sourceMap": true,
+		"declaration": true,
 
 		"strict": true,
 		"allowJs": false,
-    "checkJs": false,
+		"checkJs": false,
 		"alwaysStrict": true,
 		"strictNullChecks": true,
 		"strictFunctionTypes": true,
@@ -54,9 +61,6 @@
 	},
 	"include": [
 		"./src/**/*.ts",
-		"./src/**/*.vue"
+		"./src/**/*.vue",
 	],
-	"exclude": [
-		"./src/**/*.test.ts"
-	]
 }

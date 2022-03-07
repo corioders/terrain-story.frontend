@@ -9,24 +9,24 @@
 </template>
 
 <script lang="ts">
-	import { defineComponent } from 'vue';
+import { VFlex, VDivider } from '@corioders/vueui';
+import { defineComponent } from 'vue';
 
-	import { VFlex, VDivider } from '@corioders/vueui';
-
-	export default defineComponent({
-		name: 'Footer',
-		components: {
-			VDivider,
-			VFlex,
-		},
-	});
+export default defineComponent({
+	name: 'Footer',
+	components: {
+		VDivider,
+		VFlex,
+	},
+});
 </script>
 <style lang="scss" scoped>
-	footer {
-		width: 100%;
-		margin-bottom: 32px;
-		:deep(.n-button) {
-			color: #5a5a5a;
-		}
+footer {
+	width: 100%;
+	margin-bottom: 32px;
+
+	:deep(.n-button) {
+		color: #5a5a5a;
 	}
+}
 </style>

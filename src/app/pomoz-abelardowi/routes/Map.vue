@@ -9,41 +9,39 @@
 </template>
 
 <script lang="ts">
-	import { defineComponent } from 'vue';
-	import { useRouter } from 'vue-router';
+import LeafletMapWrapper from '@help/components/map/LeafletMapWrapper.vue';
+import { useMainStore } from '@help/store/main';
+import { useProgressStore } from '@help/store/progress';
+import { defineComponent } from 'vue';
+import { useRouter } from 'vue-router';
 
-	import { getLocationID, hasLocationID, isFloorMap, isLeafletMap } from '@/router';
+import FloorMap from '@/components/map/floor/FloorMap.vue';
+import { getLocationID, hasLocationID, isFloorMap, isLeafletMap } from '@/router';
+import { PrimaryButton } from '@/theme/Button';
 
-	import FloorMap from '@/components/map/floor/FloorMap.vue';
+export default defineComponent({
+	name: 'MapWrapper',
+	components: {
+		FloorMap,
+		LeafletMapWrapper,
+		PrimaryButton,
+	},
+	setup() {
+		const progressStore = useProgressStore();
+		const mainStore = useMainStore();
+		const router = useRouter();
 
-	import { PrimaryButton } from '@/theme/Button';
-	import LeafletMapWrapper from '@help/components/map/LeafletMapWrapper.vue';
-	import { useMainStore } from '@help/store/main';
-	import { useProgressStore } from '@help/store/progress';
+		let locationID = null;
+		if (hasLocationID(router)) locationID = getLocationID(router);
 
-	export default defineComponent({
-		name: 'MapWrapper',
-		components: {
-			FloorMap,
-			LeafletMapWrapper,
-			PrimaryButton,
-		},
-		setup() {
-			const progressStore = useProgressStore();
-			const mainStore = useMainStore();
-			const router = useRouter();
+		return {
+			puzzlesDone: progressStore.puzzles,
+			gameName: mainStore.gameName,
 
-			let locationID = null;
-			if (hasLocationID(router)) locationID = getLocationID(router);
-
-			return {
-				puzzlesDone: progressStore.puzzles,
-				gameName: mainStore.gameName,
-
-				locationID,
-				isFloorMap: isFloorMap(router),
-				isLeafletMap: isLeafletMap(router),
-			};
-		},
-	});
+			locationID,
+			isFloorMap: isFloorMap(router),
+			isLeafletMap: isLeafletMap(router),
+		};
+	},
+});
 </script>

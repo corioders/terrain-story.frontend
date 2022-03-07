@@ -65,7 +65,7 @@ steps:
             exit $?
         fi
 
-        yarn produce
+        yarn build
 
   # Save build output.
   - name: 'gcr.io/cloud-builders/gsutil'

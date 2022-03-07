@@ -9,33 +9,35 @@
 </template>
 
 <script lang="ts">
-	import { defineComponent } from 'vue';
+import { useProgressStore } from '@rock/store/progress';
+import { defineComponent } from 'vue';
 
-	import Video from '@/components/YoutubeVideo.vue';
-	import ResetProgressButton from '@/components/buttons/ResetProgressButton.vue';
-	import GMap from '@/components/map/GMap.vue';
+import Video from '@/components/YoutubeVideo.vue';
+import ResetProgressButton from '@/components/buttons/ResetProgressButton.vue';
+import GMap from '@/components/map/GMap.vue';
 
-	import { useProgressStore } from '@rock/store/progress';
-
-	export default defineComponent({
-		name: 'End',
-		components: {
-			GMap,
-			ResetProgressButton,
-			Video,
-		},
-		setup() {
-			const store = useProgressStore();
-			return { progressStore: store };
-		},
-	});
+export default defineComponent({
+	name: 'End',
+	components: {
+		GMap,
+		ResetProgressButton,
+		Video,
+	},
+	setup() {
+		const store = useProgressStore();
+		return { progressStore: store };
+	},
+});
 </script>
 <style lang="scss" scoped>
-	p {
-		padding: 0 12px;
-		font-size: 1.2em;
-		span {
-			color: $secondary;
-		}
+@use '@scssGlobals/colors';
+
+p {
+	padding: 0 12px;
+	font-size: 1.2em;
+
+	span {
+		color: colors.$secondary;
 	}
+}
 </style>

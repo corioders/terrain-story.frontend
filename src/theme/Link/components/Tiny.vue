@@ -4,27 +4,29 @@
 </template>
 
 <script lang="ts">
-	import { defineComponent, PropType } from 'vue';
+import { defineComponent, PropType } from 'vue';
 
-	export default defineComponent({
-		name: 'Default',
-		props: {
-			href: {
-				type: String as PropType<string>,
-				default: '',
-			},
-			newCard: {
-				type: Boolean as PropType<boolean>,
-				default: false,
-			},
+export default defineComponent({
+	name: 'Default',
+	props: {
+		href: {
+			type: String as PropType<string>,
+			default: '',
 		},
-	});
+		newCard: {
+			type: Boolean as PropType<boolean>,
+			default: false,
+		},
+	},
+});
 </script>
 <style lang="scss" scoped>
-	@use '../Link' as *;
-	a {
-		@include Link;
-		font-size: 0.8rem;
-		line-height: 1em;
-	}
+@use '../Link' as *;
+
+a {
+	@include Link;
+
+	font-size: 0.8rem;
+	line-height: 1em;
+}
 </style>

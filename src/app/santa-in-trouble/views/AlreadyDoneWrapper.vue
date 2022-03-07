@@ -11,17 +11,17 @@
 </template>
 
 <script lang="ts">
-	import { defineComponent } from 'vue';
+import { useProgressStore } from '@eng/store/progress';
+import { defineComponent } from 'vue';
 
-	import AlreadyDone from '@/views/AlreadyDone.vue';
-	import { useProgressStore } from '@eng/store/progress';
+import AlreadyDone from '@/views/AlreadyDone.vue';
 
-	export default defineComponent({
-		components: {
-			AlreadyDone,
-		},
-		setup() {
-			return { progressStore: useProgressStore() };
-		},
-	});
+export default defineComponent({
+	components: {
+		AlreadyDone,
+	},
+	setup() {
+		return { progressStore: useProgressStore() };
+	},
+});
 </script>

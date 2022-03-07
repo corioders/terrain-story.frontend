@@ -9,24 +9,24 @@
 </template>
 
 <script lang="ts">
-	import { defineComponent } from 'vue';
+import { useProgressStore } from '@eng/store/progress';
+import { defineComponent } from 'vue';
 
-	import Start from '@/views/Start.vue';
-	import { useProgressStore } from '@eng/store/progress';
+import Start from '@/views/Start.vue';
 
-	export default defineComponent({
-		name: 'StartWrapper',
-		components: {
-			Start,
-		},
-		setup() {
-			const store = useProgressStore();
+export default defineComponent({
+	name: 'StartWrapper',
+	components: {
+		Start,
+	},
+	setup() {
+		const store = useProgressStore();
 
-			const handleStart = (): void => {
-				store.start();
-			};
+		const handleStart = (): void => {
+			store.start();
+		};
 
-			return { handleStart };
-		},
-	});
+		return { handleStart };
+	},
+});
 </script>

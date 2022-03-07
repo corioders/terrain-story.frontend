@@ -4,25 +4,27 @@
 </template>
 
 <script lang="ts">
-	import { defineComponent, PropType } from 'vue';
+import { defineComponent, PropType } from 'vue';
 
-	export default defineComponent({
-		name: 'Info',
-		props: {
-			href: {
-				type: String as PropType<string>,
-				default: '',
-			},
-			newCard: {
-				type: Boolean as PropType<boolean>,
-				default: false,
-			},
+export default defineComponent({
+	name: 'Info',
+	props: {
+		href: {
+			type: String as PropType<string>,
+			default: '',
 		},
-	});
+		newCard: {
+			type: Boolean as PropType<boolean>,
+			default: false,
+		},
+	},
+});
 </script>
 <style lang="scss" scoped>
-	@use '../Link' as *;
-	a {
-		@include Link($infoDarker, $info);
-	}
+@use '@scssGlobals/colors';
+@use '../Link' as *;
+
+a {
+	@include Link(colors.$infoDarker, colors.$info);
+}
 </style>

@@ -23,52 +23,51 @@
 </template>
 
 <script lang="ts">
-	import { defineComponent, ref } from 'vue';
+import { VFlex } from '@corioders/vueui';
+import { defineComponent, ref } from 'vue';
 
-	import Input from '@/components/Input.vue';
-	import CheckButton from '@/components/buttons/CheckButton.vue';
-	import SingleChoiceQuestion from '@/components/closedQuestion/SingleChoiceQuestion.vue';
-	import shuffleOptions from '@/components/closedQuestion/shuffleOptions';
+import Input from '@/components/Input.vue';
+import CheckButton from '@/components/buttons/CheckButton.vue';
+import SingleChoiceQuestion from '@/components/closedQuestion/SingleChoiceQuestion.vue';
+import shuffleOptions from '@/components/closedQuestion/shuffleOptions';
 
-	import { VFlex } from '@corioders/vueui';
+export default defineComponent({
+	name: 'Rebus',
+	components: {
+		Input,
+		SingleChoiceQuestion,
+		CheckButton,
+		VFlex,
+	},
+	setup() {
+		const sentence = shuffleOptions(['What', 'do', 'monkeys', 'sing', 'at', 'Christmas?']);
 
-	export default defineComponent({
-		name: 'Rebus',
-		components: {
-			Input,
-			SingleChoiceQuestion,
-			CheckButton,
-			VFlex,
-		},
-		setup() {
-			const sentence = shuffleOptions(['What', 'do', 'monkeys', 'sing', 'at', 'Christmas?']);
+		let isSentenceCorrect = ref<boolean>(false);
+		function submitInputAnswer(e: string): void {
+			isSentenceCorrect.value = e.toLowerCase() === 'what do monkeys sing at christmas?';
+		}
 
-			let isSentenceCorrect = ref<boolean>(false);
-			function submitInputAnswer(e: string): void {
-				isSentenceCorrect.value = e.toLowerCase() === 'what do monkeys sing at christmas?';
-			}
+		const isAnswerCorrect = ref<boolean>(false);
+		const displayFeedback = ref<boolean>(false);
 
-			const isAnswerCorrect = ref<boolean>(false);
-			const displayFeedback = ref<boolean>(false);
+		const handleRadioAnswer = (isSentenceCorrect: boolean): void => {
+			isAnswerCorrect.value = isSentenceCorrect;
+			displayFeedback.value = false;
+		};
 
-			const handleRadioAnswer = (isSentenceCorrect: boolean): void => {
-				isAnswerCorrect.value = isSentenceCorrect;
-				displayFeedback.value = false;
-			};
+		const handleRadioCheck = (): void => {
+			displayFeedback.value = true;
+			if (isAnswerCorrect.value) displayMark.value = true;
+		};
 
-			const handleRadioCheck = (): void => {
-				displayFeedback.value = true;
-				if (isAnswerCorrect.value) displayMark.value = true;
-			};
+		const displayMark = ref<boolean>(false);
 
-			const displayMark = ref<boolean>(false);
-
-			return { sentence, isSentenceCorrect, isAnswerCorrect, displayFeedback, displayMark, submitInputAnswer, handleRadioAnswer, handleRadioCheck };
-		},
-	});
+		return { sentence, isSentenceCorrect, isAnswerCorrect, displayFeedback, displayMark, submitInputAnswer, handleRadioAnswer, handleRadioCheck };
+	},
+});
 </script>
 <style lang="scss" scoped>
-	.VFlex {
-		max-width: 950px;
-	}
+.VFlex {
+	max-width: 950px;
+}
 </style>
