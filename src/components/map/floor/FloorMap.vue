@@ -1,6 +1,6 @@
 <template>
 	<MapLoader v-if="floorMapDescriptor === null" />
-	<VFlex v-else class="container" gap="12px">
+	<VFlex v-else class="container" gap="48px">
 		<div v-for="(floor, i) in floorMapDescriptor.floors" :key="`floor${i}-${floor}`" class="floor">
 			<VFlex direction="row" justify="center" gap="13px">
 				<div v-for="(puzzleID, j) in floor.puzzleIDs" :key="`puzzle${j}-${puzzleID}`" class="puzzle" :class="puzzlesDone[puzzleID] === true ? 'done' : ''" />

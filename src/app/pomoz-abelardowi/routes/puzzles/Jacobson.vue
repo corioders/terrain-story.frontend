@@ -21,7 +21,7 @@
 		<li>Podnieś stopy jeszcze raz, tym razem podkurczając palce tak, jakbyś chciał je zagrzebać w piasku. Napnij mięśnie stóp. Przytrzymaj… odpuść…</li>
 		<li>Kiedy uznasz, że ćwiczenie dobiegło końca, weź trzy głębokie oddechy.</li>
 	</ol>
-	<PrimaryButton v-show="showButton" @click="finish('Jacobson')">Zrobione</PrimaryButton>
+	<PrimaryButton :disabled="disabled" @click="handleClick">Zrobione</PrimaryButton>
 </template>
 
 <script lang="ts">
@@ -36,13 +36,18 @@ export default defineComponent({
 		PrimaryButton,
 	},
 	setup() {
-		const showButton = ref(false);
+		const disabled = ref(true);
 		onMounted(() => {
 			setTimeout(() => {
-				showButton.value = true;
+				disabled.value = false;
 			}, 3000);
 		});
-		return { finish: useProgressStore().finishPuzzle, showButton };
+
+		function handleClick(): void {
+			if (disabled.value) return;
+			useProgressStore().finishPuzzle('Jacobson');
+		}
+		return { disabled, handleClick };
 	},
 });
 </script>

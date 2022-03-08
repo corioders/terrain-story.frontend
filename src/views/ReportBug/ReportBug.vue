@@ -11,7 +11,7 @@
 			<label for="reportBugTextArea">Opisz błąd</label>
 			<textarea id="reportBugTextArea" v-model="data" name="reportBugTextArea" />
 		</div>
-		<PrimaryButton v-if="selectedBugType !== '' && data !== ''" @click="submitBug">Wyślij</PrimaryButton>
+		<PrimaryButton :disabled="disabled" @click="handleClick">Wyślij</PrimaryButton>
 	</VFlex>
 	<VFlex v-else gap="12px">
 		<h2>Dziękujemy za zgłoszenie błędu</h2>
@@ -21,7 +21,7 @@
 
 <script lang="ts">
 import { VFlex, VDropdown, VInput } from '@corioders/vueui';
-import { defineComponent, ref, watch } from 'vue';
+import { defineComponent, ref, watch, computed } from 'vue';
 
 import { PrimaryButton } from '@/theme/Button';
 
@@ -43,9 +43,14 @@ export default defineComponent({
 
 		const showForm = ref(true);
 
-		async function submitBug(): Promise<void> {
-			if (selectedBugType.value === '' || data.value === '') return;
+		const disabled = computed<boolean>(() => selectedBugType.value === '' || data.value === '');
 
+		watch(selectedBugType, () => {
+			data.value = '';
+		});
+
+		async function handleClick(): Promise<void> {
+			if (disabled.value) return;
 			await firebaseSubmitBug(`Bug type: ${selectedBugType.value}\nUser message: ${data.value}`);
 
 			selectedBugType.value = '';
@@ -53,11 +58,7 @@ export default defineComponent({
 			showForm.value = false;
 		}
 
-		watch(selectedBugType, () => {
-			data.value = '';
-		});
-
-		return { bugTypes, selectedBugType, data, submitBug, showForm };
+		return { bugTypes, selectedBugType, data, showForm, disabled, handleClick };
 	},
 });
 </script>

@@ -3,11 +3,13 @@
 		<slot name="incognitoWarning"></slot>
 	</IncognitoWarning>
 	<VFlex gap="12px" class="VFlex">
-		<InfoButton style="font-size: 1.2rem" @click="$router.push('/jak-grac')"><slot name="howToPlayButton">Zobacz jak grać</slot></InfoButton>
-		<Video :videoId="videoId" class="video" :endBias="10" @end="videoEnded = true" />
 		<p class="info">
 			<slot name="info">Zobacz cały film, a następnie zagraj!</slot>
 		</p>
+		<Video :videoId="videoId" class="video" :endBias="10" @end="videoEnded = true" />
+		<InfoButton @click="$router.push('/jak-grac')">
+			<slot name="howToPlayButton">Zobacz jak grać</slot>
+		</InfoButton>
 		<PlayButton :disabled="!videoEnded" @click="start()">
 			<slot name="playButton"></slot>
 			<template #card>
