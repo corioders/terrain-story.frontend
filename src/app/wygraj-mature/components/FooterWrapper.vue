@@ -3,10 +3,10 @@
 		<template #informations>
 			<img src="@/assets/zwztLogo.webp" style="margin-top: 64px" alt="Projekt realizowany w ramach olimpiady 'Zwolnieni z Teorii'" />
 			<img src="@/assets/sftLogo.webp" alt="Samsung Solve for Tomorrow" />
-			<p>Rozwiązałeś {{ progress().value }} z {{ progress().max }} zagadek</p>
 			<p>Projekt dofinansowany ze środków Unii Europejskiej</p>
 		</template>
 		<template #menu>
+			<p>Rozwiązałeś {{ progress().value }} z {{ progress().max }} zagadek</p>
 			<TinyLink @click="$router.push('/')">Wygraj Mature</TinyLink>
 			<TinyLink @click="$router.push('/zglos-blad')">Zgłoś Błąd</TinyLink>
 			<TinyLink @click="$router.push('/juz-zrobione')">Usuń Postęp</TinyLink>

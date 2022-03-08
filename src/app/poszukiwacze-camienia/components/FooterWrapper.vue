@@ -2,10 +2,10 @@
 	<CFooter>
 		<template #informations>
 			<img src="@/assets/zwztLogo.webp" alt="Projekt realizowany w ramach olimpiady 'Zwolnieni z Teorii'" />
-			<p>Rozwiązałeś {{ progress().value }} z {{ progress().max }} zagadek</p>
 			<p>Projekt dofinansowany ze środków Unii Europejskiej</p>
 		</template>
 		<template #menu>
+			<p>Rozwiązałeś {{ progress().value }} z {{ progress().max }} zagadek</p>
 			<TinyLink @click="$router.push('/')">Poszukiwacze Camienia</TinyLink>
 			<TinyLink @click="$router.push('/regulamin')">Regulamin</TinyLink>
 			<TinyLink @click="$router.push('/polityka-prywatnosci')">Polityka Prywatności</TinyLink>

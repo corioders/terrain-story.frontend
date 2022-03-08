@@ -1,10 +1,12 @@
 <template>
 	<PrimaryButton :disabled="disabled" @click="handleClick" @use-disabled-click="$emit('click')"><slot>Zagraj</slot></PrimaryButton>
-	<VCard v-if="disabled" :style="`opacity:${showCard ? '1' : '0'}`" class="card">
-		<slot name="card">
-			<p>Musisz najpierw zobaczyć film.</p>
-		</slot>
-	</VCard>
+	<Transition name="show">
+		<VCard v-if="disabled && showCard" class="card">
+			<slot name="card">
+				<p>Musisz najpierw zobaczyć film.</p>
+			</slot>
+		</VCard>
+	</Transition>
 </template>
 
 <script lang="ts">
@@ -43,7 +45,17 @@ export default defineComponent({
 });
 </script>
 <style lang="scss" scoped>
-.card {
+.show-enter-active,
+.show-leave-active {
 	transition: opacity 0.2s ease-in-out;
+}
+
+.show-leave-active {
+	transition: all 0.8s cubic-bezier(1, 0.5, 0.8, 1);
+}
+
+.show-enter-from,
+.show-leave-to {
+	opacity: 0;
 }
 </style>
