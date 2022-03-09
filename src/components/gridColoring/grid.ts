@@ -3,7 +3,7 @@ export interface Coordinates {
 	y: number;
 }
 
-export interface TrapezoidDescriptor {
+export interface GridDescriptor {
 	dimensions: {
 		width: number;
 		height: number;

@@ -42,23 +42,23 @@ import { VScrollbar } from '@corioders/vueui';
 import { alphabetUpper } from '@rock/assets/alphabet';
 import { defineComponent, PropType } from 'vue';
 
-import { TrapezoidDescriptor } from './trapezoid';
+import { GridDescriptor } from './grid';
 
 export default defineComponent({
-	name: 'TrapezoidColoring',
+	name: 'GridColoring',
 	components: {
 		VScrollbar,
 	},
 	props: {
-		trapezoidDescriptor: {
-			type: Object as PropType<TrapezoidDescriptor>,
+		gridDescriptor: {
+			type: Object as PropType<GridDescriptor>,
 			required: true,
 		},
 	},
 	emits: ['correct', 'incorrect'],
 	setup(props, { emit }) {
 		const correctColorsMap = new Map<string, boolean>();
-		for (const color of props.trapezoidDescriptor.correctColors) {
+		for (const color of props.gridDescriptor.correctColors) {
 			const key = getKey(color.x, color.y);
 			correctColorsMap.set(key, true);
 		}
@@ -98,7 +98,7 @@ export default defineComponent({
 			emit('correct');
 		}
 
-		return { alphabet: alphabetUpper, handleClick, COLUMNS: props.trapezoidDescriptor.dimensions.width, ROWS: props.trapezoidDescriptor.dimensions.height };
+		return { alphabet: alphabetUpper, handleClick, COLUMNS: props.gridDescriptor.dimensions.width, ROWS: props.gridDescriptor.dimensions.height };
 	},
 });
 

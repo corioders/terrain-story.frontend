@@ -15,7 +15,7 @@
 		</article>
 		<p>G5, H2, F2, D4, J5, I3, E5, G2, J4, K5, C5, H5, E3, I5, F5, D5</p>
 	</VCard>
-	<TrapezoidColoring :trapezoidDescriptor="trapezoidDescriptor" @correct="handleAnswer(true)" @incorrect="handleAnswer(false)" />
+	<GridColoring :gridDescriptor="trapezoidDescriptor" @correct="handleAnswer(true)" @incorrect="handleAnswer(false)" />
 	<CheckButton :isCorrect="isCorrect" @click="handleCheck" />
 </template>
 
@@ -23,9 +23,9 @@
 import { VCard } from '@corioders/vueui';
 import { trapezoidDescriptor } from '@rock/assets/archaeologist';
 import { useProgressStore } from '@rock/store/progress';
-import { defineComponent, ref } from 'vue';
+import { defineComponent } from 'vue';
 
-import TrapezoidColoring from '@/app/poszukiwacze-camienia/components/trapezoidColoring/TrapezoidColoring.vue';
+import GridColoring from '@/components/gridColoring/GridColoring.vue';
 import Video from '@/components/YoutubeVideo.vue';
 import CheckButton from '@/components/buttons/CheckButton.vue';
 import { questionExecutor } from '@/components/closedQuestion/question';
@@ -35,7 +35,7 @@ export default defineComponent({
 	components: {
 		VCard,
 		Video,
-		TrapezoidColoring,
+		GridColoring,
 		CheckButton,
 	},
 	setup() {
