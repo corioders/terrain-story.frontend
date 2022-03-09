@@ -15,15 +15,15 @@ export const mapData: MapData<PuzzleID> = {
 		{
 			localization: [50.25972846105917, 19.02250058578311],
 			name: 'Teatr Śląski',
-			puzzleID: 'Emotions1',
+			puzzleID: 'Emotions',
 			photo: require<string>('./teatrSlaski.webp'),
 		},
-		{
-			localization: [50.25972891670551, 19.013331369366664],
-			name: 'Plac Wolności',
-			puzzleID: 'Emotions2',
-			photo: require<string>('./placWolnosci.webp'),
-		},
+		// {
+		// 	localization: [50.25972891670551, 19.013331369366664],
+		// 	name: 'Plac Wolności',
+		// 	puzzleID: 'Emotions2',
+		// 	photo: require<string>('./placWolnosci.webp'),
+		// },
 		{
 			localization: [50.25466308086385, 19.01492298980046],
 			name: 'Kościół Garnizonowy',

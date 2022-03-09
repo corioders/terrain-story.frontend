@@ -1,12 +1,12 @@
 import Question from '@/components/closedQuestion/question';
 
-export const emotions1: Question[] = [
+export const emotions: Question[] = [
 	{
 		options: ['Jestem przygnębiony', 'To obrzydliwe', 'Jak to działa?'],
 		answer: 'Jestem przygnębiony',
 	},
 	{
-		options: ['To obrzydliwe', 'O rany! No way!', 'No…nie wiem'],
+		options: ['To obrzydliwe', 'No…nie wiem', 'Hahahahaha'],
 		answer: 'To obrzydliwe',
 	},
 	{
@@ -14,7 +14,7 @@ export const emotions1: Question[] = [
 		answer: 'O rany! No way!',
 	},
 	{
-		options: ['Jak to działa?', 'Jestem przygnębiony', 'Jestem z siebie dumny'],
+		options: ['Jak to działa?', 'Jestem przygnębiony', 'Nie chcę już tego słuchać'],
 		answer: 'Jak to działa?',
 	},
 	{
@@ -26,48 +26,12 @@ export const emotions1: Question[] = [
 		answer: 'Jestem zszokowany',
 	},
 	{
-		options: ['No...nie wiem', 'Jestem wściekły na Ciebie, gadasz bzdury!', 'To obrzydliwe'],
+		options: ['No...nie wiem', 'Jestem wściekły na Ciebie, gadasz bzdury!', 'Cieszę się'],
 		answer: 'No...nie wiem',
 	},
 	{
-		options: ['Jestem wściekły na Ciebie, gadasz bzdury!', 'O rany! No way!', 'Jak to działa?'],
+		options: ['Jestem wściekły na Ciebie, gadasz bzdury!', 'Jak to działa?', 'Ok'],
 		answer: 'Jestem wściekły na Ciebie, gadasz bzdury!',
 	},
 ];
-Object.freeze(emotions1);
-
-export const emotions2: Question[] = [
-	{
-		options: ['Ale przypał', 'Hahahahaha', 'Podoba mi się to'],
-		answer: 'Ale przypał',
-	},
-	{
-		options: ['Hahahahaha', 'Ok', 'Nie wierzę w to'],
-		answer: 'Hahahahaha',
-	},
-	{
-		options: ['Nie chcę już tego słuchać', 'Cieszę się', 'Nie wierzę w to'],
-		answer: 'Nie chcę już tego słuchać',
-	},
-	{
-		options: ['Nie wierzę w to', 'Ok', 'Hahahahaha'],
-		answer: 'Nie wierzę w to',
-	},
-	{
-		options: ['Podoba mi się to', 'Ale przypał', 'Nie chcę już tego słuchać'],
-		answer: 'Podoba mi się to',
-	},
-	{
-		options: ['Mam nastrój na wygłupy, poróbmy miny', 'Ale przypał', 'Cieszę się'],
-		answer: 'Mam nastrój na wygłupy, poróbmy miny',
-	},
-	{
-		options: ['Ok', 'Ale przypał', 'Hahahahaha'],
-		answer: 'Ok',
-	},
-	{
-		options: ['Cieszę się', 'Nie chcę już tego słuchać', 'Nie wierzę w to'],
-		answer: 'Cieszę się',
-	},
-];
-Object.freeze(emotions2);
+Object.freeze(emotions);
