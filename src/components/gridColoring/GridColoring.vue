@@ -21,14 +21,8 @@
 								{{ row }}
 							</div>
 						</th>
-						<td
-							v-for="column in COLUMNS"
-							:key="`box${row}${column}`"
-							class="box"
-							@click="handleClick($event.target.classList, column, row)"
-							@tap="handleClick($event.target.classList, column, row)"
-						>
-							<div></div>
+						<td v-for="column in COLUMNS" :key="`box${row}${column}`" class="box">
+							<div @click="handleClick($event.target.classList, column, row)" @tap="handleClick($event.target.classList, column, row)"></div>
 						</td>
 					</tr>
 				</tbody>
