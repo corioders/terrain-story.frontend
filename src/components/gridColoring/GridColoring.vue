@@ -36,7 +36,7 @@ import { VScrollbar } from '@corioders/vueui';
 import { alphabetUpper } from '@rock/assets/alphabet';
 import { defineComponent, PropType } from 'vue';
 
-import { GridDescriptor } from './grid';
+import { Coordinates, GridDescriptor } from './grid';
 
 export default defineComponent({
 	name: 'GridColoring',
@@ -57,6 +57,25 @@ export default defineComponent({
 			correctColorsMap.set(key, true);
 		}
 		const colorsMap = new Map<string, boolean>();
+
+		// Expose colorsMap to developer.
+		if (!__IS_PRODUCTION__) {
+			// eslint-disable-next-line
+			// @ts-ignore
+			window.getGridSelected = (): void => {
+				const entries = colorsMap.entries();
+				const selected = [];
+				for (const e of entries) {
+					if (e[1] === false) continue;
+					const coordinatesString = e[0];
+					const coordinatesSplit = coordinatesString.split('.');
+					const x = Number(coordinatesSplit[0]);
+					const y = Number(coordinatesSplit[1]);
+					selected.push(`{ x: ${x}, y: ${y} }`);
+				}
+				console.log(selected.join(`,\n`));
+			};
+		}
 
 		function handleClick(classList: DOMTokenList, column: number, row: number): void {
 			classList.toggle('checked');
