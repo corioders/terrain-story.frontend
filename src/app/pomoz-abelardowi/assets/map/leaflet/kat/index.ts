@@ -1,17 +1,17 @@
-import { MapData } from '@/components/map/leaflet/map';
-
 import { PuzzleID } from '@help/store/progress';
+
+import { MapData } from '@/components/map/leaflet/map';
 
 export const mapData: MapData<PuzzleID> = {
 	center: [50.25876354879924, 19.021294856020486],
 	zoom: 14,
 	pins: [
-		{
-			localization: [50.254729752425945, 19.01861264899349],
-			name: 'Plac Miarki',
-			puzzleID: 'Bingo',
-			photo: require<string>('./placMiarki.webp'),
-		},
+		// {
+		// 	localization: [50.254729752425945, 19.01861264899349],
+		// 	name: 'Plac Miarki',
+		// 	puzzleID: 'Bingo',
+		// 	photo: require<string>('./placMiarki.webp'),
+		// },
 		{
 			localization: [50.25972846105917, 19.02250058578311],
 			name: 'Teatr Śląski',
@@ -30,18 +30,18 @@ export const mapData: MapData<PuzzleID> = {
 			puzzleID: 'Jacobson',
 			photo: require<string>('./kosciolGarnizonowy.webp'),
 		},
-		{
-			localization: [50.255481545175385, 19.018445075626712],
-			name: 'Faza Charity Shop',
-			puzzleID: 'Matching1',
-			photo: require<string>('./fazaCharityShop.webp'),
-		},
-		{
-			localization: [50.25556372937672, 19.014722451529728],
-			name: 'Plac Andrzeja',
-			puzzleID: 'Matching2',
-			photo: require<string>('./placAndrzeja.webp'),
-		},
+		// {
+		// 	localization: [50.255481545175385, 19.018445075626712],
+		// 	name: 'Faza Charity Shop',
+		// 	puzzleID: 'Matching1',
+		// 	photo: require<string>('./fazaCharityShop.webp'),
+		// },
+		// {
+		// 	localization: [50.25556372937672, 19.014722451529728],
+		// 	name: 'Plac Andrzeja',
+		// 	puzzleID: 'Matching2',
+		// 	photo: require<string>('./placAndrzeja.webp'),
+		// },
 		{
 			localization: [50.25861903580001, 19.021386861479904],
 			name: 'Centrum Informacji Turystycznej',

@@ -1,3 +1,5 @@
+import Home from '@help/routes/Home.vue';
+import { useProgressStore, isPuzzleID } from '@help/store/progress';
 import { Component } from 'vue';
 import { RouteRecordRaw } from 'vue-router';
 
@@ -5,15 +7,12 @@ import { createRouter } from '@/router';
 import { nextRouteDevHelper } from '@/router/devHelpers/nextRoute';
 import { progressNavigationGuard } from '@/router/navigationGuard/progress';
 
-import Home from '@help/routes/Home.vue';
-import { useProgressStore, isPuzzleID } from '@help/store/progress';
-
 export const routes: RouteRecordRaw[] = [
 	{
 		path: `/start`,
 		name: 'Start',
 		component: (): Promise<Component> => import('@help/views/StartWrapper.vue'),
-		meta: { to: 'Bingo' },
+		meta: { to: 'Emotions1' },
 	},
 	{
 		path: `/koniec`,
@@ -47,12 +46,6 @@ export const routes: RouteRecordRaw[] = [
 		component: (): Promise<Component> => import('@help/routes/Map.vue'),
 	},
 	{
-		path: `/bingo`,
-		name: 'Bingo',
-		component: (): Promise<Component> => import('@help/routes/puzzles/Bingo.vue'),
-		meta: { to: 'Emotions1' },
-	},
-	{
 		path: `/emocje1`,
 		name: 'Emotions1',
 		component: (): Promise<Component> => import('@help/routes/puzzles/Emotions1.vue'),
@@ -74,18 +67,6 @@ export const routes: RouteRecordRaw[] = [
 		path: '/rebus',
 		name: 'Rebus',
 		component: (): Promise<Component> => import('@help/routes/puzzles/Rebus.vue'),
-		meta: { to: 'Matching1' },
-	},
-	{
-		path: '/rozsypanka1',
-		name: 'Matching1',
-		component: (): Promise<Component> => import('@help/routes/puzzles/Matching1.vue'),
-		meta: { to: 'Matching2' },
-	},
-	{
-		path: '/rozsypanka2',
-		name: 'Matching2',
-		component: (): Promise<Component> => import('@help/routes/puzzles/Matching2.vue'),
 		meta: { to: 'PhoneNumbers' },
 	},
 	{
