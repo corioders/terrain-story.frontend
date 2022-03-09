@@ -52,7 +52,7 @@ export default defineComponent({
 	emits: ['correct', 'incorrect'],
 	setup(props, { emit }) {
 		const correctColorsMap = new Map<string, boolean>();
-		for (const color of props.gridDescriptor.correctColors) {
+		for (const color of props.gridDescriptor.correctSelections) {
 			const key = getKey(color.x, color.y);
 			correctColorsMap.set(key, true);
 		}
@@ -92,7 +92,12 @@ export default defineComponent({
 			emit('correct');
 		}
 
-		return { alphabet: alphabetUpper, handleClick, COLUMNS: props.gridDescriptor.dimensions.width, ROWS: props.gridDescriptor.dimensions.height };
+		return {
+			alphabet: alphabetUpper,
+			handleClick,
+			COLUMNS: props.gridDescriptor.dimensions.width,
+			ROWS: props.gridDescriptor.dimensions.height,
+		};
 	},
 });
 
