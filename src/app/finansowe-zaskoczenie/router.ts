@@ -15,6 +15,11 @@ export const routes: RouteRecordRaw[] = [
 		meta: { to: 'Bingo' },
 	},
 	{
+		path: `/roznice`,
+		name: 'PhotoDifferences',
+		component: (): Promise<Component> => import('@fin/routes/puzzles/PhotoDifferences.vue'),
+	},
+	{
 		path: `/koniec`,
 		name: 'End',
 		component: (): Promise<Component> => import('@fin/views/End.vue'),
