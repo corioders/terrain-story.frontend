@@ -3,15 +3,15 @@ import { useGtag } from 'vue-gtag-next';
 
 import { defaultAction, defineProgressStore, isPuzzleIDFactory, Puzzles } from '@/store/ProgressStore';
 
-export type PuzzleID = 'Puzzle' | 'PhotoDifferences';
-const puzzleIDs: PuzzleID[] = ['Puzzle', 'PhotoDifferences'];
+export type PuzzleID = 'Btc' | 'PhotoDifferences';
+const puzzleIDs: PuzzleID[] = ['Btc', 'PhotoDifferences'];
 export const isPuzzleID = isPuzzleIDFactory(puzzleIDs);
 
 export const useProgressStore = defineProgressStore({
 	id: 'economic.progress',
 	state: () => {
 		const puzzlesDone: Puzzles<PuzzleID> = {
-			Puzzle: false,
+			Btc: false,
 			PhotoDifferences: false,
 		};
 
