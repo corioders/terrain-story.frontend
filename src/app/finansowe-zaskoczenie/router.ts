@@ -57,17 +57,17 @@ export const routes: RouteRecordRaw[] = [
 		// meta: { to: 'Emotions1' },
 	},
 	{
+		path: `/card`,
+		name: 'Card',
+		component: (): Promise<Component> => import('@fin/routes/puzzles/Card.vue'),
+		// meta: { to: 'Jacobson' },
+	},
+	{
 		path: `/crypto`,
 		name: 'Crypto',
 		component: (): Promise<Component> => import('@fin/routes/puzzles/Crypto.vue'),
 		// meta: { to: 'Emotions2' },
 	},
-	// {
-	// 	path: `/emocje2`,
-	// 	name: 'Emotions2',
-	// 	component: (): Promise<Component> => import('@fin/routes/puzzles/Emotions2.vue'),
-	// 	meta: { to: 'Jacobson' },
-	// },
 	// {
 	// 	path: '/jacobson',
 	// 	name: 'Jacobson',
