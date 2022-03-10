@@ -109,14 +109,6 @@ export default defineComponent({
 		visibility: v-bind('hideInput(arePhotos)');
 	}
 
-	.incorrect {
-		color: colors.$errorDarker;
-
-		img {
-			border: 5px colors.$errorDarker solid;
-		}
-	}
-
 	.displayFeedback {
 		.correct {
 			color: colors.$primary;
