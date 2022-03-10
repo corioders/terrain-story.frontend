@@ -1,4 +1,4 @@
-import { DifferenceDescriptor } from '@rock/components/photoDifferences/difference';
+import { DifferenceDescriptor } from '@/components/photoDifferences/difference';
 
 import img1 from './1.webp';
 import img2 from './2.webp';
