@@ -3,8 +3,8 @@ import { useGtag } from 'vue-gtag-next';
 
 import { defaultAction, defineProgressStore, isPuzzleIDFactory, Puzzles } from '@/store/ProgressStore';
 
-export type PuzzleID = 'Btc' | 'Card' | 'Crypto' | 'PhotoDifferences';
-const puzzleIDs: PuzzleID[] = ['Btc', 'Card', 'Crypto', 'PhotoDifferences'];
+export type PuzzleID = 'Btc' | 'Card' | 'Crypto' | 'PhotoDifferences' | 'Rebus';
+const puzzleIDs: PuzzleID[] = ['Btc', 'Card', 'Crypto', 'PhotoDifferences', 'Rebus'];
 export const isPuzzleID = isPuzzleIDFactory(puzzleIDs);
 
 export const useProgressStore = defineProgressStore({
@@ -15,6 +15,7 @@ export const useProgressStore = defineProgressStore({
 			Card: false,
 			Crypto: false,
 			PhotoDifferences: false,
+			Rebus: false,
 		};
 
 		return {

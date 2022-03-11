@@ -12,7 +12,7 @@ export const routes: RouteRecordRaw[] = [
 		path: `/start`,
 		name: 'Start',
 		component: (): Promise<Component> => import('@fin/views/StartWrapper.vue'),
-		// meta: { to: 'Bingo' },
+		meta: { to: 'Btc' },
 	},
 	{
 		path: `/koniec`,
@@ -67,6 +67,12 @@ export const routes: RouteRecordRaw[] = [
 		path: `/roznice`,
 		name: 'PhotoDifferences',
 		component: (): Promise<Component> => import('@fin/routes/puzzles/PhotoDifferences.vue'),
+		meta: { to: 'Rebus' },
+	},
+	{
+		path: '/rebus',
+		name: 'Rebus',
+		component: (): Promise<Component> => import('@fin/routes/puzzles/Rebus.vue'),
 		meta: { to: 'End' },
 	},
 	{
