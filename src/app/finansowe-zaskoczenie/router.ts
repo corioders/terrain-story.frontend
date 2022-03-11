@@ -52,7 +52,7 @@ export const routes: RouteRecordRaw[] = [
 		meta: { to: 'Card' },
 	},
 	{
-		path: `/card`,
+		path: `/karta`,
 		name: 'Card',
 		component: (): Promise<Component> => import('@fin/routes/puzzles/Card.vue'),
 		meta: { to: 'Crypto' },
@@ -61,7 +61,13 @@ export const routes: RouteRecordRaw[] = [
 		path: `/crypto`,
 		name: 'Crypto',
 		component: (): Promise<Component> => import('@fin/routes/puzzles/Crypto.vue'),
-		// meta: { to: 'Inflation' },
+		meta: { to: 'Inflation' },
+	},
+	{
+		path: `/inflacja`,
+		name: 'Inflation',
+		component: (): Promise<Component> => import('@fin/routes/puzzles/Inflation.vue'),
+		meta: { to: 'PhotoDifferences' },
 	},
 	{
 		path: `/roznice`,
