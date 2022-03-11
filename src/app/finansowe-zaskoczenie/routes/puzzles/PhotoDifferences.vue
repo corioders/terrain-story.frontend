@@ -1,5 +1,9 @@
 <template>
 	<VFlex align="flex-start" gap="12px">
+		<p>
+			10 lutego 2017 r. NBP wprowadziło do obiegu banknot o nominale 500 zł. To kolejny banknot z serii „Władcy polscy”. Znajduje się na nim wizerunek Jana III
+			Sobieskiego pochodzący z jego medalionu koronacyjnego. Niestety banknot poniżej został sfałszowany, znajdź na nim 5 błędów.
+		</p>
 		<Differences name="differences" :descriptors="descriptors" @correct="handleAnswer(true)" />
 	</VFlex>
 	<CheckButton :isCorrect="isCorrect" @click="handleCheck()" />
@@ -29,7 +33,8 @@ export default defineComponent({
 });
 </script>
 <style lang="scss" scoped>
-.questionHelper {
-	text-align: center;
+p {
+	width: 80vw;
+	max-width: 950px;
 }
 </style>
