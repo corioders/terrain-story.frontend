@@ -1,13 +1,18 @@
 <template>
 	<VCard style="width: 95%; max-width: 600px">
-		<h1>!! siema simea jakaś instrukcja co zrobić !!</h1>
-		<p>{{ correctSelections }}</p>
+		<article>
+			<h2>Zaznacz poniższe koordynaty na polu, ukaże Ci opis symbolu.</h2>
+			<p>{{ correctSelections }}</p>
+		</article>
 	</VCard>
-	<GridColoring :gridDescriptor="gridDescriptor" @correct="showDescription = true" />
-	<div v-if="showDescription">
-		<p>Description!</p>
+	<GridColoring :gridDescriptor="gridDescriptor" @correct="isCorrect = true" />
+	<div v-if="isCorrect" class="description">
+		<p>
+			Literze psi w starożytności przypisywano znaczenie "psyche"-motyl lub znaczenie duszy. Obecnie znak ten symbolem psychologii, który możemy spotkać np. na
+			podręcznikach.
+		</p>
 	</div>
-	<CheckButton :isCorrect="isCorrect" @click="handleCheck" />
+	<PrimaryButton :disabled="!isCorrect" @click="handleClick">Zrobione</PrimaryButton>
 </template>
 
 <script lang="ts">
@@ -15,10 +20,9 @@ import { VCard } from '@corioders/vueui';
 import { useProgressStore } from '@help/store/progress';
 import { defineComponent, ref } from 'vue';
 
-import CheckButton from '@/components/buttons/CheckButton.vue';
-import { questionExecutor } from '@/components/closedQuestion/question';
 import GridColoring from '@/components/gridColoring/GridColoring.vue';
 import { correctSelectionsForHuman, GridDescriptor } from '@/components/gridColoring/grid';
+import { PrimaryButton } from '@/theme/Button';
 
 export const gridDescriptor: GridDescriptor = {
 	dimensions: {
@@ -54,21 +58,30 @@ export default defineComponent({
 	components: {
 		VCard,
 		GridColoring,
-		CheckButton,
+		PrimaryButton,
 	},
 	setup() {
 		const store = useProgressStore();
-		const showDescription = ref(false);
+		const isCorrect = ref(false);
+
+		function handleClick(): void {
+			if (!isCorrect.value) return;
+			store.finishPuzzle('PsiColoring');
+		}
 		return {
-			showDescription,
+			isCorrect,
 			gridDescriptor,
 			correctSelections,
-			...questionExecutor(() => store.finishPuzzle('PsiColoring')),
+			handleClick,
 		};
 	},
 });
 </script>
 <style lang="scss" scoped>
+p {
+	max-width: 950px;
+}
+
 article {
 	h2 {
 		font-size: 1.4em;
@@ -77,11 +90,6 @@ article {
 
 	p {
 		margin-bottom: 0;
-	}
-
-	h3 {
-		font-size: 1em;
-		margin: 0.75em 0;
 	}
 }
 </style>
