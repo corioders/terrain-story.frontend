@@ -3,7 +3,10 @@
 	<VFlex v-else class="container" gap="48px">
 		<div v-for="(floor, i) in floorMapDescriptor.floors" :key="`floor${i}-${floor}`" class="floor">
 			<VFlex direction="row" justify="center" gap="13px">
-				<div v-for="(puzzleID, j) in floor.puzzleIDs" :key="`puzzle${j}-${puzzleID}`" class="puzzle" :class="puzzlesDone[puzzleID] === true ? 'done' : ''" />
+				<div v-if="floor.puzzleIDs[0] !== undefined">
+					<div v-for="(puzzleID, j) in floor.puzzleIDs" :key="`puzzle${j}-${puzzleID}`" class="puzzle" :class="puzzlesDone[puzzleID] === true ? 'done' : ''"></div>
+				</div>
+				<div v-else class="puzzle invisible"></div>
 			</VFlex>
 			<div class="floor --line" />
 			<p class="floor --label">{{ floor.name }}</p>
@@ -74,6 +77,10 @@ $offset: 4px;
 
 			&.done {
 				background-color: colors.$primary;
+			}
+
+			&.invisible {
+				background-color: transparent;
 			}
 		}
 
