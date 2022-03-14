@@ -1,3 +1,5 @@
+import Home from '@help/routes/Home.vue';
+import { useProgressStore, isPuzzleID } from '@help/store/progress';
 import { Component } from 'vue';
 import { RouteRecordRaw } from 'vue-router';
 
@@ -5,15 +7,12 @@ import { createRouter } from '@/router';
 import { nextRouteDevHelper } from '@/router/devHelpers/nextRoute';
 import { progressNavigationGuard } from '@/router/navigationGuard/progress';
 
-import Home from '@help/routes/Home.vue';
-import { useProgressStore, isPuzzleID } from '@help/store/progress';
-
 export const routes: RouteRecordRaw[] = [
 	{
 		path: `/start`,
 		name: 'Start',
 		component: (): Promise<Component> => import('@help/views/StartWrapper.vue'),
-		meta: { to: 'Bingo' },
+		meta: { to: 'Emotions' },
 	},
 	{
 		path: `/koniec`,
@@ -47,21 +46,9 @@ export const routes: RouteRecordRaw[] = [
 		component: (): Promise<Component> => import('@help/routes/Map.vue'),
 	},
 	{
-		path: `/bingo`,
-		name: 'Bingo',
-		component: (): Promise<Component> => import('@help/routes/puzzles/Bingo.vue'),
-		meta: { to: 'Emotions1' },
-	},
-	{
-		path: `/emocje1`,
-		name: 'Emotions1',
-		component: (): Promise<Component> => import('@help/routes/puzzles/Emotions1.vue'),
-		meta: { to: 'Emotions2' },
-	},
-	{
-		path: `/emocje2`,
-		name: 'Emotions2',
-		component: (): Promise<Component> => import('@help/routes/puzzles/Emotions2.vue'),
+		path: `/emocje`,
+		name: 'Emotions',
+		component: (): Promise<Component> => import('@help/routes/puzzles/Emotions.vue'),
 		meta: { to: 'Jacobson' },
 	},
 	{
@@ -74,24 +61,24 @@ export const routes: RouteRecordRaw[] = [
 		path: '/rebus',
 		name: 'Rebus',
 		component: (): Promise<Component> => import('@help/routes/puzzles/Rebus.vue'),
-		meta: { to: 'Matching1' },
-	},
-	{
-		path: '/rozsypanka1',
-		name: 'Matching1',
-		component: (): Promise<Component> => import('@help/routes/puzzles/Matching1.vue'),
-		meta: { to: 'Matching2' },
-	},
-	{
-		path: '/rozsypanka2',
-		name: 'Matching2',
-		component: (): Promise<Component> => import('@help/routes/puzzles/Matching2.vue'),
 		meta: { to: 'PhoneNumbers' },
 	},
 	{
 		path: '/telefony-zaufania',
 		name: 'PhoneNumbers',
 		component: (): Promise<Component> => import('@help/routes/puzzles/PhoneNumbers.vue'),
+		meta: { to: 'PsiColoring' },
+	},
+	{
+		path: '/psi',
+		name: 'PsiColoring',
+		component: (): Promise<Component> => import('@help/routes/puzzles/PsiColoring.vue'),
+		meta: { to: 'Word' },
+	},
+	{
+		path: '/slowo',
+		name: 'Word',
+		component: (): Promise<Component> => import('@help/routes/puzzles/Word.vue'),
 		meta: { to: 'End' },
 	},
 	{

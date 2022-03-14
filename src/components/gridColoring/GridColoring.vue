@@ -21,14 +21,8 @@
 								{{ row }}
 							</div>
 						</th>
-						<td
-							v-for="column in COLUMNS"
-							:key="`box${row}${column}`"
-							class="box"
-							@click="handleClick($event.target.classList, column, row)"
-							@tap="handleClick($event.target.classList, column, row)"
-						>
-							<div></div>
+						<td v-for="column in COLUMNS" :key="`box${row}${column}`" class="box">
+							<div @click="handleClick($event.target.classList, column, row)" @tap="handleClick($event.target.classList, column, row)"></div>
 						</td>
 					</tr>
 				</tbody>
@@ -42,27 +36,46 @@ import { VScrollbar } from '@corioders/vueui';
 import { alphabetUpper } from '@rock/assets/alphabet';
 import { defineComponent, PropType } from 'vue';
 
-import { TrapezoidDescriptor } from './trapezoid';
+import { Coordinates, GridDescriptor } from './grid';
 
 export default defineComponent({
-	name: 'TrapezoidColoring',
+	name: 'GridColoring',
 	components: {
 		VScrollbar,
 	},
 	props: {
-		trapezoidDescriptor: {
-			type: Object as PropType<TrapezoidDescriptor>,
+		gridDescriptor: {
+			type: Object as PropType<GridDescriptor>,
 			required: true,
 		},
 	},
 	emits: ['correct', 'incorrect'],
 	setup(props, { emit }) {
 		const correctColorsMap = new Map<string, boolean>();
-		for (const color of props.trapezoidDescriptor.correctColors) {
+		for (const color of props.gridDescriptor.correctSelections) {
 			const key = getKey(color.x, color.y);
 			correctColorsMap.set(key, true);
 		}
 		const colorsMap = new Map<string, boolean>();
+
+		// Expose colorsMap to developer.
+		if (!__IS_PRODUCTION__) {
+			// eslint-disable-next-line
+			// @ts-ignore
+			window.getGridSelected = (): void => {
+				const entries = colorsMap.entries();
+				const selected = [];
+				for (const e of entries) {
+					if (e[1] === false) continue;
+					const coordinatesString = e[0];
+					const coordinatesSplit = coordinatesString.split('.');
+					const x = Number(coordinatesSplit[0]);
+					const y = Number(coordinatesSplit[1]);
+					selected.push(`{ x: ${x}, y: ${y} }`);
+				}
+				console.log(selected.join(`,\n`));
+			};
+		}
 
 		function handleClick(classList: DOMTokenList, column: number, row: number): void {
 			classList.toggle('checked');
@@ -98,7 +111,12 @@ export default defineComponent({
 			emit('correct');
 		}
 
-		return { alphabet: alphabetUpper, handleClick, COLUMNS: props.trapezoidDescriptor.dimensions.width, ROWS: props.trapezoidDescriptor.dimensions.height };
+		return {
+			alphabet: alphabetUpper,
+			handleClick,
+			COLUMNS: props.gridDescriptor.dimensions.width,
+			ROWS: props.gridDescriptor.dimensions.height,
+		};
 	},
 });
 
