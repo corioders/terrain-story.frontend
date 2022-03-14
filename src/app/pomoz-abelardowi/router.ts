@@ -73,6 +73,12 @@ export const routes: RouteRecordRaw[] = [
 		path: '/psi',
 		name: 'PsiColoring',
 		component: (): Promise<Component> => import('@help/routes/puzzles/PsiColoring.vue'),
+		meta: { to: 'Word' },
+	},
+	{
+		path: '/slowo',
+		name: 'Word',
+		component: (): Promise<Component> => import('@help/routes/puzzles/Word.vue'),
 		meta: { to: 'End' },
 	},
 	{

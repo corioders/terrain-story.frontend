@@ -48,9 +48,7 @@ export default defineComponent({
 });
 </script>
 <style lang="scss" scoped>
-ol {
-	li {
-		padding: 5px 0;
-	}
+p {
+	max-width: 950px;
 }
 </style>
