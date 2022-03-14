@@ -9,35 +9,35 @@
 		@incorrect="handleAnswer(false)"
 	>
 		<template #0>
-			<img src="@help/assets/emotions2/01.webp" alt="Osoba 1" />
+			<img src="@help/assets/emotions/01.webp" alt="Osoba 1" />
 		</template>
 		<template #1>
-			<img src="@help/assets/emotions2/02.webp" alt="Osoba 2" />
+			<img src="@help/assets/emotions/02.webp" alt="Osoba 2" />
 		</template>
 		<template #2>
-			<img src="@help/assets/emotions2/03.webp" alt="Osoba 3" />
+			<img src="@help/assets/emotions/03.webp" alt="Osoba 3" />
 		</template>
 		<template #3>
-			<img src="@help/assets/emotions2/04.webp" alt="Osoba 4" />
+			<img src="@help/assets/emotions/04.webp" alt="Osoba 4" />
 		</template>
 		<template #4>
-			<img src="@help/assets/emotions2/05.webp" alt="Osoba 5" />
+			<img src="@help/assets/emotions/05.webp" alt="Osoba 5" />
 		</template>
 		<template #5>
-			<img src="@help/assets/emotions2/06.webp" alt="Osoba 6" />
+			<img src="@help/assets/emotions/06.webp" alt="Osoba 6" />
 		</template>
 		<template #6>
-			<img src="@help/assets/emotions2/07.webp" alt="Osoba 7" />
+			<img src="@help/assets/emotions/07.webp" alt="Osoba 7" />
 		</template>
 		<template #7>
-			<img src="@help/assets/emotions2/08.webp" alt="Osoba 8" />
+			<img src="@help/assets/emotions/08.webp" alt="Osoba 8" />
 		</template>
 	</SingleChoiceQuestions>
 	<CheckButton :isCorrect="isCorrect" @click="handleCheck" />
 </template>
 
 <script lang="ts">
-import { emotions2 as questions } from '@help/assets/questions';
+import { emotions as questions } from '@help/assets/questions';
 import { useProgressStore } from '@help/store/progress';
 import { defineComponent } from 'vue';
 
@@ -46,14 +46,14 @@ import SingleChoiceQuestions from '@/components/closedQuestion/SingleChoiceQuest
 import { questionExecutor } from '@/components/closedQuestion/question';
 
 export default defineComponent({
-	name: 'Emotions2',
+	name: 'Emotions',
 	components: {
 		SingleChoiceQuestions,
 		CheckButton,
 	},
 	setup() {
 		const store = useProgressStore();
-		return { questions, ...questionExecutor(() => store.finishPuzzle('Emotions2'), true) };
+		return { questions, ...questionExecutor(() => store.finishPuzzle('Emotions'), true) };
 	},
 });
 </script>
