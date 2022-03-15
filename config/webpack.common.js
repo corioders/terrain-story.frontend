@@ -182,9 +182,6 @@ const webpackConfig = {
 					},
 				},
 			},
-			issue: {
-				scope: 'webpack',
-			},
 		}),
 		new OnlyWebpackErrorsInForkTsCheckerWebpackPlugin(),
 
@@ -193,7 +190,7 @@ const webpackConfig = {
 			lintDirtyModulesOnly: true,
 		}),
 		new StylelintPlugin({
-			files: ['src/**/*.{vue,scss}'],
+			files: ['src/**/*.{scss,vue}'],
 		}),
 
 		new BrowserSyncPlugin(
@@ -291,11 +288,6 @@ const webpackConfig = {
 		},
 		static: {
 			publicPath: '/',
-		},
-		watchFiles: {
-			options: {
-				ignored: ['scss/global/*.scss'],
-			},
 		},
 	},
 };
