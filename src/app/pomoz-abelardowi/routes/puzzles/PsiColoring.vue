@@ -8,8 +8,8 @@
 	<GridColoring :gridDescriptor="gridDescriptor" @correct="isCorrect = true" />
 	<div v-if="isCorrect" class="description">
 		<p>
-			Literze psi w starożytności przypisywano znaczenie "psyche"-motyl lub znaczenie duszy. Obecnie znak ten symbolem psychologii, który możemy spotkać np. na
-			podręcznikach.
+			Litera "psi" w starożytności przeszła wiele zmian znaczeniowych. Oznaczała między innymi motyla, energię, oddech, a na końcowo - duszę. Obecnie jest to jeden z
+			najważniejszych symboli w psychologii.
 		</p>
 	</div>
 	<PrimaryButton :disabled="!isCorrect" @click="handleClick">Zrobione</PrimaryButton>
