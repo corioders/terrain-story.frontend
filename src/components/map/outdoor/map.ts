@@ -1,16 +1,8 @@
-type Latitude = number;
-type Longitude = number;
+import { Pin, MapData } from '../map';
 
-type Localization = [Latitude, Longitude];
-
-export interface Pin<puzzleIDT extends string> {
-	localization: Localization;
-	name: string;
+export interface OutdoorPin<puzzleIDT extends string> extends Pin {
 	puzzleID: puzzleIDT;
-	photo: string;
 }
-export interface MapData<puzzleIDT extends string> {
-	center: Localization;
-	zoom: number;
-	pins: Pin<puzzleIDT>[];
+export interface OutdoorMapData<puzzleIDT extends string> extends MapData {
+	pins: OutdoorPin<puzzleIDT>[];
 }

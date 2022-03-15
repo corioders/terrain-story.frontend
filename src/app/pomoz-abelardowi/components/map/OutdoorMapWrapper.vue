@@ -9,7 +9,7 @@ import { defineComponent, ref } from 'vue';
 
 import MapLoader from '@/components/map/MapLoader.vue';
 import OutdoorMap from '@/components/map/outdoor/OutdoorMap.vue';
-import { MapData } from '@/components/map/outdoor/map';
+import { OutdoorMapData } from '@/components/map/outdoor/map';
 
 export default defineComponent({
 	name: 'MapWrapper',
@@ -25,10 +25,10 @@ export default defineComponent({
 	},
 	setup(props) {
 		const store = useProgressStore();
-		const mapData = ref<MapData<PuzzleID> | null>(null);
+		const mapData = ref<OutdoorMapData<PuzzleID> | null>(null);
 
 		const loadMap = async (): Promise<void> => {
-			const mapDataModule = (await import(`@help/assets/map/outdoor/${props.locationID}`)) as { mapData: MapData<PuzzleID> };
+			const mapDataModule = (await import(`@help/assets/map/outdoor/${props.locationID}`)) as { mapData: OutdoorMapData<PuzzleID> };
 			mapData.value = mapDataModule.mapData;
 		};
 		loadMap();
