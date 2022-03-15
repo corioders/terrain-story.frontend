@@ -1,7 +1,7 @@
 <template>
-	<FloorMap v-if="isFloorMap" :puzzlesDone="puzzlesDone" :gameName="gameName" :locationID="locationID" />
+	<IndoorMap v-if="isIndoorMap" :puzzlesDone="puzzlesDone" :gameName="gameName" :locationID="locationID" />
 	<LeafletMapWrapper v-if="isLeafletMap" :locationID="locationID" />
-	<div v-if="!isFloorMap && !isLeafletMap">
+	<div v-if="!isIndoorMap && !isLeafletMap">
 		<h2>Nie znaleziono odpowiedniej mapy</h2>
 		<p>Prosimy o zgłoszenie błędu, wybranie kategorii "Kod QR nie działa" i wpisanie lokalizacji</p>
 		<PrimaryButton @click="$router.push('/zglos-blad')">Zgłoś błąd</PrimaryButton>
@@ -15,14 +15,14 @@ import { useProgressStore } from '@help/store/progress';
 import { defineComponent } from 'vue';
 import { useRouter } from 'vue-router';
 
-import FloorMap from '@/components/map/floor/FloorMap.vue';
-import { getLocationID, hasLocationID, isFloorMap, isLeafletMap } from '@/router';
+import IndoorMap from '@/components/map/indoor/IndoorMap.vue';
+import { getLocationID, hasLocationID, isIndoorMap, isLeafletMap } from '@/router';
 import { PrimaryButton } from '@/theme/Button';
 
 export default defineComponent({
 	name: 'MapWrapper',
 	components: {
-		FloorMap,
+		IndoorMap,
 		LeafletMapWrapper,
 		PrimaryButton,
 	},
@@ -39,7 +39,7 @@ export default defineComponent({
 			gameName: mainStore.gameName,
 
 			locationID,
-			isFloorMap: isFloorMap(router),
+			isIndoorMap: isIndoorMap(router),
 			isLeafletMap: isLeafletMap(router),
 		};
 	},

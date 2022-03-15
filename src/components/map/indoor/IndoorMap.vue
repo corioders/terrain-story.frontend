@@ -1,7 +1,7 @@
 <template>
-	<MapLoader v-if="floorMapDescriptor === null" />
+	<MapLoader v-if="indoorMapDescriptor === null" />
 	<VFlex v-else class="container" gap="48px">
-		<div v-for="(floor, i) in floorMapDescriptor.floors" :key="`floor${i}-${floor}`" class="floor">
+		<div v-for="(floor, i) in indoorMapDescriptor.floors" :key="`floor${i}-${floor}`" class="floor">
 			<VFlex direction="row" justify="center" gap="13px">
 				<div v-if="floor.puzzleIDs[0] !== undefined">
 					<div v-for="(puzzleID, j) in floor.puzzleIDs" :key="`puzzle${j}-${puzzleID}`" class="puzzle" :class="puzzlesDone[puzzleID] === true ? 'done' : ''"></div>
@@ -18,12 +18,12 @@
 import { VFlex } from '@corioders/vueui';
 import { defineComponent, PropType, ref } from 'vue';
 
-import { FloorMapDescriptor, getFloorMapDescriptor } from './floorMap';
+import { IndoorMapDescriptor, getIndoorMapDescriptor } from './indoorMap';
 
 import MapLoader from '../MapLoader.vue';
 
 export default defineComponent({
-	name: 'FloorMap',
+	name: 'IndoorMap',
 	components: {
 		VFlex,
 		MapLoader,
@@ -44,14 +44,14 @@ export default defineComponent({
 	},
 	// async setup is currently unstable :<, https://v3.vuejs.org/guide/migration/suspense.html
 	setup(props) {
-		const floorMapDescriptor = ref<FloorMapDescriptor<string> | null>(null);
+		const indoorMapDescriptor = ref<IndoorMapDescriptor<string> | null>(null);
 
 		const loadMap = async (): Promise<void> => {
-			floorMapDescriptor.value = await getFloorMapDescriptor(props.locationID, props.gameName);
+			indoorMapDescriptor.value = await getIndoorMapDescriptor(props.locationID, props.gameName);
 		};
 		loadMap();
 
-		return { floorMapDescriptor };
+		return { indoorMapDescriptor };
 	},
 });
 </script>
