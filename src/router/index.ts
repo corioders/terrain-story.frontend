@@ -51,20 +51,20 @@ function geLocationID(router: Router, queryParamName: string): string | null {
 
 // Below code (locationKeys) must be keep in sync with https://github.com/corioders/terrain-story.api/blob/master/data/gamesCode.jsonc
 const indoorMapQueryParameterName = 'p';
-const leafletMapQueryParameterName = 'l';
-const mapQueryParameterNames = [indoorMapQueryParameterName, leafletMapQueryParameterName];
+const outdoorMapQueryParameterName = 'l';
+const mapQueryParameterNames = [indoorMapQueryParameterName, outdoorMapQueryParameterName];
 // Keep in sync end.
 
 function getIndoorMapLocationID(router: Router): string | null {
 	return geLocationID(router, indoorMapQueryParameterName);
 }
 
-function getLeafletMapLocationID(router: Router): string | null {
-	return geLocationID(router, leafletMapQueryParameterName);
+function getOutdoorMapLocationID(router: Router): string | null {
+	return geLocationID(router, outdoorMapQueryParameterName);
 }
 
 function getLocationIDNoThrow(router: Router): string | null {
-	return getIndoorMapLocationID(router) ?? getLeafletMapLocationID(router);
+	return getIndoorMapLocationID(router) ?? getOutdoorMapLocationID(router);
 }
 
 export function getLocationID(router: Router): string {
@@ -84,9 +84,9 @@ export function isIndoorMap(router: Router): boolean {
 	return true;
 }
 
-export function isLeafletMap(router: Router): boolean {
+export function isOutdoorMap(router: Router): boolean {
 	if (!hasLocationID(router)) return false;
-	if (getLeafletMapLocationID(router) === null) return false;
+	if (getOutdoorMapLocationID(router) === null) return false;
 	return true;
 }
 

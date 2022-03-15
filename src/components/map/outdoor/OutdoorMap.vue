@@ -10,7 +10,7 @@ import { defaultIcon, visitedIcon } from './icon';
 import { MapData } from './map';
 
 export default defineComponent({
-	name: 'LeafletMap',
+	name: 'OutdoorMap',
 	props: {
 		mapData: {
 			type: Object as PropType<MapData<string>>,

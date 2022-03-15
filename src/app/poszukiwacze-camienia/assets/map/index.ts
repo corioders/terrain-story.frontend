@@ -1,6 +1,6 @@
-import { MapData } from '@/components/map/leaflet/map';
-
 import { PuzzleID } from '@rock/store/progress';
+
+import { MapData } from '@/components/map/outdoor/map';
 
 export const mapData: MapData<PuzzleID> = {
 	center: [50.25876354879924, 19.021294856020486],
