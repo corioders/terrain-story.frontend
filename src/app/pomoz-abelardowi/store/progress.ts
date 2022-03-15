@@ -1,25 +1,22 @@
+import router from '@help/router';
 import { useGtag } from 'vue-gtag-next';
 
 import { defaultAction, defineProgressStore, isPuzzleIDFactory, Puzzles } from '@/store/ProgressStore';
 
-import router from '@help/router';
-
-export type PuzzleID = 'Bingo' | 'Emotions1' | 'Emotions2' | 'Jacobson' | 'Rebus' | 'Matching1' | 'Matching2' | 'PhoneNumbers';
-const puzzleIDs: PuzzleID[] = ['Bingo', 'Emotions1', 'Emotions2', 'Jacobson', 'Rebus', 'Matching1', 'Matching2', 'PhoneNumbers'];
+export type PuzzleID = 'Emotions' | 'Jacobson' | 'Rebus' | 'PhoneNumbers' | 'PsiColoring' | 'Word';
+const puzzleIDs: PuzzleID[] = ['Emotions', 'Jacobson', 'Rebus', 'PhoneNumbers', 'PsiColoring', 'Word'];
 export const isPuzzleID = isPuzzleIDFactory(puzzleIDs);
 
 export const useProgressStore = defineProgressStore({
 	id: 'help.progress',
 	state: () => {
 		const puzzlesDone: Puzzles<PuzzleID> = {
-			Bingo: false,
-			Emotions1: false,
-			Emotions2: false,
+			Emotions: false,
 			Jacobson: false,
 			Rebus: false,
-			Matching1: false,
-			Matching2: false,
 			PhoneNumbers: false,
+			PsiColoring: false,
+			Word: false,
 		};
 
 		return {

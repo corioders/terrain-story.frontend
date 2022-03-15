@@ -13,34 +13,61 @@
 				Wasz Scott
 			</h3>
 		</article>
-		<p>G5, H2, F2, D4, J5, I3, E5, G2, J4, K5, C5, H5, E3, I5, F5, D5</p>
+		<p>{{ correctSelections }}</p>
 	</VCard>
-	<TrapezoidColoring :trapezoidDescriptor="trapezoidDescriptor" @correct="handleAnswer(true)" @incorrect="handleAnswer(false)" />
+	<GridColoring :gridDescriptor="trapezoidDescriptor" @correct="handleAnswer(true)" @incorrect="handleAnswer(false)" />
 	<CheckButton :isCorrect="isCorrect" @click="handleCheck" />
 </template>
 
 <script lang="ts">
 import { VCard } from '@corioders/vueui';
-import { trapezoidDescriptor } from '@rock/assets/archaeologist';
 import { useProgressStore } from '@rock/store/progress';
-import { defineComponent, ref } from 'vue';
+import { defineComponent } from 'vue';
 
-import TrapezoidColoring from '@/app/poszukiwacze-camienia/components/trapezoidColoring/TrapezoidColoring.vue';
 import Video from '@/components/YoutubeVideo.vue';
 import CheckButton from '@/components/buttons/CheckButton.vue';
 import { questionExecutor } from '@/components/closedQuestion/question';
+import GridColoring from '@/components/gridColoring/GridColoring.vue';
+import { GridDescriptor, correctSelectionsForHuman } from '@/components/gridColoring/grid';
 
+export const trapezoidDescriptor: GridDescriptor = {
+	dimensions: {
+		width: 15,
+		height: 8,
+	},
+	correctSelections: [
+		{ x: 5, y: 4 },
+		{ x: 4, y: 4 },
+		{ x: 6, y: 4 },
+		{ x: 7, y: 4 },
+		{ x: 8, y: 4 },
+		{ x: 9, y: 4 },
+		{ x: 10, y: 4 },
+		{ x: 9, y: 3 },
+		{ x: 8, y: 2 },
+		{ x: 7, y: 1 },
+		{ x: 6, y: 1 },
+		{ x: 5, y: 1 },
+		{ x: 4, y: 2 },
+		{ x: 3, y: 3 },
+		{ x: 2, y: 4 },
+		{ x: 3, y: 4 },
+	],
+};
+Object.freeze(trapezoidDescriptor);
+
+const correctSelections = correctSelectionsForHuman(trapezoidDescriptor.correctSelections);
 export default defineComponent({
 	name: 'Archaeologist',
 	components: {
 		VCard,
 		Video,
-		TrapezoidColoring,
+		GridColoring,
 		CheckButton,
 	},
 	setup() {
 		const store = useProgressStore();
-		return { trapezoidDescriptor, ...questionExecutor(() => store.finishPuzzle('Archaeologist')) };
+		return { trapezoidDescriptor, ...questionExecutor(() => store.finishPuzzle('Archaeologist')), correctSelections };
 	},
 });
 </script>
