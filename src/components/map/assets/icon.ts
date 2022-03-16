@@ -1,13 +1,12 @@
 import { Icon } from 'leaflet';
 
+import iconRetinaIndoorUrl from './marker-icon-2x-indoor.png';
+import iconRetinaVisitedUrl from './marker-icon-2x-visited.png';
 import iconRetinaUrl from './marker-icon-2x.png';
+import iconIndoorUrl from './marker-icon-indoor.png';
+import iconVisitedUrl from './marker-icon-visited.png';
 import iconUrl from './marker-icon.png';
 import shadowUrl from './marker-shadow.png';
-
-import iconRetinaVisitedUrl from '../assets/marker-icon-2x-visited.png';
-import iconRetinaIndoorUrl from '../assets/marker-icon-2x-visited.png';
-import iconIndoorUrl from '../assets/marker-icon-indoor.png';
-import iconVisitedUrl from '../assets/marker-icon-visited.png';
 
 export const defaultIconOptions = Icon.Default.prototype.options;
 
@@ -25,7 +24,7 @@ export const visitedIcon = new Icon({
 	shadowUrl: shadowUrl,
 });
 
-export const indoorIcon = new Icon({
+export const indooraIcon = new Icon({
 	...defaultIconOptions,
 	iconUrl: iconIndoorUrl,
 	iconRetinaUrl: iconRetinaIndoorUrl,
