@@ -10,7 +10,7 @@ import { defineComponent } from 'vue';
 import OutdoorMap from '@/components/map/outdoor/OutdoorMap.vue';
 
 export default defineComponent({
-	name: 'MapWrapper',
+	name: 'OutdoorMapWrapper',
 	components: {
 		OutdoorMap,
 	},

@@ -97,11 +97,6 @@ export const routes: RouteRecordRaw[] = [
 		component: (): Promise<Component> => import('@/views/ReportBug'),
 	},
 	{
-		path: '/a',
-		name: 'A',
-		component: (): Promise<Component> => import('@help/routes/A.vue'),
-	},
-	{
 		path: '/:pathMatch(.*)*',
 		redirect: '/',
 	},

@@ -9,7 +9,7 @@ import { defineComponent, ref } from 'vue';
 
 import MapLoader from '@/components/map/MapLoader.vue';
 import OutdoorMap from '@/components/map/outdoor/OutdoorMap.vue';
-import { OutdoorMapData } from '@/components/map/outdoor/map';
+import { OutdoorMapData } from '@/components/map/outdoor/outdoorMap';
 
 export default defineComponent({
 	name: 'MapWrapper',

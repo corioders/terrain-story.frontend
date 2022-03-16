@@ -4,7 +4,7 @@
 </template>
 
 <script lang="ts">
-import MapWrapper from '@rock/components/MapWrapper.vue';
+import MapWrapper from '@rock/components/OutdoorMapWrapper.vue';
 import { defineComponent } from 'vue';
 
 export default defineComponent({

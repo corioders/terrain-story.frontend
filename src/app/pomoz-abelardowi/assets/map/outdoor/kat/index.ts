@@ -1,6 +1,6 @@
 import { PuzzleID } from '@help/store/progress';
 
-import { OutdoorMapData } from '@/components/map/outdoor/map';
+import { OutdoorMapData } from '@/components/map/outdoor/outdoorMap';
 
 export const mapData: OutdoorMapData<PuzzleID> = {
 	center: [50.25876354879924, 19.021294856020486],

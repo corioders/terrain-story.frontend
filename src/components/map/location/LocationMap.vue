@@ -6,8 +6,7 @@
 import { map, tileLayer, marker, polyline } from 'leaflet';
 import { defineComponent, onMounted, ref, PropType } from 'vue';
 
-import { defaultIcon, indoorIcon } from './icon';
-
+import { defaultIcon, indoorIcon } from '../assets/icon';
 import { Pin } from '../map';
 
 export default defineComponent({

@@ -6,8 +6,9 @@
 import { map, tileLayer, marker } from 'leaflet';
 import { defineComponent, onMounted, ref, PropType } from 'vue';
 
-import { defaultIcon, visitedIcon } from './icon';
-import { OutdoorMapData } from './map';
+import { OutdoorMapData } from './outdoorMap';
+
+import { defaultIcon, visitedIcon } from '../assets/icon';
 
 export default defineComponent({
 	name: 'OutdoorMap',

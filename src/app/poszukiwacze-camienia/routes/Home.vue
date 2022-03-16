@@ -13,7 +13,7 @@
 				<div v-if="progressStore.ended" style="margin-bottom: 32px">
 					<ResetProgressButton :progressStore="progressStore" />
 				</div>
-				<MapWrapper />
+				<OutdoorMapWrapper />
 			</VFlex>
 		</section>
 		<section class="light">
@@ -46,11 +46,11 @@
 
 <script lang="ts">
 import { VFlex } from '@corioders/vueui';
-import MapWrapper from '@rock/components/MapWrapper.vue';
 import { routes } from '@rock/router';
 import { useProgressStore } from '@rock/store/progress';
 import { defineComponent, ref } from 'vue';
 
+import OutdoorMapWrapper from '@/app/poszukiwacze-camienia/components/OutdoorMapWrapper.vue';
 import Video from '@/components/YoutubeVideo.vue';
 import ResetProgressButton from '@/components/buttons/ResetProgressButton.vue';
 import DevNav from '@/components/devHelpers/DevNav.vue';
@@ -64,7 +64,7 @@ export default defineComponent({
 		InfoButton,
 		InfoLink,
 		VFlex,
-		MapWrapper,
+		OutdoorMapWrapper,
 		Video,
 		ResetProgressButton,
 		DevNav,
