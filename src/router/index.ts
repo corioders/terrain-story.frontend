@@ -44,27 +44,27 @@ export function navigateToRedirectedFrom(router: Router): void {
 }
 
 function geLocationID(router: Router, queryParamName: string): string | null {
-	const floorMapLocationID = router.currentRoute.value.query[queryParamName] as LocationQueryValue | undefined;
-	if (floorMapLocationID === undefined || floorMapLocationID === null) return null;
-	return floorMapLocationID;
+	const indoorMapLocationID = router.currentRoute.value.query[queryParamName] as LocationQueryValue | undefined;
+	if (indoorMapLocationID === undefined || indoorMapLocationID === null) return null;
+	return indoorMapLocationID;
 }
 
 // Below code (locationKeys) must be keep in sync with https://github.com/corioders/terrain-story.api/blob/master/data/gamesCode.jsonc
-const floorMapQueryParameterName = 'p';
-const leafletMapQueryParameterName = 'l';
-const mapQueryParameterNames = [floorMapQueryParameterName, leafletMapQueryParameterName];
+const indoorMapQueryParameterName = 'p';
+const outdoorMapQueryParameterName = 'l';
+const mapQueryParameterNames = [indoorMapQueryParameterName, outdoorMapQueryParameterName];
 // Keep in sync end.
 
-function getFloorMapLocationID(router: Router): string | null {
-	return geLocationID(router, floorMapQueryParameterName);
+function getIndoorMapLocationID(router: Router): string | null {
+	return geLocationID(router, indoorMapQueryParameterName);
 }
 
-function getLeafletMapLocationID(router: Router): string | null {
-	return geLocationID(router, leafletMapQueryParameterName);
+function getOutdoorMapLocationID(router: Router): string | null {
+	return geLocationID(router, outdoorMapQueryParameterName);
 }
 
 function getLocationIDNoThrow(router: Router): string | null {
-	return getFloorMapLocationID(router) ?? getLeafletMapLocationID(router);
+	return getIndoorMapLocationID(router) ?? getOutdoorMapLocationID(router);
 }
 
 export function getLocationID(router: Router): string {
@@ -78,15 +78,15 @@ export function hasLocationID(router: Router): boolean {
 	return true;
 }
 
-export function isFloorMap(router: Router): boolean {
+export function isIndoorMap(router: Router): boolean {
 	if (!hasLocationID(router)) return false;
-	if (getFloorMapLocationID(router) === null) return false;
+	if (getIndoorMapLocationID(router) === null) return false;
 	return true;
 }
 
-export function isLeafletMap(router: Router): boolean {
+export function isOutdoorMap(router: Router): boolean {
 	if (!hasLocationID(router)) return false;
-	if (getLeafletMapLocationID(router) === null) return false;
+	if (getOutdoorMapLocationID(router) === null) return false;
 	return true;
 }
 

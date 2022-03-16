@@ -4,14 +4,14 @@ import { DocumentData, DocumentReference } from 'firebase/firestore';
 
 import '@/firebaseInit';
 
-export async function getFloorMapDescriptor<PuzzleID extends string>(locationID: string, gameName: string): Promise<FloorMapDescriptor<PuzzleID>> {
+export async function getIndoorMapDescriptor<PuzzleID extends string>(locationID: string, gameName: string): Promise<IndoorMapDescriptor<PuzzleID>> {
 	return {
 		floors: await getFloors<PuzzleID>(locationID, gameName),
 	};
 }
 
 // Below code must be keep in sync with https://github.com/corioders/terrain-story.map-cms/blob/master/src/firebase.ts
-export interface FloorMapDescriptor<PuzzleID extends string> {
+export interface IndoorMapDescriptor<PuzzleID extends string> {
 	floors: FloorDescriptor<PuzzleID>[];
 }
 
