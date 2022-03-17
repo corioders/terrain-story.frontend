@@ -24,7 +24,7 @@ export const visitedIcon = new Icon({
 	shadowUrl: shadowUrl,
 });
 
-export const indooraIcon = new Icon({
+export const indoorIcon = new Icon({
 	...defaultIconOptions,
 	iconUrl: iconIndoorUrl,
 	iconRetinaUrl: iconRetinaIndoorUrl,
