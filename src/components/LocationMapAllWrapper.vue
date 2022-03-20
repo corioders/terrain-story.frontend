@@ -1,5 +1,5 @@
 <template>
-	<div v-if="loading">LOADING</div>
+	<MapLoader v-if="loading" />
 	<LocationMap v-else :indoor="indoor" :outdoor="outdoor" />
 </template>
 
@@ -8,6 +8,7 @@ import { collection, getDocs, getFirestore } from '@firebase/firestore';
 import { mapData as mapDataKat } from '@help/assets/map/outdoor/kat';
 import { defineComponent, Ref, ref } from 'vue';
 
+import MapLoader from '@/components/map/MapLoader.vue';
 import LocationMap from '@/components/map/location/LocationMap.vue';
 import '@/firebaseInit';
 
@@ -36,7 +37,7 @@ async function fetchIndoorPins(): Promise<Pin[]> {
 		pins.push({
 			name: d.friendlyName,
 			localization: [Number(d.latitude), Number(d.longitude)],
-			
+
 			// TODO: make it optional.
 			photo: '',
 		});
@@ -49,6 +50,7 @@ export default defineComponent({
 	name: 'LocationMapAllWrapper',
 	components: {
 		LocationMap,
+		MapLoader,
 	},
 	setup() {
 		const loading = ref(true);
