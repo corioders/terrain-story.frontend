@@ -18,7 +18,7 @@
 		</section>
 		<section class="dark">
 			<VFlex>
-				<h5 style="margin-bottom: 24px">Szukasz naszych gier?</h5>
+				<h5 style="margin-bottom: 24px">Tu znajdziesz nasze gry</h5>
 				<LocationMapAllWrapper />
 			</VFlex>
 		</section>

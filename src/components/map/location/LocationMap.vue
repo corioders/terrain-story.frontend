@@ -1,8 +1,22 @@
 <template>
-	<div ref="mapRef" class="map"></div>
+	<div ref="mapRef" class="map">
+		<div class="legend">
+			<VFlex align="flex-start">
+				<VFlex direction="row" gap="4px">
+					<img src="../assets/marker-icon-2x.png" alt="Niebieska pinezka" />
+					<p>Gra dostępna publicznie</p>
+				</VFlex>
+				<VFlex direction="row" gap="4px">
+					<img src="../assets/marker-icon-2x-indoor.png" alt="Czerwona pinezka" />
+					<p>Gra wewnętrzna</p>
+				</VFlex>
+			</VFlex>
+		</div>
+	</div>
 </template>
 
 <script lang="ts">
+import { VFlex } from '@corioders/vueui';
 import { map, tileLayer, marker, polyline } from 'leaflet';
 import { defineComponent, onMounted, ref, PropType } from 'vue';
 
@@ -11,6 +25,9 @@ import { Pin } from '../map';
 
 export default defineComponent({
 	name: 'LocationMap',
+	components: {
+		VFlex,
+	},
 	props: {
 		indoor: {
 			type: Array as PropType<Pin[]>,
@@ -68,6 +85,22 @@ export default defineComponent({
 	max-width: 950px;
 	max-height: 700px;
 	margin: 0 12px;
+	position: relative;
+
+	.legend {
+		position: absolute;
+		bottom: 24px;
+		right: 0;
+		z-index: 999;
+		background-color: #fff;
+		opacity: 0.8;
+		color: #000;
+		padding: 12px 45px 12px 12px;
+
+		img {
+			width: 12px;
+		}
+	}
 }
 
 img {
