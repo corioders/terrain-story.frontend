@@ -26,19 +26,25 @@
 		</section>
 		<section class="dark">
 			<VFlex>
-				<h5>Twórcy Gry</h5>
-				<img class="logo" src="@/assets/whiteLogo.webp" alt="Terrain Story" />
-				<img class="logo" src="@/assets/CAMLogo.webp" alt="CAM" />
+				<h5 style="margin-bottom: 24px">Szukasz naszych gier?</h5>
+				<LocationMapAllWrapper />
 			</VFlex>
 		</section>
 		<section class="light">
 			<VFlex>
-				<h6>Kontakt</h6>
-				<p>terrainstory@gmail.com</p>
+				<h6 style="margin: 0">Kontakt</h6>
+				<p style="margin-bottom: 0">terrainstory@gmail.com</p>
 				<p style="margin-top: 0">
 					Wiadomość na <InfoLink href="https://www.instagram.com/terrain.story/" newCard>Instagramie</InfoLink> lub
 					<InfoLink href="https://www.facebook.com/terrain.story/" newCard>Facebooku</InfoLink>
 				</p>
+			</VFlex>
+		</section>
+		<section class="dark">
+			<VFlex>
+				<h5>Twórcy Gry</h5>
+				<img class="logo" src="@/assets/whiteLogo.webp" alt="Terrain Story" />
+				<img class="logo" src="@/assets/CAMLogo.webp" alt="CAM" />
 			</VFlex>
 		</section>
 	</VFlex>
@@ -51,6 +57,7 @@ import { useProgressStore } from '@rock/store/progress';
 import { defineComponent, ref } from 'vue';
 
 import OutdoorMapWrapper from '@/app/poszukiwacze-camienia/components/OutdoorMapWrapper.vue';
+import LocationMapAllWrapper from '@/components/LocationMapAllWrapper.vue';
 import Video from '@/components/YoutubeVideo.vue';
 import ResetProgressButton from '@/components/buttons/ResetProgressButton.vue';
 import DevNav from '@/components/devHelpers/DevNav.vue';
@@ -68,6 +75,7 @@ export default defineComponent({
 		Video,
 		ResetProgressButton,
 		DevNav,
+		LocationMapAllWrapper,
 	},
 	setup() {
 		const showModal = ref(true);
