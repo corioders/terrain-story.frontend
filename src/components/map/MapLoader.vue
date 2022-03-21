@@ -12,7 +12,7 @@ import { VFlex, VSpinner } from '@corioders/vueui';
 import { defineComponent } from 'vue';
 
 export default defineComponent({
-	name: 'FloorMapLoader',
+	name: 'IndoorMapLoader',
 	components: {
 		VFlex,
 		VSpinner,

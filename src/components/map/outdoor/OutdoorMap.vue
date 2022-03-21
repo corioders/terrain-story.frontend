@@ -6,14 +6,15 @@
 import { map, tileLayer, marker } from 'leaflet';
 import { defineComponent, onMounted, ref, PropType } from 'vue';
 
-import { defaultIcon, visitedIcon } from './icon';
-import { MapData } from './map';
+import { OutdoorMapData } from './outdoorMap';
+
+import { defaultIcon, visitedIcon } from '../assets/icon';
 
 export default defineComponent({
-	name: 'LeafletMap',
+	name: 'OutdoorMap',
 	props: {
 		mapData: {
-			type: Object as PropType<MapData<string>>,
+			type: Object as PropType<OutdoorMapData<string>>,
 			required: true,
 		},
 		puzzlesDone: {

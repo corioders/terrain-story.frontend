@@ -17,9 +17,8 @@
 		</section>
 		<section class="dark">
 			<VFlex>
-				<h5>Twórcy Gry</h5>
-				<img class="logo" src="@/assets/whiteLogo.webp" alt="Terrain Story" />
-				<p>Nauczyciele angielskiego z VIII LO im. Marii Skłodowskiej-Curie w Katowicach</p>
+				<h5 style="margin-bottom: 24px">Szukasz naszych gier?</h5>
+				<LocationMapAllWrapper />
 			</VFlex>
 		</section>
 		<section class="light">
@@ -32,6 +31,13 @@
 				</p>
 			</VFlex>
 		</section>
+		<section class="dark">
+			<VFlex>
+				<h5>Twórcy Gry</h5>
+				<img class="logo" src="@/assets/whiteLogo.webp" alt="Terrain Story" />
+				<p>Nauczyciele angielskiego z VIII LO im. Marii Skłodowskiej-Curie w Katowicach</p>
+			</VFlex>
+		</section>
 	</VFlex>
 </template>
 
@@ -40,6 +46,7 @@ import { VFlex } from '@corioders/vueui';
 import { routes } from '@eng/router';
 import { defineComponent } from 'vue';
 
+import LocationMapAllWrapper from '@/components/LocationMapAllWrapper.vue';
 import Video from '@/components/YoutubeVideo.vue';
 import DevNav from '@/components/devHelpers/DevNav.vue';
 import { InfoLink } from '@/theme/Link';
@@ -51,6 +58,7 @@ export default defineComponent({
 		VFlex,
 		Video,
 		InfoLink,
+		LocationMapAllWrapper,
 	},
 	setup() {
 		return { routes, IS_PRODUCTION: __IS_PRODUCTION__ };
