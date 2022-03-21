@@ -37,9 +37,6 @@ async function fetchIndoorPins(): Promise<Pin[]> {
 		pins.push({
 			name: d.friendlyName,
 			localization: [Number(d.latitude), Number(d.longitude)],
-
-			// TODO: make it optional.
-			photo: '',
 		});
 	}
 

@@ -47,7 +47,9 @@ export default defineComponent({
 				for (const pin of pins) {
 					marker(pin.localization, { icon: isOutdoor ? defaultIcon : indoorIcon })
 						.bindPopup(
-							`<p>${pin.name}</p><img src="${pin.photo}" style="width:50vw; max-width: 300px;" /><br><a href="https://www.google.com/maps/dir//${pin.localization[0]},${pin.localization[1]}" target="_blank" rel="noreferrer">Prowadź</a>`,
+							`<p>${pin.name}</p>${
+								pin.photo !== undefined ? `<img src="${pin.photo}" style="width:50vw; max-width: 300px;" />` : ''
+							}<br><a href="https://www.google.com/maps/dir//${pin.localization[0]},${pin.localization[1]}" target="_blank" rel="noreferrer">Prowadź</a>`,
 						)
 						.addTo(lMap);
 				}
