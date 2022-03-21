@@ -42,7 +42,7 @@ export function progressNavigationGuard<PuzzleID extends string>(
 	return true;
 }
 
-const redirectedFromNameQueryKey = 'r';
+export const redirectedFromNameQueryKey = 'r';
 export function getRedirectedFromName(query: RouteLocationNormalized['query']): string | undefined {
 	let redirectedFromName = query[redirectedFromNameQueryKey];
 	if (redirectedFromName instanceof Array) redirectedFromName = redirectedFromName[0];

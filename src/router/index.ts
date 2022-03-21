@@ -11,7 +11,7 @@ import {
 } from 'vue-router';
 
 import { NavigationGuardReturn } from './navigationGuard/navigationGuard';
-import { deleteRedirectedFromName, getRedirectedFromName } from './navigationGuard/progress';
+import { deleteRedirectedFromName, getRedirectedFromName, redirectedFromNameQueryKey } from './navigationGuard/progress';
 
 export function createRouter(routes: RouteRecordRaw[], options?: Omit<RouterOptions, 'history' | 'routes'>): Router {
 	const router = createVRouter({
@@ -52,7 +52,6 @@ function geLocationID(router: Router, queryParamName: string): string | null {
 // Below code (locationKeys) must be keep in sync with https://github.com/corioders/terrain-story.api/blob/master/data/gamesCode.jsonc
 const indoorMapQueryParameterName = 'p';
 const outdoorMapQueryParameterName = 'l';
-const mapQueryParameterNames = [indoorMapQueryParameterName, outdoorMapQueryParameterName];
 // Keep in sync end.
 
 function getIndoorMapLocationID(router: Router): string | null {
@@ -90,9 +89,10 @@ export function isOutdoorMap(router: Router): boolean {
 	return true;
 }
 
+const queryParametersToKeep = [indoorMapQueryParameterName, outdoorMapQueryParameterName, redirectedFromNameQueryKey];
 function keepQueryParamsNavigationGuard(to: RouteLocationNormalized, from: RouteLocationNormalized): NavigationGuardReturn {
 	let wasInvalid = false;
-	for (const key of mapQueryParameterNames) {
+	for (const key of queryParametersToKeep) {
 		if (to.query[key] === undefined && from.query[key] !== undefined) {
 			to.query[key] = from.query[key];
 			wasInvalid = true;
