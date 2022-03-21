@@ -19,6 +19,22 @@
 		</section>
 		<section class="dark">
 			<VFlex>
+				<h5 style="margin-bottom: 24px">Szukasz naszych gier?</h5>
+				<LocationMapAllWrapper />
+			</VFlex>
+		</section>
+		<section class="light">
+			<VFlex>
+				<h6 style="margin: 0">Kontakt</h6>
+				<p style="margin-bottom: 0">terrainstory@gmail.com</p>
+				<p style="margin-top: 0">
+					Wiadomość na <InfoLink href="https://www.instagram.com/terrain.story/" newCard>Instagramie</InfoLink> lub
+					<InfoLink href="https://www.facebook.com/terrain.story/" newCard>Facebooku</InfoLink>
+				</p>
+			</VFlex>
+		</section>
+		<section class="dark">
+			<VFlex>
 				<h5>Twórcy Gry</h5>
 				<img class="logo" src="@/assets/blackLogo.webp" alt="Terrain Story" />
 				<p>Nauczyciele z VIII LO im. Marii Skłodowskiej-Curie w Katowicach</p>
@@ -33,12 +49,6 @@
 				<img class="logo logoLink" src="@/assets/patrons/portalKatowice.webp" alt="Portal Katowice" @click="redirect" />
 			</VFlex>
 		</section>
-		<section class="dark">
-			<VFlex>
-				<h6 style="margin: 0">Kontakt</h6>
-				<p style="margin-bottom: 0">terrainstory@gmail.com</p>
-			</VFlex>
-		</section>
 	</VFlex>
 </template>
 
@@ -48,8 +58,10 @@ import { routes } from '@recap/router';
 import { useWindowSize } from '@vueuse/core';
 import { defineComponent } from 'vue';
 
+import LocationMapAllWrapper from '@/components/LocationMapAllWrapper.vue';
 import Video from '@/components/YoutubeVideo.vue';
 import DevNav from '@/components/devHelpers/DevNav.vue';
+import { InfoLink } from '@/theme/Link';
 
 export default defineComponent({
 	name: 'Home',
@@ -57,6 +69,8 @@ export default defineComponent({
 		DevNav,
 		VFlex,
 		Video,
+		InfoLink,
+		LocationMapAllWrapper,
 	},
 	setup() {
 		return { routes, IS_PRODUCTION: __IS_PRODUCTION__, window: useWindowSize() };

@@ -34,7 +34,7 @@ export default defineComponent({
 				// leaflet library will emit simulated click event and it will close popup...
 				// TODO: Stop using leaflets
 				tapTolerance: -1,
-			}).fitBounds(lPolyline.getBounds(), { padding: [280, 280] }); /* .setView([50.263305648532274, 19.02368651790381], props.mapData.zoom); */
+			}).fitBounds(lPolyline.getBounds(), { padding: [100, 100] }); /* .setView([50.263305648532274, 19.02368651790381], props.mapData.zoom); */
 
 			tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 				attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
