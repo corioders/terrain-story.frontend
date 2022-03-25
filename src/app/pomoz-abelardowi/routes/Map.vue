@@ -1,7 +1,7 @@
 <template>
 	<IndoorMap v-if="isIndoorMap" :puzzlesDone="puzzlesDone" :gameName="gameName" :locationID="locationID" />
 	<OutdoorMapWrapper v-if="isOutdoorMap" :locationID="locationID" />
-	<div v-if="!isIndoorMap && !isOutdoorMap">
+	<div v-if="!isIndoorMap && !isOutdoorMap" class="error">
 		<h2>Ooopppss! Przykro nam nie znaleźliśmy odpowiedniej mapy.</h2>
 		<p>Prosimy zgłoś błąd a pomoże nam to dopracować grę. Wybierz proszę kategorię "Kod QR nie działa", a lokalizację wpisz samodzielnie.</p>
 		<PrimaryButton @click="$router.push('/zglos-blad')">Zgłoś błąd</PrimaryButton>
@@ -45,3 +45,9 @@ export default defineComponent({
 	},
 });
 </script>
+<style lang="scss" scoped>
+.error {
+	width: 95%;
+	max-width: 950px;
+}
+</style>

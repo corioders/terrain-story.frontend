@@ -41,3 +41,9 @@ export default defineComponent({
 	},
 });
 </script>
+<style lang="scss" scoped>
+.error {
+	width: 95%;
+	max-width: 950px;
+}
+</style>
