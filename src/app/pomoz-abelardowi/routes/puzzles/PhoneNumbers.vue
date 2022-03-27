@@ -1,20 +1,22 @@
 <template>
-	<p>Nigdy nie bójmy się prosić o pomoc</p>
-	<div>
-		<p>telefon zaufania dla dzieci i młodzieży</p>
-		<p>“116 ???” 11 * 11 - 10 = ???</p>
-		<VInput v-model="number1" name="???" />
-	</div>
-	<div>
-		<p>telefon zaufania dla dorosłych</p>
-		<p>“116 ???” 11 * 10 + 13 = ???</p>
-		<VInput v-model="number2" name="???" @input="submitAnswer" />
-	</div>
-	<CheckButton :isCorrect="isCorrect" @click="handleCheck" />
+	<VFlex align="center">
+		<p>Nigdy nie bójmy się prosić o pomoc</p>
+		<div>
+			<p>telefon zaufania dla dzieci i młodzieży</p>
+			<img src="@help/assets/phoneNumbers/kids.webp" alt="“116 ***” 11 * 11 - 10 = ***" />
+			<VInput v-model="number1" name="***" />
+		</div>
+		<div>
+			<p>telefon zaufania dla dorosłych</p>
+			<img src="@help/assets/phoneNumbers/adults.webp" alt="“116 ***” 11 * 10 + 13 = ***" />
+			<VInput v-model="number2" name="***" @input="submitAnswer" />
+		</div>
+		<CheckButton :isCorrect="isCorrect" @click="handleCheck" />
+	</VFlex>
 </template>
 
 <script lang="ts">
-import { VInput } from '@corioders/vueui';
+import { VInput, VFlex } from '@corioders/vueui';
 import { useProgressStore } from '@help/store/progress';
 import { defineComponent, ref } from 'vue';
 
@@ -25,6 +27,7 @@ export default defineComponent({
 	components: {
 		CheckButton,
 		VInput,
+		VFlex,
 	},
 	setup() {
 		const commonNumber = '116';
@@ -54,6 +57,11 @@ export default defineComponent({
 div {
 	p {
 		margin: 0;
+	}
+
+	img {
+		width: 95%;
+		max-width: 950px;
 	}
 
 	margin-bottom: 12px;
