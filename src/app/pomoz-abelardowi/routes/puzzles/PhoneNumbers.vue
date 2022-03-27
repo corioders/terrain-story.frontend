@@ -1,18 +1,16 @@
 <template>
-	<VFlex align="center">
-		<p>Nigdy nie bójmy się prosić o pomoc</p>
-		<div>
-			<p>telefon zaufania dla dzieci i młodzieży</p>
-			<img src="@help/assets/phoneNumbers/kids.webp" alt="“116 ***” 11 * 11 - 10 = ***" />
-			<VInput v-model="number1" name="***" />
-		</div>
-		<div>
-			<p>telefon zaufania dla dorosłych</p>
-			<img src="@help/assets/phoneNumbers/adults.webp" alt="“116 ***” 11 * 10 + 13 = ***" />
-			<VInput v-model="number2" name="***" @input="submitAnswer" />
-		</div>
-		<CheckButton :isCorrect="isCorrect" @click="handleCheck" />
+	<p>Nigdy nie bójmy się prosić o pomoc</p>
+	<VFlex align="center" class="flex">
+		<p>telefon zaufania dla dzieci i młodzieży</p>
+		<img src="@help/assets/phoneNumbers/kids.webp" alt="“116 ***” 11 * 11 - 10 = ***" />
+		<VInput v-model="number1" name="***" />
 	</VFlex>
+	<VFlex align="center" class="flex">
+		<p>telefon zaufania dla dorosłych</p>
+		<img src="@help/assets/phoneNumbers/adults.webp" alt="“116 ***” 11 * 10 + 13 = ***" />
+		<VInput v-model="number2" name="***" @input="submitAnswer" />
+	</VFlex>
+	<CheckButton :isCorrect="isCorrect" @click="handleCheck" />
 </template>
 
 <script lang="ts">
@@ -54,7 +52,7 @@ export default defineComponent({
 });
 </script>
 <style lang="scss" scoped>
-div {
+.flex {
 	p {
 		margin: 0;
 	}
