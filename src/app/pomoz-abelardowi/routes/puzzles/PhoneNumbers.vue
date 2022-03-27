@@ -58,7 +58,7 @@ export default defineComponent({
 	}
 
 	img {
-		width: 95%;
+		width: 65%;
 		max-width: 950px;
 	}
 
