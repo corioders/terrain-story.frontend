@@ -1,18 +1,26 @@
 <template>
 	<VCard style="width: 95%; max-width: 600px">
 		<article>
-			<h2>Zaznacz poniższe koordynaty na polu, ukaże Ci opis symbolu.</h2>
+			<h2 v-if="!isUA.value">Zaznacz poniższe koordynaty na polu, ukaże Ci opis symbolu.</h2>
+			<h2 v-else>Позначте наступні координати на полі, це покаже вам опис символу.</h2>
 			<p>{{ correctSelections }}</p>
 		</article>
 	</VCard>
 	<GridColoring :gridDescriptor="gridDescriptor" @correct="isCorrect = true" />
 	<div v-if="isCorrect" class="description">
-		<p>
+		<p v-if="!isUA.value">
 			Litera "psi" w starożytności przeszła wiele zmian znaczeniowych. Oznaczała między innymi motyla, energię, oddech, a na końcowo - duszę. Obecnie jest to jeden z
 			najważniejszych symboli w psychologii.
 		</p>
+		<p v-else>
+			Буква «псі» зазнала багатьох семантичних змін у давнину. Це означало, серед іншого, метелика, енергію, подих і, нарешті, - душу. Це один з найважливіших символів у
+			сучасній психології.
+		</p>
 	</div>
-	<PrimaryButton :disabled="!isCorrect" @click="handleClick">Zrobione</PrimaryButton>
+	<PrimaryButton :disabled="!isCorrect" @click="handleClick">
+		<template v-if="!isUA.value">Zrobione</template>
+		<template v-else>Зроблено</template>
+	</PrimaryButton>
 </template>
 
 <script lang="ts">
