@@ -2,7 +2,7 @@ import Question from '@/components/closedQuestion/question';
 
 let emotionsLocal: Question[] = [];
 
-if (!window.isUA) {
+if (!window.isUA.value) {
 	emotionsLocal = [
 		{
 			options: ['Jestem przygnębiony', 'To obrzydliwe', 'Jak to działa?'],

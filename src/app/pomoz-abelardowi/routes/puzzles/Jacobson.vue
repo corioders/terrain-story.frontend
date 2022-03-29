@@ -36,7 +36,7 @@ import { defineComponent, ref } from 'vue';
 import { PrimaryButton } from '@/theme/Button';
 
 let jacobson: string[] = [];
-if (!window.isUA) {
+if (!window.isUA.value) {
 	jacobson = [
 		'Weź dwa głębokie oddechy. Powietrze staraj się wydychać powoli.',
 		'Zaciśnij pięści obu rąk. Poczuj napięcie. Przytrzymaj tak około 5 sekund… i odpuść… Poczuj, jak Twoje dłonie przyjemnie się odprężają.',
