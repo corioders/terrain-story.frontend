@@ -11,7 +11,6 @@ const app = createApp(App);
 const pinia = createPinia();
 pinia.use(createLocalStoragePlugin());
 
-// const isUARef = ref<boolean>(true);
 const isUARef = ref<boolean>(false);
 
 declare global {
