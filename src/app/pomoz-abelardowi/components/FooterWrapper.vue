@@ -31,6 +31,10 @@
 				<template v-else> Спонсори </template>
 			</TinyLink>
 			<TinyLink v-if="$route.name === 'Jacobson'" href="https://www.vecteezy.com/free-photos" :newCard="true">Free Stock photos by Vecteezy</TinyLink>
+			<TinyLink @click="isUA.value = !isUA.value">
+				<template v-if="!isUA.value">Przełącz na polski</template>
+				<template v-else>Перейти на українську</template>
+			</TinyLink>
 		</template>
 	</CFooter>
 </template>

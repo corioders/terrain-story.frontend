@@ -16,6 +16,7 @@
 				<slot name="playButtonCard"></slot>
 			</template>
 		</PlayButton>
+		<slot></slot>
 	</VFlex>
 </template>
 
