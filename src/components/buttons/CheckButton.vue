@@ -4,7 +4,7 @@
 
 <script lang="ts">
 import { VButton } from '@corioders/vueui';
-import { defineComponent, ref } from 'vue';
+import { defineComponent, ref, computed } from 'vue';
 
 export default defineComponent({
 	name: 'CheckButton',
@@ -22,6 +22,7 @@ export default defineComponent({
 	setup(props, { emit }) {
 		let wrongAnswerState = ref(false);
 		let timeout: number | null = null;
+
 		async function handleClick(e: MouseEvent): Promise<void> {
 			emit('click', e);
 			if (timeout !== null) clearTimeout(timeout);
@@ -32,7 +33,12 @@ export default defineComponent({
 				}, 4000);
 			}
 		}
-		return { handleClick, wrongAnswerState };
+
+		const buttonContent = computed(() => (window.isUA.value !== true ? "'Sprawdź'" : "'Перевірте'"));
+		const errorContent = computed(() => (window.isUA.value !== true ? "'Zła odpowiedź'" : "'Неправильна відповідь'"));
+		const buttonWidth = computed(() => (window.isUA.value !== true ? '110px' : '220px'));
+
+		return { handleClick, wrongAnswerState, buttonContent, errorContent, buttonWidth };
 	},
 });
 </script>
@@ -46,17 +52,17 @@ export default defineComponent({
 	transition: all 0.5s;
 
 	div {
-		width: 110px;
+		width: v-bind('buttonWidth');
 		height: 22px;
 		position: relative;
 
 		&::before {
-			content: 'Sprawdź';
+			content: v-bind('buttonContent');
 			opacity: 1;
 		}
 
 		&::after {
-			content: 'Zła odpowiedź';
+			content: v-bind('errorContent');
 			opacity: 0;
 		}
 

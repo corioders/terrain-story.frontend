@@ -4,11 +4,15 @@
 			<VFlex align="flex-start">
 				<VFlex direction="row" gap="4px">
 					<img src="../assets/marker-icon-2x.png" alt="Niebieska pinezka" />
-					<p>Gra dostępna publicznie</p>
+					<slot name="publicGame">
+						<p>Gra dostępna publicznie</p>
+					</slot>
 				</VFlex>
 				<VFlex direction="row" gap="4px">
 					<img src="../assets/marker-icon-2x-indoor.png" alt="Czerwona pinezka" />
-					<p>Gra wewnętrzna</p>
+					<slot name="insideGame">
+						<p>Gra wewnętrzna</p>
+					</slot>
 				</VFlex>
 			</VFlex>
 		</div>

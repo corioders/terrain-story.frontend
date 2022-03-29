@@ -1,5 +1,7 @@
 <template>
-	<p>Rozpoznaj po mimice emocje u innych. Co powie osoba?</p>
+	<p v-if="!isUA.value">Rozpoznaj po mimice emocje u innych. Co powie osoba?</p>
+	<p v-else>Розпізнавати емоції в інших за виразом обличчя. Що скаже людина?</p>
+
 	<SingleChoiceQuestions
 		:questions="questions"
 		name="emotions"

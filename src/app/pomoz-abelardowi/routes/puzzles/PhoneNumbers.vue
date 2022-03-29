@@ -1,12 +1,18 @@
 <template>
-	<p>Nigdy nie bójmy się prosić o pomoc</p>
+	<p v-if="!isUA.value">Nigdy nie bójmy się prosić o pomoc</p>
+	<p v-else>Ми ніколи не повинні боятися просити допомоги</p>
+
 	<VFlex align="center" class="flex">
-		<p>telefon zaufania dla dzieci i młodzieży</p>
+		<p v-if="!isUA.value">telefon zaufania dla dzieci i młodzieży</p>
+		<p v-else>телефон довіри для дітей та молоді</p>
+
 		<img src="@help/assets/phoneNumbers/kids.webp" alt="“116 ***” 11 * 11 - 10 = ***" />
 		<VInput v-model="number1" name="***" />
 	</VFlex>
 	<VFlex align="center" class="flex">
-		<p>telefon zaufania dla dorosłych</p>
+		<p v-if="!isUA.value">telefon zaufania dla dorosłych</p>
+		<p v-else>телефон довіри для дорослих</p>
+
 		<img src="@help/assets/phoneNumbers/adults.webp" alt="“116 ***” 11 * 10 + 13 = ***" />
 		<VInput v-model="number2" name="***" @input="submitAnswer" />
 	</VFlex>

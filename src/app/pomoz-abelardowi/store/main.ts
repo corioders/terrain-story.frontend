@@ -1,8 +1,9 @@
 import { defineStore } from 'pinia';
 
 export const useMainStore = defineStore({
-	id: 'test.main',
+	id: 'help.main',
 	state: () => ({
 		gameName: 'pomoz-abelardowi',
+		isUA: false,
 	}),
 });

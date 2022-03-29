@@ -2,8 +2,11 @@
 	<Done>
 		<template #progress>
 			<ProgressBar style="margin-top: 20px" :max="progress().max" :value="progress().value" />
-			<h2>Brawo, udało Ci się rozwiązać {{ progress().value }} z {{ progress().max }} zagadek</h2>
+			<h2 v-if="!isUA.value">Brawo, udało Ci się rozwiązać {{ progress().value }} z {{ progress().max }} zagadek</h2>
+			<h2 v-else>Браво, вам вдалося розв'язати {{ progress().value }} з {{ progress().max }} загадок</h2>
 		</template>
+		<template v-if="isUA.value"><h3>Знайди і проскануй наступний код</h3></template>
+		<template v-if="isUA.value" #action>Перенести на мапу</template>
 	</Done>
 </template>
 
