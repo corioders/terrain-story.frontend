@@ -23,7 +23,7 @@
 
 		<!-- Normal templates -->
 		<template #gameCreators>
-			<p v-if="!isUA.value">Psycholog Łucja Chwastek</p>
+			<p v-if="!isUA.value.value">Psycholog Łucja Chwastek</p>
 			<p v-else>Психолог Łucja Chwastek</p>
 		</template>
 	</Home>

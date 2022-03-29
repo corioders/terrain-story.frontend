@@ -12,17 +12,21 @@ const pinia = createPinia();
 pinia.use(createLocalStoragePlugin());
 
 const isUARef = ref<boolean>(true);
+// const isUARef = ref<boolean>(false);
 
-// eslint-disable-next-line
-// @ts-ignore
-window.is = isUARef;
-
-app.config.globalProperties.isUA = isUARef;
+declare global {
+	interface Window {
+		isUA: typeof isUARef;
+	}
+}
 declare module '@vue/runtime-core' {
 	interface ComponentCustomProperties {
 		isUA: typeof isUARef;
 	}
 }
+
+window.isUA = isUARef;
+app.config.globalProperties.isUA = isUARef;
 
 app.use(VueGtagPlugin, {
 	disableScriptLoader: true,

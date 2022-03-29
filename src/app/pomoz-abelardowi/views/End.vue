@@ -1,5 +1,5 @@
 <template>
-	<p v-if="!isUA">Dziękujemy za przejście gry!</p>
+	<p v-if="!isUA.value">Dziękujemy za przejście gry!</p>
 	<p v-else>Дякуємо за проходження гри!</p>
 
 	<ResetProgressButton :progressStore="progressStore">

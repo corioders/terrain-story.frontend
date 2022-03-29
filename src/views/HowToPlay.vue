@@ -1,7 +1,7 @@
 <template>
 	<Video videoId="osnMvAcWdZc" :endBias="0" @end="$router.push('/start')" />
 	<PrimaryButton @click="$router.push('/start')">
-		<template v-if="!isUA"> Wróć do gry </template>
+		<template v-if="!isUA.value"> Wróć do gry </template>
 		<template v-else> Поверніться до гри </template>
 	</PrimaryButton>
 </template>
