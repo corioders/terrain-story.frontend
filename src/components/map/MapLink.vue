@@ -1,5 +1,7 @@
 <template>
-	<DefaultButton @click="$router.push(mapUrl)">Mapa</DefaultButton>
+	<DefaultButton @click="$router.push(mapUrl)">
+		<slot> Mapa </slot>
+	</DefaultButton>
 </template>
 
 <script lang="ts">

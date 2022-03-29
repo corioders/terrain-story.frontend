@@ -1,6 +1,8 @@
 <template>
 	<Video videoId="osnMvAcWdZc" :endBias="0" @end="$router.push('/start')" />
-	<PrimaryButton @click="$router.push('/start')">Wróć do gry</PrimaryButton>
+	<PrimaryButton @click="$router.push('/start')">
+		<slot> Wróć do gry </slot>
+	</PrimaryButton>
 </template>
 
 <script lang="ts">

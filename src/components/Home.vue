@@ -6,46 +6,60 @@
 		</div>
 		<section class="dark">
 			<VFlex>
-				<h3>Jak grać?</h3>
+				<h3>
+					<slot name="howToPlay"> Jak grać? </slot>
+				</h3>
 				<Video class="video" videoId="osnMvAcWdZc" />
 			</VFlex>
 		</section>
 		<section class="light">
 			<VFlex>
-				<h3>Chcesz wiedzieć więcej?</h3>
+				<h3>
+					<slot name="knowMore"> Chcesz wiedzieć więcej? </slot>
+				</h3>
 				<Video class="video" :videoId="knowMoreVideoId" />
 			</VFlex>
 		</section>
 		<section class="dark">
 			<VFlex>
-				<h5 style="margin-bottom: 24px">Tu znajdziesz nasze gry</h5>
+				<h5 style="margin-bottom: 24px">
+					<slot name="ourGames"> Tu znajdziesz nasze gry </slot>
+				</h5>
 				<LocationMapAllWrapper />
 			</VFlex>
 		</section>
 		<section class="light">
 			<VFlex>
-				<h6 style="margin: 0">Kontakt</h6>
+				<h6 style="margin: 0"><slot name="contact"> Kontakt </slot></h6>
 				<p style="margin-bottom: 0">terrainstory@gmail.com</p>
 				<p style="margin-top: 0">
-					Wiadomość na <InfoLink href="https://www.instagram.com/terrain.story/" newCard>Instagramie</InfoLink> lub
-					<InfoLink href="https://www.facebook.com/terrain.story/" newCard>Facebooku</InfoLink>
+					<slot name="messageOn"> Wiadomość na</slot>
+					<InfoLink href="https://www.instagram.com/terrain.story/" newCard>
+						<slot name="messageOnInstagram"> Instagramie </slot>
+					</InfoLink>
+					<slot name="messageOr">lub</slot>
+					<InfoLink href="https://www.facebook.com/terrain.story/" newCard>
+						<slot name="messageOnFacebook"> Facebooku</slot>
+					</InfoLink>
 				</p>
 			</VFlex>
 		</section>
 		<section class="dark">
 			<VFlex>
-				<h5>Twórcy Gry</h5>
+				<h5>
+					<slot name="gameCreatorsText">Twórcy Gry</slot>
+				</h5>
 				<img v-if="isTextLightTheme" class="logo" src="@/assets/whiteLogo.webp" alt="Terrain Story" />
 				<img v-else class="logo" src="@/assets/blackLogo.webp" alt="Terrain Story" />
-				<slot name="gameCreators"></slot>
+				<slot name="gameCreators" />
 			</VFlex>
 		</section>
 		<section class="light">
 			<VFlex>
-				<h6>Honorowe Patronaty</h6>
+				<slot name="patrons">Honorowe Patronaty</slot>
 				<img src="@/assets/patronage/silesia.webp" alt="Marszałek Województwa Śląskiego" class="logoVertical" />
 				<img src="@/assets/patronage/katowice.webp" alt="Prezydent Miasta Katowice" class="logoVertical" />
-				<h6>Patroni medialni</h6>
+				<slot name="mediaPatrons">Patroni medialni</slot>
 				<img class="logo logoLink" src="@/assets/patrons/portalKatowice.webp" alt="Portal Katowice" @click="location.href = 'http://www.portal.katowice.pl'" />
 			</VFlex>
 		</section>
@@ -55,7 +69,7 @@
 <script lang="ts">
 import { VFlex } from '@corioders/vueui';
 import { useWindowSize } from '@vueuse/core';
-import { defineComponent, PropType } from 'vue';
+import { defineComponent } from 'vue';
 
 import LocationMapAllWrapper from '@/components/LocationMapAllWrapper.vue';
 import Video from '@/components/YoutubeVideo.vue';
