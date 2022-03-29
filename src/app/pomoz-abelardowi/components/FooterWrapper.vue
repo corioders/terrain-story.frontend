@@ -3,15 +3,33 @@
 		<template #informations>
 			<img src="@/assets/sftLogo.webp" style="margin-top: 64px" alt="Samsung Solve for Tomorrow" />
 			<img src="@/assets/zwztLogo.webp" alt="Projekt realizowany w ramach olimpiady 'Zwolnieni z Teorii'" />
-			<p>Projekt dofinansowany ze środków Unii Europejskiej</p>
+			<p v-if="!isUA">Projekt dofinansowany ze środków Unii Europejskiej</p>
+			<p v-else>Проект профінансовано з бюджету Європейського Союзу</p>
 		</template>
 		<template #menu>
-			<p>Rozwiązałeś {{ progress().value }} z {{ progress().max }} zagadek</p>
-			<TinyLink @click="$router.push('/')">Pomóż Abelardowi</TinyLink>
-			<TinyLink @click="$router.push('/zglos-blad')">Zgłoś Błąd</TinyLink>
-			<TinyLink @click="$router.push('/juz-zrobione')">Usuń Postęp</TinyLink>
-			<TinyLink @click="$router.push('/polityka-prywatnosci')">Polityka Prywatności</TinyLink>
-			<TinyLink @click="$router.push('/finansowanie')">Finansowanie</TinyLink>
+			<p v-if="!isUA">Rozwiązałeś {{ progress().value }} з {{ progress().max }} zagadek</p>
+			<p v-else>Розв'язано {{ progress().value }} z {{ progress().max }} загадок</p>
+
+			<TinyLink @click="$router.push('/')">
+				<template v-if="!isUA"> Pomóż Abelardowi </template>
+				<template v-else> Допоможи Абелардові </template>
+			</TinyLink>
+			<TinyLink @click="$router.push('/zglos-blad')">
+				<template v-if="!isUA"> Zgłoś Błąd </template>
+				<template v-else> Повідом про помилку </template>
+			</TinyLink>
+			<TinyLink @click="$router.push('/juz-zrobione')">
+				<template v-if="!isUA"> Usuń Postęp </template>
+				<template v-else> Видали прогрес </template>
+			</TinyLink>
+			<TinyLink @click="$router.push('/polityka-prywatnosci')">
+				<template v-if="!isUA"> Polityka Prywatności </template>
+				<template v-else> Конфіденціальність </template>
+			</TinyLink>
+			<TinyLink @click="$router.push('/finansowanie')">
+				<template v-if="!isUA"> Finansowanie </template>
+				<template v-else> Спонсори </template>
+			</TinyLink>
 			<TinyLink v-if="$route.name === 'Jacobson'" href="https://www.vecteezy.com/free-photos" :newCard="true">Free Stock photos by Vecteezy</TinyLink>
 		</template>
 	</CFooter>

@@ -1,5 +1,5 @@
 import { createPinia } from 'pinia';
-import { createApp } from 'vue';
+import { createApp, ref } from 'vue';
 import VueGtagPlugin from 'vue-gtag-next';
 
 import { createLocalStoragePlugin } from '@/store/plugin/localStorage';
@@ -11,12 +11,26 @@ const app = createApp(App);
 const pinia = createPinia();
 pinia.use(createLocalStoragePlugin());
 
+const isUARef = ref<boolean>(true);
+
+// eslint-disable-next-line
+// @ts-ignore
+window.is = isUARef;
+
+app.config.globalProperties.isUA = isUARef;
+declare module '@vue/runtime-core' {
+	interface ComponentCustomProperties {
+		isUA: typeof isUARef;
+	}
+}
+
 app.use(VueGtagPlugin, {
 	disableScriptLoader: true,
 	property: { id: GTAG_ID },
 });
 
 app.use(pinia).use(router);
+
 app.mount('#root');
 
 if (module.hot) {

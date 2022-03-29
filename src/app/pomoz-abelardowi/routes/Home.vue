@@ -8,8 +8,23 @@
 		lightSectionColor="#406258"
 		:isTextLightTheme="true"
 	>
+		<!-- For ukrainian translation -->
+		<template v-if="isUA.value" #howToPlay>Як грати?</template>
+		<template v-if="isUA.value" #knowMore>Хочеш дізнатися більше?</template>
+		<template v-if="isUA.value" #ourGames>Тут ви знайдете наші ігри</template>
+		<template v-if="isUA.value" #contact>Контакт</template>
+		<template v-if="isUA.value" #messageOn>Повідомлення в </template>
+		<template v-if="isUA.value" #messageOnInstagram>Instagram </template>
+		<template v-if="isUA.value" #messageOr>або </template>
+		<template v-if="isUA.value" #messageOnFacebook>Facebook</template>
+		<template v-if="isUA.value" #gameCreatorsText>Гра розроблена</template>
+		<template v-if="isUA.value" #patrons>Почесні патрони</template>
+		<template v-if="isUA.value" #mediaPatrons>Підтримка медіа</template>
+
+		<!-- Normal templates -->
 		<template #gameCreators>
-			<p>Psycholog Łucja Chwastek</p>
+			<p v-if="!isUA.value">Psycholog Łucja Chwastek</p>
+			<p v-else>Психолог Łucja Chwastek</p>
 		</template>
 	</Home>
 </template>

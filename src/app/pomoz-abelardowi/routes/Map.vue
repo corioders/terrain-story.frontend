@@ -2,9 +2,16 @@
 	<IndoorMap v-if="isIndoorMap" :puzzlesDone="puzzlesDone" :gameName="gameName" :locationID="locationID" />
 	<OutdoorMapWrapper v-if="isOutdoorMap" :locationID="locationID" />
 	<div v-if="!isIndoorMap && !isOutdoorMap" class="error">
-		<h2>Ooopppss! Przykro nam nie znaleźliśmy odpowiedniej mapy.</h2>
-		<p>Prosimy zgłoś błąd a pomoże nam to dopracować grę. Wybierz proszę kategorię "Kod QR nie działa", a lokalizację wpisz samodzielnie.</p>
-		<PrimaryButton @click="$router.push('/zglos-blad')">Zgłoś błąd</PrimaryButton>
+		<h2 v-if="!isUA">Ooopppss! Przykro nam nie znaleźliśmy odpowiedniej mapy.</h2>
+		<h2 v-else>Ооопппссс! На жаль, ми не знайшли підходящої карти.</h2>
+
+		<p v-if="!isUA">Prosimy zgłoś błąd a pomoże nam to dopracować grę. Wybierz proszę kategorię "Kod QR nie działa", a lokalizację wpisz samodzielnie.</p>
+		<p v-else>Будь ласка, повідомте про помилку, і це допоможе нам покращити гру. Виберіть категорію «QR-код не працює» та введіть місце розташування самостійно.</p>
+
+		<PrimaryButton @click="$router.push('/zglos-blad')">
+			<template v-if="!isUA">Zgłoś błąd</template>
+			<template v-else>Повідом про помилку</template>
+		</PrimaryButton>
 	</div>
 </template>
 

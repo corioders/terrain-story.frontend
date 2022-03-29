@@ -1,5 +1,11 @@
 <template>
-	<Start :start="handleStart" videoId="4l1kEdSWxlY" />
+	<Start :start="handleStart" videoId="4l1kEdSWxlY">
+		<template v-if="isUA" #incognitoWarning>Якщо ваш браузер знаходиться в анонімному режимі, ваш прогрес не буде зберігатися!</template>
+		<template v-if="isUA" #info>Перегляньте фільм повністю, а потім грайте!</template>
+		<template v-if="isUA" #howToPlayButton>Туторіал</template>
+		<template v-if="isUA" #playButton>Старт</template>
+		<template v-if="isUA" #playButtonCard>Спершу потрібно подивитися фільм.</template>
+	</Start>
 </template>
 
 <script lang="ts">
