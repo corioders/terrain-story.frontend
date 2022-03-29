@@ -12,6 +12,7 @@
 			<TinyLink @click="$router.push('/juz-zrobione')">Usuń Postęp</TinyLink>
 			<TinyLink @click="$router.push('/polityka-prywatnosci')">Polityka Prywatności</TinyLink>
 			<TinyLink @click="$router.push('/finansowanie')">Finansowanie</TinyLink>
+			<TinyLink v-if="$route.name === 'Jacobson'" href="https://www.vecteezy.com/free-photos" :newCard="true">Free Stock photos by Vecteezy</TinyLink>
 		</template>
 	</CFooter>
 </template>
