@@ -18,6 +18,7 @@ declare global {
 		isUA: typeof isUARef;
 	}
 }
+
 declare module '@vue/runtime-core' {
 	interface ComponentCustomProperties {
 		isUA: typeof isUARef;
