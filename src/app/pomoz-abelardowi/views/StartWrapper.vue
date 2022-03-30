@@ -6,7 +6,7 @@
 		<template v-if="isUA.value" #playButton>Старт</template>
 		<template v-if="isUA.value" #playButtonCard>Спершу потрібно подивитися фільм.</template>
 		<DefaultButton @click="isUA.value = !isUA.value">
-			<template v-if="!isUA.value">Przełącz na polski</template>
+			<template v-if="isUA.value">Przełącz na polski</template>
 			<template v-else>Перейти на українську</template>
 		</DefaultButton>
 	</Start>
