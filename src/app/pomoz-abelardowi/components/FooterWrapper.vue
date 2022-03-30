@@ -7,8 +7,8 @@
 			<p v-else>Проект профінансовано з бюджету Європейського Союзу</p>
 		</template>
 		<template #menu>
-			<p v-if="!isUA.value">Rozwiązałeś {{ progress().value }} з {{ progress().max }} zagadek</p>
-			<p v-else>Розв'язано {{ progress().value }} z {{ progress().max }} загадок</p>
+			<p v-if="!isUA.value">Rozwiązałeś {{ progress().value }} z {{ progress().max }} zagadek</p>
+			<p v-else>Розв'язано {{ progress().value }} з {{ progress().max }} загадок</p>
 
 			<TinyLink @click="$router.push('/')">
 				<template v-if="!isUA.value"> Pomóż Abelardowi </template>
@@ -32,7 +32,7 @@
 			</TinyLink>
 			<TinyLink v-if="$route.name === 'Jacobson'" href="https://www.vecteezy.com/free-photos" :newCard="true">Free Stock photos by Vecteezy</TinyLink>
 			<TinyLink @click="isUA.value = !isUA.value">
-				<template v-if="!isUA.value">Przełącz na polski</template>
+				<template v-if="isUA.value">Przełącz na polski</template>
 				<template v-else>Перейти на українську</template>
 			</TinyLink>
 		</template>
