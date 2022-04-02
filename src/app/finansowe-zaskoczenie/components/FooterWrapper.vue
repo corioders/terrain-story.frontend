@@ -7,7 +7,7 @@
 		</template>
 		<template #menu>
 			<p>Rozwiązałeś {{ progress().value }} z {{ progress().max }} zagadek</p>
-			<TinyLink @click="$router.push('/')">Pomóż Abelardowi</TinyLink>
+			<TinyLink @click="$router.push('/')">Finansowe Zaskoczenie</TinyLink>
 			<TinyLink @click="$router.push('/zglos-blad')">Zgłoś Błąd</TinyLink>
 			<TinyLink @click="$router.push('/juz-zrobione')">Usuń Postęp</TinyLink>
 			<TinyLink @click="$router.push('/polityka-prywatnosci')">Polityka Prywatności</TinyLink>

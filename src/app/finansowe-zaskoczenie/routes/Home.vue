@@ -2,7 +2,6 @@
 	<DevNav v-if="!IS_PRODUCTION" :routes="routes" />
 	<VFlex class="VFlex">
 		<div v-once>
-			FINANSOWE ZASKOCZENIE
 			<img
 				v-if="window.width.value * 1.5 >= window.height.value"
 				class="gameLogo"

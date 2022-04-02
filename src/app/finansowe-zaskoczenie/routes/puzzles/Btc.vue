@@ -1,5 +1,6 @@
 <template>
 	<p>Jaka jest pełna nazwa najpopularniejszej kryptowaluty “BTC”, która została wprowadzona w 2009 roku przez Satoshi Nakamoto?</p>
+	<img src="@fin/assets/btc.webp" alt="BTC" />
 	<VInput v-model="answer" class="VInput" name="Odpowiedź" @input="submitAnswer" />
 
 	<CheckButton :isCorrect="isAnswerCorrect" @click="handleCheck()" />
@@ -38,6 +39,11 @@ export default defineComponent({
 <style lang="scss" scoped>
 p {
 	width: 80vw;
+	max-width: 950px;
+}
+
+img {
+	width: 95%;
 	max-width: 950px;
 }
 </style>

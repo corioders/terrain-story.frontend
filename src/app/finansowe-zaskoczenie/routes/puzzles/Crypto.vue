@@ -1,5 +1,7 @@
 <template>
 	<p class="questionHelper">{{ question.question }}</p>
+	<img src="@fin/assets/crypto.webp" alt="kryptowaluty" />
+
 	<SingleChoiceQuestion
 		:options="question.options"
 		:answer="question.answer"
@@ -36,5 +38,10 @@ export default defineComponent({
 <style lang="scss" scoped>
 .questionHelper {
 	text-align: center;
+}
+
+img {
+	width: 95%;
+	max-width: 950px;
 }
 </style>

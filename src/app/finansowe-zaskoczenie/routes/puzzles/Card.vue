@@ -1,5 +1,6 @@
 <template>
 	<p class="questionHelper">{{ question.question }}</p>
+	<img src="@fin/assets/card.webp" alt="karta" />
 	<SingleChoiceQuestion
 		:options="question.options"
 		:answer="question.answer"
@@ -36,6 +37,11 @@ export default defineComponent({
 <style lang="scss" scoped>
 .questionHelper {
 	width: 80vw;
+	max-width: 950px;
+}
+
+img {
+	width: 95%;
 	max-width: 950px;
 }
 </style>
