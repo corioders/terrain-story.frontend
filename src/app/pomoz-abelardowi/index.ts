@@ -2,7 +2,7 @@ import { createPinia } from 'pinia';
 import { createApp } from 'vue';
 import VueGtagPlugin from 'vue-gtag-next';
 
-import { initApp } from '@/isUAinit';
+import { initApp } from '@/isUAInit';
 import { createLocalStoragePlugin } from '@/store/plugin/localStorage';
 
 import App from './App.vue';
