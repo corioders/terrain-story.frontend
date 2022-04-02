@@ -2,6 +2,7 @@ import { createPinia } from 'pinia';
 import { createApp } from 'vue';
 import VueGtagPlugin from 'vue-gtag-next';
 
+import { initApp } from '@/isUAinit';
 import { createLocalStoragePlugin } from '@/store/plugin/localStorage';
 
 import App from './App.vue';
@@ -10,6 +11,8 @@ import router from './router';
 const app = createApp(App);
 const pinia = createPinia();
 pinia.use(createLocalStoragePlugin());
+
+initApp(app);
 
 app.use(VueGtagPlugin, {
 	disableScriptLoader: true,
