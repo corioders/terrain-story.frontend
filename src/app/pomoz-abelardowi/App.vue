@@ -10,15 +10,16 @@
 	</div>
 </template>
 <script lang="ts">
-// import MapLink from '@/components/map/MapLink.vue';
 import { VFlex } from '@corioders/vueui';
 import FooterWrapper from '@help/components/FooterWrapper.vue';
 import { nextRoute } from '@help/router';
 import { isPuzzleID } from '@help/store/progress';
-import { defineComponent } from 'vue';
+import { defineComponent, Ref, watch } from 'vue';
 
 import Header from '@/components/Header.vue';
 import SkipNav from '@/components/devHelpers/SkipNav.vue';
+
+import { useMainStore } from './store/main';
 
 export default defineComponent({
 	name: 'App',
@@ -26,10 +27,16 @@ export default defineComponent({
 		FooterWrapper,
 		VFlex,
 		Header,
-		// MapLink,
 		SkipNav,
 	},
 	setup() {
+		// Init ukrainian.
+		const mainStore = useMainStore();
+		window.isUA.value = mainStore.isUA;
+		watch(window.isUA, (isUA) => {
+			mainStore.isUA = isUA;
+		});
+
 		return { nextRoute, isPuzzleID: isPuzzleID, IS_PRODUCTION: __IS_PRODUCTION__ };
 	},
 });

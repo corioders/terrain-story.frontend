@@ -5,10 +5,14 @@
 			<path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z" />
 		</svg>
 		<slot>
-			<h2>Już rozwiązałeś tę zagadkę</h2>
+			<h2>
+				<slot name="alreadyDone"> Już rozwiązałeś tę zagadkę </slot>
+			</h2>
 		</slot>
 		<slot name="mapLink">
-			<PrimaryButton @click="$router.push('/mapa')">Przenieś do mapy</PrimaryButton>
+			<PrimaryButton @click="$router.push('/mapa')">
+				<slot name="transferToMap"> Przenieś do mapy</slot>
+			</PrimaryButton>
 		</slot>
 		<ResetProgressButton :progressStore="progressStore">
 			<slot name="popup"></slot>

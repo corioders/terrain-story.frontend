@@ -1,17 +1,40 @@
 <template>
 	<CFooter>
 		<template #informations>
-			<img src="@/assets/zwztLogo.webp" style="margin-top: 64px" alt="Projekt realizowany w ramach olimpiady 'Zwolnieni z Teorii'" />
-			<img src="@/assets/sftLogo.webp" alt="Samsung Solve for Tomorrow" />
-			<p>Projekt dofinansowany ze środków Unii Europejskiej</p>
+			<img src="@/assets/sftLogo.webp" style="margin-top: 64px" alt="Samsung Solve for Tomorrow" />
+			<img src="@/assets/zwztLogo.webp" alt="Projekt realizowany w ramach olimpiady 'Zwolnieni z Teorii'" />
+			<p v-if="!isUA.value">Projekt dofinansowany ze środków Unii Europejskiej</p>
+			<p v-else>Проект профінансовано з бюджету Європейського Союзу</p>
 		</template>
 		<template #menu>
-			<p>Rozwiązałeś {{ progress().value }} z {{ progress().max }} zagadek</p>
-			<TinyLink @click="$router.push('/')">Pomóż Abelardowi</TinyLink>
-			<TinyLink @click="$router.push('/zglos-blad')">Zgłoś Błąd</TinyLink>
-			<TinyLink @click="$router.push('/juz-zrobione')">Usuń Postęp</TinyLink>
-			<TinyLink @click="$router.push('/polityka-prywatnosci')">Polityka Prywatności</TinyLink>
-			<TinyLink @click="$router.push('/finansowanie')">Finansowanie</TinyLink>
+			<p v-if="!isUA.value">Rozwiązałeś {{ progress().value }} z {{ progress().max }} zagadek</p>
+			<p v-else>Розв'язано {{ progress().value }} з {{ progress().max }} загадок</p>
+
+			<TinyLink @click="$router.push('/')">
+				<template v-if="!isUA.value"> Pomóż Abelardowi </template>
+				<template v-else> Допоможи Абелардові </template>
+			</TinyLink>
+			<TinyLink @click="$router.push('/zglos-blad')">
+				<template v-if="!isUA.value"> Zgłoś Błąd </template>
+				<template v-else> Повідом про помилку </template>
+			</TinyLink>
+			<TinyLink @click="$router.push('/juz-zrobione')">
+				<template v-if="!isUA.value"> Usuń Postęp </template>
+				<template v-else> Видали прогрес </template>
+			</TinyLink>
+			<TinyLink @click="$router.push('/polityka-prywatnosci')">
+				<template v-if="!isUA.value"> Polityka Prywatności </template>
+				<template v-else> Конфіденціальність </template>
+			</TinyLink>
+			<TinyLink @click="$router.push('/finansowanie')">
+				<template v-if="!isUA.value"> Finansowanie </template>
+				<template v-else> Спонсори </template>
+			</TinyLink>
+			<TinyLink v-if="$route.name === 'Jacobson'" href="https://www.vecteezy.com/free-photos" :newCard="true">Free Stock photos by Vecteezy</TinyLink>
+			<TinyLink @click="isUA.value = !isUA.value">
+				<template v-if="isUA.value">Przełącz na polski</template>
+				<template v-else>Перейти на українську</template>
+			</TinyLink>
 		</template>
 	</CFooter>
 </template>
