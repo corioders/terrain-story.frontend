@@ -102,8 +102,8 @@ export default defineComponent({
 
 	canvas,
 	img {
-		width: 95%;
 		max-height: 48vh;
+		max-width: 95%;
 		object-fit: contain;
 	}
 }

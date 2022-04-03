@@ -20,6 +20,9 @@
 		  "@/*": [
 		    "./src/*"
 		  ],
+			"@scssGlobals/*": [
+				"src/scss/global/*"
+			],
 			"@index/*": [
 		    "src/app/index/*"
 		  ],
@@ -37,9 +40,9 @@
 			],
 			"@recap/*": [
 				"src/app/wygraj-mature/*"
-				],
-			"@scssGlobals/*": [
-				"src/scss/global/*"
+			],
+			"@fin/*": [
+				"src/app/finansowe-zaskoczenie/*"
 			],
 		},
 

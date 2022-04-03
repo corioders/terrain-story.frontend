@@ -12,7 +12,7 @@
 				<Video class="video" videoId="osnMvAcWdZc" />
 			</VFlex>
 		</section>
-		<section class="light">
+		<section v-if="knowMoreVideoId !== ''" class="light">
 			<VFlex>
 				<h3>
 					<slot name="knowMore"> Chcesz wiedzieć więcej? </slot>
@@ -20,7 +20,7 @@
 				<Video class="video" :videoId="knowMoreVideoId" />
 			</VFlex>
 		</section>
-		<section class="dark">
+		<section :class="knowMoreVideoId !== '' ? 'dark' : 'light'">
 			<VFlex>
 				<h5 style="margin-bottom: 24px">
 					<slot name="ourGames"> Tu znajdziesz nasze gry </slot>
@@ -28,32 +28,70 @@
 				<LocationMapAllWrapper />
 			</VFlex>
 		</section>
-		<section class="light">
-			<VFlex>
-				<h6 style="margin: 0"><slot name="contact"> Kontakt </slot></h6>
-				<p style="margin-bottom: 0">terrainstory@gmail.com</p>
-				<p style="margin-top: 0">
-					<slot name="messageOn"> Wiadomość na</slot>
-					<InfoLink href="https://www.instagram.com/terrain.story/" newCard>
-						<slot name="messageOnInstagram"> Instagramie </slot>
-					</InfoLink>
-					<slot name="messageOr">lub</slot>
-					<InfoLink href="https://www.facebook.com/terrain.story/" newCard>
-						<slot name="messageOnFacebook"> Facebooku</slot>
-					</InfoLink>
-				</p>
-			</VFlex>
-		</section>
-		<section class="dark">
-			<VFlex>
-				<h5>
-					<slot name="gameCreatorsText">Twórcy Gry</slot>
-				</h5>
-				<img v-if="isTextLightTheme" class="logo" src="@/assets/whiteLogo.webp" alt="Terrain Story" />
-				<img v-else class="logo" src="@/assets/blackLogo.webp" alt="Terrain Story" />
-				<slot name="gameCreators" />
-			</VFlex>
-		</section>
+		<VFlex v-if="knowMoreVideoId !== ''" class="VFlex">
+			<section class="light">
+				<ContactSectionContent>
+					<template #contact>
+						<slot name="contact"></slot>
+					</template>
+					<template #messageOn>
+						<slot name="messageOn"></slot>
+					</template>
+					<template #messageOnInstagram>
+						<slot name="messageOnInstagram"></slot>
+					</template>
+					<template #messageOr>
+						<slot name="messageOr"></slot>
+					</template>
+					<template #messageOnFacebook>
+						<slot name="messageOnFacebook"></slot>
+					</template>
+				</ContactSectionContent>
+			</section>
+			<section class="dark">
+				<CreatorsSectionContent :isTextLightOnDarkBg="isTextLightOnDarkBg">
+					<template #gameCreatorsText>
+						<slot name="gameCreatorsText"></slot>
+					</template>
+					<template #gameCreators>
+						<slot name="gameCreators"></slot>
+					</template>
+				</CreatorsSectionContent>
+			</section>
+		</VFlex>
+
+		<VFlex v-else class="VFlex">
+			<section class="dark">
+				<CreatorsSectionContent :isTextLightOnDarkBg="isTextLightOnDarkBg">
+					<template #gameCreatorsText>
+						<slot name="gameCreatorsText"></slot>
+					</template>
+					<template #gameCreators>
+						<slot name="gameCreators"></slot>
+					</template>
+				</CreatorsSectionContent>
+			</section>
+			<section class="light">
+				<ContactSectionContent>
+					<template #contact>
+						<slot name="contact"></slot>
+					</template>
+					<template #messageOn>
+						<slot name="messageOn"></slot>
+					</template>
+					<template #messageOnInstagram>
+						<slot name="messageOnInstagram"></slot>
+					</template>
+					<template #messageOr>
+						<slot name="messageOr"></slot>
+					</template>
+					<template #messageOnFacebook>
+						<slot name="messageOnFacebook"></slot>
+					</template>
+				</ContactSectionContent>
+			</section>
+		</VFlex>
+
 		<section class="light">
 			<VFlex>
 				<slot name="patrons">Honorowe Patronaty</slot>
@@ -73,7 +111,9 @@ import { defineComponent } from 'vue';
 
 import LocationMapAllWrapper from '@/components/LocationMapAllWrapper.vue';
 import Video from '@/components/YoutubeVideo.vue';
-import { InfoLink } from '@/theme/Link';
+
+import ContactSectionContent from './ContactSectionContent.vue';
+import CreatorsSectionContent from './CreatorsSectionContent.vue';
 
 export default defineComponent({
 	name: 'Home',
@@ -81,7 +121,8 @@ export default defineComponent({
 		VFlex,
 		Video,
 		LocationMapAllWrapper,
-		InfoLink,
+		ContactSectionContent,
+		CreatorsSectionContent,
 	},
 	props: {
 		gameName: {
@@ -97,21 +138,22 @@ export default defineComponent({
 			type: String,
 		},
 		knowMoreVideoId: {
+			required: false,
+			type: String,
+			default: '',
+		},
+		darkSectionColor: {
 			required: true,
 			type: String,
 		},
-		lightSectionColor: {
-			required: true,
-			type: String,
-		},
-		isTextLightTheme: {
+		isTextLightOnDarkBg: {
 			required: true,
 			type: Boolean,
 		},
 	},
 	setup(props) {
-		const darkSectionColor = props.isTextLightTheme ? '#fff' : '#000';
-		return { window: useWindowSize(), darkSectionColor };
+		const darkSectionTextColor = props.isTextLightOnDarkBg ? '#fff' : '#000';
+		return { window: useWindowSize(), darkSectionTextColor };
 	},
 });
 </script>
@@ -130,21 +172,21 @@ export default defineComponent({
 		padding: 64px 8px;
 		text-align: center;
 
-		h3,
-		h4,
-		h5,
-		h6 {
+		:deep(h3),
+		:deep(h4),
+		:deep(h5),
+		:deep(h6) {
 			font-weight: 600;
 			font-size: 2em;
 			margin-bottom: 0;
 		}
 
-		p {
+		:deep(p) {
 			font-size: 18px;
 			max-width: 950px;
 		}
 
-		.logo,
+		:deep(.logo),
 		%logo {
 			width: 200px;
 			max-height: 150px;
@@ -170,8 +212,8 @@ export default defineComponent({
 }
 
 .dark {
-	background-color: v-bind('lightSectionColor');
-	color: v-bind('darkSectionColor');
+	background-color: v-bind('darkSectionColor');
+	color: v-bind('darkSectionTextColor');
 }
 
 .logoLink {

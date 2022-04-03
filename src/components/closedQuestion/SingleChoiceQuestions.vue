@@ -10,8 +10,14 @@
 			:displayFeedback="displayFeedback"
 			:disableMixing="disableMixing"
 			:isHtml="isHtml[i] ?? false"
-			@correct="isCorrect[i] = true"
-			@incorrect="isCorrect[i] = false"
+			@correct="
+				isCorrect[i] = true;
+				update();
+			"
+			@incorrect="
+				isCorrect[i] = false;
+				update();
+			"
 		>
 			<slot :name="i"></slot>
 		</SingleChoiceQuestion>
@@ -59,21 +65,17 @@ export default defineComponent({
 	setup(props, { emit }) {
 		const isCorrect = ref<Array<boolean>>([]);
 
-		// Initalize to incorrect.
+		// Initialize to incorrect.
 		for (let i = 0; i < props.questions.length; i++) {
 			isCorrect.value[i] = false;
 		}
 
-		watch(
-			isCorrect,
-			() => {
-				if (!isCorrect.value.includes(false)) emit('correct');
-				else emit('incorrect');
-			},
-			{ deep: true },
-		);
+		function update(): void {
+			if (!isCorrect.value.includes(false)) emit('correct');
+			else emit('incorrect');
+		}
 
-		return { isCorrect };
+		return { isCorrect, update };
 	},
 });
 </script>

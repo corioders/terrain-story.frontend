@@ -109,7 +109,7 @@ export default defineComponent({
 		visibility: v-bind('hideInput(arePhotos)');
 	}
 
-	.displayFeedback {
+	&.displayFeedback {
 		.correct {
 			color: colors.$primary;
 

@@ -1,7 +1,8 @@
 import { createPinia } from 'pinia';
-import { createApp, ref } from 'vue';
+import { createApp } from 'vue';
 import VueGtagPlugin from 'vue-gtag-next';
 
+import { initApp } from '@/isUAInit';
 import { createLocalStoragePlugin } from '@/store/plugin/localStorage';
 
 import App from './App.vue';
@@ -11,22 +12,7 @@ const app = createApp(App);
 const pinia = createPinia();
 pinia.use(createLocalStoragePlugin());
 
-const isUARef = ref<boolean>(false);
-
-declare global {
-	interface Window {
-		isUA: typeof isUARef;
-	}
-}
-
-declare module '@vue/runtime-core' {
-	interface ComponentCustomProperties {
-		isUA: typeof isUARef;
-	}
-}
-
-window.isUA = isUARef;
-app.config.globalProperties.isUA = isUARef;
+initApp(app);
 
 app.use(VueGtagPlugin, {
 	disableScriptLoader: true,
