@@ -1,21 +1,17 @@
 <template>
 	<DevNav v-if="!IS_PRODUCTION" :routes="routes" />
 	<Home
-		gameName="Wygraj Maturę"
-		:gameLogoSrc="require('@recap/assets/recapLogo.webp')"
-		:gameLogoHorizontalSrc="require('@recap/assets/recapLogoHorizontal.webp')"
-		knowMoreVideoId="pG1O9rnZ7n4"
-		darkSectionColor="#ffe459"
-		:isTextLightOnDarkBg="false"
+		gameName="Finansowe Zaskoczenie"
+		:gameLogoSrc="require('@fin/assets/finLogo.webp')"
+		:gameLogoHorizontalSrc="require('@fin/assets/finLogoHorizontal.webp')"
+		darkSectionColor="#241C5A"
+		:isTextLightOnDarkBg="true"
 	>
-		<template #gameCreators>
-			<p>Nauczyciele z VIII LO im. Marii Skłodowskiej-Curie w Katowicach</p>
-		</template>
 	</Home>
 </template>
 
 <script lang="ts">
-import { routes } from '@recap/router';
+import { routes } from '@fin/router';
 import { defineComponent } from 'vue';
 
 import Home from '@/components/Home';

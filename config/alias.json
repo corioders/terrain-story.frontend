@@ -1,10 +1,11 @@
 {
 	"@": "src",
+	"@scssGlobals": "src/scss/global",
 	"@index": "src/app/index",
 	"@test": "src/app/test",
 	"@rock": "src/app/poszukiwacze-camienia",
 	"@eng": "src/app/santa-in-trouble",
 	"@help": "src/app/pomoz-abelardowi",
 	"@recap": "src/app/wygraj-mature",
-	"@scssGlobals": "src/scss/global"
+	"@fin": "src/app/finansowe-zaskoczenie"
 }
