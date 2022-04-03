@@ -5,8 +5,8 @@
 		:gameLogoSrc="require('@recap/assets/recapLogo.webp')"
 		:gameLogoHorizontalSrc="require('@recap/assets/recapLogoHorizontal.webp')"
 		knowMoreVideoId="pG1O9rnZ7n4"
-		lightSectionColor="#ffe459"
-		:isTextLightTheme="false"
+		darkSectionColor="#ffe459"
+		:isTextLightOnDarkBg="false"
 	>
 		<template #gameCreators>
 			<p>Nauczyciele z VIII LO im. Marii Skłodowskiej-Curie w Katowicach</p>
@@ -18,7 +18,7 @@
 import { routes } from '@recap/router';
 import { defineComponent } from 'vue';
 
-import Home from '@/components/Home.vue';
+import Home from '@/components/Home';
 import DevNav from '@/components/devHelpers/DevNav.vue';
 
 export default defineComponent({

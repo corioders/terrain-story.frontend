@@ -5,8 +5,8 @@
 		:gameLogoSrc="require('@help/assets/helpLogo.webp')"
 		:gameLogoHorizontalSrc="require('@help/assets/helpLogoHorizontal.webp')"
 		knowMoreVideoId="yLmjRKen2UE"
-		lightSectionColor="#406258"
-		:isTextLightTheme="true"
+		darkSectionColor="#406258"
+		:isTextLightOnDarkBg="true"
 	>
 		<!-- For ukrainian translation -->
 		<template v-if="isUA.value" #howToPlay>Як грати?</template>
@@ -33,7 +33,7 @@
 import { routes } from '@help/router';
 import { defineComponent } from 'vue';
 
-import Home from '@/components/Home.vue';
+import Home from '@/components/Home';
 import DevNav from '@/components/devHelpers/DevNav.vue';
 
 export default defineComponent({
