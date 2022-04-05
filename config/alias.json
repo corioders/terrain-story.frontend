@@ -7,5 +7,6 @@
 	"@eng": "src/app/santa-in-trouble",
 	"@help": "src/app/pomoz-abelardowi",
 	"@recap": "src/app/wygraj-mature",
-	"@fin": "src/app/finansowe-zaskoczenie"
+	"@fin": "src/app/finansowe-zaskoczenie",
+	"@quiz": "src/app/quiz-lekturowy"
 }

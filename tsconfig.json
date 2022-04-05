@@ -44,6 +44,9 @@
 			"@fin/*": [
 				"src/app/finansowe-zaskoczenie/*"
 			],
+			"@quiz/*": [
+				"src/app/quiz-lekturowy/*"
+			],
 		},
 
 		"outDir": "out",

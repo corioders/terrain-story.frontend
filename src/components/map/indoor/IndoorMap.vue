@@ -4,7 +4,9 @@
 		<div v-for="(floor, i) in indoorMapDescriptor.floors" :key="`floor${i}-${floor}`" class="floor">
 			<VFlex direction="row" justify="center" gap="13px">
 				<div v-if="floor.puzzleIDs[0] !== undefined">
-					<div v-for="(puzzleID, j) in floor.puzzleIDs" :key="`puzzle${j}-${puzzleID}`" class="puzzle" :class="puzzlesDone[puzzleID] === true ? 'done' : ''"></div>
+					<VFlex direction="row" justify="center" gap="13px">
+						<div v-for="(puzzleID, j) in floor.puzzleIDs" :key="`puzzle${j}-${puzzleID}`" class="puzzle" :class="puzzlesDone[puzzleID] === true ? 'done' : ''"></div>
+					</VFlex>
 				</div>
 				<div v-else class="puzzle invisible"></div>
 			</VFlex>
