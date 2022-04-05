@@ -1,5 +1,5 @@
 <template>
-	<Start :start="handleStart" videoId="pG1O9rnZ7n4" />
+	<Start :start="handleStart" />
 </template>
 
 <script lang="ts">
