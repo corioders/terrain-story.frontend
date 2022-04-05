@@ -4,9 +4,8 @@
 		gameName="Quiz Lekturowy"
 		:gameLogoSrc="require('@quiz/assets/quizLogo.webp')"
 		:gameLogoHorizontalSrc="require('@quiz/assets/quizLogoHorizontal.webp')"
-		knowMoreVideoId="pG1O9rnZ7n4"
-		darkSectionColor="#ffe459"
-		:isTextLightOnDarkBg="false"
+		darkSectionColor="#ED7E62"
+		:isTextLightOnDarkBg="true"
 	>
 	</Home>
 </template>
